@@ -1,0 +1,139 @@
+/* Ensure the entire page uses Flexbox for layout */
+.add-user-page {
+    display: flex;
+  }
+  
+  /* Sidebar styling */
+  .sidebar {
+    background-color: #48B0F7;
+    width: 250px;
+    height: 100vh;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .logo {
+    width: 100px;
+    margin-bottom: 40px;
+  }
+  
+  .sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .sidebar nav ul li {
+    margin: 15px 0;
+    font-size: 18px;
+  }
+  
+  .sidebar nav ul li a {
+    text-decoration: none;
+    color: white;
+  }
+  
+  .user-info {
+    margin-top: auto;
+    text-align: center;
+    color: white;
+  }
+  
+  /* Main content styling */
+  .main-content {
+    margin-left: 20px;
+    padding: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: left;
+  }
+  
+  h1 {
+    color: #48B0F7;
+    margin-bottom: 40px; /* Space between title and form */
+  }
+  
+  /* Form styling */
+  .add-user-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 30px; /* Space between the fields */
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-group label {
+    margin-bottom: 10px; /* Space between label and input */
+    font-size: 14px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    margin-right: 20px; /* Add space between input fields */
+  }
+  
+  .upload-btn, .add-user-btn {
+    background-color: #48B0F7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Add space above buttons */
+  }
+  
+  .upload-btn {
+    grid-column: span 2; /* Spans both columns */
+    justify-self: center;
+  }
+  
+  /* Center Add User button */
+.add-user-btn {
+    margin-left: 70%;
+    background-color: #48B0F7;
+    color: white;
+    padding: 15px 30px; /* Increased padding for larger button */
+    width: 100%; /* Ensures the button spans full width */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    justify-self: center; /* Center the button */
+    height: 50px; /* Adjust height as needed */
+  }
+  
+  .upload-btn i {
+    margin-left: 5px;
+  }
+
+  /* Style the upload button */
+.upload-btn {
+    background-color: #48B0F7;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .upload-btn i {
+    margin-left: 10px; /* Adds space between text and icon */
+  }
+  
+  
