@@ -1,12 +1,18 @@
-import './App.css';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./Home";
+import Admin from "./Pages/Admin/AdminLanding"
+import Testing from "./Pages/Admin/Testing";
 
 function App() {
-  return (
-    <div className="App">
-      <h1>Fly By Night </h1>
-      <h2>exam Preparation Application</h2>
-    </div>
-  );
+	return (
+		<Router>
+			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/adminLanding" element={<Admin />} />
+				<Route path="/Testing" element={<Testing />} />
+			</Routes>
+		</Router>
+	);
 }
 
 export default App;
