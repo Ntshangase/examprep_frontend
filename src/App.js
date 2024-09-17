@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import Admin from "./Pages/Admin/AdminLanding"
-import Testing from "./Pages/Admin/Testing";
+import Admin from "./pages/Admin/AdminLanding"
+import Testing from "./pages/Admin/Testing";
 
 function App() {
 	return (
