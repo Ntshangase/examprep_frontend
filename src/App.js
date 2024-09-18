@@ -4,7 +4,7 @@ import AddUser from "./Pages/Admin/AddUser";
 import ModeratorDashboard from './Pages/Moderator/ModeratorDashboard';
 import ModerateAws from "./Pages/Moderator/ModerateAws";
 import QuestionView from "./Pages/Moderator/QuestionView";
-import Admin from "./Pages/Admin/View/AdminLanding";
+import Admin from "./Pages/Admin/AdminLanding";
 import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashboard";
 import "./Styles/global.css";
 import StudentDashboard from "./Pages/Student/StudentDashboards";

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import './AddUser.css';
+import AdminSideBar from './AdminSideBar';
+import "../../Styles/global.css";
 
 function AddUser() {
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     username: '',
-    role: 'Lecturer',
+    role: '',
     picture: null,
   });
 
@@ -33,22 +35,7 @@ function AddUser() {
 
   return (
     <div className="add-user-page">
-      <div className="sidebar">
-        <img src="/logo.png" alt="Africa College of Technology" className="logo" />
-        <nav>
-          <ul>
-            <li>Navigation</li>
-            <li><a href="/">Home</a></li>
-            <li><a href="/add-user">Add User</a></li>
-            <li><a href="/manage-class">Manage Class</a></li>
-            <li><a href="/manage-course">Manage Course</a></li>
-          </ul>
-        </nav>
-        <div className="user-info">
-          <p>Effort Zulu</p>
-          <p>zulu@gmail.com</p>
-        </div>
-      </div>
+     <AdminSideBar />
 
       <div className="main-content">
         <h1>Add User</h1>
