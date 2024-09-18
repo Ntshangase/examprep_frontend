@@ -14,7 +14,7 @@ function Home() {
 		navigate("/AdminLanding");
 	};
   const handleNavigateStudent = () => {
-		navigate("/StudenDashboard");
+		navigate("/StudentDashboard");
 	};
 
 	return (
