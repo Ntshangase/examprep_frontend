@@ -5,7 +5,7 @@ export default function AdminLanding() {
   return (
     <div>
       <Navbar />
-      <h1>Welcome to the exam Prep System</h1>
+      <h1>Welcome to Admin Dashboard</h1>
     </div>
   );
 }
