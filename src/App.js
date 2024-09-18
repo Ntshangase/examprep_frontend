@@ -7,6 +7,7 @@ import Admin from "./Pages/Admin/AdminLanding";
 import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashboard";
 import "./Styles/global.css";
 import StudentDashboard from "./Pages/Student/StudentDashboards";
+import AddCourse from "./Pages/Admin/AddCourse";
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 				<Route path="/QuestionView" element={<QuestionView />} />
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
 				<Route path="/StudentDashboard" element={<StudentDashboard />} />
+				<Route path="/AddCourse" element={<AddCourse />} />
 			</Routes>
 		</Router>
 	);
