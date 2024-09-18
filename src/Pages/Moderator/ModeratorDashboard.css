@@ -61,40 +61,68 @@
     cursor: pointer;
   }
   
-  .badge-section {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
+  /* Badge section styling */
+.badge-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* Badge card styles */
+.badge-card {
+  width: 180px; /* Set card width */
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Adds shadow for card effect */
+  text-align: center;
+  transition: transform 0.3s ease; /* Adds smooth transition effect */
+}
+
+.badge-card:hover {
+  transform: translateY(-10px); /* Adds hover effect */
+}
+
+.badge-image {
+  width: 100px; /* Set desired width */
+  height: auto;  /* Maintain aspect ratio */
+  margin-bottom: 10px;
+}
+
+.badge p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .badge-card {
+    width: 150px; /* Adjust card width for smaller screens */
   }
-  
-  .badge-section img {
-    width: 150px;
-    height: 150px;
-    margin: 10px;
-  }
-  
-  /* certification badges */
-  .badge-section {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-  }
-  
-  .badge {
-    text-align: center;
-    width: 150px; /* Set width of each badge container */
-  }
-  
-  .badge-image {
-    width: 100px; /* Set desired width */
-    height: auto;  /* Maintain aspect ratio */
-  }
-  
-  .badge p {
-    margin-top: 10px;
-    font-size: 14px;
-    font-weight: bold;
-  }
-  
+}
+
+  /* logout to the bottom */
+  /* Ensure the ul takes the full height of its parent */
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+  justify-content: space-between; /* Space between elements */
+  list-style-type: none; /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+/* Optional styling for list items */
+.menu li {
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* Add some styling to the LogOut button */
+.menu .logout {
+  margin-bottom: 10px;
+}
