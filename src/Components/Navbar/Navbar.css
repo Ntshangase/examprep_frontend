@@ -1,0 +1,27 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--color-primary);
+    padding: var(--spacing-medium);
+  }
+  
+  .navbar-logo img {
+    height: 40px;
+  }
+  
+  .navbar-profile {
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar-profile img {
+    height: 30px;
+    margin-right: var(--spacing-small);
+  }
+  
+  .navbar-profile span {
+    font-size: var(--font-size-body);
+    color: var(--color-background);
+  }
+  
