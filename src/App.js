@@ -4,6 +4,7 @@ import Admin from "./Pages/Admin/AdminLanding"
 import ModeratorDashboard from './Pages/Moderator/ModeratorDashboard';
 import ModerateAws from "./Pages/Moderator/ModerateAws";
 import QuestionView from "./Pages/Moderator/QuestionView";
+import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashboard";
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
 				<Route path="/" element={<Home />} />
 				<Route path="/adminLanding" element={<Admin />} />
 				<Route path="/ModerateAws" element={<ModerateAws />} />
+				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
         <Route path="/ModeratorDashboard" element={<ModeratorDashboard />} />
 		<Route path="/QuestionView" element={<QuestionView />} />
 
