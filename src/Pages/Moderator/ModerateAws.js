@@ -2,6 +2,8 @@ import React from 'react';
 import './ModerateAws.css'; // Import CSS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEye, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
+import Navbar from '../../Components/Navbar/Navbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 
 
 const ModerateAws = () => {
@@ -13,16 +15,6 @@ const ModerateAws = () => {
 
   return (
     <div className="exam-prep-container">
-      {/* Sidebar */}
-      <div className="sidebar">
-        <h3>Student</h3>
-        <ul>
-          <li>Profile</li>
-          <li>View Dumps</li>
-          <li>Logout</li>
-        </ul>
-      </div>
-
       {/* Main Content */}
       <div className="main-content">
         <div className="profile-section">
