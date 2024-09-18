@@ -9,7 +9,7 @@ const LecturerDashboard = () => {
         <div className="dashboard-content">
           <Sidebar />
           <div className="content-area">
-            <h1>Classes</h1>
+            
            
           </div>
         </div>
