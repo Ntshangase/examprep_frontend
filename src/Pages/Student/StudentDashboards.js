@@ -1,11 +1,32 @@
-import React from 'react'
+import React from 'react';
+import Navbar from '../../Components/Navbar/Navbar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
+import './StudentDashboard.css';
 
-function StudentDashboard() {
+const StudentDashboard = () => {
   return (
-    <div>
-      <h1>Welcome to Student Dashboard</h1>
+    <div className="student-dashboard">
+      <Navbar />
+      <div className="dashboard-content">
+        <Sidebar />
+        <div className="content-area">
+          <h1>Welcome to the Student Dashboard</h1>
+          <div className="card-container">
+            <div className="card" onClick={() => window.location.href='/independent-student'}>
+              <img src="/assets/independentStudent.jpg" alt="Independent Student" />
+              <h2>Independent Student</h2>
+              <p>Access resources and manage your learning independently.</p>
+            </div>
+            <div className="card" onClick={() => window.location.href='/enrolled-student'}>
+              <img src="/assets/enrolledStudent.jpeg" alt="Enrolled Student" />
+              <h2>Enrolled Student</h2>
+              <p>View courses, schedules, and track your progress.</p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default StudentDashboard
+export default StudentDashboard;
