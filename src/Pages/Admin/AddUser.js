@@ -8,7 +8,7 @@ function AddUser() {
     firstName: '',
     lastName: '',
     username: '',
-    role: '',
+    role: 'Admin',
     picture: null,
   });
 
@@ -35,29 +35,36 @@ function AddUser() {
 
   return (
     <div className="add-user-page">
-     <AdminSideBar />
+      <AdminSideBar />
 
       <div className="main-content">
-        <h1>Add User</h1>
+        <h1 className="form-title">Add User</h1>
         <form className="add-user-form" onSubmit={handleSubmit}>
           <div className="form-group">
             <label>first name</label>
-            <input type="text" name="firstName" placeholder="Enter Name" value={formData.firstName} onChange={handleChange} required />
+            <input
+              type="text"
+              name="firstName"
+              placeholder="Enter Name"
+              value={formData.firstName}
+              onChange={handleChange}
+              required
+            />
           </div>
 
           <div className="form-group">
             <label>last name</label>
-            <input type="text" name="lastName" placeholder="Enter Surname" value={formData.lastName} onChange={handleChange} required />
+            <input type="text" name="lastName" placeholder="Enter Surname" value={formData.lastName} onChange={handleChange} required/>
           </div>
 
           <div className="form-group">
             <label>username</label>
-            <input type="email" name="username" placeholder="Enter email" value={formData.username} onChange={handleChange} required />
+            <input type="email" name="username" placeholder="Enter email" value={formData.username} onChange={handleChange} required/>
           </div>
 
           <div className="form-group">
-            <label>User Role</label>
-            <select name="role" value={formData.role} onChange={handleChange} required>
+            <label>Role</label>
+            <select name="role" value={formData.role} onChange={handleChange} required >
               <option value="Lecturer">Lecturer</option>
               <option value="Student">Student</option>
               <option value="Admin">Admin</option>
@@ -67,8 +74,8 @@ function AddUser() {
           </div>
 
           <div className="form-group">
-          <label>Upload Picture:</label>
-          <input type="file" name="picture" accept="image/*" onChange={handleFileChange}/>
+            <label>Upload Image</label>
+            <input type="file" name="picture" accept="image/*" onChange={handleFileChange} className="upload-image" />
           </div>
 
           <button type="submit" className="add-user-btn">Add User</button>

@@ -1,0 +1,87 @@
+.admin-container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #61b5f5;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top */
+    height: 100vh;
+    padding: 20px;
+  }
+  
+  .logo-container {
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin: 20px 0;
+    cursor: pointer;
+    text-align: left; /* Align items to the left */
+    font-size: 18px;
+    color: #ffffff;
+  }
+  
+  .user-info {
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .user-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  
+  .user-card {
+    display: flex;
+    align-items: center;
+  }
+  
+  .profile-pic {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .user-details {
+    margin-left: 15px;
+  }
+  
+  .actions {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .view-btn,
+  .delete-btn {
+    background-color: transparent;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .view-btn:hover {
+    color: #00bfff;
+  }
+  
+  .delete-btn:hover {
+    color: red;
+  }
+  

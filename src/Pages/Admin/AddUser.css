@@ -1,24 +1,12 @@
 /* Ensure the entire page uses Flexbox for layout */
 .add-user-page {
   display: flex;
-}
-
-/* Sidebar styling */
-.sidebar {
-  background-color: var(--color-primary); /* Use primary color */
-  width: 250px;
   height: 100vh;
-  padding: var(--spacing-medium);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  font-size: x-large;
-  
 }
 
 .logo {
-  width: 100px;
-  margin-bottom: var(--spacing-large);
+  width: 150px; /* Adjust logo size */
+  margin-bottom: 30px;
 }
 
 .sidebar nav ul {
@@ -27,44 +15,48 @@
 }
 
 .sidebar nav ul li {
-  margin: var(--spacing-small) 0;
-  font-size: var(--font-size-body);
+  margin: 20px 0;
+  font-size: 16px;
+  color: white;
 }
 
 .sidebar nav ul li a {
   text-decoration: none;
-  color: var(--color-background); /* Change to white */
+  color: white;
+  font-weight: bold;
 }
 
 .user-info {
   margin-top: auto;
   text-align: center;
-  color: var(--color-background); /* Change to white */
+  color: white;
 }
 
 /* Main content styling */
 .main-content {
-  margin-left: var(--spacing-medium);
-  padding: var(--spacing-medium);
+  margin-left: 50px; /* Shift main content slightly to the left */
+  padding: 20px;
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start; /* Changed to flex-start */
+  justify-content: flex-start; /* Align content to start from top */
+  align-items: flex-start; /* Move content slightly left */
 }
 
-h1 {
+.form-title {
   color: var(--color-primary-dark);
-  margin-bottom: var(--spacing-large); /* Space between title and form */
+  font-size: 24px;
+  margin-bottom: 20px;
 }
 
 /* Form styling */
 .add-user-form {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: var(--spacing-large); /* Space between the fields */
+  grid-gap: 20px;
   width: 100%;
-  max-width: 600px;
+  max-width: 800px;
+  margin-top: -20px; /* Move form up slightly */
 }
 
 .form-group {
@@ -73,49 +65,42 @@ h1 {
 }
 
 .form-group label {
-  margin-bottom: var(--spacing-small); /* Space between label and input */
-  font-size: var(--font-size-small);
+  margin-bottom: 10px;
+  font-size: 14px;
 }
 
 .form-group input,
 .form-group select {
-  padding: var(--spacing-small);
-  border: 1px solid var(--color-border-light); /* Use border color variable */
-  border-radius: var(--border-radius);
-  font-size: var(--font-size-body);
-  margin-bottom: var(--spacing-medium);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
-.upload-btn, .add-user-btn {
-  background-color: var(--color-primary);
-  color: var(--color-background);
-  padding: var(--spacing-small) var(--spacing-large);
-  border: none;
-  border-radius: var(--border-radius);
+.upload-image {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: var(--spacing-medium); /* Add space above buttons */
 }
 
-.upload-btn {
-  grid-column: span 2; /* Spans both columns */
+.add-user-btn {
+  grid-column: span 2;
+  background-color: #61b5f5; /* Button color matching sidebar */
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
   justify-self: center;
 }
 
-/* Center Add User button */
-.add-user-btn {
-  margin-left: 70%;
-  padding: var(--spacing-medium) var(--spacing-large); /* Increased padding */
-  width: 100%; /* Ensures the button spans full width */
-  height: 50px; /* Adjust height as needed */
+.add-user-btn:hover {
+  background-color: #165bbd;
 }
 
-.upload-btn i {
-  margin-left: var(--spacing-small); /* Space between text and icon */
-}
-
-/* Style the upload button */
-.upload-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* Adjust spacing and margins */
+.sidebar nav ul li {
+  margin-bottom: 30px;
 }
