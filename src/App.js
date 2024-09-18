@@ -3,7 +3,7 @@ import Home from "./Home";
 import ModeratorDashboard from "./Pages/Moderator/ModeratorDashboard";
 import ModerateAws from "./Pages/Moderator/ModerateAws";
 import QuestionView from "./Pages/Moderator/QuestionView";
-
+import Admin from "./Pages/Admin/View/AdminLanding"
 
 function App() {
 	return (
