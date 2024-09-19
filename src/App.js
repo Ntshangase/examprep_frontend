@@ -8,6 +8,7 @@ import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashbo
 import "./Styles/global.css";
 import StudentDashboard from "./Pages/Student/StudentDashboards";
 import IndStudentDash from "./Pages/Student/Independent/IndStudentDash";
+import IndStudentCourseDetail from "./Pages/Student/Independent/IndStudentCourseDetail";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
 				<Route path="/StudentDashboard" element={<StudentDashboard />} />
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
+				<Route path="/IndStudentCourseDetail" element={<IndStudentCourseDetail />} />
 			</Routes>
 		</Router>
 	);
