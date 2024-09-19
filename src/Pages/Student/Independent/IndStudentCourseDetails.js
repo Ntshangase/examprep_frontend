@@ -1,9 +1,9 @@
 import React from 'react';
 import Navbar from '../../Components/Navbar/Navbar';
 import Sidebar from '../../Components/Sidebar/Sidebar';
-import './IndStudentCourseDetail.css';
+import './IndStudentCourseDetails.css';
 
-const InStudentCourseDetail = () => {
+const InStudentCourseDetails = () => {
 
   // Function for button click
   const handleGenerateTest = () => {
@@ -42,4 +42,4 @@ const InStudentCourseDetail = () => {
   );
 };
 
-export default IndStudentCourseDetail;
+export default IndStudentCourseDetails;
