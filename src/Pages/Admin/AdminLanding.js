@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "../../Components/Navbar/Navbar";
 import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import './AdminLanding.css'
 
 export default function AdminLanding() {
 	return (
