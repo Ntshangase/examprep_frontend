@@ -7,7 +7,8 @@ import Admin from "./Pages/Admin/AdminLanding";
 import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashboard";
 import "./Styles/global.css";
 import StudentDashboard from "./Pages/Student/StudentDashboards";
-import AssignedClasses from "./Pages/Lecturer/Classes/AssignedClasses"
+import AssignedClasses from "./Pages/Lecturer/Classes/AssignedClasses";
+import ViewClass from "./Pages/Lecturer/ViewClass/ViewClass";
 
 function App() {
 	return (
@@ -21,6 +22,7 @@ function App() {
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
 				<Route path="/StudentDashboard" element={<StudentDashboard />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
+				<Route path="/ViewClass" element={<ViewClass />} />
 			</Routes>
 		</Router>
 	);
