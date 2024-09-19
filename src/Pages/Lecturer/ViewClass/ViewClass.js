@@ -2,13 +2,16 @@ import React from "react";
 import { useNavigate } from 'react-router-dom';
 import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
-import styles from './ViewClass.module.css'; // Make sure to create and import the corresponding CSS module // Make sure to create and import the corresponding CSS module
+import styles from './ViewClass.module.css'; 
 
 const ClassDetailsPage = () => {
     const navigate = useNavigate();
     const handleStudentsClick = () => {
 
         navigate('/ViewStudents'); 
+    };
+    const handleButtonClick = () => {
+        navigate('/StudentsSubmitted'); 
     };
 
     return (
@@ -29,7 +32,7 @@ const ClassDetailsPage = () => {
                           23
                         </button>
                             </p>
-                            <button>Submitted Tests</button>
+                            <button onClick={handleButtonClick}>Submitted Tests</button>
                         </div>
                     </div>
 
