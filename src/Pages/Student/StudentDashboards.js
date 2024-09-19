@@ -12,7 +12,7 @@ const StudentDashboard = () => {
         <div className="content-area">
           <h1>Welcome to the Student Dashboard</h1>
           <div className="card-container">
-            <div className="card" onClick={() => window.location.href='/independent-student'}>
+            <div className="card" onClick={() => window.location.href='/IndStudentDash'}>
               <img src="/assets/independentStudent.jpg" alt="Independent Student" />
               <h2>Independent Student</h2>
               <p>Access resources and manage your learning independently.</p>
