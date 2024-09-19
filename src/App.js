@@ -7,6 +7,8 @@ import Admin from "./Pages/Admin/AdminLanding";
 import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashboard";
 import "./Styles/global.css";
 import StudentDashboard from "./Pages/Student/StudentDashboards";
+import IndStudentDash from "./Pages/Student/Independent/IndStudentDash";
+import IndStudentCourseDetail from "./Pages/Student/Independent/IndStudentCourseDetails";
 import AddCourse from "./Pages/Admin/AddCourse";
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
 				<Route path="/QuestionView" element={<QuestionView />} />
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
 				<Route path="/StudentDashboard" element={<StudentDashboard />} />
+				<Route path="/IndStudentDash" element={<IndStudentDash />} />
+				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetails />} />
 				<Route path="/AddCourse" element={<AddCourse />} />
 			</Routes>
 		</Router>
