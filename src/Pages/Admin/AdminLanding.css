@@ -6,6 +6,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: #f0f4f8;
+
 }
 
 /* Main Section */
@@ -14,11 +15,16 @@
   justify-content: space-between;
   align-items: center;
   width: 80%;
+  height: 60vh;
   margin-top: 20px;
   background-color: white;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-image: url('../../../public/assets/adminDashboard.png') ;
+  background-repeat: no-repeat; /* Ensure the image only displays once */
+  background-size: cover; /* Ensure the image covers the entire background */
+  background-position: center;
 }
 
 .text-content {
