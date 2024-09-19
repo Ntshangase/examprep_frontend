@@ -9,7 +9,6 @@ const Navbar = () => {
       </div>
       <div className="navbar-profile">
         <img src="/assets/profile-icon.png" alt="Profile" />
-        <span>casper@act.com</span>
       </div>
     </nav>
   );
