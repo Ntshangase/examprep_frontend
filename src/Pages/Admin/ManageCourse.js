@@ -1,7 +1,7 @@
 import React from 'react'
 import './ManageCourse.css';
 
-export default function ManagaExam() {
+export default function ManageCourse() {
   return (
     <div>ManagaExam</div>
   )
