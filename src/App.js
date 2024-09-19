@@ -8,7 +8,7 @@ import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashbo
 import "./Styles/global.css";
 import StudentDashboard from "./Pages/Student/StudentDashboards";
 import IndStudentDash from "./Pages/Student/Independent/IndStudentDash";
-import IndStudentCourseDetail from "./Pages/Student/Independent/IndStudentCourseDetail";
+import IndStudentCourseDetail from "./Pages/Student/Independent/IndStudentCourseDetails";
 
 function App() {
 	return (
