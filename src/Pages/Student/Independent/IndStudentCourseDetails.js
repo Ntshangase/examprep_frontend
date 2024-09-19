@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar from '../../Components/Navbar/Navbar';
-import Sidebar from '../../Components/Sidebar/Sidebar';
+import Navbar from '../../../Components/Navbar/Navbar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './IndStudentCourseDetails.css';
 
 const InStudentCourseDetails = () => {
@@ -42,4 +42,4 @@ const InStudentCourseDetails = () => {
   );
 };
 
-export default IndStudentCourseDetails;
+export default InStudentCourseDetails;

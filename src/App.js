@@ -11,6 +11,7 @@ import StudentDashboard from "./Pages/Student/StudentDashboards";
 import SubmittedTests from "./Pages/Lecturer/SubmittedTests/SubmittedTests";
 import IndStudentDash from "./Pages/Student/Independent/IndStudentDash";
 import IndStudentCourseDetail from "./Pages/Student/Independent/IndStudentCourseDetails";
+import IndStudentCourseDetails from "./Pages/Student/Independent/IndStudentCourseDetails"
 
 
 function App() {

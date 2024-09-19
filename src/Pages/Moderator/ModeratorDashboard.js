@@ -12,63 +12,66 @@ const HuaweiBadge = `${process.env.PUBLIC_URL}/assets/Huawei-HCNA-Badge.jpg`;
 const ModeratorDashboard = () => {
   return (
     <div className="exam-prep-container">
-      {/* Sidebar Navigation */}
-<Sidebar/>
-      {/* Main Content Area */}
-      <div className="main-content">
-        {/* Profile Section */}
-        <Navbar/>
-        <h2>Select Course to Moderate</h2>
-        {/* Certification Badges with Labels */}
-        <div className="badge-section">
-          <div className="badge-card">
-            <div className="badge">
-              <img
-                src={AWSBadge}
-                alt="AWS Cloud Practitioner"
-                className="badge-image"
-              />
-              <p>AWS Cloud Practitioner</p>
-            </div>
-          </div>
-          <div className="badge-card">
-            <div className="badge">
-              <img
-                src={CompTIABadge}
-                alt="CompTIA A+ Certified"
-                className="badge-image"
-              />
-              <p>CompTIA A+ Certified</p>
-            </div>
-          </div>
-          <div className="badge-card">
-            <div className="badge">
-              <img
-                src={MicrosoftBadge}
-                alt="Microsoft Fundamentals"
-                className="badge-image"
-              />
-              <p>Microsoft Fundamentals</p>
-            </div>
-          </div>
-          <div className="badge-card">
-            <div className="badge">
-              <img
-                src={AWSArchitectBadge}
-                alt="AWS Solutions Architect"
-                className="badge-image"
-              />
-              <p>AWS Solutions Architect</p>
-            </div>
-          </div>
-          <div className="badge-card">
-            <div className="badge">
-              <img
-                src={HuaweiBadge}
-                alt="Huawei HCNA"
-                className="badge-image"
-              />
-              <p>Huawei HCNA</p>
+
+      <div className="lecturer-dashboard">
+        <Navbar />
+        <div className="dashboard-content">
+          <Sidebar />
+          <div className="content-area">
+
+            <h2>Select Course to Moderate</h2>
+            {/* Certification Badges with Labels */}
+            <div className="badge-section">
+              <div className="badge-card">
+                <div className="badge">
+                  <img
+                    src={AWSBadge}
+                    alt="AWS Cloud Practitioner"
+                    className="badge-image"
+                  />
+                  <p>AWS Cloud Practitioner</p>
+                </div>
+              </div>
+              <div className="badge-card">
+                <div className="badge">
+                  <img
+                    src={CompTIABadge}
+                    alt="CompTIA A+ Certified"
+                    className="badge-image"
+                  />
+                  <p>CompTIA A+ Certified</p>
+                </div>
+              </div>
+              <div className="badge-card">
+                <div className="badge">
+                  <img
+                    src={MicrosoftBadge}
+                    alt="Microsoft Fundamentals"
+                    className="badge-image"
+                  />
+                  <p>Microsoft Fundamentals</p>
+                </div>
+              </div>
+              <div className="badge-card">
+                <div className="badge">
+                  <img
+                    src={AWSArchitectBadge}
+                    alt="AWS Solutions Architect"
+                    className="badge-image"
+                  />
+                  <p>AWS Solutions Architect</p>
+                </div>
+              </div>
+              <div className="badge-card">
+                <div className="badge">
+                  <img
+                    src={HuaweiBadge}
+                    alt="Huawei HCNA"
+                    className="badge-image"
+                  />
+                  <p>Huawei HCNA</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
