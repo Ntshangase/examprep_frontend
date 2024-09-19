@@ -4,7 +4,7 @@ import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './ViewClass.module.css'; 
 
-const ClassDetailsPage = () => {
+const ViewClass = () => {
     const navigate = useNavigate();
     const handleStudentsClick = () => {
 
@@ -66,4 +66,4 @@ const ClassDetailsPage = () => {
     );
 };
 
-export default ClassDetailsPage;
+export default ViewClass;
