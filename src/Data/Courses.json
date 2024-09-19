@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "title": "Architecting on AWS",
+      "image": "/assets/aws.png",
+      "lecturer": "Dr. Jane Doe",
+      "studentsEnrolled": 150
+    },
+    {
+      "id": 2,
+      "title": "CompTIA A+ Bootcamp",
+      "image": "/assets/comptia.png",
+      "lecturer": "Prof. John Smith",
+      "studentsEnrolled": 120
+    }
+  ]
+  

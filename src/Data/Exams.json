@@ -1,0 +1,17 @@
+[
+    {
+      "id": 1,
+      "courseId": 1,
+      "examTitle": "AWS Solutions Architect Exam",
+      "date": "2024-09-30",
+      "status": "Scheduled"
+    },
+    {
+      "id": 2,
+      "courseId": 2,
+      "examTitle": "CompTIA A+ Certification Exam",
+      "date": "2024-10-05",
+      "status": "Scheduled"
+    }
+  ]
+  
