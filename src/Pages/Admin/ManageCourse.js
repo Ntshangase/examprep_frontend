@@ -1,5 +1,5 @@
 import React from 'react'
-import './ManageExam.css'
+import './ManageCourse.css';
 
 export default function ManagaExam() {
   return (
