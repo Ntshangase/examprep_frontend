@@ -1,10 +1,13 @@
 import React from "react";
 import "./ModeratorDashboard.css";
-import AWSBadge from "../imgs/AWS-Cloud-Practitioner-Badge.jpeg";
-import CompTIABadge from "../imgs/CompTIA-A+-Badge.jpg";
-import MicrosoftBadge from "../imgs/Microsoft-Fundamentals-Badge.png";
-import AWSArchitectBadge from "../imgs/AWS-Solutions-Architect-Badge.png";
-import HuaweiBadge from "../imgs/Huawei-HCNA-Badge.jpg";
+
+
+const AWSBadge = `${process.env.PUBLIC_URL}/assets/AWS-Cloud-Practitioner-Badge.jpeg`;
+const CompTIABadge = `${process.env.PUBLIC_URL}/assets/CompTIA-A+-Badge.jpg`;
+const MicrosoftBadge = `${process.env.PUBLIC_URL}/assets/Microsoft-Fundamentals-Badge.png`;
+const AWSArchitectBadge = `${process.env.PUBLIC_URL}/assets/AWS-Solutions-Architect-Badge.png`;
+const HuaweiBadge = `${process.env.PUBLIC_URL}/assets/imgs/Huawei-HCNA-Badge.jpg`;
+
 
 const ModeratorDashboard = () => {
   return (
