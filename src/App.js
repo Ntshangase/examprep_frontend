@@ -16,8 +16,8 @@ import IndStudentCourseDetail from "./Pages/Student/Independent/IndStudentCourse
 import AddCourse from "./Pages/Admin/AddCourse";
 import CourseDetails from "./Pages/Admin/CourseDetails";
 import CreateClass from "./Pages/Admin/CreateClass";
-
-import EditCourse from "./Pages/Admin/EditClass";
+import EditClass from "./Pages/Admin/EditClass";
+import EditCourse from "./Pages/Admin/EditCourse";
 import ManageClass from "./Pages/Admin/ManageClass";
 import ManageStudents from "./Pages/Admin/ManageStudents";
 import ManageCourse from "./Pages/Admin/ManageCourse";
@@ -43,7 +43,7 @@ function App() {
 				<Route path="/AddCourse" element={<AddCourse />} />
 				<Route path="/CourseDetails" element={<CourseDetails />} />
 				<Route path="/CreateClass" element={<CreateClass />} />
-				
+				<Route path="/EditClass" element={<EditClass />} />
 				<Route path="/ManageClass" element={<ManageClass />} />
 				<Route path="/EditCourse" element={<EditCourse />} />
 				<Route path="/ManageStudents" element={<ManageStudents />} />

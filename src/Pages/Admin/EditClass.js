@@ -20,19 +20,16 @@ export default function EditClass() {
   return (
     <div className="container">
       <aside className="sidebar">
-        <img src="logo.png" alt="Africa College of Technology" className="logo" />
+        <img src="/assets/logo.png" alt="Africa College of Technology" className="logo" />
         <nav>
           <ul>
-            <li>Home</li>
-            <li>Add User</li>
-            <li>Manage Class</li>
-            <li>Manage Course</li>
+          <li><a href="/">Home</a></li>
+          <li><a href="/AddUser">Add User</a></li>
+          <li><a href="/ManageUser">Manage User</a></li>
+          <li><a href="/EditClass">Manage Class</a></li>
+          <li><a href="/EditCourse">Manage Course</a></li>
           </ul>
         </nav>
-        <footer>
-          <p>Effort Zulu</p>
-          <p>zulu@gmail.com</p>
-        </footer>
       </aside>
 
       <main className="main">

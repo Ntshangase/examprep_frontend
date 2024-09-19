@@ -26,23 +26,18 @@ export default function EditCourse() {
   return (
     <div className="container">
       <aside className="sidebar">
-        <img src="logo.png" alt="Africa College of Technology" className="logo" />
+        <img src="/assets/logo.png" alt="Africa College of Technology" className="logo" />
         <nav>
           <ul>
-            <li>Home</li>
-            <li>Add User</li>
-            <li>Manage Class</li>
-            <li>Manage Course</li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/AddUser">Add User</a></li>
+            <li><a href="/ManageClass">Manage Class</a></li>
+            <li><a href="/EditCourse">Manage Course</a></li>
           </ul>
         </nav>
-        <footer>
-          <p>Effort Zulu</p>
-          <p>zulu@gmail.com</p>
-        </footer>
       </aside>
 
       <main className="main">
-        <div className="back-button">&#8592;</div>
         <h1>Edit Course</h1>
         <div className="content">
           <form className="form">
@@ -76,7 +71,7 @@ export default function EditCourse() {
           </form>
 
           <div className="image-upload">
-            <img src="aws-image.png" alt="AWS" className="course-image" />
+            <img src="/assets/aws.png" alt="AWS" className="course-image" />
             <button onClick={handleImageUpload} className="upload-button">Upload Image</button>
           </div>
         </div>
