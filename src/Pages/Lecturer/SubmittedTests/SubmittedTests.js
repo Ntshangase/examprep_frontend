@@ -29,7 +29,7 @@ const SubmittedTests = () => {
                 <tbody>
                   {testSubmissions.map((test) => (
                     <tr key={test.id}>
-                      <td><a href="#">{test.name}</a></td>
+                      <td><a href="/">{test.name}</a></td>
                       <td>{test.date}</td>
                     </tr>
                   ))}
