@@ -8,8 +8,9 @@ export default function AdminSidebar() {
 			<aside className="sidebar">
 				<ul>
                     <li className="active"><Link to="/AdminLanding">Home</Link></li>
-                    <li className="active"><Link to="/AddCourse">Manage Courses</Link></li>
-                    <li className="active"><Link to="/AddCourse">Manage Exam</Link></li>
+                    <li className="active"><Link to="/ManageCourse">Manage Courses</Link></li>
+                    <li className="active"><Link to="/ManageClass">Manage Class</Link></li>
+                    <li className="active"><Link to="/ManageStudents">Manage Students</Link></li>
 				</ul>
 			</aside>
 		</div>
