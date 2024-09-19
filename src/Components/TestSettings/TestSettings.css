@@ -1,0 +1,26 @@
+.test-settings {
+    padding: var(--spacing-medium);
+  }
+  
+  .test-settings h2 {
+    color: var(--color-primary-dark);
+    margin-bottom: var(--spacing-large);
+  }
+  
+  .attempts-container {
+    margin-bottom: var(--spacing-medium);
+  }
+  
+  .attempts-container label {
+    font-size: var(--font-size-body);
+  }
+  
+  .attempts-container select {
+    width: 100%;
+    padding: var(--spacing-small);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border-light);
+    font-size: var(--font-size-body);
+    color: var(--color-text-light);
+  }
+  
