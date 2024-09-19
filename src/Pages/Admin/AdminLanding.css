@@ -1,0 +1,12 @@
+/* AdminLanding.css */
+.admin-landing {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+
+  .admin-body {
+    flex-grow: 1;
+    padding: 20px; /* Adjust the padding as needed */
+    background-color: #fff; /* Optional: Add background color */
+  }

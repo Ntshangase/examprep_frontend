@@ -8,8 +8,7 @@ const Navbar = () => {
         <img src="/assets/logo.png" alt="ACT Logo" />
       </div>
       <div className="navbar-profile">
-        <img src="/assets/images.jpeg" alt="Profile" />
-        <span>casper@act.com</span>
+        <img src="/assets/profile-icon.png" alt="Profile" />
       </div>
     </nav>
   );
