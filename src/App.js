@@ -9,6 +9,11 @@ import "./Styles/global.css";
 import StudentDashboard from "./Pages/Student/StudentDashboards";
 import AssignedClasses from "./Pages/Lecturer/Classes/AssignedClasses";
 import ViewClass from "./Pages/Lecturer/ViewClass/ViewClass";
+import ViewStudents from "./Pages/Lecturer/ViewStudents/ViewStudents";
+import StudPerfom from "./Pages/Lecturer/ViewStudents/StudPerfom";
+import SubmittedTests from "./Pages/Lecturer/SubmittedTests/SubmittedTests";
+import StudentsSubmitted from "./Pages/Lecturer/StudentsSubmitted/StudentsSubmitted";
+
 
 function App() {
 	return (
@@ -23,6 +28,10 @@ function App() {
 				<Route path="/StudentDashboard" element={<StudentDashboard />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/ViewClass" element={<ViewClass />} />
+				<Route path="/ViewStudents" element={<ViewStudents />} />
+				<Route path="/StudPerfom" element={<StudPerfom />} />
+				<Route path="/SubmittedTests" element={<SubmittedTests />} />
+				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
 			</Routes>
 		</Router>
 	);

@@ -1,13 +1,14 @@
 import React from "react";
+import { useNavigate } from 'react-router-dom';
 import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './ViewClass.module.css'; // Make sure to create and import the corresponding CSS module // Make sure to create and import the corresponding CSS module
 
 const ClassDetailsPage = () => {
-    // You can define a function to handle the click event
+    const navigate = useNavigate();
     const handleStudentsClick = () => {
-        console.log("Redirect to enrolled students list/details page");
-        // Here you can add logic to redirect to another page or open a modal etc.
+
+        navigate('/ViewStudents'); 
     };
 
     return (
@@ -28,7 +29,7 @@ const ClassDetailsPage = () => {
                           23
                         </button>
                             </p>
-                            <button>View Submissions</button>
+                            <button>Submitted Tests</button>
                         </div>
                     </div>
 
