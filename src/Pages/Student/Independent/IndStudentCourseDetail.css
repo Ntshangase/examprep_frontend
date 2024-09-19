@@ -1,0 +1,65 @@
+/* Aligning the layout similar to the StudentDashboard */
+.course-detail {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .dashboard-content {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .content-area {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .course-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .course-card {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .course-card img {
+    width: 150px;
+    height: 150px;
+    margin-bottom: 20px;
+  }
+  
+  .course-card h2 {
+    font-size: 1.5em;
+    color: var(--color-primary-dark);
+    margin-bottom: 10px;
+  }
+  
+  .course-card p {
+    color: var(--color-text-light);
+    margin: 10px 0;
+  }
+  
+  .generate-test-button {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .generate-test-button:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
