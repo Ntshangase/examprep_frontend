@@ -9,5 +9,6 @@
 	flex: 1;
 	padding: 20px;
 	margin-left: 250px; /* Adjust based on your sidebar width */
-	background-color: #f4f4f4;
+	
+	padding-top: 250%;
 }

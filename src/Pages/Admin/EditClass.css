@@ -1,0 +1,130 @@
+/* Overall container layout */
+.container {
+    display: flex;
+    height: 100vh;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Sidebar design */
+  .sidebar {
+    background-color: #006FBF;
+    color: white;
+    width: 250px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .logo {
+    width: 150px;
+    margin-bottom: 40px;
+  }
+  
+  .sidebar nav ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .sidebar nav ul li {
+    padding: 15px 0;
+    font-size: 18px;
+  }
+  
+  .sidebar footer {
+    padding-top: 20px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  /* Main content styling */
+  .main {
+    flex: 1;
+    padding: 40px;
+  }
+  
+  .main h1 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-align: left;
+    color: #006FBF;
+  }
+  
+  /* Form and students enrolled layout */
+  .content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 20px; /* Added gap between form and enrolled students card */
+  }
+  
+  /* Form layout */
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 400px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .input-group label {
+    font-weight: bold;
+  }
+  
+  .input-group input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  /* Students enrolled box */
+  .students-enrolled {
+    background-color: #E0E7FF;
+    color: #5A67D8;
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 20px;
+    border-radius: 5px;
+    height: fit-content;
+    width: 200px;
+  }
+  
+  /* Buttons */
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    gap: 20px; /* Added space between the buttons */
+  }
+  
+  .cancel-button {
+    background-color: #F44336;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .update-button {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
