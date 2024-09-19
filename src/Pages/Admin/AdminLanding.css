@@ -1,12 +1,13 @@
 /* AdminLanding.css */
 .admin-landing {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
 
-  .admin-body {
-    flex-grow: 1;
-    padding: 20px; /* Adjust the padding as needed */
-    background-color: #fff; /* Optional: Add background color */
-  }
+.Admin-body {
+	flex: 1;
+	padding: 20px;
+	margin-left: 250px; /* Adjust based on your sidebar width */
+	background-color: #f4f4f4;
+}
