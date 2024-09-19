@@ -21,6 +21,7 @@ function App() {
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
 				<Route path="/StudentDashboard" element={<StudentDashboard />} />
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
+				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetails />} />
 			</Routes>
 		</Router>
 	);
