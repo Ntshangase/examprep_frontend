@@ -3,7 +3,7 @@ import Navbar from '../../../Components/Navbar/Navbar';
 import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './IndStudentCourseDetails.css';
 
-const InStudentCourseDetails = () => {
+const IndStudentCourseDetails = () => {
 
   // Function for button click
   const handleGenerateTest = () => {
