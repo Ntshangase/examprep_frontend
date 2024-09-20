@@ -32,3 +32,13 @@
     display:flex;
     justify-content: space-evenly;
 }
+
+.icon-eye {
+    font-size: 4rem; 
+    color: #4d9fce;
+  }
+
+  .icon-delete {
+    font-size: 5rem;
+    color: red;
+  }

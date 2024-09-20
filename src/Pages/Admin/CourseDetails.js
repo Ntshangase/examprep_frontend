@@ -2,6 +2,8 @@ import React from "react";
 import "./CourseDetails.css";
 import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
 import courses from "../../Data/Courses.json";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faTimes } from "@fortawesome/free-solid-svg-icons";
 
 export default function CourseDetails() {
 	return (
@@ -18,13 +20,19 @@ export default function CourseDetails() {
 					<div>
 						<div className="class-display">
 							<div className="class-details">
-								<p><strong>Class:</strong> June Intake </p>
-								<p><strong>Instructor:</strong>  Dr. J. Jumbo</p>
-                <p><strong>Duration:</strong>  01/06/2024 - 01/09/2024</p>
+								<p>
+									<strong>Class:</strong> June Intake{" "}
+								</p>
+								<p>
+									<strong>Instructor:</strong> Dr. J. Jumbo
+								</p>
+								<p>
+									<strong>Duration:</strong> 01/06/2024 - 01/09/2024
+								</p>
 							</div>
 							<div className="class-details-emoji">
-								<p>Emoji</p>
-								<p>Emoji2</p>
+								<FontAwesomeIcon icon={faEye} className="icon-eye"/>
+								<FontAwesomeIcon icon={faTimes} className="icon-delete" />
 							</div>
 						</div>
 					</div>
