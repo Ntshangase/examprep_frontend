@@ -4,6 +4,12 @@
   height: 100vh;
 }
 
+.create-class-content {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto; /* Ensures scrollability if content is large */
+  }
+  
 .create-class-content h2 {
     color: var(--color-primary);
     font-size: 2rem;
