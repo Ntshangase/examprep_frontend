@@ -1,0 +1,102 @@
+.classDetails {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.dashboardContent {
+    display: flex;
+    flex-grow: 1;
+}
+
+.contentArea {
+    flex-grow: 1;
+    padding: 20px;
+    background-color: #f4f4f4; /* Light grey background for content area */
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    background-color: #ffffff; /* White background for the banner */
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Adds subtle shadow to the banner */
+}
+
+.courseImage {
+    width: 150px;
+    height: 150px;
+    margin-right: 20px;
+    border-radius: 8px; /* Gives the image rounded corners */
+}
+
+.courseInfo {
+    flex-grow: 1;
+}
+
+.courseInfo h1 {
+    margin: 0;
+    color: #333; /* Dark grey for text */
+}
+
+.courseInfo p {
+    margin: 5px 0;
+    color: #666; /* Medium grey for paragraph */
+}
+
+.scheduledTests {
+    background-color: #ffffff;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.testList {
+    margin-top: 20px;
+}
+
+.testItem {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #e9e9e9; /* Slightly darker grey background for each test item */
+    border-radius: 8px; /* Rounded corners for test items */
+}
+
+.testItem h3 {
+    margin: 0;
+    color: #333;
+}
+
+.testItem p {
+    margin: 5px 0;
+    color: #666;
+}
+
+.createTestButton {
+    padding: 10px 20px;
+    background-color: #2C97DE; /* Blue background for button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    justify-content: flex-end;
+    display: flex;
+    margin-top: 20px;
+}
+
+.createTestButton:hover {
+    background-color: #004494; /* Darker blue on hover */
+}
+.studentsButton {
+    background: none;
+    border: none;
+    color: #2C97DE; /* Use a theme color or something that matches your design */
+    cursor: pointer;
+    text-decoration: underline; /* Make it look like a clickable link */
+    padding: 0;
+    margin-left: 5px;
+}
+
+.studentsButton:hover {
+    text-decoration: none; /* Change on hover if needed */
+}

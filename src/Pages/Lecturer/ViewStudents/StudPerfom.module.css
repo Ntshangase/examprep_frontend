@@ -1,0 +1,49 @@
+/* StudPerfom.module.css */
+
+.studPerfom {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.mainContent {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.testTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.testTable th, .testTable td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.testTable th {
+    background-color: #989b98;
+    color: white;
+}
+
+.testTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.testTable tr:hover {
+    background-color: #ddd;
+}
