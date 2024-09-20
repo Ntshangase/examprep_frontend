@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./EditClass.css";
 import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import { useNavigate } from "react-router-dom";
 
 export default function EditClass() {
 	// State for form inputs
@@ -8,6 +9,8 @@ export default function EditClass() {
 	const [lecturer, setLecturer] = useState("");
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
+
+  const navigate = useNavigate(); //for  multiple use purposes
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -26,6 +29,7 @@ export default function EditClass() {
 
 		//alert("Form submitted successfully!");
 	};
+
 	return (
 		<div className="edit-course-container">
 			<AdminSidebar />
@@ -84,12 +88,15 @@ export default function EditClass() {
 								</div>
 
 								{/* Submit Button */}
-								<button type="submit">Create Class</button>
+								<button type="submit">Update Class</button>
 							</form>
 						</div>
 					</div>
 					<div className="content-body-half">
-						<h3> Left hand View</h3>
+						<div className="card">
+							<p>25 Students Enrolled</p>
+						</div>
+            <button onClick={() => navigate("/CourseDetails")}>Cancel</button>
 					</div>
 				</div>
 			</div>
