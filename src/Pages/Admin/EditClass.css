@@ -8,6 +8,13 @@
     width: 100%;
 }
 
+.edit-course-content h2 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 .content-body-half2 {
     margin-left: 50%;
 }
@@ -17,16 +24,7 @@
     width: 100%;
     padding: 40px;
   }
-  
-  /* Heading with modern look */
-  h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 30px;
-    font-size: 2rem; /* Bigger font size for more impact */
-    font-weight: bold;
-  }
-  
+
   /* Form group spacing */
   .form-group {
     margin-bottom: 25px;

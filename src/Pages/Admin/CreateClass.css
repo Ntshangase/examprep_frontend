@@ -13,9 +13,10 @@
 
   /* Heading style */
   .create-class-content h2 {
-    text-align: center;
-    margin-bottom: 20px;
-    color: #333;
+    color: var(--color-primary);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
   }
 
   /* Form container */
@@ -101,7 +102,7 @@
     .class-content-body {
       flex-direction: column;
     }
-  
+
     .content-body1,
     .content-body2 {
       width: 100%;
