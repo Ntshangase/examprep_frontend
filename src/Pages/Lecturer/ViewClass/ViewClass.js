@@ -32,7 +32,12 @@ const ViewClass = () => {
                           23
                         </button>
                             </p>
-                            <button onClick={handleButtonClick}>Submitted Tests</button>
+                            <p>
+                            Submitted Tests:
+                            <button onClick={handleButtonClick} className={styles.studentsButton}>Click here to view</button>
+                            </p>
+                            
+                             <button className={styles.createTestButton}>Add Student</button>
                         </div>
                     </div>
 
