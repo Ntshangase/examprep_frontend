@@ -10,7 +10,7 @@ export default function EditClass() {
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
 
-  const navigate = useNavigate(); //for  multiple use purposes
+	const navigate = useNavigate(); //for  multiple use purposes
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -36,67 +36,65 @@ export default function EditClass() {
 			<div className="edit-course-content">
 				<h2>EditClass</h2>
 				<div className="edit-course-content-body">
-					<div className="content-body-half">
-						<div>
-							<form onSubmit={handleSubmit}>
-								{/* Class Name Input */}
-								<div className="form-group">
-									<label htmlFor="className">Class Name:</label>
-									<input
-										type="text"
-										id="className"
-										value={className}
-										onChange={(e) => setClassName(e.target.value)}
-										required
-									/>
-								</div>
+					<div className="content-body-half1">
+						<form onSubmit={handleSubmit}>
+							{/* Class Name Input */}
+							<div className="form-group">
+								<label htmlFor="className">Class Name:</label>
+								<input
+									type="text"
+									id="className"
+									value={className}
+									onChange={(e) => setClassName(e.target.value)}
+									required
+								/>
+							</div>
 
-								{/* Lecturer Name Input */}
-								<div className="form-group">
-									<label htmlFor="lecturer">Assign Lecturer:</label>
-									<input
-										type="text"
-										id="lecturer"
-										value={lecturer}
-										onChange={(e) => setLecturer(e.target.value)}
-										required
-									/>
-								</div>
+							{/* Lecturer Name Input */}
+							<div className="form-group">
+								<label htmlFor="lecturer">Assign Lecturer:</label>
+								<input
+									type="text"
+									id="lecturer"
+									value={lecturer}
+									onChange={(e) => setLecturer(e.target.value)}
+									required
+								/>
+							</div>
 
-								{/* Start Date Input */}
-								<div className="form-group">
-									<label htmlFor="startDate">Start Date:</label>
-									<input
-										type="date"
-										id="startDate"
-										value={startDate}
-										onChange={(e) => setStartDate(e.target.value)}
-										required
-									/>
-								</div>
+							{/* Start Date Input */}
+							<div className="form-group">
+								<label htmlFor="startDate">Start Date:</label>
+								<input
+									type="date"
+									id="startDate"
+									value={startDate}
+									onChange={(e) => setStartDate(e.target.value)}
+									required
+								/>
+							</div>
 
-								{/* End Date Input */}
-								<div className="form-group">
-									<label htmlFor="endDate">End Date:</label>
-									<input
-										type="date"
-										id="endDate"
-										value={endDate}
-										onChange={(e) => setEndDate(e.target.value)}
-										required
-									/>
-								</div>
+							{/* End Date Input */}
+							<div className="form-group">
+								<label htmlFor="endDate">End Date:</label>
+								<input
+									type="date"
+									id="endDate"
+									value={endDate}
+									onChange={(e) => setEndDate(e.target.value)}
+									required
+								/>
+							</div>
 
-								{/* Submit Button */}
-								<button type="submit">Update Class</button>
-							</form>
-						</div>
+							{/* Submit Button */}
+							<button type="submit">Update Class</button>
+						</form>
 					</div>
-					<div className="content-body-half">
+					<div className="content-body-half2">
 						<div className="card">
 							<p>25 Students Enrolled</p>
 						</div>
-            <button onClick={() => navigate("/CourseDetails")}>Cancel</button>
+						<button onClick={() => navigate("/CourseDetails")}>Cancel</button>
 					</div>
 				</div>
 			</div>

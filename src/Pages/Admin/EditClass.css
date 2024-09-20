@@ -1,20 +1,15 @@
 .edit-course-container {
 	display: flex;
 	height: 100vh;
-	background-color: #f4f7fc;
 }
 
 .edit-course-content-body {
 	display: flex;
-	flex-direction: row;
-	justify-content: space-evenly;
-	height: 100vh;
+    width: 100%;
 }
 
-.content-body-half {
-	flex: 1;
-	max-width: 50%;
-	padding: 10px;
+.content-body-half2 {
+    margin-left: 50%;
 }
 
 /*form css belo*/
