@@ -13,6 +13,9 @@ const ViewClass = () => {
     const handleButtonClick = () => {
         navigate('/StudentsSubmitted'); 
     };
+    const handleAddStudent=() => {
+        navigate('/AddStudent');
+    };
 
     return (
         <div className={styles.classDetails}>
@@ -37,7 +40,7 @@ const ViewClass = () => {
                             <button onClick={handleButtonClick} className={styles.studentsButton}>Click here to view</button>
                             </p>
                             
-                             <button className={styles.createTestButton}>Add Student</button>
+                             <button className={styles.createTestButton} onClick={handleAddStudent}>Add Student</button>
                         </div>
                     </div>
 

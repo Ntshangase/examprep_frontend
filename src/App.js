@@ -23,6 +23,7 @@ import ManageClass from "./Pages/Admin/ManageClass";
 import ManageStudents from "./Pages/Admin/ManageStudents";
 import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
+import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import './Styles/global.css';
 
 function App() {
@@ -53,6 +54,7 @@ function App() {
 				<Route path="/ViewClass" element={<ViewClass />} />
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
+				<Route path="/AddStudent" element={<AddStudent />} />
 			</Routes>
 		</Router>
 	);
