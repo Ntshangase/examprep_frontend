@@ -18,9 +18,10 @@ import AddCourse from "./Pages/Admin/AddCourse";
 import CourseDetails from "./Pages/Admin/CourseDetails";
 import CreateClass from "./Pages/Admin/CreateClass";
 import EditClass from "./Pages/Admin/EditClass";
-import ManageClass from "./Pages/Admin/ManageClass";
 import EditCourse from "./Pages/Admin/EditCourse";
+import ManageClass from "./Pages/Admin/ManageClass";
 import ManageStudents from "./Pages/Admin/ManageStudents";
+import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import './Styles/global.css';
 
@@ -46,6 +47,7 @@ function App() {
 				<Route path="/ManageClass" element={<ManageClass />} />
 				<Route path="/EditCourse" element={<EditCourse />} />
 				<Route path="/ManageStudents" element={<ManageStudents />} />
+				<Route path="/ManageCourse" element={<ManageCourse />} />
 				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
 				<Route path="/StudPerfom" element={<StudPerfom />} />
 				<Route path="/ViewClass" element={<ViewClass />} />
