@@ -20,6 +20,12 @@
 
 .class-details {
     display: flex;
+    flex-direction: column;
+}
+
+.class-details-emoji{
+    display: flex;
+    flex-direction: row;
 }
 
 .class-display{
