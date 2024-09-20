@@ -69,11 +69,15 @@
   .back-button button {
     background-color: #3498db;
     color: white;
+    padding: 10px 20px;
+    font-size: 16px;
     border: none;
-    border-radius: 20px;
-    padding: 10px;
-    margin-top: 10px;
+    border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
   }
   
   .back-button button i {
