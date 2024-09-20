@@ -1,49 +1,111 @@
-
-.course-details-container{
+/* Container for the entire course details page */
+.course-details-container {
     display: flex;
     height: 100vh;
-}
-
-.course-detail-content h2{
-    color: var(--color-primary); /* Changed color to blue */
-    font-size: 2rem; /* Reduced font size */
+    background-color: #f4f7fc; /* Light background for contrast */
+  }
+  
+  /* Course Detail Content */
+  .course-detail-content {
+    padding: 20px;
+    flex: 1;
+    overflow-y: auto; /* Ensures scrollability if content is large */
+  }
+  
+  /* Header for Course Details */
+  .course-detail-content h2 {
+    color: var(--color-primary);
+    font-size: 2rem;
     text-align: center;
-}
-
-.course-info {
+    margin-bottom: 20px;
+  }
+  
+  /* Course Info Section */
+  .course-info {
     display: flex;
-}
-.course-info h3 {
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .course-info h3 {
     font-size: 1.5rem;
     color: #333;
   }
-
-.class-details {
+  
+  .course-image {
+    max-width: 150px;
+    border-radius: 10px;
+    margin-right: 20px;
+  }
+  
+  /* Active Classes Section */
+  .classes {
+    margin-top: 20px;
+  }
+  
+  /* Class Display */
+  .class-display {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+  }
+  
+  /* Class Details */
+  .class-details {
+    flex: 1;
     display: flex;
     flex-direction: column;
-}
-
-.class-details-emoji{
-    display: flex;
-    flex-direction: row;
-}
-
-.class-display{
-    display:flex;
-    justify-content: space-evenly;
-}
-
-.class-details-emoji {
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
   }
-.icon-eye {
-    font-size: 4rem;
+  
+  /* Emoji Icons (Eye and Delete) */
+  .class-details-emoji {
+    display: flex;
+    gap: 15px; /* Space between the icons */
+  }
+  
+  .icon-eye, .icon-delete {
+    cursor: pointer;
+    transition: transform 0.3s ease; /* Smooth hover effect */
+  }
+  
+  .icon-eye {
+    font-size: 5rem;
     color: #4d9fce;
   }
 
+  .icon-eye:hover {
+    color: #2a9d8f;
+    transform: scale(1.1);
+  }
+  
   .icon-delete {
     font-size: 5rem;
     color: red;
+  }
+  
+  .icon-delete:hover {
+    color: darkred;
+    transform: scale(1.1);
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .course-info {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .class-display {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  
+    .class-details-emoji {
+      justify-content: flex-start;
+    }
   }

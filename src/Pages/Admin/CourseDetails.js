@@ -12,11 +12,13 @@ export default function CourseDetails() {
 			<div className="course-detail-content">
 				<h2>Course Details</h2>
 				<div className="course-info">
-					<img src={courses[0].image} alt={courses[0].title} />
-					<h3>{courses[0].title}</h3>
+					<img src={courses[0].image} alt={courses[0].title} className="course-image" />
+					<div className="course-text">
+						<h3>{courses[0].title}</h3>
+					</div>
 				</div>
 				<h4>Active Classes</h4>
-				<div className="classese">
+				<div className="classes">
 					<div>
 						<div className="class-display">
 							<div className="class-details">
@@ -31,7 +33,7 @@ export default function CourseDetails() {
 								</p>
 							</div>
 							<div className="class-details-emoji">
-								<FontAwesomeIcon icon={faEye} className="icon-eye"/>
+								<FontAwesomeIcon icon={faEye} className="icon-eye" />
 								<FontAwesomeIcon icon={faTimes} className="icon-delete" />
 							</div>
 						</div>
