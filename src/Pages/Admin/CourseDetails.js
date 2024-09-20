@@ -3,7 +3,11 @@ import "./CourseDetails.css";
 import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
 import courses from "../../Data/Courses.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faTimes } from "@fortawesome/free-solid-svg-icons";
+import {
+	faEye,
+	faTimes,
+	faPlusCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export default function CourseDetails() {
@@ -11,7 +15,12 @@ export default function CourseDetails() {
 		<div className="course-details-container">
 			<AdminSidebar />
 			<div className="course-detail-content">
-				<h2>Course Details</h2>
+				<div className="course-detail-heading">
+					<h2>Course Details</h2>
+					<Link to="/CreateClass">
+						<FontAwesomeIcon icon={faPlusCircle} className="icon-plus" />
+					</Link>
+				</div>
 				<div className="course-info">
 					<img
 						src={courses[0].image}
