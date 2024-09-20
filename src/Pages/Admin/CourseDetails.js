@@ -4,6 +4,7 @@ import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
 import courses from "../../Data/Courses.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEye, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function CourseDetails() {
 	return (
@@ -12,7 +13,11 @@ export default function CourseDetails() {
 			<div className="course-detail-content">
 				<h2>Course Details</h2>
 				<div className="course-info">
-					<img src={courses[0].image} alt={courses[0].title} className="course-image" />
+					<img
+						src={courses[0].image}
+						alt={courses[0].title}
+						className="course-image"
+					/>
 					<div className="course-text">
 						<h3>{courses[0].title}</h3>
 					</div>
@@ -33,7 +38,9 @@ export default function CourseDetails() {
 								</p>
 							</div>
 							<div className="class-details-emoji">
-								<FontAwesomeIcon icon={faEye} className="icon-eye" />
+								<Link to="/EditClass">
+									<FontAwesomeIcon icon={faEye} className="icon-eye" />
+								</Link>
 								<FontAwesomeIcon icon={faTimes} className="icon-delete" />
 							</div>
 						</div>
