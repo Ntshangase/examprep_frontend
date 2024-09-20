@@ -6,6 +6,11 @@ import ModeratorDashboard from "./Pages/Moderator/ModeratorDashboard";
 import QuestionView from "./Pages/Moderator/QuestionView";
 import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashboard";
 import TestPage from "./Pages/Lecturer/TestPage/TestPage";
+import AssignedClasses from "./Pages/Lecturer/Classes/AssignedClasses";
+import ViewClass from "./Pages/Lecturer/ViewClass/ViewClass";
+import ViewStudents from "./Pages/Lecturer/ViewStudents/ViewStudents";
+import StudPerfom from "./Pages/Lecturer/ViewStudents/StudPerfom";
+import StudentsSubmitted from "./Pages/Lecturer/StudentsSubmitted/StudentsSubmitted";
 import SubmittedTests from "./Pages/Lecturer/SubmittedTests/SubmittedTests";
 import IndStudentDash from "./Pages/Student/Independent/IndStudentDash";
 import IndStudentCourseDetail from "./Pages/Student/Independent/IndStudentCourseDetails";
@@ -41,6 +46,11 @@ function App() {
 				<Route path="/ManageClass" element={<ManageClass />} />
 				<Route path="/EditCourse" element={<EditCourse />} />
 				<Route path="/ManageStudents" element={<ManageStudents />} />
+				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
+				<Route path="/StudPerfom" element={<StudPerfom />} />
+				<Route path="/ViewClass" element={<ViewClass />} />
+				<Route path="/ViewStudents" element={<ViewStudents />} />
+				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 			</Routes>
 		</Router>
 	);
