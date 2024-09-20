@@ -1,5 +1,117 @@
 .edit-course-container {
-    display: flex;
-    height: 100vh;
-    background-color: #f4f7fc;
+	display: flex;
+	height: 100vh;
+	background-color: #f4f7fc;
 }
+
+.edit-course-content-body {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-evenly;
+	height: 100vh;
+}
+
+.content-body-half {
+	flex: 1;
+	max-width: 50%;
+	padding: 10px;
+}
+
+/*form css belo*/
+  form {
+    width: 100%;
+    padding: 40px;
+  }
+  
+  /* Heading with modern look */
+  h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 2rem; /* Bigger font size for more impact */
+    font-weight: bold;
+  }
+  
+  /* Form group spacing */
+  .form-group {
+    margin-bottom: 25px;
+  }
+  
+  /* Modern label styling */
+  label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+    font-size: 1.1rem;
+  }
+  
+  /* Styling for inputs */
+  input[type="text"], input[type="date"] {
+    width: 100%;
+    padding: 14px;
+    border: 2px solid #ccc; /* Slightly thicker border for modern touch */
+    border-radius: 8px;
+    font-size: 1rem; /* Increased font size for readability */
+    background-color: #f7f7f7;
+    transition: border 0.3s ease, background-color 0.3s ease;
+    color: #333;
+    box-sizing: border-box;
+  }
+  
+  /* Styling for focus state */
+  input[type="text"]:focus, input[type="date"]:focus {
+    border-color: #4d9fce; /* Blue border for focus */
+    background-color: #fff;
+    outline: none;
+  }
+  
+  /* Button styling */
+  button {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: #4d9fce;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px; /* Larger button text */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
+  }
+  
+  /* Button hover and active states */
+  button:hover {
+    background-color: #357bb5;
+    transform: translateY(-2px); /* Lift effect on hover */
+  }
+  
+  button:active {
+    background-color: #2a6691;
+    transform: translateY(0); /* Reset lift effect on click */
+  }
+  
+  /* Placeholder text color */
+  input::placeholder {
+    color: #aaa;
+  }
+  
+  /* Adjusted placeholder color */
+  input[type="text"]::placeholder, input[type="date"]::placeholder {
+    color: #888;
+  }
+  
+  /* Responsive styling for smaller screens */
+  @media (max-width: 768px) {
+    .form-container {
+      padding: 20px;
+    }
+  
+    form {
+      padding: 30px;
+    }
+  
+    button {
+      font-size: 18px;
+    }
+  }
