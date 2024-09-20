@@ -1,0 +1,38 @@
+.submittedTests {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.submittedContent {
+    display: flex;
+    flex: 1;
+}
+
+.contentArea {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.testList {
+    list-style-type: none;
+    padding: 0;
+}
+
+.testItem {
+    cursor: pointer;
+    padding: 10px;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    background-color: #fff;
+    transition: background-color 0.3s;
+}
+
+.testItem:hover {
+    background-color: #f0f0f0;
+}
