@@ -2,7 +2,8 @@
     background-color: var(--color-gray-light);
     padding: var(--spacing-large);
     width: 200px;
-    height: 100vh;
+    height: auto;
+    background-color: rgb(128, 140, 166);
   }
   
   .sidebar ul {

@@ -42,4 +42,4 @@ const IndStudentCourseDetails = () => {
   );
 };
 
-export default InStudentCourseDetails;
+export default IndStudentCourseDetails;
