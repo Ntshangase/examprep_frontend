@@ -74,18 +74,34 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
   }
+  #buttonCancel {
+    display: block;
+    width: 100%;
+    padding: 16px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px; /* Larger button text */
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
+  }
   
   /* Button hover and active states */
   button:hover {
     background-color: #357bb5;
     transform: translateY(-2px); /* Lift effect on hover */
   }
-  
+  #buttonCancel:hover {
+    background-color: #ce2c27;
+    transform: translateY(-2px); /* Lift effect on hover */
+  }
+
   button:active {
-    background-color: #2a6691;
+    background-color: #d83e3e;
     transform: translateY(0); /* Reset lift effect on click */
   }
-  
+
   /* Placeholder text color */
   input::placeholder {
     color: #aaa;
