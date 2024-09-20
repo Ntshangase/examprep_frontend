@@ -4,6 +4,48 @@
   height: auto;
 }
 /* Badge section styling */
+    display: flex;
+    height: 100vh;
+    background-color: #f5f5f5;
+  }
+  
+
+  .main-content {
+    width: 80%;
+    padding: 20px;
+  }
+  
+  .profile-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-picture img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-info {
+    margin-left: 20px;
+  }
+  
+  .profile-info h4 {
+    margin-bottom: 10px;
+  }
+  
+  .profile-info button {
+    display: block;
+    margin: 5px 0;
+    padding: 10px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Badge section styling */
 .badge-section {
   display: flex;
   justify-content: space-around;

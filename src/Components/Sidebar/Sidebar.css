@@ -3,7 +3,6 @@
     padding: var(--spacing-large);
     width: 200px;
     height: auto;
-    background-color: rgb(128, 140, 166);
   }
   
   .sidebar ul {

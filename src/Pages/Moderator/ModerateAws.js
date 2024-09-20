@@ -6,6 +6,7 @@ import Navbar from '../../Components/Navbar/Navbar';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import { useLocation, useNavigate } from 'react-router-dom'; // Import hooks for routing
 
+
 const ModerateAws = () => {
   const location = useLocation(); // Get location to access passed state
   const navigate = useNavigate(); // Initialize navigate

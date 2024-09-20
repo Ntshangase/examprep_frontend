@@ -1,0 +1,48 @@
+.studentsSubmitted {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.submittedStudentsContent {
+    display: flex;
+    flex: 1;
+}
+
+.contentArea {
+    flex: 1;
+    padding: 20px;
+    background-color: #f9f9f9;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+.submissionTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    background-color: white;
+}
+.submissionTable th, .submissionTable td {
+    border: 0  #ffffff;
+    padding: 8px;
+    text-align: center;
+}
+
+.submissionTable th {
+    background-color: #989b98;
+    color: white;
+}
+
+.submissionTable tr:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.submissionTable tr:hover {
+    background-color: #ffffff;
+}
