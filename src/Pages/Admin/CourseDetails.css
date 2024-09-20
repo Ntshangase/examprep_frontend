@@ -33,8 +33,13 @@
     justify-content: space-evenly;
 }
 
+.class-details-emoji {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
 .icon-eye {
-    font-size: 4rem; 
+    font-size: 4rem;
     color: #4d9fce;
   }
 
