@@ -1,0 +1,12 @@
+
+.create-class-container {
+  display: flex;
+  height: 100vh;
+}
+
+.create-class-content h2 {
+    color: var(--color-primary);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+  }
