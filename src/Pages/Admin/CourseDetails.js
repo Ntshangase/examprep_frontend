@@ -14,7 +14,20 @@ export default function CourseDetails() {
 					<h3>{courses[0].title}</h3>
 				</div>
 				<h4>Active Classes</h4>
-				<div className="classese"></div>
+				<div className="classese">
+					<div>
+						<div className="class-display">
+							<div className="class-details">
+								<p>Class: </p>
+								<p>hi</p>
+							</div>
+              <div>
+              <p>Emoji</p>
+              <p>Emoji2</p>
+            </div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	);
