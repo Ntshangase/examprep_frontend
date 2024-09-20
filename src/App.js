@@ -18,7 +18,9 @@ import EditClass from "./Pages/Admin/EditClass";
 import EditCourse from "./Pages/Admin/EditClass";
 import ManageClass from "./Pages/Admin/ManageClass";
 import ManageStudents from "./Pages/Admin/ManageStudents"
-
+import PanelEnrolled from "./Pages/Student/Enrolled/PanelEnrolled";
+import Classes from "./Pages/Student/Enrolled/Classes";
+import ScheduledTests from "./Pages/Student/Enrolled/ScheduledTests";
 
 function App() {
 	return (
@@ -42,6 +44,9 @@ function App() {
 				<Route path="/ManageClass" element={<ManageClass />} />
 				<Route path="/EditCourse" element={<EditCourse />} />
 				<Route path="/ManageStudents" element={<ManageStudents />} />
+				<Route path="/PanelEnrolled" element={<PanelEnrolled />} />
+				<Route path="/Classes" element={<Classes />} />
+				<Route path="/ScheduledTests" element={<ScheduledTests />} />
 			</Routes>
 		</Router>
 	);
