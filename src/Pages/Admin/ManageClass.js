@@ -22,7 +22,7 @@ export default function ManageClass() {
               <img src={course.image} alt={course.title} className="course-image" />
               <h3 className="course-name">{course.title}</h3>
               <button className="view-course-button" onClick={() => handleViewCourse(course.id)}>
-                View Class
+                View Classes
               </button>
             </div>
           ))}
