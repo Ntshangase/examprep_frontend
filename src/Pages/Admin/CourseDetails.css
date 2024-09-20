@@ -3,3 +3,17 @@
     display: flex;
     height: 100vh;
 }
+
+.course-detail-content h2{
+    color: var(--color-primary); /* Changed color to blue */
+    font-size: 2rem; /* Reduced font size */
+    text-align: center;
+}
+
+.course-info {
+    display: flex;
+}
+.course-info h3 {
+    font-size: 1.5rem;
+    color: #333;
+  }
