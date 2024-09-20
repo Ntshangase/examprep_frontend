@@ -15,7 +15,7 @@ export default function ManageClass() {
     <div className="manage-class-container">
       <AdminSidebar />
       <div className="manage-class-content">
-        <h2>Select Course to view class</h2>
+        <h2>Select Course to view classes</h2>
         <div className='courses-grid'>
           {courses.map((course) => (
             <div key={course.id} className="course-card">
