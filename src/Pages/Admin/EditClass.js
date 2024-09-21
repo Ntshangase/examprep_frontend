@@ -94,7 +94,7 @@ export default function EditClass() {
 						<div className="card">
 							<p>25 Students Enrolled</p>
 						</div>
-						<button id="buttonCancel" onClick={() => navigate("/CourseDetails")}>Cancel</button>
+						<button className="buttonCancel" onClick={() => navigate("/CourseDetails")}>Cancel</button>
 					</div>
 				</div>
 			</div>

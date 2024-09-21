@@ -29,7 +29,6 @@
   /* Left side of the form */
   .content-body1 {
     flex: 1;
-    padding: 20px;
   }
   
   /* Right side for the image preview */
@@ -58,7 +57,7 @@
   .form-group input[type="text"],
   .form-group input[type="date"],
   .form-group input[type="file"] {
-    width: 100%;
+    width: 90%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -67,8 +66,8 @@
   
   /* Submit button styling */
   button[type="submit"] {
-    width: 100%;
-    padding: 10px;
+    width: 90%;
+    padding: 16px;
     background-color: #007bff;
     color: white;
     border: none;
@@ -84,19 +83,25 @@
   /* Image preview container */
   .image-preview {
     margin-bottom: 20px; /* Move the preview above the file input */
-    width: 100%;
+    width: 90%;
     text-align: center;
   }
   
   /* Image preview styling */
   .image-preview img {
-    max-width: 100%;
+    max-width: 90%;
     height: auto;
     border: 1px solid #ddd;
     border-radius: 4px;
     padding: 5px;
   }
-  
+
+  .button-cancel-div {
+    width: 55%;
+    padding-right: 43px;
+    padding-left: 15px;
+  }
+
   /* Responsive adjustments */
   @media (max-width: 768px) {
     .class-content-body {
@@ -105,6 +110,6 @@
 
     .content-body1,
     .content-body2 {
-      width: 100%;
+      max-width: 100%;
     }
   }

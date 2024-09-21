@@ -72,7 +72,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
   }
-  #buttonCancel {
+  .buttonCancel {
     display: block;
     width: 100%;
     padding: 16px;
@@ -90,7 +90,7 @@
     background-color: #357bb5;
     transform: translateY(-2px); /* Lift effect on hover */
   }
-  #buttonCancel:hover {
+  .buttonCancel:hover {
     background-color: #ce2c27;
     transform: translateY(-2px); /* Lift effect on hover */
   }
