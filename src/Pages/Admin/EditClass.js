@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./EditClass.css";
 import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function EditClass() {
 	// State for form inputs
@@ -92,8 +92,10 @@ export default function EditClass() {
 					</div>
 					<div className="content-body-half2">
 						<div className="card">
-							<h2>25</h2>
-							<p>Students Enrolled</p>
+							<Link to="/ApproveStudent" className="remove-underline">
+								<h2>25</h2>
+								<p>Students Enrolled</p>
+							</Link>
 						</div>
 						<div className="cancel-button-div">
 							<button
