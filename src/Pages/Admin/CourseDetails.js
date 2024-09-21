@@ -17,9 +17,11 @@ export default function CourseDetails() {
 			<div className="course-detail-content">
 				<div className="course-detail-heading">
 					<h2>Course Details</h2>
+					<div className="link-div">
 					<Link to="/CreateClass">
 						<FontAwesomeIcon icon={faPlusCircle} className="icon-plus" />
 					</Link>
+					</div>
 				</div>
 				<div className="course-info">
 					<img

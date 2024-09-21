@@ -11,8 +11,10 @@
   max-width: 100%;
   padding-left: 40%;
 }
-.icon-plus {
+.link-div{
   margin-left: 300px;
+}
+.icon-plus {
   font-size: 2em;
   border-radius: 50%;
   padding: 10px;
