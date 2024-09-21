@@ -92,9 +92,17 @@ export default function EditClass() {
 					</div>
 					<div className="content-body-half2">
 						<div className="card">
-							<p>25 Students Enrolled</p>
+							<h2>25</h2>
+							<p>Students Enrolled</p>
 						</div>
-						<button className="buttonCancel" onClick={() => navigate("/CourseDetails")}>Cancel</button>
+						<div className="cancel-button-div">
+							<button
+								className="buttonCancel"
+								onClick={() => navigate("/CourseDetails")}
+							>
+								Cancel
+							</button>
+						</div>
 					</div>
 				</div>
 			</div>
