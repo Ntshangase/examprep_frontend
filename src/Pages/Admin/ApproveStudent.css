@@ -1,0 +1,20 @@
+.approve-student-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+.approve-student-content {
+    flex: 1;
+    padding: 20px;
+}
+.approve-student-content h2 {
+    color: var(--color-primary);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.approve-student-content-body {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
