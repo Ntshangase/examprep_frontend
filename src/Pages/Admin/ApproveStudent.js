@@ -9,8 +9,14 @@ function ApproveStudent() {
         <div className='approve-student-content'>
             <h2>Approve Students</h2>
             <div className='approve-student-content-dody'>
-                <p>Display list of students here</p>
-                <p>Display list of students here</p>
+                <div>
+                    <p>Khethokwakhe Mhlaba</p>
+                    <p>hlulekaUzamile@gmail.com</p>
+                </div>
+                <div className='button-approve-decline'>
+                    <button className='button-approve'>approve</button>
+                    <button className='button-decline'>decline</button>
+                </div>
             </div>
         </div>
     </div>
