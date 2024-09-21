@@ -1,11 +1,11 @@
 .edit-course-container {
 	display: flex;
-	height: 100vh;
+	min-height: 100vh;
 }
 
 .edit-course-content-body {
 	display: flex;
-    width: 100%;
+  flex-direction: row;
 }
 
 .edit-course-content h2 {
@@ -15,8 +15,15 @@
   margin-bottom: 20px;
 }
 
+.content-body-half1 {
+  flex: 1;
+
+  border: blue 1px solid;
+}
 .content-body-half2 {
     margin-left: 50%;
+    flex: 1;
+    border: red 1px solid;
 }
 
 /*form css belo*/
