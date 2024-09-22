@@ -19,7 +19,6 @@ const Analytics = () => {
                 <div className={styles['content-area']}>
                     <h2>GenerateTestPage Test</h2>
                     <p>{analyticsData.testName}</p>
-  
                 </div>
             </div>
         </div>
