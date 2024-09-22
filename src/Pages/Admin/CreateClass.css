@@ -1,0 +1,115 @@
+/* Container for the entire page */
+.create-class-container {
+	display: flex;
+	flex-direction: row;
+	min-height: 100vh;
+}
+
+/* Content area for the form */
+.create-class-content {
+	flex: 1;
+	padding: 20px;
+}
+
+/* Heading style */
+.create-class-content h2 {
+	color: var(--color-primary);
+	font-size: 2rem;
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+/* Form container */
+.class-content-body {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+/* Left side of the form */
+.content-body1 {
+	flex: 1;
+}
+
+/* Right side for the image preview */
+.content-body2 {
+	flex: 1;
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Form group styling */
+.form-group {
+	margin-bottom: 15px;
+}
+
+/* Label styling */
+.form-group label {
+	display: block;
+	margin-bottom: 5px;
+	font-weight: bold;
+}
+
+/* Input styling */
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="file"] {
+	width: 90%;
+	padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+/* Submit button styling */
+button[type="submit"] {
+	width: 90%;
+	padding: 16px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 16px;
+}
+
+button[type="submit"]:hover {
+	background-color: #0056b3;
+}
+
+/* Image preview container */
+.image-preview {
+	margin-bottom: 20px; /* Move the preview above the file input */
+	width: 90%;
+	text-align: center;
+}
+
+/* Image preview styling */
+.image-preview img {
+	max-width: 90%;
+	height: auto;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+}
+
+.button-cancel-div {
+	width: 55%;
+	padding-right: 43px;
+	padding-left: 15px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.class-content-body {
+		flex-direction: column;
+	}
+
+	.content-body1,
+	.content-body2 {
+		max-width: 100%;
+	}
+}
