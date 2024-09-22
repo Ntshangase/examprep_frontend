@@ -6,7 +6,6 @@
   width: 100%;
   min-height: 100vh;
   background-color: #f0f4f8;
-
 }
 
 /* Main Section */
@@ -21,7 +20,7 @@
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-image: url('../../../public/assets/adminDashboard.png') ;
+  background-image: url('../../../public/assets/adminDashboard.png');
   background-repeat: no-repeat; /* Ensure the image only displays once */
   background-size: cover; /* Ensure the image covers the entire background */
   background-position: center;
@@ -72,6 +71,8 @@
   width: 150px;
   text-align: center;
   transition: transform 0.3s ease;
+  text-decoration: none; /* Remove underline from links */
+  color: inherit; /* Inherit text color */
 }
 
 .feature-card:hover {
@@ -92,21 +93,21 @@
 /* Responsive design */
 @media (max-width: 768px) {
   .main-section {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .icon-content {
-      margin-top: 20px;
-      text-align: center;
+    margin-top: 20px;
+    text-align: center;
   }
 
   .features-section {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   .feature-card {
-      margin-bottom: 20px;
+    margin-bottom: 20px;
   }
 }

@@ -1,5 +1,5 @@
 import React from "react"; 
-import { useParams } from "react-router-dom"; // Import useParams for routing
+//import { useParams } from "react-router-dom"; // Import useParams for routing
 import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import style from "./StudentsSubmitted.module.css"; // Ensure the correct path for CSS
@@ -18,7 +18,7 @@ const testData = {
 };
 
 const StudentsSubmitted = () => {
-    const { testId } = useParams(); // Get the test ID from the URL
+    //const { testId } = useParams(); // Get the test ID from the URL
 
     // You can fetch the actual test data based on testId here
 

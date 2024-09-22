@@ -28,6 +28,7 @@ import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import './Styles/global.css';
+import ApproveStudent from "./Pages/Admin/ApproveStudent";
 
 function App() {
 	return (
@@ -62,6 +63,7 @@ function App() {
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
+				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 			</Routes>
 		</Router>
 	);
