@@ -2,11 +2,6 @@ import React from 'react';
 import './ModerateAws.css'; // Import CSS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEye, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
-<<<<<<< HEAD
-// import Navbar from '../../Components/Navbar/Navbar';
-// import Sidebar from '../../Components/Sidebar/Sidebar';
-=======
->>>>>>> fbb83fa2832511a811d2d80d6305694e1a0b63c0
 
 
 const ModerateAws = () => {

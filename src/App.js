@@ -24,11 +24,9 @@ import ManageStudents from "./Pages/Admin/ManageStudents"
 import PanelEnrolled from "./Pages/Student/Enrolled/PanelEnrolled";
 import Classes from "./Pages/Student/Enrolled/Classes";
 import ScheduledTests from "./Pages/Student/Enrolled/ScheduledTests";
-import ManageStudents from "./Pages/Admin/ManageStudents";
 import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
-import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
 import './Styles/global.css';
 
 function App() {
@@ -56,6 +54,7 @@ function App() {
 				<Route path="/PanelEnrolled" element={<PanelEnrolled />} />
 				<Route path="/Classes" element={<Classes />} />
 				<Route path="/ScheduledTests" element={<ScheduledTests />} />
+				<Route path="/ManageStudents" element={<ManageStudents />} />
 				<Route path="/ManageCourse" element={<ManageCourse />} />
 				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
 				<Route path="/StudPerfom" element={<StudPerfom />} />
@@ -63,7 +62,6 @@ function App() {
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
-				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 			</Routes>
 		</Router>
 	);
