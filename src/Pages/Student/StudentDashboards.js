@@ -1,6 +1,7 @@
 import React from 'react';
-import Navbar from '../../Components/Navbar/Navbar';
-import Sidebar from '../../Components/Sidebar/Sidebar';
+import Navbar from '../../../src/Components/Navbar/Navbar';
+import Sidebar from '../../../src/Components/Sidebar/Sidebar';
+
 import './StudentDashboard.css';
 
 const StudentDashboard = () => {

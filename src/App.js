@@ -26,6 +26,9 @@ import Classes from "./Pages/Student/Enrolled/Classes";
 import ScheduledTests from "./Pages/Student/Enrolled/ScheduledTests";
 import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
+import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTest";
+import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
+
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import './Styles/global.css';
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
@@ -62,6 +65,9 @@ function App() {
 				<Route path="/ViewClass" element={<ViewClass />} />
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
+				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
+				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
+			
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 			</Routes>
