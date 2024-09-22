@@ -59,6 +59,7 @@
   
   .submit-btn {
     padding: 10px;
+    max-width: 50%;
     background-color: #2C97DE;
     color: white;
     font-size: 16px;
