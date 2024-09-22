@@ -25,6 +25,7 @@ import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import Analytics from "./Pages/Lecturer/Analytics/Analytics";
+import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
 import './Styles/global.css';
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
+				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 			</Routes>
 		</Router>
 	);
