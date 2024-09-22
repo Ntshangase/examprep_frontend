@@ -1,0 +1,87 @@
+/* General container styling */
+.add-student {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .addstudent-content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+  }
+  
+  .sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #f4f4f4;
+  }
+  
+  .content-area {
+    flex: 1;
+    padding: 20px;
+    background-color: #fff;
+    overflow-y: auto;
+  }
+  
+  /* Form styling */
+  .add-student-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin-top: 20px;
+ 
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  input[type="file"] {
+    padding: 5px;
+  }
+  
+  .submit-btn {
+    padding: 10px;
+    max-width: 50%;
+    background-color: #2C97DE;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #2C97DE;
+  }
+  
+
+  /* @media (max-width: 768px) {
+    .addstudent-content {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  }
+   */

@@ -1,47 +1,43 @@
 import React from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
-import './SubmittedTests.css';
+import styles from './SubmittedTests.module.css'; // Import your CSS module (optional)
 
-// Example test data
-const testSubmissions = [
-    { id: 1, name: 'TestPrep01', date: '05/06/2024' },
-    { id: 2, name: 'TestPrep02', date: '05/06/2024' },
-    { id: 3, name: 'TestPrep03', date: '05/06/2024' },
-  ];
+// Dummy data for submitted tests
+const submittedTestsData = [
+    { id: 1, name: "PrepTest201", dateSubmitted: "2024-09-10" },
+    { id: 2, name: "PrepTest202", dateSubmitted: "2024-09-11" },
+    { id: 3, name: "PrepTest203", dateSubmitted: "2024-09-12" },
+    { id: 4, name: "PrepTest204", dateSubmitted: "2024-09-13" },
+    { id: 5, name: "PrepTest205", dateSubmitted: "2024-09-14" },
+];
 
-// Component to display submitted tests page with a table of tests and a back arrow navigation
 const SubmittedTests = () => {
+    const navigate = useNavigate(); // Initialize useNavigate
+
+    const handleTestClick = (testId) => {
+        navigate(`/test-details/${testId}`); // Navigate to the test details page
+    };
+
     return (
-        <div className="submitted-tests-page">
-          <Navbar />
-          <div className="content">
-            <Sidebar />
-            <div className="main-content">
-              <h1>Submitted Tests</h1>
-              <table className="tests-table">
-                <thead>
-                  <tr>
-                    <th>Tests Name</th>
-                    <th>Date Submitted</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {testSubmissions.map((test) => (
-                    <tr key={test.id}>
-                      <td><a href="/">{test.name}</a></td>
-                      <td>{test.date}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-              <div className="back-arrow">
-                <span>&larr;</span> Back
-              </div>
+        <div className={styles.submittedTests}>
+            <Navbar />
+            <div className={styles.submittedContent}>
+                <Sidebar />
+                <div className={styles.contentArea}>
+                    <h2>Submitted Tests</h2>
+                    <ul className={styles.testList}>
+                        {submittedTestsData.map(test => (
+                            <li key={test.id} className={styles.testItem} onClick={() => handleTestClick(test.id)}>
+                                <span>{test.name}</span> - <span>{test.dateSubmitted}</span>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </div>
-          </div>
         </div>
-      ); 
+    );
 };
 
 export default SubmittedTests;  

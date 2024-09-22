@@ -1,72 +1,115 @@
 import React, { useState } from 'react';
 import './EditClass.css';
+import React, { useState } from "react";
+import "./EditClass.css";
+import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function EditClass() {
-  const [className, setClassName] = useState('January Intake AWS: Solutions Architect');
-  const [lecturer, setLecturer] = useState('Dr. S Ntshangase');
-  const [startDate, setStartDate] = useState('2024-06-01');
-  const [endDate, setEndDate] = useState('2024-09-01');
-  const [studentsEnrolled, setStudentsEnrolled] = useState(25);
+	// State for form inputs
+	const [className, setClassName] = useState("");
+	const [lecturer, setLecturer] = useState("");
+	const [startDate, setStartDate] = useState("");
+	const [endDate, setEndDate] = useState("");
 
-  const handleClassNameChange = (e) => setClassName(e.target.value);
-  const handleLecturerChange = (e) => setLecturer(e.target.value);
-  const handleStartDateChange = (e) => setStartDate(e.target.value);
-  const handleEndDateChange = (e) => setEndDate(e.target.value);
+	const navigate = useNavigate(); //for  multiple use purposes
 
-  const handleUpdateClass = () => {
-    alert('Class updated!');
-  };
+	const handleSubmit = (e) => {
+		e.preventDefault();
 
-  return (
-    <div className="container">
-      <aside className="sidebar">
-        <img src="/assets/logo.png" alt="Africa College of Technology" className="logo" />
-        <nav>
-          <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/AddUser">Add User</a></li>
-          <li><a href="/ManageUser">Manage User</a></li>
-          <li><a href="/EditClass">Manage Class</a></li>
-          <li><a href="/EditCourse">Manage Course</a></li>
-          </ul>
-        </nav>
-      </aside>
+		// Form validation (simple check if fields are not empty)
+		if (!className || !lecturer || !startDate || !endDate) {
+			alert("All fields are required!");
+			return;
+		}
 
-      <main className="main">
-        <h1>Edit Class</h1>
-        <div className="content">
-          <form className="form">
-            <div className="input-group">
-              <label>Class Name</label>
-              <input type="text" value={className} onChange={handleClassNameChange} disabled />
-            </div>
+		// Clear input fields after form submission
+		setClassName("");
+		setLecturer("");
+		setStartDate("");
+		setEndDate("");
 
-            <div className="input-group">
-              <label>Assign Lecturer</label>
-              <input type="text" value={lecturer} onChange={handleLecturerChange} />
-            </div>
+		//alert("Form submitted successfully!");
+	};
 
-            <div className="input-group">
-              <label>From</label>
-              <input type="date" value={startDate} onChange={handleStartDateChange} />
-            </div>
+	return (
+		<div className="edit-course-container">
+			<AdminSidebar />
+			<div className="edit-course-content">
+				<h2>EditClass</h2>
+				<div className="edit-course-content-body">
+					<div className="content-body-half1">
+						<form onSubmit={handleSubmit}>
+							{/* Class Name Input */}
+							<div className="form-group">
+								<label htmlFor="className">Class Name:</label>
+								<input
+									type="text"
+									id="className"
+									value={className}
+									onChange={(e) => setClassName(e.target.value)}
+									required
+								/>
+							</div>
 
-            <div className="input-group">
-              <label>To</label>
-              <input type="date" value={endDate} onChange={handleEndDateChange} />
-            </div>
+							{/* Lecturer Name Input */}
+							<div className="form-group">
+								<label htmlFor="lecturer">Assign Lecturer:</label>
+								<input
+									type="text"
+									id="lecturer"
+									value={lecturer}
+									onChange={(e) => setLecturer(e.target.value)}
+									required
+								/>
+							</div>
 
-            <div className="buttons">
-              <button type="button" className="cancel-button">Cancel</button>
-              <button type="button" className="update-button" onClick={handleUpdateClass}>Update Class</button>
-            </div>
-          </form>
+							{/* Start Date Input */}
+							<div className="form-group">
+								<label htmlFor="startDate">Start Date:</label>
+								<input
+									type="date"
+									id="startDate"
+									value={startDate}
+									onChange={(e) => setStartDate(e.target.value)}
+									required
+								/>
+							</div>
 
-          <div className="students-enrolled">
-            <span>{studentsEnrolled} Students Enrolled</span>
-          </div>
-        </div>
-      </main>
-    </div>
-  );
+							{/* End Date Input */}
+							<div className="form-group">
+								<label htmlFor="endDate">End Date:</label>
+								<input
+									type="date"
+									id="endDate"
+									value={endDate}
+									onChange={(e) => setEndDate(e.target.value)}
+									required
+								/>
+							</div>
+
+							{/* Submit Button */}
+							<button className="button-update-class" type="submit">Update Class</button>
+						</form>
+					</div>
+					<div className="content-body-half2">
+						<div className="card">
+							<Link to="/ApproveStudent" className="remove-underline">
+								<h2>25</h2>
+								<p>Students Enrolled</p>
+							</Link>
+						</div>
+						<div className="cancel-button-div">
+							<button
+								className="buttonCancel"
+								onClick={() => navigate("/CourseDetails")}
+							>
+								Cancel
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 }

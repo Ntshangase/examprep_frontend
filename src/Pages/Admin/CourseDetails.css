@@ -1,0 +1,132 @@
+/* Container for the entire course details page */
+.admin-course-details-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f7fc; /* Light background for contrast */
+}
+
+.admin-course-detail-heading{
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+  padding-left: 40%;
+}
+.link-div{
+  margin-left: 300px;
+}
+.icon-plus {
+  font-size: 2em;
+  border-radius: 50%;
+  padding: 10px;
+  color: black;
+}
+
+/* Course Detail Content */
+.admin-course-detail-content {
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto; /* Ensures scrollability if content is large */
+}
+
+/* Header for Course Details */
+.admin-course-detail-content h2 {
+  color: var(--color-primary);
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Course Info Section */
+.admin-course-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* Increased the image size and added margin for spacing */
+.admin-course-image {
+  max-width: 250px; /* Increased image size */
+  height: auto;
+  border-radius: 10px;
+  margin-right: 40px; /* More space between the image and the title */
+}
+
+/* Course title is now aligned further from the image */
+.admin-course-info h3 {
+  font-size: 1.75rem; /* Slightly larger title */
+  color: #333;
+  margin: 0; /* Remove any default margin */
+  flex: 1; /* Allow it to take up remaining space */
+}
+
+/* Active Classes Section */
+.classes {
+  margin-top: 20px;
+}
+
+/* Class Display */
+.class-display {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+/* Class Details */
+.class-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Emoji Icons (Eye and Delete) */
+.class-details-emoji {
+  display: flex;
+  gap: 15px; /* Space between the icons */
+}
+
+.icon-eye, .icon-delete {
+  cursor: pointer;
+  transition: transform 0.3s ease; /* Smooth hover effect */
+}
+
+.icon-eye {
+  font-size: 5rem;
+  color: #4d9fce;
+}
+
+.icon-eye:hover {
+  color: #2a9d8f;
+  transform: scale(1.1);
+}
+
+.icon-delete {
+  font-size: 5rem;
+  color: red;
+}
+
+.icon-delete:hover {
+  color: darkred;
+  transform: scale(1.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .admin-course-info {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .class-display {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .class-details-emoji {
+    justify-content: flex-start;
+  }
+}

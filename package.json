@@ -10,6 +10,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "eslint": "^7.32.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
@@ -27,6 +28,9 @@
     "extends": [
       "react-app",
       "react-app/jest"
+    ],
+    "plugins": [
+      "flowtype"
     ]
   },
   "browserslist": {
@@ -42,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-flowtype": "^8.0.3",
     "react-router-dom": "^6.26.2"
   }
 }

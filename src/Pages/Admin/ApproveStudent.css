@@ -1,0 +1,63 @@
+.approve-student-container {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+}
+.approve-student-content {
+    flex: 1;
+    padding: 20px;
+}
+.approve-student-content h2 {
+    color: var(--color-primary);
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.approve-student-content-dody {
+    display: flex;
+    flex-direction: row;
+    border-bottom: black 3px solid;
+}
+
+.approve-student-button {
+    display: flex;
+    flex-direction: row;
+    padding: 7px;
+    margin-left: 55%;
+}
+
+.approve-student-button button {
+    margin: 0 10px;
+}
+
+.approve-button-approve {
+    background-color: green;
+    display: block;
+	width: 100%;
+	padding: 16px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.approve-button-approve:hover {
+    background-color: darkgreen;
+    transform: scale(1.05);
+}
+
+.approve-button-decline {
+    background-color: red;
+    display: block;
+	width: 100%;
+	padding: 16px;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.approve-button-decline:hover {
+    background-color: darkred;
+    transform: scale(1.05);
+}
