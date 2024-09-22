@@ -32,8 +32,8 @@
     color: #58BAE7; /* Contrast the header text with the background */
     margin-bottom: 20px;
     font-family: 'Quicksand';
-    font-weight: bold;
-    font-size: 35px;
+    font-weight: bolder; /* Make the text bolder */
+    font-size: 45px; /* Increase the font size */
     white-space: nowrap;
     padding: 40px; /* Adds padding around the header */
     align-self: center;
