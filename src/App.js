@@ -26,6 +26,7 @@ import StudentDashboards from "./Pages/Student/StudentDashboards";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import './Styles/global.css';
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
+import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
 
 function App() {
 	return (
@@ -57,6 +58,7 @@ function App() {
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
+				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 			</Routes>
 		</Router>
 	);
