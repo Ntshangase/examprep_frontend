@@ -19,7 +19,7 @@ const Classes = () => {
           <div className="class-section">
             <p>
               <strong>
-                <a href="/class-details/intake-june-2024" className="class-link">Intake June 2024</a>
+                <a href="/PanelEnrolled" className="class-link">Intake June 2024</a>
               </strong>
             </p>
             <p><strong>Instructor:</strong> Dr. J. Smith</p>

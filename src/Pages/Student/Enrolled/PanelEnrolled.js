@@ -11,7 +11,7 @@ const PanelEnrolled = () => {
   };
 
   const handleScheduledTests = () => {
-    window.location.href = '/scheduled-tests';
+    window.location.href = '/ScheduledTests';
   };
 
   return (
@@ -51,15 +51,14 @@ const PanelEnrolled = () => {
             <p><strong><a href="/class-details/intake-june-2024" className="class-link">Intake June 2024</a></strong></p>
             <p><strong>Instructor:</strong> Dr. J. Smith</p>
             <p><strong>Duration:</strong> June 1, 2024 - August 31, 2024</p>
-            
           </div>
 
           {/* Button Section */}
           <div className="button-container">
-            <button className="generate-test-button" onClick={handleGenerateTest}>
+            <button className="action-button" onClick={handleGenerateTest}>
               Generate Test
             </button>
-            <button className="scheduled-tests-button" onClick={handleScheduledTests}>
+            <button className="action-button" onClick={handleScheduledTests}>
               Scheduled Tests
             </button>
           </div>
