@@ -42,7 +42,7 @@ export default function AddCourse() {
             accept="image/*"
           />
         </div>
-        <button type="submit" className="submit-button">
+        <button type="submit" className="add-course-submit-button">
           Add Course
         </button>
       </form>
