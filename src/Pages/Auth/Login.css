@@ -87,9 +87,9 @@
 }
 
 .login-button {
-    width: 90%;
+    width: 100%;
     padding: 12px;
-    background-color: yellow;
+    background-color: var(--color-primary);
     color: white;
     border: none;
     border-radius: 10px;
@@ -115,4 +115,35 @@
 
 .login-signup a:hover {
     text-decoration: underline;
+}
+
+
+.login-right-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 30px;
+    padding: 0;
+}
+.login-right-div-h1 {
+    color: white;
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* Fonts with rounder letters */
+    font-weight: bold;
+    font-size: 50px;
+    white-space: nowrap;
+    padding: 40px;
+    align-self: center;
+    margin-top: 0;
+}
+
+.login-right-div-text {
+    color: white;
+    font-family: 'Arial Rounded';
+    font-size: 30px;
+    padding: 40px;
+    align-self: center;
+    margin-top: 0;
+    white-space: normal;
 }

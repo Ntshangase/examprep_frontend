@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import "./Login.css";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+
+  const navigate = useNavigate();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -43,7 +46,7 @@ function Login() {
 					<div className="login-forgot-password">
 						<a href="/ForgotPassword">Forgot Password?</a>
 					</div>
-					<button className="login-button" type="submit">
+					<button className="login-button" onClick={() => navigate("/")}>
 						Continue
 					</button>
 					<div className="login-signup">
@@ -51,8 +54,12 @@ function Login() {
 					</div>
 				</form>
 			</div>
-			<div>
-				<h1>Africa College</h1>
+			<div className="login-right-div">
+				<h1 className="login-right-div-h1"> Africa College</h1>
+				<p className="login-right-div-text">
+					continue your journey toward top tech certifications like AWS and
+					CompTIA. Elevate your skills and stay ahead in the tech world!
+				</p>
 			</div>
 		</div>
 	);
