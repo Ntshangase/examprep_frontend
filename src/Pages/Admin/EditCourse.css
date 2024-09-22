@@ -47,11 +47,15 @@
   }
   
   .main h1 {
-    font-size: 2rem;
-    margin-bottom: 20px;
-    color: #006FBF;
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+    padding-left: 40%;
+    color: var(--color-primary); /* Changed color to blue */
+    font-size: 2rem; /* Reduced font size */
+    text-align: center;
   }
-  
+
   /* Content layout */
   .content {
     display: flex;
@@ -114,6 +118,7 @@
     align-items: center;
     gap: 10px; /* Reduced gap between image and button */
     margin-right: 600px; /* Move closer to form */
+    margin-top: 60px; 
   }
   
   .course-image {
@@ -136,15 +141,14 @@
   }
   
   /* Adjusting Buttons */
-  .buttons {
+  .update-remove-buttons {
     display: flex;
     justify-content: space-between;
     margin-top: -500px;
    
   }
   
-  .update-button, 
-  .remove-button {
+  .update-button{
     background-color: #2196F3;
     color: white;
     border: none;
@@ -155,8 +159,16 @@
     width: 150px; /* Ensures both buttons are the same width */
   }
   
-  .remove-button {
+  .edit-delete-button {
     background-color: #F44336;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    margin-right: 600px;
+    width: 150px; /* Ensures both buttons are the same width */
   }
   
   /* Make the buttons closer */

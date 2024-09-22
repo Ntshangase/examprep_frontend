@@ -20,7 +20,7 @@ export default function AdminLanding() {
                     </div>
                 </div>
                 <div className="features-section">
-                    <Link to="/manage-users" className="feature-card">
+                    <Link to="/ManageUser" className="feature-card">
                         <i className="fas fa-user-plus fa-2x"></i>
                         <p>Manage Users</p>
                     </Link>

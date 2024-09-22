@@ -8,7 +8,7 @@ function AddUser() {
     firstName: '',
     lastName: '',
     username: '',
-    role: 'Admin',
+    role: '',
     picture: null,
   });
 
@@ -63,14 +63,17 @@ function AddUser() {
           </div>
 
           <div className="form-group">
-            <label>Role</label>
-            <select name="role" value={formData.role} onChange={handleChange} required >
-              <option value="Lecturer">Lecturer</option>
-              <option value="Student">Student</option>
-              <option value="Admin">Admin</option>
-              <option value="DataCapture">Data Capture</option>
-              <option value="Moderator">Moderator</option>
-            </select>
+          <label>Role</label>
+              <select name="role" value={formData.role} onChange={handleChange} required>
+                <option value="" disabled selected>
+                  Select role
+                </option>
+                <option value="Lecturer">Lecturer</option>
+                <option value="Student">Student</option>
+                <option value="Admin">Admin</option>
+                <option value="DataCapture">Data Capture</option>
+                <option value="Moderator">Moderator</option>
+              </select>
           </div>
 
           <div className="form-group">

@@ -43,21 +43,12 @@ export default function EditCourse() {
           <form className="form">
             <div className="input-group">
               <label>Course Name</label>
-              <input
-                type="text"
-                value={courseName}
-                onChange={handleCourseNameChange}
-                disabled
-              />
+              <input type="text" value={courseName} onChange={handleCourseNameChange} disabled/>
             </div>
 
             <div className="input-group">
               <label>Course Description</label>
-              <textarea
-                value={courseDescription}
-                onChange={handleCourseDescriptionChange}
-                rows="5"
-              />
+              <textarea value={courseDescription} onChange={handleCourseDescriptionChange} rows="5"/>
             </div>
 
             <div className="input-group">
@@ -76,9 +67,9 @@ export default function EditCourse() {
           </div>
         </div>
 
-        <div className="buttons">
+        <div className="update-remove-buttons">
           <button onClick={handleUpdateCourse} className="update-button">Update</button>
-          <button onClick={handleRemoveCourse} className="remove-button">Remove</button>
+          <button onClick={handleRemoveCourse} className="edit-delete-button">Remove</button>
         </div>
       </main>
     </div>
