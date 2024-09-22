@@ -26,15 +26,18 @@ const IndStudentWriteTest = () => {
             const numQuestions = topics[topic];
             if (numQuestions > 0) {
                 for (let idx = 0; idx < numQuestions; idx++) {
+                    // Randomly assign question types for demonstration
+                    const questionType = Math.random() > 0.5 ? 'multiple-choice' : 'true-false';
+                    const questionContent = `Question ${idx + 1}: ${topic} - What is the definition of XYZ?`;
+
                     questions.push({
                         domain: domainTitle,
                         topic: topic,
-                        question: (
-                            <>
-                                Question {idx + 1} :
-                                {topic} <br /><br /> What is the definition of XYZ? {/* Example question text */}
-                            </>
-                        )
+                        question: questionContent,
+                        type: questionType,
+                        options: questionType === 'multiple-choice'
+                            ? ['Option A', 'Option B', 'Option C', 'Option D'] // Example options
+                            : ['True', 'False']
                     });
                 }
             }
@@ -46,6 +49,13 @@ const IndStudentWriteTest = () => {
     };
 
     const handleChange = (event) => {
+        setAnswers({
+            ...answers,
+            [currentQuestionIndex]: event.target.value
+        });
+    };
+
+    const handleMultipleChoiceChange = (event) => {
         setAnswers({
             ...answers,
             [currentQuestionIndex]: event.target.value
@@ -80,17 +90,51 @@ const IndStudentWriteTest = () => {
                         <div className="question-section">
                             <h2>{questions[currentQuestionIndex].domain}</h2>
                             <p>{questions[currentQuestionIndex].question}</p>
-                            <textarea
-                                value={answers[currentQuestionIndex] || ''}
-                                onChange={handleChange}
-                                rows="4"
-                            />
+                            {questions[currentQuestionIndex].type === 'multiple-choice' ? (
+                                <div>
+                                    {questions[currentQuestionIndex].options.map((option, index) => (
+                                        <label key={index}>
+                                            <input
+                                                type="radio"
+                                                name={`question-${currentQuestionIndex}`}
+                                                value={option}
+                                                checked={answers[currentQuestionIndex] === option}
+                                                onChange={handleMultipleChoiceChange}
+                                            />
+                                            {option}
+                                        </label>
+                                    ))}
+                                </div>
+                            ) : (
+                                <div>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name={`question-${currentQuestionIndex}`}
+                                            value="True"
+                                            checked={answers[currentQuestionIndex] === 'True'}
+                                            onChange={handleMultipleChoiceChange}
+                                        />
+                                        True
+                                    </label>
+                                    <label>
+                                        <input
+                                            type="radio"
+                                            name={`question-${currentQuestionIndex}`}
+                                            value="False"
+                                            checked={answers[currentQuestionIndex] === 'False'}
+                                            onChange={handleMultipleChoiceChange}
+                                        />
+                                        False
+                                    </label>
+                                </div>
+                            )}
                             {currentQuestionIndex < questions.length - 1 ? (
-                                <button onClick={handleNext}>
+                                <button className='stud-button' onClick={handleNext}>
                                     Next
                                 </button>
                             ) : (
-                                <button onClick={handleSubmit}>
+                                <button className='stud-button' onClick={handleSubmit}>
                                     Submit
                                 </button>
                             )}

@@ -46,7 +46,7 @@ textarea {
     resize: none; /* Prevent resizing */
 }
 
-button {
+.stud-button  {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
@@ -56,11 +56,11 @@ button {
     transition: background-color 0.3s;
 }
 
-button:hover {
+.stud-button:hover {
     background-color: #0056b3; /* Darker shade on hover */
 }
 
-button:disabled {
+.stud-button:disabled {
     background-color: #cccccc; /* Disabled button color */
     cursor: not-allowed; /* Change cursor when disabled */
 }

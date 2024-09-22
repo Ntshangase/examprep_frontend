@@ -25,6 +25,7 @@ import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTest";
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
+import TestReview from "./Pages/Student/Independent/TestReview"
 
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import './Styles/global.css';
@@ -60,9 +61,12 @@ function App() {
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
-			
+
+				
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
+				<Route path="/TestReview" element={<TestReview />} />
+
 			</Routes>
 		</Router>
 	);
