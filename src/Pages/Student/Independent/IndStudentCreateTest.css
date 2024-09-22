@@ -1,150 +1,156 @@
 /* Ensure full-screen layout */
 html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  .lecturer-dashboard {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-  }
-  
-  .dashboard-content {
-    display: flex;
-    flex: 1;
-    height: 100%;
-  }
-  
-  .sidebar {
-    width: 250px;
-    background-color: #f0f0f0;
-    padding: 20px;
-    box-sizing: border-box;
-  }
-  
-  .content-area {
-    flex: 1;
-    padding: 20px;
-    overflow-y: auto;
-    background-color: #fff;
-  }
-  
-  .create-test-container {
-    background-color: #f9f9f9;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  .create-test-container h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .domain-section {
-    margin-bottom: 30px;
-  }
-  
-  .domain-section h2 {
-    font-size: 20px;
-    margin-bottom: 15px;
-  }
-  
-  .topic-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  
-  .topic-item label {
-    font-size: 16px;
-    width: 70%;
-  }
-  
-  .topic-item input[type="number"] {
-    width: 60px;
-    padding: 5px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .total-weight-section {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: 20px;
-  }
-  
-  .total-weight-section span {
-    font-size: 16px;
-    margin-right: 10px;
-  }
-  
-  .total-weight-section input {
-    width: 60px;
-    padding: 5px;
-    font-size: 16px;
-    text-align: center;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .generate-test-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    margin-top: 20px;
-    float: right;
-  }
-  
-  .generate-test-button:hover {
-    background-color: #0056b3;
-  }
-  .modal-overlay {
-    display: flex;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Dark background with opacity */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+}
+
+.lecturer-dashboard {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height for the dashboard */
+}
+
+.dashboard-content {
+  display: flex;
+  flex: 1; /* Allow to fill remaining space */
+  height: 100%; /* Ensure it takes the full height */
+}
+
+.sidebar {
+  width: 250px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding in the width */
+}
+
+.content-area {
+  flex: 1; /* Allow to grow and fill available space */
+  padding: 20px;
+  overflow-y: auto; /* Enable scrolling for overflow content */
+  background-color: #fff;
+}
+
+.create-test-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  overflow-y: auto; /* Enable scrolling if content exceeds height */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  flex: 1; /* Allow it to grow and fill available space */
+  height: auto; /* Allow height to adjust based on content */
+  min-height: 80vh; /* Set a minimum height for better visibility */
+  width: 100%; /* Expand to full width */
+  max-width: 1200px; /* Set a max width for larger screens */
+  margin: 0 auto; /* Center the container on the page */
+}
+
+.create-test-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.domain-section {
+  margin-bottom: 30px;
+}
+
+.domain-section h2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.topic-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.topic-item label {
+  font-size: 16px;
+  width: 70%;
+}
+
+.topic-item input[type="number"] {
+  width: 60px;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.total-weight-section {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.total-weight-section span {
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+.total-weight-section input {
+  width: 60px; /* Adjusted for better visibility */
+  padding: 5px;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.generate-test-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 20px;
+  float: right; /* Keep the button on the right */
+}
+
+.generate-test-button:hover {
+  background-color: #0056b3;
+}
+
+.modal-overlay {
+  display: flex;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark background with opacity */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
 }
 
 .modal-content {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-    text-align: center; /* Center text */
-    width: 90%; /* Width of modal */
-    max-width: 400px; /* Max width */
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  text-align: center; /* Center text */
+  width: 90%; /* Width of modal */
+  max-width: 400px; /* Max width */
 }
 
 .modal-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #4b4d50; /* Primary button color */
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #4b4d50; /* Primary button color */
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 .modal-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3; /* Darker shade on hover */
 }
-
-  
