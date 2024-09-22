@@ -76,7 +76,7 @@ input[type="date"]:focus {
 	outline: none;
 }
 
-/* Button styling */
+
 .button-update-class {
 	display: block;
 	width: 100%;
@@ -85,7 +85,7 @@ input[type="date"]:focus {
 	color: white;
 	border: none;
 	border-radius: 8px;
-	font-size: 20px; /* Larger button text */
+	font-size: 20px;
 	cursor: pointer;
 	transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
 }
@@ -97,12 +97,12 @@ input[type="date"]:focus {
 	color: white;
 	border: none;
 	border-radius: 8px;
-	font-size: 20px; /* Larger button text */
+	font-size: 20px;
 	cursor: pointer;
 	transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
 }
 
-/* Button hover and active states */
+
 .button-update-class:hover {
 	background-color: #357bb5;
 	transform: translateY(-2px); /* Lift effect on hover */
