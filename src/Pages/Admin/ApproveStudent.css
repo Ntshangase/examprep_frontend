@@ -19,18 +19,18 @@
     border-bottom: black 3px solid;
 }
 
-.button-approve-decline {
+.approve-student-button {
     display: flex;
     flex-direction: row;
     padding: 7px;
     margin-left: 55%;
 }
 
-.button-approve-decline button {
+.approve-student-button button {
     margin: 0 10px;
 }
 
-.button-approve {
+.approve-button-approve {
     background-color: green;
     display: block;
 	width: 100%;
@@ -41,12 +41,12 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.button-approve:hover {
+.approve-button-approve:hover {
     background-color: darkgreen;
     transform: scale(1.05);
 }
 
-.button-decline {
+.approve-button-decline {
     background-color: red;
     display: block;
 	width: 100%;
@@ -57,7 +57,7 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.button-decline:hover {
+.approve-button-decline:hover {
     background-color: darkred;
     transform: scale(1.05);
 }

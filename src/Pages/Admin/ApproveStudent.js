@@ -13,9 +13,9 @@ function ApproveStudent() {
                     <p>Khethokwakhe Mhlaba</p>
                     <p>hlulekaUzamile@gmail.com</p>
                 </div>
-                <div className='button-approve-decline'>
-                    <button className='button-approve'>approve</button>
-                    <button className='button-decline'>decline</button>
+                <div className='approve-student-button'>
+                    <button className='approve-button-approve'>approve</button>
+                    <button className='approve-button-decline'>decline</button>
                 </div>
             </div>
         </div>

@@ -20,7 +20,10 @@ import CreateClass from "./Pages/Admin/CreateClass";
 import EditClass from "./Pages/Admin/EditClass";
 import EditCourse from "./Pages/Admin/EditCourse";
 import ManageClass from "./Pages/Admin/ManageClass";
-import ManageStudents from "./Pages/Admin/ManageStudents";
+import ManageStudents from "./Pages/Admin/ManageStudents"
+import PanelEnrolled from "./Pages/Student/Enrolled/PanelEnrolled";
+import Classes from "./Pages/Student/Enrolled/Classes";
+import ScheduledTests from "./Pages/Student/Enrolled/ScheduledTests";
 import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTest";
@@ -52,6 +55,10 @@ function App() {
 				<Route path="/EditClass" element={<EditClass />} />
 				<Route path="/ManageClass" element={<ManageClass />} />
 				<Route path="/EditCourse" element={<EditCourse />} />
+				<Route path="/ManageStudents" element={<ManageStudents />} />
+				<Route path="/PanelEnrolled" element={<PanelEnrolled />} />
+				<Route path="/Classes" element={<Classes />} />
+				<Route path="/ScheduledTests" element={<ScheduledTests />} />
 				<Route path="/ManageStudents" element={<ManageStudents />} />
 				<Route path="/ManageCourse" element={<ManageCourse />} />
 				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
