@@ -30,6 +30,7 @@ import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTe
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
 import TestReview from "./Pages/Student/Independent/TestReview"
 
+import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import './Styles/global.css';
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
@@ -70,6 +71,7 @@ function App() {
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
 
 				
+				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 				<Route path="/TestReview" element={<TestReview />} />
