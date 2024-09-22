@@ -1,7 +1,10 @@
 import React from 'react';
 import './QuestionView.css'; // Import the CSS for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faArrowLeftLong, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom'; // Import hooks for routing
+import Navbar from "../../Components/Navbar/Navbar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 
 const QuestionView = () => {
   // Example data
@@ -9,63 +12,76 @@ const QuestionView = () => {
     name: 'CompTIA A+ Core Exam',
     version: '1.0.0',
   };
- 
+
+  const navigate = useNavigate(); // Initialize navigate
 
   const questions = [
     {
       id: 1,
-      question: 'What is the function of a CPU?',
-      options: ['Process data', 'Store data', 'Transmit data', 'Encrypt data'],
-    },
-    {
-      id: 2,
-      question: 'What does RAM stand for?',
-      options: ['Random Access Memory', 'Read Access Memory', 'Rapid Access Memory', 'Run Access Memory'],
+      question: 'Which of the following ports is typically used by HTTPS?',
+      options: ['80', '443', '21', '110'],
     },
     {
       id: 3,
-      question: 'Which component stores data long-term?',
-      options: ['SSD', 'RAM', 'Cache', 'CPU'],
+      question: 'Which of the following devices can provide power protection for computer hardware?',
+      options: ['Surge suppressor', 'Power strip', 'Uninterruptible power supply', 'AC adapter'],
     },
+    {
+      id: 5,
+      question: 'Which of the following is the correct IP range for a Class C address?',
+      options: ['192.0.0.0 - 223.255.255.255', '128.0.0.0 - 191.255.255.255', '0.0.0.0 - 127.255.255.255', '224.0.0.0 - 239.255.255.255'],
+    }
   ];
 
-  <div className="sidebar">
-  <h3>Student</h3>
-  <ul>
-    <li>Profile</li>
-    <li>View Dumps</li>
-    <li>Logout</li>
-  </ul>
-</div>
   return (
     <div className="question-view-container">
+      <div className="dashboard">
+        <Navbar />
+        <div className="dashboard-content">
+          <Sidebar />
+          <div className="content-area">
 
-      {/* Dump Details */}
-      <div className="dump-details">
-        <h2>{dumpDetails.name}</h2>
-        <p>Version: {dumpDetails.version}</p>
-      </div>
 
-      {/* Questions Section */}
-      <div className="questions-section">
-        {questions.map((question) => (
-          <div key={question.id} className="question-card">
-            <div className="question-header">
-              <p>{question.question}</p>
-              <button className="edit-btn">
-                <FontAwesomeIcon icon={faEdit} />
-              </button>
+
+            {/* Dump Details */}
+            <div className="dump-details">
+              <h2>{dumpDetails.name}</h2>
+              <p>Version: {dumpDetails.version}</p>
             </div>
-            <div className="options-list">
-              {question.options.map((option, index) => (
-                <div key={index} className="option">
-                  <input type="radio" name={`question_${question.id}`} value={option} disabled />
-                  <label>{option}</label>
+
+            {/* Questions Section */}
+            <div className="questions-section">
+              {questions.map((question) => (
+                <div key={question.id} className="question-card">
+                  <div className="question-header">
+                    <p>{question.question}</p>
+                    <button className="edit-btn">
+                      <FontAwesomeIcon icon={faEdit} />
+                    </button>
+                  </div>
+                  <div className="options-list">
+                    {question.options.map((option, index) => (
+                      <div key={index} className="option">
+                        <input type="radio" name={`question_${question.id}`} value={option} disabled />
+                        <label>{option}</label>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
             </div>
+            {/* Back and Done Buttons Container */}
+            <div className="button-container">
+              <button onClick={() => navigate("/ModeratorDashboard")} className="back-btn">
+                <FontAwesomeIcon icon={faArrowLeftLong} /> Back
+              </button>
+
+              <button onClick={() => navigate('/ModeratorDashboard')} className="done-btn">
+                <FontAwesomeIcon icon={faCheckCircle} /> Done
+              </button>
+            </div>
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
