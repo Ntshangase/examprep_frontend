@@ -1,0 +1,25 @@
+.test-page {
+    display: flex;
+    height: 100vh;
+    background-color: var(--color-background);
+  }
+  
+  .content {
+    display: flex;
+    width: 100%;
+  }
+  
+  .main-content {
+    flex: 1;
+    padding: 24px;
+    background-color: var(--color-background);
+    overflow-y: auto;
+  }
+  
+  .main-content h1 {
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--color-text-dark);
+    margin-bottom: 24px;
+  }
+  
