@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "eslint-plugin-flowtype": "^8.0.3",
     "react-router-dom": "^6.26.2"
   }
 }
