@@ -12,10 +12,10 @@ import { Link } from "react-router-dom";
 
 export default function CourseDetails() {
 	return (
-		<div className="course-details-container">
+		<div className="admin-course-details-container">
 			<AdminSidebar />
-			<div className="course-detail-content">
-				<div className="course-detail-heading">
+			<div className="admin-course-detail-content">
+				<div className="admin-course-detail-heading">
 					<h2>Course Details</h2>
 					<div className="link-div">
 					<Link to="/CreateClass">
@@ -23,11 +23,11 @@ export default function CourseDetails() {
 					</Link>
 					</div>
 				</div>
-				<div className="course-info">
+				<div className="admin-course-info">
 					<img
 						src={courses[0].image}
 						alt={courses[0].title}
-						className="course-image"
+						className="admin-course-image"
 					/>
 					<div className="course-text">
 						<h3>{courses[0].title}</h3>
