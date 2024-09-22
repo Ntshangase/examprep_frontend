@@ -26,7 +26,9 @@ import StudentDashboards from "./Pages/Student/StudentDashboards";
 import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTest";
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
 
+import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import './Styles/global.css';
+import ApproveStudent from "./Pages/Admin/ApproveStudent";
 
 function App() {
 	return (
@@ -59,6 +61,8 @@ function App() {
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
 			
+				<Route path="/AddStudent" element={<AddStudent />} />
+				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 			</Routes>
 		</Router>
 	);
