@@ -28,7 +28,6 @@ import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTest";
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
-import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import Analytics from "./Pages/Lecturer/Analytics/Analytics";
 import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
@@ -69,7 +68,6 @@ function App() {
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
-				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
