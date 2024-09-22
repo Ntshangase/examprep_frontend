@@ -1,0 +1,53 @@
+/* General page layout */
+.classes-page {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .content {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .main-content {
+    flex: 1; /* Allows it to fill the remaining space next to the sidebar */
+    padding: 20px;
+  }
+  
+  /* Styling for the black line separator */
+  .black-separator {
+    border: none;
+    border-top: 2px solid black; /* Ensure it is visible */
+    margin: 20px 0;
+  }
+  
+  /* Class section styling */
+  .class-section {
+    margin-bottom: 20px;
+  }
+  
+  /* Styling for the class links */
+  .class-link {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .class-link:hover {
+    color: var(--color-primary); /* Change color on hover */
+    text-decoration: underline;
+  }
+  
+  /* Styling for class details text */
+  .class-section p {
+    margin: 5px 0;
+    font-size: 1.1em;
+    color: var(--text-color);
+  }
+  
+  h1 {
+    font-size: 2em;
+    color: var(--color-primary);
+  }
+  
