@@ -1,8 +1,8 @@
 import React from 'react';
 import './ManageClass.css';
-import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
 import courses from '../../Data/Courses.json';
 import { useNavigate } from 'react-router-dom';
+import Sidebar from '../../components/Sidebar/Sidebar';
 
 export default function ManageClass() {
   const navigate = useNavigate();
@@ -13,7 +13,7 @@ export default function ManageClass() {
 
   return (
     <div className="manage-class-container">
-      <AdminSidebar />
+      <Sidebar />
       <div className="manage-class-content">
         <h2>Select Course to view classes</h2>
         <div className='courses-grid'>
