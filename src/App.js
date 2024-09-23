@@ -32,6 +32,7 @@ import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import './Styles/global.css';
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
+import StudentProfile from "./Pages/Student/StudentProfile";
 
 function App() {
 	return (
@@ -70,6 +71,7 @@ function App() {
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
+				<Route path="/StudentProfile" element={<StudentProfile />} />
 			</Routes>
 		</Router>
 	);
