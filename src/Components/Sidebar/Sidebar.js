@@ -10,16 +10,16 @@ const Sidebar = () => {
 			</Link>
 			<ul className="sidebar-content">
 				<li className="sidebar-link">
-					<Link to="/AdminLanding">Home</Link>
+					<Link to="/">Home</Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/ManageCourse">Manage Courses</Link>
+					<Link to="/">Testing </Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/ManageClass">Manage Class</Link>
+					<Link to="/">Testing</Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/ManageStudents">Manage Students</Link>
+					<Link to="/">Testing</Link>
 				</li>
 			</ul>
 		</aside>
