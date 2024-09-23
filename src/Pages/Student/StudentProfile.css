@@ -1,0 +1,126 @@
+.profile-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex: 1;
+}
+
+.main-content {
+    flex: 1;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.separator {
+    border: none;
+    border-top: 2px solid #ddd;
+    margin: 20px 0;
+}
+
+/* Profile layout */
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.profile-image img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-info h2 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+}
+
+.profile-info p {
+    font-size: 1.2em;
+    color: #666;
+}
+
+/* Editable fields */
+.editable-fields {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 20px;
+}
+
+.editable-fields label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.editable-fields input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* Enrolled classes and upcoming tests */
+.classes-enrolled, .upcoming-tests {
+    width: 100%;
+    max-width: 500px;
+}
+
+.classes-enrolled ul, .upcoming-tests ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.classes-enrolled li, .upcoming-tests li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Edit and Back buttons */
+.profile-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.profile-actions button {
+    padding: 10px 20px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.profile-actions button:hover {
+    background-color: var(--color-primary-dark);
+}
+
+/* Back button styling */
+.back-button {
+    padding: 10px 20px;
+    background-color: grey;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
