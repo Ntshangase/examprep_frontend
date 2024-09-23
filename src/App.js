@@ -6,6 +6,9 @@ import ModeratorDashboard from "./Pages/Moderator/ModeratorDashboard";
 import QuestionView from "./Pages/Moderator/QuestionView";
 import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashboard";
 import TestPage from "./Pages/Lecturer/TestPage/TestPage";
+import "./Styles/global.css";
+import StudentDashboard from "./Pages/Student/StudentDashboards";
+import ManageUser from "./Pages/Admin/ManageUser";
 import AssignedClasses from "./Pages/Lecturer/Classes/AssignedClasses";
 import ViewClass from "./Pages/Lecturer/ViewClass/ViewClass";
 import ViewStudents from "./Pages/Lecturer/ViewStudents/ViewStudents";
@@ -28,6 +31,7 @@ import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTest";
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
+import AddUser from "./Pages/Admin/AddUser";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import Analytics from "./Pages/Lecturer/Analytics/Analytics";
 import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
@@ -39,6 +43,8 @@ function App() {
 	return (
 		<Router>
 			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/AddUser" element={<AddUser />} />
 				<Route path="/" element={<Login />} />
 				<Route path="/Home" element={<Home />} />
 				<Route path="/AdminLanding" element={<Admin />} />
@@ -46,6 +52,8 @@ function App() {
 				<Route path="/ModeratorDashboard" element={<ModeratorDashboard />} />
 				<Route path="/QuestionView" element={<QuestionView />} />
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
+				<Route path="/StudentDashboard" element={<StudentDashboard />} />
+				<Route path="/ManageUser" element={<ManageUser />} />
 				<Route path="/StudentDashboards" element={<StudentDashboards />} />
 				<Route path="/TestPage" element={<TestPage />} />
 				<Route path="/SubmittedTests" element={<SubmittedTests />} />

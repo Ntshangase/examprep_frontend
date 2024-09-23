@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./EditClass.css";
+import React, { useState } from 'react';
+import './EditClass.css';
 import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
 import { Link, useNavigate } from "react-router-dom";
 

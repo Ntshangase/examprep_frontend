@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import Navbar from "../../Components/Navbar/Navbar";
+import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import "./AdminLanding.css";
 import './AdminLanding.css'; // Import the CSS file
 
 export default function AdminLanding() {
@@ -18,7 +20,7 @@ export default function AdminLanding() {
                     </div>
                 </div>
                 <div className="features-section">
-                    <Link to="/manage-users" className="feature-card">
+                    <Link to="/ManageUser" className="feature-card">
                         <i className="fas fa-user-plus fa-2x"></i>
                         <p>Manage Users</p>
                     </Link>
