@@ -1,21 +1,19 @@
 import React, { useState } from 'react';
-//import { useHistory } from 'react-router-dom'; // Importing for Back navigation
 import Navbar from "../../Components/Navbar/Navbar";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import './StudentProfile.css';
 
 const StudentProfile = () => {
- // const history = useHistory(); // For navigation back
   const [isEditing, setIsEditing] = useState(false);
 
   const [studentInfo, setStudentInfo] = useState({
     imageUrl: "/assets/nightcoder.jpg",
-    name: "John Doe",
+    name: "John Zulu",
     gender: "Male",
     role: "Student",
     preferredName: "John",
-    email: "john.doe@example.com",
-    contactNumber: "123-456-7890",
+    email: "john.zulu@gmail.com",
+    contactNumber: "071-456-7890",
     password: "",
     classes: [
       { name: "CompTIA Security+", duration: "June 1, 2024 - August 31, 2024" },
@@ -41,10 +39,8 @@ const StudentProfile = () => {
       <div className="content">
         <Sidebar />
         <div className="main-content">
-          <h1>Profile</h1>
-          <hr className="separator" />
-
           <div className="profile-details">
+            <h1>Profile</h1>
             <div className="profile-header">
               <div className="profile-image">
                 <img src={studentInfo.imageUrl} alt={studentInfo.name} />
@@ -54,6 +50,8 @@ const StudentProfile = () => {
                 <p>{studentInfo.gender} | {studentInfo.role}</p>
               </div>
             </div>
+
+            <div className="separator" />
 
             <div className="profile-body">
               <div className="editable-fields">
@@ -118,7 +116,7 @@ const StudentProfile = () => {
                 </ul>
               </div>
 
-              <div className="upcoming-tests">
+              {/*<div className="upcoming-tests">
                 <h3>Upcoming Tests</h3>
                 <ul>
                   {studentInfo.upcomingTests.map((test, index) => (
@@ -129,15 +127,14 @@ const StudentProfile = () => {
                     </li>
                   ))}
                 </ul>
-              </div>
+              </div>*/}
             </div>
 
             <div className="profile-actions">
               <button onClick={handleEditToggle}>
                 {isEditing ? 'Save Changes' : 'Edit Profile'}
               </button>
-              <button className="back-button" //onClick={() => history.goBack()}
-               >
+              <button >
                 Back
               </button>
             </div>

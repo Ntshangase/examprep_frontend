@@ -38,6 +38,7 @@ import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage
 import "./Styles/global.css";
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
 import Login from "./Pages/Auth/Login";
+import StudentProfile from "./Pages/Student/StudentProfile";
 
 function App() {
 	return (
