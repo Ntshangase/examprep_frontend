@@ -36,6 +36,9 @@ import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage
 import "./Styles/global.css";
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
 import Login from "./Pages/Auth/Login";
+import DataCaptureDashboard from "./Pages/DataCapturer/DataCaptureDashboard"
+import AddQuestions from "./Pages/DataCapturer/AddQuestions"
+import UploadDumps from "./Pages/DataCapturer/UploadDumps"
 
 function App() {
 	return (
@@ -85,7 +88,12 @@ function App() {
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 				<Route path="/TestReview" element={<TestReview />} />
+				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
+				<Route path="/AddQuestions" element={<AddQuestions />} />
+				<Route path="/UploadDumps" element={<UploadDumps />} />
 
+
+				
 			</Routes>
 		</Router>
 	);

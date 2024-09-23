@@ -16,6 +16,9 @@ function Home() {
 	const handleNavigateStudent = () => {
 		navigate("/StudentDashboards");
 	};
+	const handleNavigateDataCaptureDashboard = () => {
+		navigate("/DataCaptureDashboard");
+	};
 
 	return (
 		<div>
@@ -24,6 +27,8 @@ function Home() {
 			<button onClick={handleNavigateLecture}>Lecture</button>
 			<button onClick={handleNavigateAdmin}>Admin</button>
 			<button onClick={handleNavigateStudent}>Student</button>
+			<button onClick={handleNavigateDataCaptureDashboard}>Data Capture</button>
+
 		</div>
 	);
 }

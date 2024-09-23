@@ -19,8 +19,7 @@
     box-sizing: border-box; /* Includes padding in width calculations */
 }
 
-.header h1 {
-    background-color: #5fa4e7;
+.header{
     color: white;
     padding: 10px;
     border-radius: 8px 8px 0 0;
