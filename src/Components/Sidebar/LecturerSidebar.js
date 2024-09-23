@@ -13,13 +13,10 @@ const LecturerSidebar = () => {
 					<Link to="/">Home</Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/">Testing </Link>
+					<Link to="/LecturerDashboard">Courses</Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/">Testing</Link>
-				</li>
-				<li className="sidebar-link">
-					<Link to="/">Testing</Link>
+					<Link to="/AddStudent">Add Student</Link>
 				</li>
 			</ul>
 		</aside>

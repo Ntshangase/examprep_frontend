@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from 'react-router-dom';
-import Sidebar from "../../../Components/Sidebar/Sidebar";
+import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
 import styles from './ViewClass.module.css'; 
 
 const ViewClass = () => {
@@ -22,7 +22,7 @@ const ViewClass = () => {
     return (
         <div className={styles.classDetails}>
             <div className={styles.dashboardContent}>
-                <Sidebar />
+                <LecturerSidebar />
                 <div className={styles.contentArea}>
                     {/* Class Info Banner */}
                     <div className={styles.banner}>

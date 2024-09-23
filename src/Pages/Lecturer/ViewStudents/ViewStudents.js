@@ -1,5 +1,5 @@
 import React from "react";
-import Sidebar from "../../../Components/Sidebar/Sidebar";
+import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
 import { useNavigate } from 'react-router-dom';
 import styles from './ViewStudents.module.css'; // Import your CSS module
 
@@ -26,7 +26,7 @@ const ViewStudents = () => {
         <div className={styles.viewStudents}>
             <div className={styles.studentsContent}>
                 <div className={styles.sidebar}>
-                    <Sidebar />
+                <LecturerSidebar />
                 </div>
                 <div className={styles.contentArea}>
                     <h2>Students Enrolled In This Class:</h2>

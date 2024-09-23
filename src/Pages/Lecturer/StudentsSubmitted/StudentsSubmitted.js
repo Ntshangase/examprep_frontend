@@ -1,6 +1,6 @@
 import React from "react"; 
 //import { useParams } from "react-router-dom"; // Import useParams for routing
-import Sidebar from "../../../Components/Sidebar/Sidebar";
+import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
 import style from "./StudentsSubmitted.module.css"; // Ensure the correct path for CSS
 
 // Dummy data for the test and submitted students
@@ -33,7 +33,7 @@ const StudentsSubmitted = () => {
     return (
         <div className={style.studentsSubmitted}>
             <div className={style.submittedStudentsContent}>
-                <Sidebar />
+            <LecturerSidebar />
                 <div className={style.contentArea}>
                     <h2>{testData.name}</h2> {/* Display the test name as a header */}
                     <table className={style.submissionTable}>

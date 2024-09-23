@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import Sidebar from "../../../Components/Sidebar/Sidebar";
+import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
 import styles from './AssignedClasses.module.css';
 
 const AssignedClasses = () => {
@@ -38,7 +38,7 @@ const AssignedClasses = () => {
     return (
         <div className={styles.assignedClasses}>
             <div className={styles.dashboardContent}>
-                <Sidebar />
+            <LecturerSidebar />
                 <div className={styles.contentArea}>
                     <div className={styles.banner}>
                         <img src="/assets/aws patrict.png" alt="Architecting on AWS" className={styles.courseImage} />

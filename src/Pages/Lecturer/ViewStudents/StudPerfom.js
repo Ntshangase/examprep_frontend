@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Sidebar from "../../../Components/Sidebar/Sidebar";
+import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
 import styles from './StudPerfom.module.css';
 
 const StudPerfom = () => {
@@ -37,7 +37,7 @@ const StudPerfom = () => {
     return (
         <div className={styles.studPerfom}>
             <div className={styles.content}>
-                <Sidebar />
+            <LecturerSidebar />
                 <div className={styles.mainContent}>
                     <h2>{student.firstName} {student.lastName}</h2>
                     <table className={styles.testTable}>
