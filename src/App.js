@@ -72,11 +72,11 @@ function App() {
 				<Route path="/Classes" element={<Classes />} />
 				<Route path="/ScheduledTests" element={<ScheduledTests />} />
 				<Route path="/ManageCourse" element={<ManageCourse />} />
-				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
+				<Route path="/StudentsSubmitted/:testId" element={<StudentsSubmitted />} />
 				<Route path="/StudPerfom" element={<StudPerfom />} />
 				<Route path="/viewclass/:courseId" element={<ViewClass />} />
 				<Route path="/ViewStudents" element={<ViewStudents />} />
-				<Route path="/AssignedClasses" element={<AssignedClasses />} />
+				<Route path="/AssignedClasses/:courseId" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
 				<Route path="/AddStudent" element={<AddStudent />} />

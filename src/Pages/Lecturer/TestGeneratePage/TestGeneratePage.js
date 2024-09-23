@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../../Components/Navbar/Navbar';
 import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './TestGeneratePage.css';
 
@@ -61,12 +60,11 @@ const TestGeneratePage = () => {
 
   const handleStartTest = () => {
     setIsModalOpen(false);
-    navigate('/ViewClass', { state: { selectedTopics } });
+    navigate('/ViewClass/1', { state: { selectedTopics } });
   };
 
   return (
     <div className="dashboard">
-      <Navbar />
       <div className="dashboard-content">
         <Sidebar />
         <div className="main-content">
