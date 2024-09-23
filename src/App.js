@@ -6,6 +6,9 @@ import ModeratorDashboard from "./Pages/Moderator/ModeratorDashboard";
 import QuestionView from "./Pages/Moderator/QuestionView";
 import LecturerDashboard from "./Pages/Lecturer/LecturerDashboard/LecturerDashboard";
 import TestPage from "./Pages/Lecturer/TestPage/TestPage";
+import "./Styles/global.css";
+import StudentDashboard from "./Pages/Student/StudentDashboards";
+import ManageUser from "./Pages/Admin/ManageUser";
 import AssignedClasses from "./Pages/Lecturer/Classes/AssignedClasses";
 import ViewClass from "./Pages/Lecturer/ViewClass/ViewClass";
 import ViewStudents from "./Pages/Lecturer/ViewStudents/ViewStudents";
@@ -30,6 +33,7 @@ import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTe
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
 import TestReview from "./Pages/Student/Independent/TestReview"
 
+import AddUser from "./Pages/Admin/AddUser";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import Analytics from "./Pages/Lecturer/Analytics/Analytics";
 import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
@@ -44,6 +48,8 @@ function App() {
 	return (
 		<Router>
 			<Routes>
+				<Route path="/" element={<Home />} />
+				<Route path="/AddUser" element={<AddUser />} />
 				<Route path="/" element={<Login />} />
 				<Route path="/Home" element={<Home />} />
 				<Route path="/AdminLanding" element={<Admin />} />
@@ -51,14 +57,13 @@ function App() {
 				<Route path="/ModeratorDashboard" element={<ModeratorDashboard />} />
 				<Route path="/QuestionView" element={<QuestionView />} />
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
+				<Route path="/StudentDashboard" element={<StudentDashboard />} />
+				<Route path="/ManageUser" element={<ManageUser />} />
 				<Route path="/StudentDashboards" element={<StudentDashboards />} />
 				<Route path="/TestPage" element={<TestPage />} />
 				<Route path="/SubmittedTests" element={<SubmittedTests />} />
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
-				<Route
-					path="/IndStudentCourseDetails"
-					element={<IndStudentCourseDetail />}
-				/>
+				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
 				<Route path="/AddCourse" element={<AddCourse />} />
 				<Route path="/CourseDetails" element={<CourseDetails />} />
 				<Route path="/CreateClass" element={<CreateClass />} />
@@ -73,13 +78,10 @@ function App() {
 				<Route path="/ManageCourse" element={<ManageCourse />} />
 				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
 				<Route path="/StudPerfom" element={<StudPerfom />} />
-				<Route path="/ViewClass" element={<ViewClass />} />
+				<Route path="/viewclass/:courseId" element={<ViewClass />} />
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
-				<Route
-					path="/IndStudentCreateTest"
-					element={<IndStudentCreateTest />}
-				/>
+				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
 
 				
@@ -98,4 +100,5 @@ function App() {
 		</Router>
 	);
 }
+
 export default App;

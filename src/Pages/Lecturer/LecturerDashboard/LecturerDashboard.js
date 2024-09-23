@@ -19,6 +19,7 @@ const LecturerDashboard = () => {
               {courses.map((course) => (
                 <CourseCard 
                   key={course.id} 
+                  id={course.id}
                   title={course.title} 
                   image={course.image} 
                 />

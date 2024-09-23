@@ -1,9 +1,21 @@
 import React from 'react';
 import './CourseCard.css';
+import { useNavigate } from 'react-router-dom';
 
-const CourseCard = ({ title, image }) => {
+// This component renders a single course card.
+
+
+
+const CourseCard = ({ id, title, image }) => {
+
+  const navigate = useNavigate();
+
+  const handleCourseClick = () => {
+    navigate(`/viewclass/${id}`);
+  };
+
   return (
-    <div className="course-card">
+    <div className="course-card"onClick={handleCourseClick}>
       <img src={image} alt={title} />
       <h3>{title}</h3>
     </div>

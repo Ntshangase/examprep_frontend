@@ -1,0 +1,102 @@
+/* Ensure the entire page uses Flexbox for layout */
+.add-user-page {
+  display: flex;
+  height: 100vh;
+}
+
+.logo {
+  width: 150px; /* Adjust logo size */
+  margin-bottom: 30px;
+}
+
+/* Sidebar styling */
+.sidebar {
+  width: 250px;
+  background-color: #61b5f5;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  height: 100vh;
+  padding: 20px;
+  position: relative;
+}
+
+.user-info {
+  margin-top: auto;
+  text-align: center;
+  color: white;
+}
+
+/* Main content styling */
+.main-content {
+  margin-left: 50px; /* Shift main content slightly to the left */
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to start from top */
+  align-items: flex-start; /* Move content slightly left */
+}
+
+.form-title {
+  color: var(--color-primary-dark);
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Form styling */
+.add-user-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  width: 100%;
+  max-width: 800px;
+  margin-top: -20px; /* Move form up slightly */
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.upload-image {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.add-user-btn {
+  grid-column: span 2;
+  background-color: #61b5f5; /* Button color matching sidebar */
+  color: white;
+  padding: 10px 20px; /* Adjusted padding for a more standard size */
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  justify-self: center;
+  font-size: 16px; /* Adjust font size for better readability */
+}
+
+.add-user-btn:hover {
+  background-color: #165bbd;
+}
+
+/* Adjust spacing and margins */
+.sidebar nav ul li {
+  margin-bottom: 30px;
+}

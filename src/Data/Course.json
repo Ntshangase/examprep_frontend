@@ -1,0 +1,38 @@
+[
+    {
+      "id": 1,
+      "title": "AWS Solutions Architect",
+      "image": "/assets/aws.png"
+    },
+    {
+      "id": 2,
+      "title": "Cisco Cloud Engineer",
+      "image": "/assets/cisco-network.png"
+    },
+    {
+      "id": 3,
+      "title": "CompTIA A+",
+      "image": "/assets/compTIA-A+-Badge.jpg"
+    },
+    {
+      "id": 4,
+      "title": "Huawei Support Assistance",
+      "image": "/assets/huawei-support.png"
+    },
+    {
+      "id": 5,
+      "title": "Cisco Network Engineer",
+      "image": "/assets/cisco-network.png"
+    },
+    {
+      "id": 6,
+      "title": "CompTIA Linux+",
+      "image": "/assets/comptia-linux.png"
+    },
+    {
+      "id": 7,
+      "title": "CompTIA Security+",
+      "image": "/assets/comptiaS+.png"
+    }
+  ]
+  
