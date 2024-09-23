@@ -6,7 +6,7 @@ export default function AddCourse() {
   const [courseDescription, setCourseDescription] = useState(
     'Enter course description'
   );
-  const [domains, setDomains] = useState(['Domain A', 'Domain B', 'Domain C', 'Domain D']);
+  const [domains] = useState(['Domain A', 'Domain B', 'Domain C', 'Domain D']);
 
   const handleCourseNameChange = (e) => setCourseName(e.target.value);
   const handleCourseDescriptionChange = (e) => setCourseDescription(e.target.value);
