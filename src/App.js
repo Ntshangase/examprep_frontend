@@ -34,7 +34,6 @@ import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage
 import "./Styles/global.css";
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
 import Login from "./Pages/Auth/Login";
-import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
 
 function App() {
 	return (
@@ -51,10 +50,7 @@ function App() {
 				<Route path="/TestPage" element={<TestPage />} />
 				<Route path="/SubmittedTests" element={<SubmittedTests />} />
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
-				<Route
-					path="/IndStudentCourseDetails"
-					element={<IndStudentCourseDetail />}
-				/>
+				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
 				<Route path="/AddCourse" element={<AddCourse />} />
 				<Route path="/CourseDetails" element={<CourseDetails />} />
 				<Route path="/CreateClass" element={<CreateClass />} />
@@ -72,18 +68,15 @@ function App() {
 				<Route path="/viewclass/:courseId" element={<ViewClass />} />
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
-				<Route
-					path="/IndStudentCreateTest"
-					element={<IndStudentCreateTest />}
-				/>
+				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
-				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 			</Routes>
 		</Router>
 	);
 }
+
 export default App;
