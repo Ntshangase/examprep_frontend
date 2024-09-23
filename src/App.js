@@ -31,6 +31,8 @@ import ManageCourse from "./Pages/Admin/ManageCourse";
 import StudentDashboards from "./Pages/Student/StudentDashboards";
 import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTest";
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
+import TestReview from "./Pages/Student/Independent/TestReview"
+
 import AddUser from "./Pages/Admin/AddUser";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import Analytics from "./Pages/Lecturer/Analytics/Analytics";
@@ -38,7 +40,9 @@ import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage
 import "./Styles/global.css";
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
 import Login from "./Pages/Auth/Login";
-import StudentProfile from "./Pages/Student/StudentProfile";
+import DataCaptureDashboard from "./Pages/DataCapturer/DataCaptureDashboard"
+import AddQuestions from "./Pages/DataCapturer/AddQuestions"
+import UploadDumps from "./Pages/DataCapturer/UploadDumps"
 
 function App() {
 	return (
@@ -79,11 +83,19 @@ function App() {
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
+
+				
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
-				<Route path="/StudentProfile" element={<StudentProfile />} />
+				<Route path="/TestReview" element={<TestReview />} />
+				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
+				<Route path="/AddQuestions" element={<AddQuestions />} />
+				<Route path="/UploadDumps" element={<UploadDumps />} />
+
+
+				
 			</Routes>
 		</Router>
 	);

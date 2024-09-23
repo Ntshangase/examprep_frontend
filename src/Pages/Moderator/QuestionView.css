@@ -5,6 +5,8 @@
     background-color: #f9f9f9;
     height: fit-content;
     margin-left: 2px;
+    height: 100vh;
+    width: 100vw;  
   }
   
   /* Dump details (name and version) */
