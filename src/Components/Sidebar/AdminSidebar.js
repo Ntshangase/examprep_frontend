@@ -4,15 +4,24 @@ import './Sidebar.css';
 
 export default function AdminSidebar() {
 	return (
-		<div>
-			<aside className="sidebar">
-				<ul>
-                    <li className="active"><Link to="/AdminLanding">Home</Link></li>
-                    <li className="active"><Link to="/ManageCourse">Manage Courses</Link></li>
-                    <li className="active"><Link to="/ManageClass">Manage Class</Link></li>
-                    <li className="active"><Link to="/ManageStudents">Manage Students</Link></li>
-				</ul>
-			</aside>
-		</div>
+		<aside className="sidebar-component-container">
+			<Link to="/">
+				<img src="/assets/logo.png" alt="sidebar-logo" />
+			</Link>
+			<ul className="sidebar-content">
+				<li className="sidebar-link">
+					<Link to="/AdminLanding">Home</Link>
+				</li>
+				<li className="sidebar-link">
+					<Link to="/ManageUser">Manage Users</Link>
+				</li>
+				<li className="sidebar-link">
+					<Link to="/ManageCourse">Manage Courses</Link>
+				</li>
+				<li className="sidebar-link">
+					<Link to="/ManageClass">Manage Classes</Link>
+				</li>
+			</ul>
+		</aside>
 	);
 }
