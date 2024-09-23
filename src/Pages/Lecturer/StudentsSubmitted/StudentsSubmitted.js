@@ -1,6 +1,5 @@
 import React from "react"; 
 //import { useParams } from "react-router-dom"; // Import useParams for routing
-import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import style from "./StudentsSubmitted.module.css"; // Ensure the correct path for CSS
 
@@ -33,7 +32,6 @@ const StudentsSubmitted = () => {
 
     return (
         <div className={style.studentsSubmitted}>
-            <Navbar />
             <div className={style.submittedStudentsContent}>
                 <Sidebar />
                 <div className={style.contentArea}>

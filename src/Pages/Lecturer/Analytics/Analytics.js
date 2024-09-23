@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './Analytics.module.css'; // Create a new CSS module for Analytics
 
@@ -13,7 +12,6 @@ const Analytics = () => {
 
     return (
         <div className={styles['analytics']}>
-            <Navbar />
             <div className={styles['analytics-content']}>
                 <Sidebar />
                 <div className={styles['content-area']}>

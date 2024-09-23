@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './StudPerfom.module.css';
 
@@ -37,7 +36,6 @@ const StudPerfom = () => {
 
     return (
         <div className={styles.studPerfom}>
-            <Navbar />
             <div className={styles.content}>
                 <Sidebar />
                 <div className={styles.mainContent}>

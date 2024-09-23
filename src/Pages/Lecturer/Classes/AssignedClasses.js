@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './AssignedClasses.module.css';
 
@@ -38,7 +37,6 @@ const AssignedClasses = () => {
 
     return (
         <div className={styles.assignedClasses}>
-            <Navbar />
             <div className={styles.dashboardContent}>
                 <Sidebar />
                 <div className={styles.contentArea}>

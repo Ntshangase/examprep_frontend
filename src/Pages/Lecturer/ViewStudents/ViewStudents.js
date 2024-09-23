@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import { useNavigate } from 'react-router-dom';
 import styles from './ViewStudents.module.css'; // Import your CSS module
@@ -25,7 +24,6 @@ const ViewStudents = () => {
 
     return (
         <div className={styles.viewStudents}>
-            <Navbar />
             <div className={styles.studentsContent}>
                 <div className={styles.sidebar}>
                     <Sidebar />

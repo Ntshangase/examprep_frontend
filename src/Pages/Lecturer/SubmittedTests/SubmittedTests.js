@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './SubmittedTests.module.css'; // Import your CSS module (optional)
 
@@ -22,7 +21,6 @@ const SubmittedTests = () => {
 
     return (
         <div className={styles.submittedTests}>
-            <Navbar />
             <div className={styles.submittedContent}>
                 <Sidebar />
                 <div className={styles.contentArea}>

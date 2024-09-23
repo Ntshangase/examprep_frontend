@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../../Components/Navbar/Navbar';
 import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './TestGeneratePage.css';
 
@@ -66,7 +65,6 @@ const TestGeneratePage = () => {
 
   return (
     <div className="dashboard">
-      <Navbar />
       <div className="dashboard-content">
         <Sidebar />
         <div className="main-content">

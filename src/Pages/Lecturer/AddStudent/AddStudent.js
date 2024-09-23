@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Navbar from "../../../Components/Navbar/Navbar";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './AddStudent.module.css'; // Updated to use CSS modules
 
@@ -56,7 +55,6 @@ const AddStudent = () => {
 
     return (
         <div className={styles['add-student']}>
-            <Navbar />
             <div className={styles['addstudent-content']}>
                 <Sidebar />
                 <div className={styles['content-area']}>
