@@ -1,12 +1,25 @@
-import React from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Navbar from '../../../Components/Navbar/Navbar';
 import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './TestReview.css';
 
 const TestReview = () => {
     const location = useLocation();
-    const { reviewResults, examResults } = location.state || {};
+    const navigate = useNavigate();
+    const { reviewResults } = location.state || {};
+    
+    // Modal control state
+    const [showModal, setShowModal] = useState(false);
+
+    // Handler for finishing the review
+    const handleFinish = () => {
+        setShowModal(true);
+        // Automatically redirect after 3 seconds
+        setTimeout(() => {
+            navigate('/IndStudentDash');
+        }, 3000);
+    };
 
     if (!reviewResults) {
         return <p>No review data available. Please take the test first.</p>;
@@ -18,30 +31,37 @@ const TestReview = () => {
             <div className="dashboard-content">
                 <Sidebar />
                 <div className="content-area">
-                    <h1>Test Review</h1>
-                    <h2>Results Summary</h2>
-                    <p><strong>User:</strong> {examResults.user}</p>
-                    <p><strong>Total Questions:</strong> {examResults.totalQuestions}</p>
-                    <p><strong>Marks:</strong> {examResults.marks}</p>
-                    <p><strong>Time Taken:</strong> {examResults.timeTaken}</p>
-                    <p><strong>Date Taken:</strong> {examResults.dateTaken}</p>
-                    <h2>Question Review</h2>
-                    <ul>
+                    <div className="header">
+                        <h1>Submitted Answers</h1>
+                    </div>
+                    <ul className="review-list">
                         {reviewResults.map((result, index) => (
                             <li key={index} className="question-review">
-                                <h3>{result.question}</h3>
-                                <p className={result.isCorrect ? 'correct' : 'wrong'}>
-                                    <strong>Your Answer:</strong> {result.userAnswer}
-                                </p>
-                                <p className={result.isCorrect ? 'correct' : 'wrong'}>
-                                    <strong>Correct Answer:</strong> {result.correctAnswer}
-                                </p>
-                                <p><strong>Explanation:</strong> {result.explanation}</p>
+                                <h3>{`QUESTION ${index + 1}`}</h3>
+                                <p>{result.question}</p>
+                                <div className={result.isCorrect ? 'correct-section' : 'wrong-section'}>
+                                    <p><strong>Your Answer:</strong> {result.userAnswer}</p>
+                                </div>
+                                <div className="correct-answer">
+                                    <p><strong>Correct answer:</strong> {result.correctAnswer}</p>
+                                    <p><strong>Explanation:</strong> {result.explanation}</p>
+                                </div>
                             </li>
                         ))}
                     </ul>
+                    <button onClick={handleFinish} className="finish-button">Finish</button>
                 </div>
             </div>
+
+            {/* Modal */}
+            {showModal && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <h2>Test Review Completed</h2>
+                        <p>You will be redirected to the dashboard shortly...</p>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };
