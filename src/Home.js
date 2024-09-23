@@ -7,23 +7,28 @@ function Home() {
 	const handleNavigateModerator = () => {
 		navigate("/ModeratorDashboard");
 	};
-  const handleNavigateLecture = () => { //notice Landing not Dashboard
+	const handleNavigateLecture = () => { //notice Landing not Dashboard
 		navigate("/LecturerDashboard");
 	};
-  const handleNavigateAdmin = () => {
+	const handleNavigateAdmin = () => {
 		navigate("/AdminLanding");
 	};
-  const handleNavigateStudent = () => {
+	const handleNavigateStudent = () => {
 		navigate("/StudentDashboards");
+	};
+	const handleNavigateDataCaptureDashboard = () => {
+		navigate("/DataCaptureDashboard");
 	};
 
 	return (
 		<div>
 			<h1>Temporal landing page for exam prep application</h1>
 			<button onClick={handleNavigateModerator}>Moderator</button>
-      <button onClick={handleNavigateLecture}>Lecture</button>
-      <button onClick={handleNavigateAdmin}>Admin</button>
-      <button onClick={handleNavigateStudent}>Student</button>
+			<button onClick={handleNavigateLecture}>Lecture</button>
+			<button onClick={handleNavigateAdmin}>Admin</button>
+			<button onClick={handleNavigateStudent}>Student</button>
+			<button onClick={handleNavigateDataCaptureDashboard}>Data Capture</button>
+
 		</div>
 	);
 }
