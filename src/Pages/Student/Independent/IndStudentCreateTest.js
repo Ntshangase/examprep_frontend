@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Navbar from '../../../Components/Navbar/Navbar';
 import Sidebar from '../../../Components/Sidebar/Sidebar';
-import './TestGeneratePage.css';
+import './IndStudentCreateTest.css';
 
 const domains = [
   {
@@ -63,7 +63,7 @@ const IndStudentCreateTest = () => {
   const handleStartTest = () => {
     setIsModalOpen(false); // Close the modal
     // Navigate to the test writing page with selected topics
-    navigate('/ViewClass', { state: { selectedTopics } });
+    navigate('/IndStudentWriteTest', { state: { selectedTopics } });
   };
 
   return (
@@ -101,7 +101,7 @@ const IndStudentCreateTest = () => {
           </div>
           <br />
           <button className="generate-test-button" onClick={handleGenerateTest}>
-            Create Test
+            Generate Test
           </button>
 
 

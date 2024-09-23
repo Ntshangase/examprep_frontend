@@ -1,13 +1,17 @@
 import React from 'react';
 import Navbar from '../../../Components/Navbar/Navbar';
 import Sidebar from '../../../Components/Sidebar/Sidebar';
-import './IndStudentCourseDetails.css';
+import './PanelEnrolled.css';
 
-const IndStudentCourseDetails = () => {
+const PanelEnrolled = () => {
 
   // Function for button click
   const handleGenerateTest = () => {
     window.location.href = '/generate-test';
+  };
+
+  const handleScheduledTests = () => {
+    window.location.href = '/ScheduledTests';
   };
 
   return (
@@ -42,10 +46,20 @@ const IndStudentCourseDetails = () => {
             </div>
           </div>
 
-          {/* Generate Test Button placed below sections */}
-          <div className="generate-test-container">
-            <button className="generate-test-button" onClick={handleGenerateTest}>
+          {/* Enrolled Classes Section */}
+          <div className="enrolled-class-details">
+            <p><strong><a href="/class-details/intake-june-2024" className="class-link">Intake June 2024</a></strong></p>
+            <p><strong>Instructor:</strong> Dr. J. Smith</p>
+            <p><strong>Duration:</strong> June 1, 2024 - August 31, 2024</p>
+          </div>
+
+          {/* Button Section */}
+          <div className="button-container">
+            <button className="action-button" onClick={handleGenerateTest}>
               Generate Test
+            </button>
+            <button className="action-button" onClick={handleScheduledTests}>
+              Scheduled Tests
             </button>
           </div>
         </div>
@@ -54,4 +68,4 @@ const IndStudentCourseDetails = () => {
   );
 };
 
-export default IndStudentCourseDetails;
+export default PanelEnrolled;

@@ -1,64 +1,102 @@
-/* Aligning the layout similar to the StudentDashboard */
+/* General page layout */
 .course-detail {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dashboard-content {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .content-area {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .course-container {
-    display: flex;
-    justify-content: center;
-    margin-top: 40px;
-  }
-  
-  .course-card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 400px;
-    padding: 20px;
-    text-align: center;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .course-card img {
-    width: 150px;
-    height: 150px;
-    margin-bottom: 20px;
-  }
-  
-  .course-card h2 {
-    font-size: 1.5em;
-    color: var(--color-primary-dark);
-    margin-bottom: 10px;
-  }
-  
-  .course-card p {
-    color: var(--color-text-light);
-    margin: 10px 0;
-  }
-  
-  .generate-test-button {
-    background-color: var(--color-primary);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1.2em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 20px;
-  }
-  
-  .generate-test-button:hover {
-    background-color: var(--color-primary-dark);
-  }
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard-content {
+  display: flex;
+  height: 100vh;
+}
+
+.content-area {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column; /* Ensures content is stacked vertically */
+  justify-content: flex-start; /* Content stays at the top */
+  align-items: center; /* Center content horizontally */
+}
+
+/* Container for course image and details */
+.course-detail-content {
+  display: flex;
+  max-width: 1000px;
+  width: 100%;
+  gap: 20px;
+  margin-bottom: 40px;
+  align-items: stretch; /* Ensures both sections are equal height */
+}
+
+/* Styling for the course image section */
+.course-image {
+  flex: 1; /* Equal width as the right section */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.course-image img {
+  width: 100%; /* Takes up the entire left section */
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Styling for the course information section */
+.course-info {
+  flex: 1; /* Equal width as the left section */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.course-info h1 {
+  font-size: 2em;
+  color: var(--color-primary-dark);
+  margin-bottom: 20px;
+}
+
+.course-info h2 {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.course-info p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: var(--color-text-dark);
+}
+
+/* Grey line separator */
+.separator {
+  border: none;
+  border-top: 2px solid #ddd;
+  margin: 20px 0;
+}
+
+/* Container for the generate test button */
+.generate-test-container {
+  width: 100%; /* Ensures button container spans full width */
+  display: flex;
+  justify-content: center; /* Center the button horizontally */
+  margin-top: 20px;
+}
+
+/* Button styling */
+.generate-test-button {
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.generate-test-button:hover {
+  background-color: var(--color-primary-dark);
+}
