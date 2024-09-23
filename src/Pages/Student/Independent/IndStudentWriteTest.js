@@ -146,11 +146,11 @@ const IndStudentWriteTest = () => {
                                 </div>
                             )}
                             {currentQuestionIndex < questions.length - 1 ? (
-                                <button className='stud-button' onClick={handleNext}>
+                                <button className='indipendent-student-write-test-button' onClick={handleNext}>
                                     Next
                                 </button>
                             ) : (
-                                <button className='stud-button' onClick={handleSubmit}>
+                                <button className='indipendent-student-write-test-button'  onClick={handleSubmit}>
                                     Submit
                                 </button>
                             )}

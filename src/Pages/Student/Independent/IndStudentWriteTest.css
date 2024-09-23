@@ -3,7 +3,8 @@
     flex-direction: column;
     min-height: 100vh;
     font-family: Arial, sans-serif;
-    background-color: #eaeaea; /* Light gray background */
+    background-color: #eaeaea;
+    /* Light gray background */
 }
 
 .dashboard-content {
@@ -16,9 +17,11 @@
 .content-area {
     flex: 1;
     padding: 20px;
-    background-color: #ffffff; /* White background */
+    background-color: #ffffff;
+    /* White background */
     border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Depth */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    /* Depth */
 }
 
 .question-section {
@@ -43,73 +46,84 @@ textarea {
     border: 1px solid #dcdcdc;
     font-size: 16px;
     margin-bottom: 15px;
-    resize: none; /* Prevent resizing */
+    resize: none;
+    /* Prevent resizing */
 }
 
-.stud-button  {
+.indipendent-student-write-test-button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff; /* Primary button color */
+    background-color: #007bff; /* Primary color */
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-.stud-button:hover {
+.indipendent-student-write-test-button:hover {
     background-color: #0056b3; /* Darker shade on hover */
 }
 
-.stud-button:disabled {
-    background-color: #cccccc; /* Disabled button color */
+.indipendent-student-write-test-button:disabled {
+    background-color: #cccccc; /* Disabled  color */
     cursor: not-allowed; /* Change cursor when disabled */
 }
 
-h1 {
-    margin-bottom: 20px;
-}
-.modal {
-    display: flex;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5); /* Darker background for modal */
-}
+    h1 {
+        margin-bottom: 20px;
+    }
 
-.modal-content {
-    background-color: #ffffff;
-    margin: auto; /* Center modal */
-    padding: 20px;
-    border: 1px solid #888;
-    border-radius: 8px;
-    width: 90%; /* Width of modal */
-    max-width: 600px; /* Max width */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2); /* Slightly stronger shadow */
-    transition: all 0.3s ease; /* Smooth transition */
-}
+    .modal {
+        display: flex;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.5);
+        /* Darker background for modal */
+    }
 
-.close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
+    .modal-content {
+        background-color: #ffffff;
+        margin: auto;
+        /* Center modal */
+        padding: 20px;
+        border: 1px solid #888;
+        border-radius: 8px;
+        width: 90%;
+        /* Width of modal */
+        max-width: 600px;
+        /* Max width */
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        /* Slightly stronger shadow */
+        transition: all 0.3s ease;
+        /* Smooth transition */
+    }
 
-.close:hover,
-.close:focus {
-    color: #000; /* Darker color on hover */
-    text-decoration: none;
-    cursor: pointer;
-}
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
 
-h2 {
-    margin-top: 0; /* Remove top margin for header */
-}
+    .close:hover,
+    .close:focus {
+        color: #000;
+        /* Darker color on hover */
+        text-decoration: none;
+        cursor: pointer;
+    }
 
-p {
-    font-size: 1.1rem; /* Slightly larger text for readability */
-}
+    h2 {
+        margin-top: 0;
+        /* Remove top margin for header */
+    }
+
+    p {
+        font-size: 1.1rem;
+        /* Slightly larger text for readability */
+    }
