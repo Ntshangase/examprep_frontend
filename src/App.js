@@ -32,7 +32,6 @@ import StudentDashboards from "./Pages/Student/StudentDashboards";
 import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTest";
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
 import TestReview from "./Pages/Student/Independent/TestReview"
-
 import AddUser from "./Pages/Admin/AddUser";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
 import Analytics from "./Pages/Lecturer/Analytics/Analytics";
@@ -44,13 +43,13 @@ import DataCaptureDashboard from "./Pages/DataCapturer/DataCaptureDashboard"
 import AddQuestions from "./Pages/DataCapturer/AddQuestions"
 import UploadDumps from "./Pages/DataCapturer/UploadDumps"
 import StudentProfile from "./Pages/Student/StudentProfile";
+import IndStudentCourses from "./Pages/Student/Independent/IndStudentCourses";
+import IndStudentCourseDets from "./Pages/Student/Independent/IndStudentCourseDets";
 
 function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/AddUser" element={<AddUser />} />
 				<Route path="/" element={<Login />} />
 				<Route path="/Home" element={<Home />} />
 				<Route path="/AdminLanding" element={<Admin />} />
@@ -75,7 +74,6 @@ function App() {
 				<Route path="/PanelEnrolled" element={<PanelEnrolled />} />
 				<Route path="/Classes" element={<Classes />} />
 				<Route path="/ScheduledTests" element={<ScheduledTests />} />
-				<Route path="/ManageStudents" element={<ManageStudents />} />
 				<Route path="/ManageCourse" element={<ManageCourse />} />
 				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
 				<Route path="/StudPerfom" element={<StudPerfom />} />
@@ -84,7 +82,6 @@ function App() {
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
-				<Route path="/StudentProfile" element={<StudentProfile />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
@@ -93,9 +90,10 @@ function App() {
 				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
 				<Route path="/AddQuestions" element={<AddQuestions />} />
 				<Route path="/UploadDumps" element={<UploadDumps />} />
-
-
-				
+				<Route path="/AddUser" element={<AddUser />} />
+				<Route path="/StudentProfile" element={<StudentProfile />} />
+				<Route path="/IndStudentCourses" element={<IndStudentCourses />} />
+				<Route path="/IndStudentCourseDets" element={<IndStudentCourseDets />} />
 			</Routes>
 		</Router>
 	);

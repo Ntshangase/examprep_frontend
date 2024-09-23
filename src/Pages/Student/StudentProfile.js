@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Navbar from "../../Components/Navbar/Navbar";
-import Sidebar from "../../Components/Sidebar/Sidebar";
+import EnrolledStudentSidebar from "../../Components/Sidebar/EnrolledStudentSidebar";
 import './StudentProfile.css';
+
 
 const StudentProfile = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const [studentInfo, setStudentInfo] = useState({
-    imageUrl: "/assets/nightcoder.jpg",
+    imageUrl: "/assets/images.jpeg",
     name: "John Zulu",
     gender: "Male",
     role: "Student",
@@ -37,7 +38,7 @@ const StudentProfile = () => {
     <div className="profile-page">
       <Navbar />
       <div className="content">
-        <Sidebar />
+        <EnrolledStudentSidebar />
         <div className="main-content">
           <div className="profile-details">
             <h1>Profile</h1>
