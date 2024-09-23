@@ -67,7 +67,7 @@ const IndStudentCreateTest = () => {
   };
 
   return (
-    <div className="lecturer-dashboard">
+    <div className="generate-test-dashboard">
       <Navbar />
       <div className="dashboard-content">
         <Sidebar />

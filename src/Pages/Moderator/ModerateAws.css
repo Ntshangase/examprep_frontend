@@ -1,122 +1,126 @@
 /* General Layout */
 .exam-prep-container {
-    display: flex;
-    height: 100vh;
-    background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+  background-color: #f5f5f5;
+  box-sizing: border-box; /* Ensures padding and borders don't overflow */
+  overflow-y: auto; /* Allow scrolling if content overflows */
+}
+
+/* Main Content Styles */
+.main-content {
+  width: 80%;
+  margin: 0 auto; /* Center the content */
+  flex: 1; /* Allow the content to expand and take available space */
+  padding: 20px; /* Add padding to make it look nicer */
+  box-sizing: border-box;
+}
+
+/* Profile Section */
+.profile-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.profile-picture img {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
+
+.profile-info {
+  margin-left: 20px;
+}
+
+.profile-info h4 {
+  margin-bottom: 10px;
+}
+
+/* Questions Section */
+.questions-section {
+  margin-top: 20px;
+}
+
+.questions-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+}
+
+.questions-table th, .questions-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.questions-table th {
+  background-color: #f0f0f0;
+}
+
+.approve-btn, .view-btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/* Back Button */
+.back-button {
+  margin-top: 20px;
+  display: flex;
+}
+
+.back-button button {
+  background-color: #3498db;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.back-button button i {
+  font-size: 18px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+  .exam-prep-container {
+    flex-direction: column;
   }
-  
-  /* Main Content Styles */
+
   .main-content {
-    width: 80%;
-    padding: 20px;
-  }
-  
-  /* Profile Section */
-  .profile-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-picture img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-  }
-  
-  .profile-info {
-    margin-left: 20px;
-  }
-  
-  .profile-info h4 {
-    margin-bottom: 10px;
-  }
-  
-  /* Questions Section */
-  .questions-section {
-    margin-top: 20px;
-  }
-  
-  .questions-table {
     width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-  }
-  
-  .questions-table th, .questions-table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .questions-table th {
-    background-color: #f0f0f0;
-  }
-  
-  .approve-btn, .view-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    font-size: 20px;
+    padding: 15px; /* Adjust padding for smaller screens */
   }
 
-  
-  /* Back Button */
-  .back-button {
-    margin-top: 20px;
+  .sidebar {
+    width: 100%;
+    text-align: center;
   }
-  
-  .back-button button {
-    background-color: #3498db;
-    color: white;
-    padding: 10px 20px;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .back-button button i {
-    font-size: 18px;
-  }
-  
-  /* Media Queries for Responsiveness */
-  @media (max-width: 768px) {
-    .exam-prep-container {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      text-align: center;
-    }
-  
-    .main-content {
-      width: 100%;
-    }
-  }
-  
-  /* icons */
-  .approve-icon {
-    color: green;
-    font-size: 20px;
-  }
-  
-  .view-icon {
-    color: #3498db;
-    font-size: 20px;
-  }
-  
-  .back-icon {
-    color: green;
-    font-size: 20px;
-  }
+}
 
-  /* Modal Styles */
+/* Icons */
+.approve-icon {
+  color: green;
+  font-size: 20px;
+}
+
+.view-icon {
+  color: #3498db;
+  font-size: 20px;
+}
+
+.back-icon {
+  color: green;
+  font-size: 20px;
+}
+
+/* Modal Styles */
 .modal {
   position: fixed;
   top: 0;
