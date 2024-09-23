@@ -43,6 +43,7 @@ import Login from "./Pages/Auth/Login";
 import DataCaptureDashboard from "./Pages/DataCapturer/DataCaptureDashboard"
 import AddQuestions from "./Pages/DataCapturer/AddQuestions"
 import UploadDumps from "./Pages/DataCapturer/UploadDumps"
+import StudentProfile from "./Pages/Student/StudentProfile";
 
 function App() {
 	return (
@@ -83,8 +84,7 @@ function App() {
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
-
-				
+				<Route path="/StudentProfile" element={<StudentProfile />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
