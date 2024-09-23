@@ -1,0 +1,149 @@
+.login-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    max-width: 100%;
+    background-image: url("../../../public/assets/login-image.png");
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+.login-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 30px;
+    background-color: grey;
+    opacity: 0.7;
+    border-radius: 40px;
+    padding: 0;
+}
+
+.login-form {
+    max-width: 250px;
+    padding: 0; /* No additional padding inside the form container */
+    text-align: center;
+}
+
+.login-h2 {
+    color: #58BAE7; /* Contrast the header text with the background */
+    margin-bottom: 20px;
+    font-family: 'Quicksand';
+    font-weight: bolder; /* Make the text bolder */
+    font-size: 45px; /* Increase the font size */
+    white-space: nowrap;
+    padding: 40px; /* Adds padding around the header */
+    align-self: center;
+    margin-top: 0;
+}
+
+.login-input-group {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left; /* Keep labels aligned to the left */
+}
+
+.login-input-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: white; /* Label color to match the theme */
+    font-size: 14px;
+}
+
+.login-placeholder-input{
+    width: 90%; /* Standardized width to 100% */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 14px;
+    outline: none;
+    background-color: #f2f2f2; /* Light background for input fields */
+}
+
+.login-input-group input:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+.login-forgot-password {
+    margin-top: -12px;
+    margin-bottom: 10px;
+    text-align: right; /* Align to the left, matching the label alignment */
+}
+
+.login-forgot-password a {
+    color: #0801db; /* Blue color for visibility */
+    text-decoration: none;
+    font-size: 14px; /* Match the size of the input text */
+    display: inline-block; /* Ensures it behaves like a block but does not take full width */
+    margin-left: 5px; /* Adds a small space from the left */
+}
+
+.login-forgot-password a:hover {
+    text-decoration: underline; /* Add an underline on hover for interactivity */
+}
+
+.login-button {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-button:hover {
+    background-color: #0801db;
+}
+
+.login-signup {
+    margin-top: 20px;
+    font-size: 14px;
+    color: white;
+}
+
+.login-signup a {
+    color: #0801db;
+    text-decoration: none;
+}
+
+.login-signup a:hover {
+    text-decoration: underline;
+}
+
+
+.login-right-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin: 30px;
+    padding: 0;
+}
+.login-right-div-h1 {
+    color: white;
+    font-family: 'Arial Rounded MT Bold', 'Helvetica Rounded', Arial, sans-serif; /* Fonts with rounder letters */
+    font-weight: bold;
+    font-size: 50px;
+    white-space: nowrap;
+    padding: 40px;
+    align-self: center;
+    margin-top: 0;
+}
+
+.login-right-div-text {
+    color: white;
+    font-family: 'Arial Rounded';
+    font-size: 30px;
+    padding: 40px;
+    align-self: center;
+    margin-top: 0;
+    white-space: normal;
+}

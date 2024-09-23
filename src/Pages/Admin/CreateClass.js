@@ -92,7 +92,7 @@ export default function CreateClass() {
 							</div>
 
 							{/* Submit Button */}
-							<button type="submit">Update Class</button>
+							<button type="submit" className="create-class-submit-button ">Update Class</button>
 						</form>
 					</div>
 					<div className="content-body2">

@@ -32,7 +32,7 @@
     min-height: 100px;
   }
   
-  .submit-button {
+  .add-course-submit-button {
     display: inline-block;
     background-color: #1771c5;
     color: white;
@@ -43,6 +43,6 @@
     cursor: pointer;
   }
   
-  .submit-button:hover {
+  .add-course-submit-button:hover {
     background-color: blue;
   }

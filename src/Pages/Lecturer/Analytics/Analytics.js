@@ -17,8 +17,8 @@ const Analytics = () => {
             <div className={styles['analytics-content']}>
                 <Sidebar />
                 <div className={styles['content-area']}>
-                    <h2>Analytics</h2>
-  
+                    <h2>GenerateTestPage Test</h2>
+                    <p>{analyticsData.testName}</p>
                 </div>
             </div>
         </div>
