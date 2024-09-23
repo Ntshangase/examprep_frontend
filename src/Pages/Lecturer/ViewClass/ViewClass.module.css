@@ -35,12 +35,12 @@
     flex-grow: 1;
 }
 
-.courseInfo h1 {
+.view_course_info h1 {
     margin: 0;
     color: #333; /* Dark grey for text */
 }
 
-.courseInfo p {
+.view_course_info p {
     margin: 5px 0;
     color: #666; /* Medium grey for paragraph */
 }
@@ -81,7 +81,7 @@
     cursor: pointer;
     justify-content: flex-end;
     display: flex;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 
 .createTestButton:hover {
@@ -99,4 +99,10 @@
 
 .studentsButton:hover {
     text-decoration: none; /* Change on hover if needed */
+}
+
+.view_course_info p.courseTitle {
+    font-weight: bold;
+    font-size: 18px; /* Adjust font size if needed */
+    color: #2C3E50; /* Darker text color */
 }

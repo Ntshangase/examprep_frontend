@@ -43,7 +43,6 @@ function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Home />} />
 				<Route path="/AddUser" element={<AddUser />} />
 				<Route path="/" element={<Login />} />
 				<Route path="/Home" element={<Home />} />
