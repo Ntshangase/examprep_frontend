@@ -6,7 +6,7 @@ export default function EditCourse() {
   const [courseDescription, setCourseDescription] = useState(
     'The course intends to prepare individuals to function as Cloud Administrators who are responsible for overseeing cloud platforms and computing resources. The curriculum emphasizes ensuring seamless cloud service delivery and maintaining security protocols to safeguard against unauthorized access, threats, and other risks.'
   );
-  const [domains, setDomains] = useState(['Domain A', 'Domain B', 'Domain C', 'Domain D']);
+  const [domains] = useState(['Domain A', 'Domain B', 'Domain C', 'Domain D']);
 
   const handleCourseNameChange = (e) => setCourseName(e.target.value);
   const handleCourseDescriptionChange = (e) => setCourseDescription(e.target.value);

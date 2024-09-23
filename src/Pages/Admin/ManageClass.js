@@ -1,8 +1,8 @@
 import React from 'react';
 import './ManageClass.css';
-import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
 import courses from '../../Data/Courses.json';
 import { useNavigate } from 'react-router-dom';
+import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
 
 export default function ManageClass() {
   const navigate = useNavigate();
