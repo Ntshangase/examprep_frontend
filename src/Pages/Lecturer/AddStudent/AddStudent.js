@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../../../Components/Navbar/Navbar";
-import Sidebar from "../../../Components/Sidebar/Sidebar";
+import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
 import styles from './AddStudent.module.css'; // Updated to use CSS modules
 
 const AddStudent = () => {
@@ -56,9 +55,8 @@ const AddStudent = () => {
 
     return (
         <div className={styles['add-student']}>
-            <Navbar />
             <div className={styles['addstudent-content']}>
-                <Sidebar />
+            <LecturerSidebar />
                 <div className={styles['content-area']}>
                     <h2>Add New Student</h2>
                     <form onSubmit={handleSubmit} className={styles['add-student-form']}>

@@ -11,7 +11,7 @@ const CourseCard = ({ id, title, image }) => {
   const navigate = useNavigate();
 
   const handleCourseClick = () => {
-    navigate(`/viewclass/${id}`);
+    navigate(`/AssignedClasses/${id}`);
   };
 
   return (
