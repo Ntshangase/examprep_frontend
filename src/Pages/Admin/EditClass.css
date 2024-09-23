@@ -206,16 +206,16 @@ input[type="date"]:focus {
 	outline: none;
 }
 
-/* Button styling */
-.button-update-class {
+
+.edit-class-submit-button {
 	display: block;
-	width: 100%;
+	width: 90%;
 	padding: 16px;
-	background-color: #4d9fce;
+	background-color: var(--color-primary);
 	color: white;
 	border: none;
 	border-radius: 8px;
-	font-size: 20px; /* Larger button text */
+	font-size: 20px;
 	cursor: pointer;
 	transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
 }
@@ -227,24 +227,19 @@ input[type="date"]:focus {
 	color: white;
 	border: none;
 	border-radius: 8px;
-	font-size: 20px; /* Larger button text */
+	font-size: 20px;
 	cursor: pointer;
 	transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
 }
 
-/* Button hover and active states */
-.button-update-class:hover {
+
+.edit-class-submit-button:hover {
 	background-color: #357bb5;
 	transform: translateY(-2px); /* Lift effect on hover */
 }
 .buttonCancel:hover {
 	background-color: #ce2c27;
 	transform: translateY(-2px); /* Lift effect on hover */
-}
-
-.button-update-class:active {
-	background-color: #d83e3e;
-	transform: translateY(0); /* Reset lift effect on click */
 }
 
 .cancel-button-div {
@@ -273,7 +268,7 @@ input[type="date"]::placeholder {
 		padding: 30px;
 	}
 
-	.button-update-class {
+	.edit-class-submit-button {
 		font-size: 18px;
 	}
 }

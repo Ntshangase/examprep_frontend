@@ -75,7 +75,10 @@ export default function AddCourse() {
         <div className="buttons">
           <button onClick={handleUpdateCourse} className="update-button">Add Course</button>
         </div>
-      </main>
+        <button type="submit" className="add-course-submit-button">
+          Add Course
+        </button>
+      </form>
     </div>
   );
 }

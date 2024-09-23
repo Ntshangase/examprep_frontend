@@ -46,22 +46,22 @@ textarea {
     resize: none; /* Prevent resizing */
 }
 
-button {
+.indipendent-student-write-test-button {
     padding: 10px 20px;
     border: none;
     border-radius: 5px;
-    background-color: #007bff; /* Primary button color */
+    background-color: #007bff; /* Primary color */
     color: white;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
-button:hover {
+.indipendent-student-write-test-button:hover {
     background-color: #0056b3; /* Darker shade on hover */
 }
 
-button:disabled {
-    background-color: #cccccc; /* Disabled button color */
+.indipendent-student-write-test-button:disabled {
+    background-color: #cccccc; /* Disabled  color */
     cursor: not-allowed; /* Change cursor when disabled */
 }
 

@@ -18,7 +18,7 @@ const StudentDashboard = () => {
               <h2>Independent Student</h2>
               <p>Access resources and manage your learning independently.</p>
             </div>
-            <div className="card" onClick={() => window.location.href='/enrolled-student'}>
+            <div className="card" onClick={() => window.location.href='/Classes'}>
               <img src="/assets/enrolledStudent.jpeg" alt="Enrolled Student" />
               <h2>Enrolled Student</h2>
               <p>View courses, schedules, and track your progress.</p>

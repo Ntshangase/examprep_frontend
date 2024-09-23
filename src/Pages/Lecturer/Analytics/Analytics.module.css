@@ -1,0 +1,25 @@
+/* General container styling */
+.analytics {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .analytics-content {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .analytics-content {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+    }
+  }
+  

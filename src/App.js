@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import Admin from "./Pages/Admin/AdminLanding"
+import Admin from "./Pages/Admin/AdminLanding";
 import ModerateAws from "./Pages/Moderator/ModerateAws";
 import ModeratorDashboard from "./Pages/Moderator/ModeratorDashboard";
 import QuestionView from "./Pages/Moderator/QuestionView";
@@ -23,7 +23,7 @@ import CreateClass from "./Pages/Admin/CreateClass";
 import EditClass from "./Pages/Admin/EditClass";
 import EditCourse from "./Pages/Admin/EditCourse";
 import ManageClass from "./Pages/Admin/ManageClass";
-import ManageStudents from "./Pages/Admin/ManageStudents"
+import ManageStudents from "./Pages/Admin/ManageStudents";
 import PanelEnrolled from "./Pages/Student/Enrolled/PanelEnrolled";
 import Classes from "./Pages/Student/Enrolled/Classes";
 import ScheduledTests from "./Pages/Student/Enrolled/ScheduledTests";
@@ -33,8 +33,11 @@ import IndStudentCreateTest from "./Pages/Student/Independent/IndStudentCreateTe
 import IndStudentWriteTest from "./Pages/Student/Independent/IndStudentWriteTest";
 import AddUser from "./Pages/Admin/AddUser";
 import AddStudent from "./Pages/Lecturer/AddStudent/AddStudent";
-import './Styles/global.css';
+import Analytics from "./Pages/Lecturer/Analytics/Analytics";
+import TestGeneratePage from "./Pages/Lecturer/TestGeneratePage/TestGeneratePage";
+import "./Styles/global.css";
 import ApproveStudent from "./Pages/Admin/ApproveStudent";
+import Login from "./Pages/Auth/Login";
 
 function App() {
 	return (
@@ -42,6 +45,8 @@ function App() {
 			<Routes>
 				<Route path="/" element={<Home />} />
 				<Route path="/AddUser" element={<AddUser />} />
+				<Route path="/" element={<Login />} />
+				<Route path="/Home" element={<Home />} />
 				<Route path="/AdminLanding" element={<Admin />} />
 				<Route path="/ModerateAws" element={<ModerateAws />} />
 				<Route path="/ModeratorDashboard" element={<ModeratorDashboard />} />
@@ -53,7 +58,10 @@ function App() {
 				<Route path="/TestPage" element={<TestPage />} />
 				<Route path="/SubmittedTests" element={<SubmittedTests />} />
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
-				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
+				<Route
+					path="/IndStudentCourseDetails"
+					element={<IndStudentCourseDetail />}
+				/>
 				<Route path="/AddCourse" element={<AddCourse />} />
 				<Route path="/CourseDetails" element={<CourseDetails />} />
 				<Route path="/CreateClass" element={<CreateClass />} />
@@ -71,10 +79,14 @@ function App() {
 				<Route path="/ViewClass" element={<ViewClass />} />
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
-				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
+				<Route
+					path="/IndStudentCreateTest"
+					element={<IndStudentCreateTest />}
+				/>
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
-			
 				<Route path="/AddStudent" element={<AddStudent />} />
+				<Route path="/Analytics" element={<Analytics />} />
+				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 			</Routes>
 		</Router>

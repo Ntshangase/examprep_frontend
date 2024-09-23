@@ -87,7 +87,7 @@ export default function EditClass() {
 							</div>
 
 							{/* Submit Button */}
-							<button className="button-update-class" type="submit">Update Class</button>
+							<button className="edit-class-submit-button" onClick={() => navigate("/EditClass")}>Update Class</button>
 						</form>
 					</div>
 					<div className="content-body-half2">
