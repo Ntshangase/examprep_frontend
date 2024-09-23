@@ -78,7 +78,7 @@ export default function AddCourse() {
         <button type="submit" className="add-course-submit-button">
           Add Course
         </button>
-      </form>
+      </main>
     </div>
   );
 }
