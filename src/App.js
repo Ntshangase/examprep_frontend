@@ -79,8 +79,6 @@ function App() {
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
-
-				
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
@@ -91,7 +89,7 @@ function App() {
 				<Route path="/UploadDumps" element={<UploadDumps />} />
 
 
-				
+
 				<Route path="/AddUser" element={<AddUser />} />
 			</Routes>
 		</Router>
