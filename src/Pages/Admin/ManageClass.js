@@ -2,7 +2,7 @@ import React from 'react';
 import './ManageClass.css';
 import courses from '../../Data/Courses.json';
 import { useNavigate } from 'react-router-dom';
-import Sidebar from '../../components/Sidebar/Sidebar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 
 export default function ManageClass() {
   const navigate = useNavigate();
