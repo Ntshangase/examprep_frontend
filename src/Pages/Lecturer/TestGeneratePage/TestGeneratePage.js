@@ -61,7 +61,7 @@ const TestGeneratePage = () => {
 
   const handleStartTest = () => {
     setIsModalOpen(false);
-    navigate('/ViewClass', { state: { selectedTopics } });
+    navigate('/ViewClass/1', { state: { selectedTopics } });
   };
 
   return (

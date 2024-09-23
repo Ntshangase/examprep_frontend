@@ -17,7 +17,7 @@ const SubmittedTests = () => {
     const navigate = useNavigate(); // Initialize useNavigate
 
     const handleTestClick = (testId) => {
-        navigate(`/test-details/${testId}`); // Navigate to the test details page
+        navigate(`/StudentsSubmitted/${testId}`); // Navigate to the test details page
     };
 
     return (

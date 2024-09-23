@@ -16,6 +16,9 @@ const ViewClass = () => {
     const handleAddStudent=() => {
         navigate('/AddStudent');
     };
+    const handleCreateTest=() => {
+        navigate('/TestGeneratePage');
+    };
 
     return (
         <div className={styles.classDetails}>
@@ -46,7 +49,7 @@ const ViewClass = () => {
 
                     {/* Scheduled Tests Section */}
                     <div className={styles.scheduledTests}>
-                    <button className={styles.createTestButton}>Create Test</button>
+                    <button className={styles.createTestButton} onClick={handleCreateTest}>Create Test</button>
                         <h2>Scheduled Tests</h2>
                         <div className={styles.testList}>
                             {/* Example test entries */}
