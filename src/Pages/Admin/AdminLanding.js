@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom"; // Import Link from react-router-dom
 import Navbar from "../../Components/Navbar/Navbar";
-import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
-import "./AdminLanding.css";
 import './AdminLanding.css'; // Import the CSS file
 
 export default function AdminLanding() {
