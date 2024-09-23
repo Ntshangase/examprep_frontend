@@ -43,8 +43,6 @@ function App() {
 	return (
 		<Router>
 			<Routes>
-				<Route path="/" element={<Home />} />
-				<Route path="/AddUser" element={<AddUser />} />
 				<Route path="/" element={<Login />} />
 				<Route path="/Home" element={<Home />} />
 				<Route path="/AdminLanding" element={<Admin />} />
@@ -82,6 +80,7 @@ function App() {
 				<Route path="/Analytics" element={<Analytics />} />
 				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
+				<Route path="/AddUser" element={<AddUser />} />
 			</Routes>
 		</Router>
 	);
