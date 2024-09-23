@@ -50,10 +50,7 @@ function App() {
 				<Route path="/TestPage" element={<TestPage />} />
 				<Route path="/SubmittedTests" element={<SubmittedTests />} />
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
-				<Route
-					path="/IndStudentCourseDetails"
-					element={<IndStudentCourseDetail />}
-				/>
+				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
 				<Route path="/AddCourse" element={<AddCourse />} />
 				<Route path="/CourseDetails" element={<CourseDetails />} />
 				<Route path="/CreateClass" element={<CreateClass />} />
@@ -68,13 +65,10 @@ function App() {
 				<Route path="/ManageCourse" element={<ManageCourse />} />
 				<Route path="/StudentsSubmitted" element={<StudentsSubmitted />} />
 				<Route path="/StudPerfom" element={<StudPerfom />} />
-				<Route path="/ViewClass" element={<ViewClass />} />
+				<Route path="/viewclass/:courseId" element={<ViewClass />} />
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses" element={<AssignedClasses />} />
-				<Route
-					path="/IndStudentCreateTest"
-					element={<IndStudentCreateTest />}
-				/>
+				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
@@ -84,4 +78,5 @@ function App() {
 		</Router>
 	);
 }
+
 export default App;
