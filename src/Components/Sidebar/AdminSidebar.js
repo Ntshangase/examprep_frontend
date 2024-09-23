@@ -13,13 +13,13 @@ export default function AdminSidebar() {
 					<Link to="/AdminLanding">Home</Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/ManageCourse">Manage Classes</Link>
+					<Link to="/ManageUser">Manage Users</Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/ManageClass">Manage Courses</Link>
+					<Link to="/ManageCourse">Manage Courses</Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/ManageStudents">Manage Students</Link>
+					<Link to="/ManageClass">Manage Classes</Link>
 				</li>
 			</ul>
 		</aside>

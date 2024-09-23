@@ -22,13 +22,13 @@ export default function AdminLanding() {
                         <i className="fas fa-user-plus fa-2x"></i>
                         <p>Manage Users</p>
                     </Link>
-                    <Link to="/ManageClass" className="feature-card">
-                        <i className="fas fa-chalkboard-teacher fa-2x"></i>
-                        <p>Manage Classes</p>
-                    </Link>
                     <Link to="/ManageCourse" className="feature-card">
-                        <i className="fas fa-book fa-2x"></i>
+                        <i className="fas fa-chalkboard-teacher fa-2x"></i>
                         <p>Manage Courses</p>
+                    </Link>
+                    <Link to="/ManageClass" className="feature-card">
+                        <i className="fas fa-book fa-2x"></i>
+                        <p>Manage Classes</p>
                     </Link>
                 </div>
             </div>
