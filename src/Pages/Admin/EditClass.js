@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import "./EditClass.css";
+import React, { useState } from 'react';
+import './EditClass.css';
 import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -87,7 +87,7 @@ export default function EditClass() {
 							</div>
 
 							{/* Submit Button */}
-							<button className="button-update-class" type="submit">Update Class</button>
+							<button className="edit-class-submit-button" onClick={() => navigate("/EditClass")}>Update Class</button>
 						</form>
 					</div>
 					<div className="content-body-half2">
