@@ -29,10 +29,10 @@ const domains = [
   },
 ];
 
-const IndStudentCreateTest = () => {
+const TestGeneratePage = () => {
   const [selectedTopics, setSelectedTopics] = useState({});
   const [totalWeight, setTotalWeight] = useState(0);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleTopicChange = (domainTitle, topic, value) => {
@@ -46,7 +46,6 @@ const IndStudentCreateTest = () => {
 
     setSelectedTopics(newSelectedTopics);
 
-    // Calculate total weight
     let total = 0;
     Object.values(newSelectedTopics).forEach((domainTopics) => {
       Object.values(domainTopics).forEach((count) => {
@@ -57,30 +56,27 @@ const IndStudentCreateTest = () => {
   };
 
   const handleGenerateTest = () => {
-    setIsModalOpen(true); // Show the modal
+    setIsModalOpen(true);
   };
 
   const handleStartTest = () => {
-    setIsModalOpen(false); // Close the modal
-    // Navigate to the test writing page with selected topics
+    setIsModalOpen(false);
     navigate('/ViewClass', { state: { selectedTopics } });
   };
 
   return (
-    <div className="lecturer-dashboard">
+    <div className="dashboard">
       <Navbar />
       <div className="dashboard-content">
         <Sidebar />
-        <div className="content-area">
-          <div className="create-test-container">
+        <div className="main-content">
+          <div className="test-container">
             <h1>Select Domains to Generate Test</h1>
-
             {domains.map((domain) => (
               <div key={domain.title} className="domain-section">
                 <h2>{domain.title}</h2>
-
                 {domain.topics.map((topic) => (
-                  <div key={topic} className="topic-item">
+                  <div key={topic} className="topic-row">
                     <label>{topic}</label>
                     <input
                       type="number"
@@ -94,21 +90,18 @@ const IndStudentCreateTest = () => {
               </div>
             ))}
 
-            <div className="total-weight-section">
+            <div className="total-weight">
               <span>Total Weight for the Test:</span>
               <input type="text" value={totalWeight} readOnly />
             </div>
+            <button className="generate-button" onClick={handleGenerateTest}>
+              Create Test
+            </button>
           </div>
-          <br />
-          <button className="generate-test-button" onClick={handleGenerateTest}>
-            Create Test
-          </button>
 
-
-          {/* Modal */}
           {isModalOpen && (
             <div className="modal-overlay">
-              <div className="modal-content">
+              <div className="modal-box">
                 <p>Click Okay to start the test</p>
                 <button className="modal-button" onClick={handleStartTest}>
                   Okay
@@ -122,4 +115,4 @@ const IndStudentCreateTest = () => {
   );
 };
 
-export default IndStudentCreateTest;
+export default TestGeneratePage;
