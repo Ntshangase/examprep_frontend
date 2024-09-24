@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Navbar from '../../../Components/Navbar/Navbar';
-import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './IndStudentCreateTest.css';
+import IndependentStudentSidebar from '../../../Components/Sidebar/IndependentStudentSidebar';
 
 const domains = [
   {
@@ -68,9 +67,9 @@ const IndStudentCreateTest = () => {
 
   return (
     <div className="generate-test-dashboard">
-      <Navbar />
+      
       <div className="dashboard-content">
-        <Sidebar />
+        <IndependentStudentSidebar />
         <div className="content-area">
           <div className="create-test-container">
             <h1>Select Domains to Generate Test</h1>
