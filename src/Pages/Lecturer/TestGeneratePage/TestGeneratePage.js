@@ -90,11 +90,13 @@ const TestGeneratePage = () => {
 
             <div className="total-weight">
               <span>Total Weight for the Test:</span>
-              <input type="text" value={totalWeight} readOnly />
-            </div>
-            <button className="generate-button" onClick={handleGenerateTest}>
+              <input className="total-weight-input" type="text" value={totalWeight} readOnly />
+
+              <button className="generate-button" onClick={handleGenerateTest}>
               Create Test
             </button>
+            </div>
+
           </div>
 
           {isModalOpen && (
