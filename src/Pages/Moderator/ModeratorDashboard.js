@@ -27,7 +27,7 @@ const ModeratorDashboard = () => {
 
   return (
     <div className="exam-prep-container">
-        <Navbar />
+        
         <div className="dashboard-content">
           <Sidebar />
           <div className="content-area">
