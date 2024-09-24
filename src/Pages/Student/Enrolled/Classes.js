@@ -1,14 +1,13 @@
 import React from 'react';
-import Navbar from "../../../Components/Navbar/Navbar";
-import Sidebar from "../../../Components/Sidebar/Sidebar";
 import './Classes.css';
+import EnrolledStudentSidebar from '../../../Components/Sidebar/EnrolledStudentSidebar';
 
 const Classes = () => {
   return (
     <div className="classes-page">
-      <Navbar />
+      
       <div className="content">
-        <Sidebar />
+        <EnrolledStudentSidebar />
         <div className="main-content">
           <h1>Active Classes</h1>
           

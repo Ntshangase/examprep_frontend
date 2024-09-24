@@ -1,7 +1,6 @@
 import React from 'react';
-import Navbar from "../../../Components/Navbar/Navbar";
-import Sidebar from "../../../Components/Sidebar/Sidebar";
 import './ScheduledTests.css';
+import EnrolledStudentSidebar from '../../../Components/Sidebar/EnrolledStudentSidebar';
 
 const ScheduledTests = () => {
   const tests = [
@@ -33,9 +32,9 @@ const ScheduledTests = () => {
 
   return (
     <div className="scheduled-tests-page">
-      <Navbar />
+      
       <div className="content">
-        <Sidebar />
+        <EnrolledStudentSidebar />
         <div className="main-content">
           <h1 className="page-heading">Scheduled Tests</h1>
 

@@ -42,6 +42,9 @@ import Login from "./Pages/Auth/Login";
 import DataCaptureDashboard from "./Pages/DataCapturer/DataCaptureDashboard"
 import AddQuestions from "./Pages/DataCapturer/AddQuestions"
 import UploadDumps from "./Pages/DataCapturer/UploadDumps"
+import StudentProfile from "./Pages/Student/StudentProfile";
+import IndStudentCourses from "./Pages/Student/Independent/IndStudentCourses";
+import IndStudentCourseDets from "./Pages/Student/Independent/IndStudentCourseDets";
 
 function App() {
 	return (
@@ -87,10 +90,10 @@ function App() {
 				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
 				<Route path="/AddQuestions" element={<AddQuestions />} />
 				<Route path="/UploadDumps" element={<UploadDumps />} />
-
-
-
 				<Route path="/AddUser" element={<AddUser />} />
+				<Route path="/StudentProfile" element={<StudentProfile />} />
+				<Route path="/IndStudentCourses" element={<IndStudentCourses />} />
+				<Route path="/IndStudentCourseDets" element={<IndStudentCourseDets />} />
 			</Routes>
 		</Router>
 	);

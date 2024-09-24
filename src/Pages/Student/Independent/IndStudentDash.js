@@ -1,6 +1,5 @@
 import React from "react";
-import Navbar from "../../../Components/Navbar/Navbar";
-import Sidebar from "../../../Components/Sidebar/Sidebar";
+import IndependentStudentSidebar from '../../../Components/Sidebar/IndependentStudentSidebar';
 import { useNavigate } from 'react-router-dom'; // Import hooks for routing
 import './IndStudentDash.css';
 
@@ -27,9 +26,9 @@ const IndependentStudentCourses = () => {
 
   return (
     <div className="independent-student-courses">
-      <Navbar />
+      
       <div className="dashboard-content">
-        <Sidebar />
+        <IndependentStudentSidebar />
         <div className="content-area">
           <h1>Enrolled Course</h1>
           <div className="enrolled-course-section">
