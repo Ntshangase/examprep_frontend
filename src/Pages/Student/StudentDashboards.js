@@ -7,7 +7,7 @@ import './StudentDashboard.css';
 const StudentDashboard = () => {
   return (
     <div className="student-dashboard">
-      <Navbar />
+      
       <div className="dashboard-content">
         <Sidebar />
         <div className="content-area">
