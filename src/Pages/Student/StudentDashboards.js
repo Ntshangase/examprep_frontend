@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../../../src/Components/Navbar/Navbar';
 import Sidebar from '../../../src/Components/Sidebar/Sidebar';
 
 import './StudentDashboard.css';
