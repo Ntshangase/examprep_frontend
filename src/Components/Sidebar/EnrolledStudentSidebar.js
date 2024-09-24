@@ -18,6 +18,9 @@ const EnrolledStudentSidebar = () => {
 				<li className="sidebar-link">
 					<Link to="/ScheduledTests">Scheduled Tests</Link>
 				</li>
+				<li className="sidebar-link">
+					<Link to="/StudentProfile">Student Profile</Link>
+				</li>
 			</ul>
 		</aside>
 	);
