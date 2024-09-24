@@ -9,7 +9,7 @@ const DataCaptureDashboard = () => {
 
     return (
         <div className="data-capture-dashboard">
-            <Navbar />
+            
             <div className="dashboard-content">
                 <Sidebar />
                 <div className="content-area">
