@@ -1,8 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./ModeratorDashboard.css";
-import Navbar from "../../Components/Navbar/Navbar";
-import Sidebar from "../../Components/Sidebar/Sidebar";
+import ModeratorSidebar from "../../Components/Sidebar/ModeratorSidebar";
 
 const AWSBadge = `${process.env.PUBLIC_URL}/assets/AWS-Cloud-Practitioner-Badge.jpeg`;
 const CompTIABadge = `${process.env.PUBLIC_URL}/assets/CompTIA-A+-Badge.jpg`;
@@ -27,9 +26,8 @@ const ModeratorDashboard = () => {
 
   return (
     <div className="exam-prep-container">
-        <Navbar />
         <div className="dashboard-content">
-          <Sidebar />
+          <ModeratorSidebar />
           <div className="content-area">
             <h2>Select Course to Moderate</h2>
             {/* Certification Badges with Labels */}
