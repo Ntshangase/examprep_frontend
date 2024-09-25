@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faArrowLeftLong, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom'; // Import hooks for routing
 import Navbar from "../../Components/Navbar/Navbar";
-import Sidebar from "../../Components/Sidebar/Sidebar";
 
 const QuestionView = () => {
   // Example data
@@ -38,7 +37,6 @@ const QuestionView = () => {
       <div className="dashboard">
         <Navbar />
         <div className="dashboard-content">
-          <Sidebar />
           <div className="content-area">
 
 

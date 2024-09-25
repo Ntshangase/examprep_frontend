@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './AddUser.css';
-import AdminSideBar from './AdminSideBar';
 import "../../Styles/global.css";
+import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
+import { useNavigate } from 'react-router-dom';
 
 function AddUser() {
   const [formData, setFormData] = useState({
@@ -33,9 +34,11 @@ function AddUser() {
     console.log('User Data:', formData);
   };
 
+  const navigate = useNavigate();
+
   return (
     <div className="add-user-page">
-      <AdminSideBar />
+      <AdminSidebar />
 
       <div className="main-content">
         <h1 className="form-title">Add User</h1>
@@ -81,7 +84,7 @@ function AddUser() {
             <input type="file" name="picture" accept="image/*" onChange={handleFileChange} className="upload-image" />
           </div>
 
-          <button type="submit" className="add-user-btn">Add User</button>
+          <button type="submit" onClick={() => {navigate("/ManageUser")}} className="add-user-btn">Add User</button>
         </form>
       </div>
     </div>
