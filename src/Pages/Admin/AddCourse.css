@@ -1,48 +1,123 @@
+/* Container for the whole page */
 .add-course-container {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 20px;
-    background-color: #f9f9f9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .form-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .form-group input,
-  .form-group textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-  
-  .form-group textarea {
-    resize: vertical;
-    min-height: 100px;
-  }
-  
-  .add-course-submit-button {
-    display: inline-block;
-    background-color: #1771c5;
-    color: white;
-    padding: 10px 15px;
-    font-size: 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .add-course-submit-button:hover {
-    background-color: blue;
-  }
+  display: flex;
+}
+
+/* Main content area */
+.add-course-main {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Main content with form and image */
+.add-course-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex; /* Flexbox layout to place form and image side by side */
+  justify-content: space-between; /* Ensure form and image have space between them */
+  align-items: flex-start; /* Align form and image to the top */
+  gap: 20px; /* Space between the form and image */
+}
+
+/* Form styling */
+.form {
+  flex: 1; /* Form takes up available space */
+}
+
+.input-group {
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.input-group input,
+.input-group textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.input-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Domain button styling */
+.domain-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Adjust spacing between buttons */
+}
+
+.domain-button {
+  background-color: #e7e7e7;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.domain-button:hover {
+  background-color: #d4d4d4;
+}
+
+/* Image upload section */
+.add-course-image-upload {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 300px; /* Fixed width for the image section */
+  margin-right: 260px;
+  margin-top: 50px;
+}
+
+.add-course-image {
+  width: 200px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.upload-button {
+  margin-top: 10px;
+  background-color: #1771c5;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background-color: blue;
+}
+
+/* Submit button styling */
+.add-course-submit-button {
+  display: inline-block;
+  background-color: #1771c5;
+  color: white;
+  padding: 15px 40px;
+  font-size: 18px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 40px;
+  width: 180px;
+}
+
+.add-course-submit-button:hover {
+  background-color: blue;
+}

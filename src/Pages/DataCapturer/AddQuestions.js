@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import {useNavigate } from 'react-router-dom';
-import Navbar from "../../../src/Components/Navbar/Navbar";
-import Sidebar from "../../../src/Components/Sidebar/Sidebar";
+import DatacaptureSidebar from "../../../src/Components/Sidebar/DatacaptureSidebar";
 import './AddQuestions.css';
 
 const AddQuestions = () => {
@@ -23,10 +22,9 @@ const AddQuestions = () => {
 
     return (
         <div className="upload-questions-dashboard">
-            <Navbar />
             <div className="dashboard-content">
 
-                <Sidebar />
+                <DatacaptureSidebar />
                 <div className="content-area">
                     <div className="upload-header" ><h1>Upload Questions</h1> </div>
                     <div className="form-grid">

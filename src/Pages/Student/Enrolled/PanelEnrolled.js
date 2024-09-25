@@ -62,7 +62,7 @@ const PanelEnrolled = () => {
             <p>Are you sure you want to generate a new test for this course?</p>
             <div className="modal-actions">
               <button onClick={() => setModalOpen(false)} className="modal-close-button">Cancel</button>
-              <button onClick={() => window.location.href = '/generate-test'} className="modal-confirm-button">Confirm</button>
+              <button onClick={() => window.location.href = '/IndStudentCreateTest'} className="modal-confirm-button">Confirm</button>
             </div>
           </div>
         </div>

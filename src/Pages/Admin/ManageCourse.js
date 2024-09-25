@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 export default function ManageCourse() {
   const navigate = useNavigate();
 
-  const handleEditCourse = (courseId) => {
+  const handleEditCourse = () => {  //removed courseId
     navigate(`/EditCourse`); // /${courseId} This will lead to a course editing page
   };
 

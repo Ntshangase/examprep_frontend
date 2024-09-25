@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Navbar from "../../../src/Components/Navbar/Navbar";
-import Sidebar from "../../../src/Components/Sidebar/Sidebar";
+import DatacaptureSidebar from "../../../src/Components/Sidebar/DatacaptureSidebar";
 
 import './UploadDumps.css';
 
@@ -25,9 +24,8 @@ const UploadDumps = () => {
 
     return (
         <div className="lecturer-dashboard">
-        <Navbar />
         <div className="dashboard-content">
-          <Sidebar />
+          <DatacaptureSidebar />
           <div className="content-area">
                     <h3 className="page-title">Upload Dump</h3>
 

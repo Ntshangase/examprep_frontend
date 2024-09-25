@@ -3,6 +3,7 @@ import './ManageUser.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPlusCircle,} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
 
 const ManageUser = () => {
   const users = [
@@ -17,20 +18,7 @@ const ManageUser = () => {
 
   return (
     <div className="admin-container">
-      <aside className="sidebar">
-        <div className="logo-container">
-        <img src="/assets/logo.png" alt="Africa College of Technology" className="logo" />
-        </div>
-        <nav>
-        <ul>
-          <li><a href="/">Home</a></li>
-          <li><a href="/AddUser">Add User</a></li>
-          <li><a href="/ManageUser">Manage User</a></li>
-          <li><a href="/ManageClass">Manage Class</a></li>
-          <li><a href="/ManageCourse">Manage Course</a></li>
-        </ul>
-      </nav>
-      </aside>
+      <AdminSidebar />
 
       <main className="main-content">
         <div className='manage-user-heading'>
