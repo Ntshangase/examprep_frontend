@@ -52,7 +52,6 @@ const ScheduledTests = () => {
                 <th>Status</th>
                 <th>Due Date</th>
                 <th>Grade</th>
-                <th>Attempts</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -63,7 +62,6 @@ const ScheduledTests = () => {
                   <td>{test.status}</td>
                   <td>{test.dueDate}</td>
                   <td>{test.grade}</td>
-                  <td>{test.attempts}</td>
                   <td>
                     {test.canAttempt ? (
                       <button className="take-test-button" onClick={TakeTest}>Take Test</button>
