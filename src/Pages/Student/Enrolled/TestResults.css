@@ -1,0 +1,22 @@
+.test-results-page {
+    display: flex;
+  }
+  
+  .test-results-content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  button {
+    background-color: var(--color-primary);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: var(--color-primary-dark);
+  }
+  
