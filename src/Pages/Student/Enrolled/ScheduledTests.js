@@ -1,6 +1,7 @@
 import React from 'react';
 import './ScheduledTests.css';
 import EnrolledStudentSidebar from '../../../Components/Sidebar/EnrolledStudentSidebar';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const ScheduledTests = () => {
   const tests = [
@@ -29,6 +30,12 @@ const ScheduledTests = () => {
       canAttempt: true,
     },
   ];
+
+  const navigate = useNavigate();
+
+  const TakeTest = () => {
+    navigate('/TakeTest');
+  };
 
   return (
     <div className="scheduled-tests-page">
@@ -59,7 +66,7 @@ const ScheduledTests = () => {
                   <td>{test.attempts}</td>
                   <td>
                     {test.canAttempt ? (
-                      <button className="take-test-button">Take Test</button>
+                      <button className="take-test-button" onClick={TakeTest}>Take Test</button>
                     ) : (
                       <span>N/A</span>
                     )}
