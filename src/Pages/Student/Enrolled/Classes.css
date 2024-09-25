@@ -6,9 +6,10 @@
   
   .content {
     display: flex;
+    flex-direction: row;
     height: 100vh;
   }
-  
+
   .main-content {
     flex: 1; /* Allows it to fill the remaining space next to the sidebar */
     padding: 20px;

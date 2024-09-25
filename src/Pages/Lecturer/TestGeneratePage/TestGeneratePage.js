@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Sidebar from '../../../Components/Sidebar/Sidebar';
+import LecturerSidebar from '../../../Components/Sidebar/LecturerSidebar';
 import './TestGeneratePage.css';
 
 const domains = [
@@ -66,7 +66,7 @@ const TestGeneratePage = () => {
   return (
     <div className="dashboard">
       <div className="dashboard-content">
-        <Sidebar />
+        <LecturerSidebar />
         <div className="main-content">
           <div className="test-container">
             <h1>Select Domains to Generate Test</h1>

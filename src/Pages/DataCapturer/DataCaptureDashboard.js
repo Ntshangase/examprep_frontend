@@ -1,7 +1,6 @@
 import React from "react";
 import {useNavigate } from 'react-router-dom';
-import Navbar from "../../../src/Components/Navbar/Navbar";
-import Sidebar from "../../../src/Components/Sidebar/Sidebar";
+import DatacaptureSidebar from "../../../src/Components/Sidebar/DatacaptureSidebar";
 import './DataCaptureDashboard.css';  // CSS for styling
 
 const DataCaptureDashboard = () => {
@@ -9,9 +8,8 @@ const DataCaptureDashboard = () => {
 
     return (
         <div className="data-capture-dashboard">
-            
             <div className="dashboard-content">
-                <Sidebar />
+                <DatacaptureSidebar />
                 <div className="content-area">
                     <h1>Welcome to Course Prep System</h1>
                     <p>Handle all your course preparation needs in one place, developed by the Fly By Night Team</p>

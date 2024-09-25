@@ -3,7 +3,6 @@ import './ModerateAws.css'; // Import CSS
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle, faEye, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import Navbar from '../../Components/Navbar/Navbar';
-import Sidebar from '../../Components/Sidebar/Sidebar';
 import { useLocation, useNavigate } from 'react-router-dom'; // Import hooks for routing
 
 
@@ -61,7 +60,6 @@ const ModerateAws = () => {
       <div className="Moderator-dashboard">
         <Navbar />
         <div className="dashboard-content">
-          <Sidebar />
           <div className="content-area">
             <div className="main-content">
               <h3>Moderating: {course ? course.name : "Course Not Selected"}</h3>
