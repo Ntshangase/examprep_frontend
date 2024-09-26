@@ -48,7 +48,7 @@ export default function AddCourse() {
       <AdminSidebar />
 
       <main className="add-course-main">
-        <h1>Add Course</h1>
+        <h1 className="add-course-title">Add Course</h1>
         <form className="add-course-form" onSubmit={handleSubmit}>
           <div className="add-course-form-group">
             <label>Course Name</label>
@@ -73,12 +73,12 @@ export default function AddCourse() {
 
           <div className="add-course-form-group">
             <label>Upload Course Image</label>
-            <input type="file" alt='courseImage' onChange={handleCourseImageChange} accept="image/*" />
+            <input type="file" alt="courseImage" onChange={handleCourseImageChange} accept="image/*" />
           </div>
 
-          <div className="domains-section">
+          <div className="add-course-domains-section">
             {domains.map((domain, domainIndex) => (
-              <div key={domainIndex} className="domain-group">
+              <div key={domainIndex} className="add-course-domain-group">
                 <div className="add-course-form-group">
                   <label>Domain Name</label>
                   <input
@@ -90,10 +90,10 @@ export default function AddCourse() {
                   />
                 </div>
 
-                <div className="topics-section">
+                <div className="add-course-topics-section">
                   <label>Topics</label>
                   {domain.topics.map((topic, topicIndex) => (
-                    <div key={topicIndex} className="add-course-form-group topic-input">
+                    <div key={topicIndex} className="add-course-form-group add-course-topic-input">
                       <input
                         type="text"
                         value={topic}
@@ -102,19 +102,19 @@ export default function AddCourse() {
                       />
                     </div>
                   ))}
-                  <button type="button" className="add-topic-button" onClick={() => handleAddTopic(domainIndex)}>
+                  <button type="button" className="add-course-add-topic-button" onClick={() => handleAddTopic(domainIndex)}>
                     + Add Topic
                   </button>
                 </div>
               </div>
             ))}
 
-            <button type="button" className="add-domain-button" onClick={handleAddDomain}>
+            <button type="button" className="add-course-add-domain-button" onClick={handleAddDomain}>
               + Add Domain
             </button>
           </div>
 
-          <button type="submit" className="submit-button">
+          <button type="submit" className="add-course-submit-button">
             Add Course
           </button>
         </form>

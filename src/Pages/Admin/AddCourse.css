@@ -12,7 +12,7 @@
   flex-direction: column;
 }
 
-h1 {
+.add-course-title {
   text-align: center;
   margin-bottom: 20px;
 }
@@ -50,27 +50,27 @@ textarea {
   resize: vertical;
 }
 
-.domains-section {
+.add-course-domains-section {
   margin-top: 20px;
 }
 
-.domain-group {
+.add-course-domain-group {
   margin-bottom: 30px;
   border: 1px solid #e0e0e0;
   padding: 15px;
   border-radius: 8px;
 }
 
-.topics-section {
+.add-course-topics-section {
   margin-top: 10px;
 }
 
-.topic-input {
+.add-course-topic-input {
   margin-bottom: 10px;
 }
 
-.add-topic-button,
-.add-domain-button {
+.add-course-add-topic-button,
+.add-course-add-domain-button {
   background-color: #1771c5;
   color: white;
   padding: 10px 15px;
@@ -80,12 +80,12 @@ textarea {
   margin-top: 10px;
 }
 
-.add-topic-button:hover,
-.add-domain-button:hover {
+.add-course-add-topic-button:hover,
+.add-course-add-domain-button:hover {
   background-color: #145da0;
 }
 
-.submit-button {
+.add-course-submit-button {
   background-color: #1771c5;
   color: white;
   padding: 15px;
@@ -97,7 +97,7 @@ textarea {
   margin-top: 20px;
 }
 
-.submit-button:hover {
+.add-course-submit-button:hover {
   background-color: #145da0;
 }
 
@@ -106,7 +106,7 @@ textarea {
     padding: 10px;
   }
 
-  .submit-button {
+  .add-course-submit-button {
     font-size: 16px;
   }
 }
