@@ -35,6 +35,7 @@ const TestGeneratePage = () => {
   const [selectedTopics, setSelectedTopics] = useState({});
   const [totalWeight, setTotalWeight] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(''); // For displaying validation errors
   const navigate = useNavigate();
 
   const handleTopicChange = (domainTitle, topic, value) => {
@@ -78,16 +79,29 @@ const TestGeneratePage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission logic here
+    const grade = Number(totalGrade);
+    const weight = Number(totalWeight);
+
+    // Validation logic
+    if (grade < weight) {
+      setErrorMessage('Total grade must be greater than or equal to the total weight.');
+      return;
+    }
+    if (weight <= 3) {
+      setErrorMessage('Total weight for the test must be greater than 3.');
+      return;
+    }
+
+    setErrorMessage(''); // Clear any previous error messages
     handleGenerateTest(e); // Call the function to generate the test
   };
 
   return (
     <div className="dashboard">
       <div className="dashboard-content">
-        <form onSubmit={handleSubmit} className='test-generate-page-form'>
+        <form onSubmit={handleSubmit} className="test-generate-page-form">
           {/* Test Configuration */}
-          <div className='test-generate-page-half1'>
+          <div className="test-generate-page-half1">
             <h2>Create Test</h2>
             <div className="test-generate-page-form-group">
               <label>Test Name</label>
@@ -130,6 +144,8 @@ const TestGeneratePage = () => {
                 required
               />
             </div>
+
+            {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>} {/* Error message */}
           </div>
 
           {/* Test Questions */}
@@ -161,10 +177,6 @@ const TestGeneratePage = () => {
             </div>
             <button className="generate-button" type="submit">Create Test</button>
           </div>
-
-
-          {/* Submit Button */}
-
         </form>
 
         {/* Modal for test confirmation */}
