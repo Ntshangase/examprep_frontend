@@ -14,6 +14,7 @@ export default function CreateClass() {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [lecturerSearch, setLecturerSearch] = useState(""); // State for searching lecturers
 	const [lecturers, setLecturers] = useState([]); // Mock data for lecturers
+	const [file, setFile] = useState(null);
 
 	const navigate = useNavigate(); //for multiple use purposes
 
@@ -38,6 +39,11 @@ export default function CreateClass() {
 		setEndDate("");
 		setClassDescription("");
 		navigate("/Home");
+	};
+	const handleFileChange = (e) => {
+		if (e.target.files && e.target.files[0]) {
+			setFile(e.target.files[0]);
+		}
 	};
 
 	const handleImageChange = (e) => {
@@ -142,6 +148,17 @@ export default function CreateClass() {
 									required
 								/>
 							</div>
+
+	{/* File Upload Input */}
+	<div className="create-class-form-group">
+	<label htmlFor="fileUpload">Upload Student from file:</label>
+	<input
+		type="file"
+		id="fileUpload"
+		onChange={handleFileChange}
+		required
+	/>
+</div>
 							{/* Submit Button */}
 							<button type="submit" className="create-class-submit-button">
 								Update Class

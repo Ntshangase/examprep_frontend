@@ -44,6 +44,7 @@
 /* Form group styling */
 .form-group {
 	margin-bottom: 15px;
+	position: relative; /* Ensure dropdown is positioned relative to this */
 }
 
 /* Label styling */
@@ -72,24 +73,77 @@
 }
 
 /* Lecturer List Styling */
-.lecturer-list {
-	display: flex;
-	flex-direction: column;
-	max-width: 90%;
-	margin-top: 10px;
+.lecturer-suggestions {
+	border: 1px solid #ccc;
+	max-height: 150px; /* Limit height for dropdown */
+	overflow-y: auto; /* Allow scrolling */
+	background: white; /* Background for suggestions */
+	position: absolute; /* Position the suggestions absolutely */
+	top: 100%; /* Position below the input field */
+	left: 0; /* Align with the left edge of the input */
+	right: 0; /* Align with the right edge of the input */
+	z-index: 10; /* Ensure suggestions are on top */
+	margin-top: 5px; /* Add some space between the input and the dropdown */
 }
 
-.lecturer-item {
-	background-color: #f1f1f1;
-	padding: 8px;
-	margin-bottom: 5px;
+.lecturer-suggestions li {
+	padding: 10px;
+	cursor: pointer;
+}
+
+.lecturer-suggestions li:hover {
+	background-color: #f0f0f0; /* Highlight on hover */
+}
+
+/* Submit button styling */
+.create-class-submit-button {
+	width: 90%;
+	padding: 16px;
+	background-color: #007bff;
+	color: white;
+	border: none;
 	border-radius: 4px;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.3s ease; /* Smooth transition */
 }
 
-/* Remove Lecturer Button */
+.create-class-submit-button:hover {
+	background-color: #0056b3;
+}
+
+/* Image preview container */
+.image-preview {
+	margin-bottom: 20px; /* Move the preview above the file input */
+	width: 90%;
+	text-align: center;
+}
+
+.image-preview img {
+	max-width: 100%; /* Ensure image is responsive */
+	height: auto;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 5px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+	.class-content-body {
+		flex-direction: column;
+	}
+
+	.content-body1,
+	.content-body2 {
+		max-width: 100%;
+	}
+
+	.image-preview {
+		width: 100%; /* Full width on small screens */
+	}
+}
+
+/* Button styles for remove lecturer */
 .remove-lecturer-button {
 	background-color: #ff4d4d;
 	color: white;
@@ -104,84 +158,9 @@
 	background-color: #ff1a1a;
 }
 
-/* Submit button styling */
-.create-class-submit-button {
-	width: 90%;
-	padding: 16px;
-	background-color: #007bff;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	font-size: 16px;
-}
-
-.create-class-submit-button:hover {
-	background-color: #0056b3;
-}
-
-/* Image preview container */
-.image-preview {
-	margin-bottom: 20px; /* Move the preview above the file input */
-	width: 90%;
-	text-align: center;
-}
-
-/* Image preview styling */
-.image-preview img {
-	max-width: 90%;
-	height: auto;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-	padding: 5px;
-}
-
+/* Container for cancel button */
 .button-cancel-div {
 	width: 55%;
 	padding-right: 43px;
 	padding-left: 15px;
-}
-.form-group {
-	position: relative; /* Ensure the dropdown is positioned relative to this */
-  }
-  
-  .lecturer-suggestions {
-	border: 1px solid #ccc;
-	max-height: 150px; /* Limit height for dropdown */
-	overflow-y: auto; /* Allow scrolling */
-	background: white; /* Background for suggestions */
-	position: absolute; /* Position the suggestions absolutely */
-	top: 100%; /* Position below the input field */
-	left: 0; /* Align with the left edge of the input */
-	right: 0; /* Align with the right edge of the input */
-	z-index: 10; /* Ensure suggestions are on top */
-	margin-top: 5px; /* Add some space between the input and the dropdown */
-  }
-  
-  .lecturer-suggestions li {
-	padding: 10px;
-	cursor: pointer;
-  }
-  
-  .lecturer-suggestions li:hover {
-	background-color: #f0f0f0; /* Highlight on hover */
-  }
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
-	.class-content-body {
-		flex-direction: column;
-	}
-
-	.content-body1,
-	.content-body2 {
-		max-width: 100%;
-	}
-}
-
-/* Responsive adjustments for the lecturer list */
-@media (max-width: 768px) {
-	.lecturer-list {
-		width: 100%;
-	}
 }
