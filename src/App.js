@@ -46,6 +46,7 @@ import UploadDumps from "./Pages/DataCapturer/UploadDumps"
 import StudentProfile from "./Pages/Student/StudentProfile";
 import IndStudentCourses from "./Pages/Student/Independent/IndStudentCourses";
 import IndStudentCourseDets from "./Pages/Student/Independent/IndStudentCourseDets";
+import ModerateQuestion from "./Pages/Moderator/ModerateQuestion";
 
 function App() {
 	return (
@@ -95,6 +96,7 @@ function App() {
 				<Route path="/StudentProfile" element={<StudentProfile />} />
 				<Route path="/IndStudentCourses" element={<IndStudentCourses />} />
 				<Route path="/IndStudentCourseDets" element={<IndStudentCourseDets />} />
+				<Route path="/ModerateQuestion" element={<ModerateQuestion />} />
 			</Routes>
 		</Router>
 	);

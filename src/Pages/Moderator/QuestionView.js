@@ -7,6 +7,10 @@ import Navbar from "../../Components/Navbar/Navbar";
 
 const QuestionView = () => {
   // Example data
+
+  const ModerateQuestion = () => {
+		navigate("/ModerateQuestion");
+	};
   const dumpDetails = {
     name: 'CompTIA A+ Core Exam',
     version: '1.0.0',
@@ -53,7 +57,7 @@ const QuestionView = () => {
                 <div key={question.id} className="question-card">
                   <div className="question-header">
                     <p>{question.question}</p>
-                    <button className="edit-btn">
+                    <button onClick={ModerateQuestion} className="edit-btn">
                       <FontAwesomeIcon icon={faEdit} />
                     </button>
                   </div>
