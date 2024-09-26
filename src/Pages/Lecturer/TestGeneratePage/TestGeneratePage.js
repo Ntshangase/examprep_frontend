@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import LecturerSidebar from '../../../Components/Sidebar/LecturerSidebar';
 import './TestGeneratePage.css';
 
 const domains = [
@@ -63,10 +62,76 @@ const TestGeneratePage = () => {
     navigate('/ViewClass/1', { state: { selectedTopics } });
   };
 
+  //1st page
+  const [testName, setTestName] = useState('');
+  const [dueDate, setDueDate] = useState('');
+  const [instructions, setInstructions] = useState('');
+  const [totalGrade, setTotalGrade] = useState('');
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      // Handle form submission logic here
+      console.log({ testName, dueDate, instructions, totalGrade });
+
+      // Reset form fields after submission
+      setTestName('');
+      setDueDate('');
+      setInstructions('');
+      setTotalGrade('');
+  };
+
   return (
     <div className="dashboard">
       <div className="dashboard-content">
-        <LecturerSidebar />
+        <div className='test-generate-page-half1'>
+          <form onSubmit={handleSubmit}>
+                {/* Test Name */}
+                <div className="test-generate-page-form-group">
+                    <label>Test Name</label>
+                    <input
+                        type="text"
+                        value={testName}
+                        onChange={(e) => setTestName(e.target.value)}
+                        placeholder="Enter test name"
+                        required
+                    />
+                </div>
+
+                {/* Due Date */}
+                <div className="test-generate-page-form-group">
+                    <label>Due Date</label>
+                    <input
+                        type="date"
+                        value={dueDate}
+                        onChange={(e) => setDueDate(e.target.value)}
+                        required
+                    />
+                </div>
+
+                {/* Instructions */}
+                <div className="test-generate-page-form-group">
+                    <label>Instructions</label>
+                    <textarea
+                        value={instructions}
+                        onChange={(e) => setInstructions(e.target.value)}
+                        placeholder="Enter instructions for the test"
+                        required
+                    />
+                </div>
+
+                {/* Total Grade */}
+                <div className="test-generate-page-form-group">
+                    <label>Total Grade (Marks)</label>
+                    <input
+                        type="number"
+                        value={totalGrade}
+                        onChange={(e) => setTotalGrade(e.target.value)}
+                        placeholder="Enter total grade"
+                        required
+                    />
+                </div>
+            </form>
+        </div>
         <div className="main-content">
           <div className="test-container">
             <h1>Select Domains to Generate Test</h1>

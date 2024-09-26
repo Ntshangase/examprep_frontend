@@ -12,6 +12,10 @@ html, body {
   height: 100vh;
 }
 
+.test-generate-page-half1 {
+  width: 35%;
+}
+
 .dashboard-content {
   display: flex;
   flex: 1;
@@ -161,3 +165,39 @@ html, body {
 .modal-button:hover {
   background-color: var(--color-primary-dark);
 }
+
+.test-generate-page-form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  flex: 1;
+  width: 80%;
+}
+
+/* Label styling */
+.test-generate-page-form-group label {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #555; /* Slightly darker color for labels */
+}
+
+/* Input and Textarea styling */
+.test-generate-page-form-group input,
+.test-generate-page-form-group textarea {
+  padding: 12px;
+  font-size: 14px;
+  border: 1px solid #ccc; /* Soft border */
+  border-radius: 6px;
+  background-color: white; /* Neutral background */
+  color: #333;
+  outline: none;
+  transition: border-color 0.2s ease-in-out;
+}
+
+/* Focus state for inputs */
+.test-generate-page-form-group input:focus,
+.test-generate-page-form-group textarea:focus {
+  border-color: #3b82f6; /* Light blue on focus */
+}
+
