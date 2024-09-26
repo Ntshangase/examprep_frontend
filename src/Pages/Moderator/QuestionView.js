@@ -47,8 +47,7 @@ const QuestionView = () => {
 
             {/* Dump Details */}
             <div className="dump-details">
-              <h2>{dumpDetails.name}</h2>
-              <p>Version: {dumpDetails.version}</p>
+              <h2>Aws Cloud Practisioner</h2>
             </div>
 
             {/* Questions Section */}
