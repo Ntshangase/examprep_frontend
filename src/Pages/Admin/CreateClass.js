@@ -2,38 +2,69 @@ import React, { useState } from "react";
 import "./CreateClass.css";
 import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
 import { useNavigate } from "react-router-dom";
+import courses from "../../Data/Courses.json";
 
 export default function CreateClass() {
 	// State for form inputs
 	const [className, setClassName] = useState("");
-	const [lecturer, setLecturer] = useState("");
+	const [lecturerId, setLecturerId] = useState(""); // Changed to store lecturer ID
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
+	const [classDescription, setClassDescription] = useState(""); // Added class description state
 	const [selectedImage, setSelectedImage] = useState(null);
+	const [lecturerSearch, setLecturerSearch] = useState(""); // State for searching lecturers
+	const [lecturers, setLecturers] = useState([]); // Mock data for lecturers
 
 	const navigate = useNavigate(); //for multiple use purposes
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		navigate("/Home");
-
-		// Form validation (simple check if fields are not empty)
-		if (!className || !lecturer || !startDate || !endDate) {
+		// Form validation
+		if (
+			!className ||
+			!lecturerId ||
+			!startDate ||
+			!endDate ||
+			!classDescription
+		) {
 			alert("All fields are required!");
 			return;
 		}
 
 		// Clear input fields after form submission
 		setClassName("");
-		setLecturer("");
+		setLecturerId("");
 		setStartDate("");
 		setEndDate("");
+		setClassDescription("");
+		navigate("/Home");
 	};
 
 	const handleImageChange = (e) => {
 		if (e.target.files && e.target.files[0]) {
 			setSelectedImage(URL.createObjectURL(e.target.files[0]));
 		}
+	};
+
+	const handleLecturerSearch = (e) => {
+		setLecturerSearch(e.target.value);
+		// You can implement actual API call or filtering logic here
+		// For now, we will use mock data to demonstrate functionality
+		const allLecturers = [
+			{ name: "John Doe" },
+			{ name: "Jane Smith" },
+			{ name: "Alice Johnson" },
+		];
+		const filteredLecturers = allLecturers.filter((lecturer) =>
+			lecturer.name.toLowerCase().includes(e.target.value.toLowerCase())
+		);
+		setLecturers(filteredLecturers);
+	};
+
+	const handleLecturerSelect = (lecturer) => {
+		setLecturerId(lecturer.id);
+		setLecturerSearch(lecturer.name); // Set the search input to the selected lecturer's name
+		setLecturers([]); // Clear the list after selection
 	};
 
 	return (
@@ -55,18 +86,40 @@ export default function CreateClass() {
 									required
 								/>
 							</div>
-							{/* Lecturer Name Input */}
+							{/* Lecturer ID Input */}
 							<div className="form-group">
 								<label htmlFor="lecturer">Assign Lecturer:</label>
 								<input
 									type="text"
 									id="lecturer"
-									value={lecturer}
-									onChange={(e) => setLecturer(e.target.value)}
+									value={lecturerSearch}
+									onChange={handleLecturerSearch}
+									placeholder="Search by Lecturer ID or Name"
+									required
+								/>
+								{lecturers.length > 0 && (
+									<ul className="lecturer-suggestions">
+										{lecturers.map((lecturer) => (
+											<li
+												key={lecturer.id}
+												onClick={() => handleLecturerSelect(lecturer)}
+											>
+												{lecturer.name} (ID: {lecturer.id})
+											</li>
+										))}
+									</ul>
+								)}
+							</div>
+							{/* Class Description Input */}
+							<div className="form-group">
+								<label htmlFor="classDescription">Class Description:</label>
+								<textarea
+									id="classDescription"
+									value={classDescription}
+									onChange={(e) => setClassDescription(e.target.value)}
 									required
 								/>
 							</div>
-
 							{/* Start Date Input */}
 							<div className="form-group">
 								<label htmlFor="startDate">Start Date:</label>
@@ -78,7 +131,6 @@ export default function CreateClass() {
 									required
 								/>
 							</div>
-
 							{/* End Date Input */}
 							<div className="form-group">
 								<label htmlFor="endDate">End Date:</label>
@@ -90,35 +142,18 @@ export default function CreateClass() {
 									required
 								/>
 							</div>
-
 							{/* Submit Button */}
-							<button type="submit" className="create-class-submit-button ">Update Class</button>
+							<button type="submit" className="create-class-submit-button">
+								Update Class
+							</button>
 						</form>
 					</div>
 					<div className="content-body2">
-						<div className="form-group">
-							{selectedImage && (
-								<div className="image-preview">
-									<img src={selectedImage} alt="Selected" />
-								</div>
-							)}
-							<label htmlFor="classImage">Class Image:</label>
-							<input
-								type="file"
-								id="classImage"
-								accept="image/*"
-								onChange={handleImageChange}
-							/>
-						</div>
-						<div className="button-cancel-div">
-							<button
-								className="buttonCancel"
-								onClick={() => {
-									navigate("/CourseDetails");
-								}}
-							>
-								Cancel
-							</button>
+						<div>	{/**no styling */}
+							<img src={courses[0].image} alt={courses[0].title} />
+							<div>
+								<h3>{courses[0].title}</h3>
+							</div>
 						</div>
 					</div>
 				</div>

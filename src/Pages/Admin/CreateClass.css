@@ -8,7 +8,7 @@
 /* Content area for the form */
 .create-class-content {
 	flex: 1;
-	padding: 20px;
+	padding: 15px;
 }
 
 /* Heading style */
@@ -16,7 +16,7 @@
 	color: var(--color-primary);
 	font-size: 2rem;
 	text-align: center;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }
 
 /* Form container */
@@ -56,12 +56,52 @@
 /* Input styling */
 .form-group input[type="text"],
 .form-group input[type="date"],
-.form-group input[type="file"] {
+.form-group input[type="file"],
+.form-group textarea {
 	width: 90%;
 	padding: 10px;
 	border: 1px solid #ccc;
 	border-radius: 4px;
 	box-sizing: border-box;
+	resize: none; /* Prevent textarea from being resized */
+}
+
+/* Textarea specific styles */
+.form-group textarea {
+	min-height: 100px;
+}
+
+/* Lecturer List Styling */
+.lecturer-list {
+	display: flex;
+	flex-direction: column;
+	max-width: 90%;
+	margin-top: 10px;
+}
+
+.lecturer-item {
+	background-color: #f1f1f1;
+	padding: 8px;
+	margin-bottom: 5px;
+	border-radius: 4px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+/* Remove Lecturer Button */
+.remove-lecturer-button {
+	background-color: #ff4d4d;
+	color: white;
+	border: none;
+	border-radius: 4px;
+	padding: 5px 10px;
+	cursor: pointer;
+	font-size: 12px;
+}
+
+.remove-lecturer-button:hover {
+	background-color: #ff1a1a;
 }
 
 /* Submit button styling */
@@ -76,7 +116,7 @@
 	font-size: 16px;
 }
 
-.create-class-submit-button :hover {
+.create-class-submit-button:hover {
 	background-color: #0056b3;
 }
 
@@ -101,6 +141,31 @@
 	padding-right: 43px;
 	padding-left: 15px;
 }
+.form-group {
+	position: relative; /* Ensure the dropdown is positioned relative to this */
+  }
+  
+  .lecturer-suggestions {
+	border: 1px solid #ccc;
+	max-height: 150px; /* Limit height for dropdown */
+	overflow-y: auto; /* Allow scrolling */
+	background: white; /* Background for suggestions */
+	position: absolute; /* Position the suggestions absolutely */
+	top: 100%; /* Position below the input field */
+	left: 0; /* Align with the left edge of the input */
+	right: 0; /* Align with the right edge of the input */
+	z-index: 10; /* Ensure suggestions are on top */
+	margin-top: 5px; /* Add some space between the input and the dropdown */
+  }
+  
+  .lecturer-suggestions li {
+	padding: 10px;
+	cursor: pointer;
+  }
+  
+  .lecturer-suggestions li:hover {
+	background-color: #f0f0f0; /* Highlight on hover */
+  }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
@@ -111,5 +176,12 @@
 	.content-body1,
 	.content-body2 {
 		max-width: 100%;
+	}
+}
+
+/* Responsive adjustments for the lecturer list */
+@media (max-width: 768px) {
+	.lecturer-list {
+		width: 100%;
 	}
 }
