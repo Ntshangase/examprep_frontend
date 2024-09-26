@@ -1,123 +1,112 @@
-/* Container for the whole page */
 .add-course-container {
   display: flex;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
 }
 
-/* Main content area */
 .add-course-main {
-  flex: 1;
+  flex-grow: 1;
   padding: 20px;
-}
-
-/* Main content with form and image */
-.add-course-content {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  display: flex; /* Flexbox layout to place form and image side by side */
-  justify-content: space-between; /* Ensure form and image have space between them */
-  align-items: flex-start; /* Align form and image to the top */
-  gap: 20px; /* Space between the form and image */
-}
-
-/* Form styling */
-.form {
-  flex: 1; /* Form takes up available space */
-}
-
-.input-group {
-  margin-bottom: 15px;
+  overflow-y: auto; /* Enable vertical scrolling */
   display: flex;
   flex-direction: column;
 }
 
-.input-group label {
-  font-weight: bold;
-  margin-bottom: 5px;
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-.input-group input,
-.input-group textarea {
+.add-course-form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.add-course-form-group {
+  margin-bottom: 20px;
+}
+
+.add-course-form-group label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.add-course-form-group input,
+.add-course-form-group textarea {
   width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box;
 }
 
-.input-group textarea {
+textarea {
   resize: vertical;
-  min-height: 100px;
 }
 
-/* Domain button styling */
-.domain-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px; /* Adjust spacing between buttons */
+.domains-section {
+  margin-top: 20px;
 }
 
-.domain-button {
-  background-color: #e7e7e7;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
+.domain-group {
+  margin-bottom: 30px;
+  border: 1px solid #e0e0e0;
+  padding: 15px;
+  border-radius: 8px;
 }
 
-.domain-button:hover {
-  background-color: #d4d4d4;
-}
-
-/* Image upload section */
-.add-course-image-upload {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  width: 300px; /* Fixed width for the image section */
-  margin-right: 260px;
-  margin-top: 50px;
-}
-
-.add-course-image {
-  width: 200px;
-  height: 150px;
-  object-fit: cover;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-}
-
-.upload-button {
+.topics-section {
   margin-top: 10px;
+}
+
+.topic-input {
+  margin-bottom: 10px;
+}
+
+.add-topic-button,
+.add-domain-button {
   background-color: #1771c5;
   color: white;
   padding: 10px 15px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
-.upload-button:hover {
-  background-color: blue;
+.add-topic-button:hover,
+.add-domain-button:hover {
+  background-color: #145da0;
 }
 
-/* Submit button styling */
-.add-course-submit-button {
-  display: inline-block;
+.submit-button {
   background-color: #1771c5;
   color: white;
-  padding: 15px 40px;
+  padding: 15px;
   font-size: 18px;
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-top: 40px;
-  width: 180px;
+  width: 100%;
+  margin-top: 20px;
 }
 
-.add-course-submit-button:hover {
-  background-color: blue;
+.submit-button:hover {
+  background-color: #145da0;
+}
+
+@media (max-width: 768px) {
+  .add-course-form {
+    padding: 10px;
+  }
+
+  .submit-button {
+    font-size: 16px;
+  }
 }
