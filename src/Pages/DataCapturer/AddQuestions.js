@@ -60,24 +60,24 @@ export default function AddQuestions() {
 	};
 
 	return (
-		<div className="data-capture-container">
+		<div className="add-questions-container">
 			<DatacaptureSidebar />
-			<div className="data-capture-content">
-				<h2 className="data-capture-content-h2">Add Question</h2>
-				<div className="data-capture-info-flow">
+			<div className="add-questions-content">
+				<h2 className="add-questions-content-h2">Add Question</h2>
+				<div className="add-questions-info-flow">
 					<img
 						src={courses[0].image}
 						alt={courses[0].title}
-						className="data-capture-course-image"
+						className="add-questions-course-image"
 					/>
-					<div className="data-capture-course-title">
+					<div className="add-questions-course-title">
 						<h3>{courses[0].title}</h3>
 					</div>
 				</div>
 				<div>
 					<form onSubmit={handleSubmit}>
 						{/* Domain Selection */}
-						<div className="form-group">
+						<div className="add-questions-form-group">
 							<label>Select Domain</label>
 							<select
 								value={selectedDomain}
@@ -99,7 +99,7 @@ export default function AddQuestions() {
 
 						{/* Topic Selection */}
 						{selectedDomain && (
-							<div className="form-group">
+							<div className="add-questions-form-group">
 								<label>Select Topic</label>
 								<select
 									value={selectedTopic}
@@ -118,7 +118,7 @@ export default function AddQuestions() {
 						)}
 
 						{/* Question Input */}
-						<div className="form-group">
+						<div className="add-questions-form-group">
 							<label>Question</label>
 							<textarea
 								value={question}
@@ -128,13 +128,10 @@ export default function AddQuestions() {
 						</div>
 
 						{/* Dynamic Correct Answer Inputs */}
-						<div className="form-group">
+						<div className="add-questions-form-group">
 							<label>Correct Answers</label>
 							{correctAnswers.map((answer, index) => (
-								<div
-									key={index}
-									style={{ display: "flex", marginBottom: "10px" }}
-								>
+								<div key={index}>
 									<input
 										type="text"
 										value={answer}
@@ -153,13 +150,10 @@ export default function AddQuestions() {
 						</div>
 
 						{/* Dynamic Incorrect Answer Inputs */}
-						<div className="form-group">
+						<div className="add-questions-form-group">
 							<label>Incorrect Answers</label>
 							{incorrectAnswers.map((answer, index) => (
-								<div
-									key={index}
-									style={{ display: "flex", marginBottom: "10px" }}
-								>
+								<div key={index}>
 									<input
 										type="text"
 										value={answer}
@@ -178,7 +172,7 @@ export default function AddQuestions() {
 						</div>
 
 						{/* Correct Answer Description */}
-						<div className="form-group">
+						<div className="add-questions-form-group">
 							<label>Correct Answer Description</label>
 							<textarea
 								value={correctAnswerDescription}
@@ -188,7 +182,7 @@ export default function AddQuestions() {
 						</div>
 
 						{/* Submit Button */}
-						<button type="submit">Add Question</button>
+						<button className="add-question-button" type="submit">Add Question</button>
 					</form>
 				</div>
 			</div>
