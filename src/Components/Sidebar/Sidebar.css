@@ -3,7 +3,7 @@
   width: 200px;
   background-color: var(--color-primary); /* Dark theme for sidebar */
   color: white;
-  height: 100vh;
+  height: auto;
   top: 0;
   left: 0;
   display: flex;
