@@ -29,7 +29,7 @@ const DataCaptureDashboard = () => {
 				<DatacaptureSidebar />
 				<div className="content-area">
 					<div className="content-area">
-						<h2>Select Course to Moderate</h2>
+						<h2>Select Course to Add Question</h2>
 						{/* Certification Badges with Labels */}
 						<div className="badge-section">
 							{courses.map((course) => (

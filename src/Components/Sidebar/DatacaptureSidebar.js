@@ -13,9 +13,6 @@ const DatacaptureSidebar = () => {
 					<Link to="/DataCaptureDashboard">Home</Link>
 				</li>
 				<li className="sidebar-link">
-					<Link to="/AddQuestions">Upload Questions </Link>
-				</li>
-				<li className="sidebar-link">
 					<Link to="/UploadDumps">Upload Dump</Link>
 				</li>
 			</ul>
