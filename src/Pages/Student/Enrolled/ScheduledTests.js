@@ -1,8 +1,7 @@
 import React from 'react';
 import './ScheduledTests.css';
 import EnrolledStudentSidebar from '../../../Components/Sidebar/EnrolledStudentSidebar';
-import { useNavigate } from 'react-router-dom';
-
+import { useLocation, useNavigate } from 'react-router-dom';
 const ScheduledTests = () => {
   const tests = [
     {
@@ -10,7 +9,6 @@ const ScheduledTests = () => {
       status: "Submitted",
       dueDate: "2024-09-16",
       grade: "30/50",
-      attempts: "3/3",
       canAttempt: false,
     },
     {
@@ -18,7 +16,6 @@ const ScheduledTests = () => {
       status: "Not Submitted",
       dueDate: "2024-10-15",
       grade: "_/50",
-      attempts: "1/2",
       canAttempt: true,
     },
     {
@@ -26,13 +23,13 @@ const ScheduledTests = () => {
       status: "Not Submitted",
       dueDate: "2024-09-28",
       grade: "_/50",
-      attempts: "0/1",
       canAttempt: true,
     },
   ];
-
   const navigate = useNavigate();
-
+  const TakeTest = () => {
+    navigate('/TakeTest');
+  };
   return (
     <div className="scheduled-tests-page">
       
@@ -40,7 +37,6 @@ const ScheduledTests = () => {
         <EnrolledStudentSidebar />
         <div className="main-content">
           <h1 className="page-heading">Scheduled Tests</h1>
-
           <table className="tests-table">
             <thead>
               <tr>
@@ -48,7 +44,6 @@ const ScheduledTests = () => {
                 <th>Status</th>
                 <th>Due Date</th>
                 <th>Grade</th>
-                <th>Attempts</th>
                 <th>Action</th>
               </tr>
             </thead>
@@ -59,10 +54,9 @@ const ScheduledTests = () => {
                   <td>{test.status}</td>
                   <td>{test.dueDate}</td>
                   <td>{test.grade}</td>
-                  <td>{test.attempts}</td>
                   <td>
                     {test.canAttempt ? (
-                      <button onClick={() => {navigate("/IndStudentWriteTest")}} className="take-test-button">Take Test</button>
+                      <button className="take-test-button" onClick={TakeTest}>Take Test</button>
                     ) : (
                       <span>N/A</span>
                     )}
