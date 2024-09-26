@@ -10,7 +10,7 @@ const IndependentStudentSidebar = () => {
 			</Link>
 			<ul className="sidebar-content">
 				<li className="sidebar-link">
-					<Link to="/">Home</Link>
+					<Link to="/StudentDashboards">Home</Link>
 				</li>
 				<li className="sidebar-link">
 					<Link to="/IndStudentdash">Course Details </Link>
