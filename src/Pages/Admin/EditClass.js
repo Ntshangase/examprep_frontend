@@ -8,6 +8,7 @@ export default function EditClass() {
 	const [courseName] = useState("AWS Solutions Architect"); // Read-only course name
 	const [className] = useState("June Intake"); // Read-only class name
 	const [lecturer, setLecturer] = useState(" Dr. J. Jumbo"); // Searchable Instructor
+	const [description, setDescription] = useState(""); // New state for edit description
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
 
@@ -17,13 +18,14 @@ export default function EditClass() {
 		e.preventDefault();
 
 		// Form validation (simple check if fields are not empty)
-		if (!lecturer || !startDate || !endDate) {
+		if (!lecturer || !description || !startDate || !endDate) {
 			alert("All fields are required!");
 			return;
 		}
 
 		// Clear input fields after form submission
 		setLecturer("");
+		setDescription(""); // Clear description
 		setStartDate("");
 		setEndDate("");
 
@@ -57,7 +59,6 @@ export default function EditClass() {
 									type="text"
 									id="className"
 									value={className}
-									
 								/>
 							</div>
 
@@ -71,6 +72,18 @@ export default function EditClass() {
 									onChange={(e) => setLecturer(e.target.value)}
 									required
 									className="search-input"
+								/>
+							</div>
+
+							{/* Edit Description */}
+							<div className="edit-class-form-group">
+								<label htmlFor="description">Edit Description:</label>
+								<textarea
+									id="description"
+									value={description}
+									onChange={(e) => setDescription(e.target.value)}
+									placeholder="Enter class description"
+									required
 								/>
 							</div>
 
