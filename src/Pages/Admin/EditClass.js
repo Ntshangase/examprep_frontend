@@ -5,24 +5,24 @@ import { Link, useNavigate } from "react-router-dom";
 
 export default function EditClass() {
 	// State for form inputs
-	const [className, setClassName] = useState("");
-	const [lecturer, setLecturer] = useState("");
+	const [courseName] = useState("AWS Solutions Architect"); // Read-only course name
+	const [className] = useState("June Intake"); // Read-only class name
+	const [lecturer, setLecturer] = useState(" Dr. J. Jumbo"); // Searchable Instructor
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
 
-	const navigate = useNavigate(); //for  multiple use purposes
+	const navigate = useNavigate(); // for multiple use purposes
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
 		// Form validation (simple check if fields are not empty)
-		if (!className || !lecturer || !startDate || !endDate) {
+		if (!lecturer || !startDate || !endDate) {
 			alert("All fields are required!");
 			return;
 		}
 
 		// Clear input fields after form submission
-		setClassName("");
 		setLecturer("");
 		setStartDate("");
 		setEndDate("");
@@ -34,31 +34,43 @@ export default function EditClass() {
 		<div className="edit-course-container">
 			<AdminSidebar />
 			<div className="edit-course-content">
-				<h2>EditClass</h2>
+				<h2>Edit Class</h2>
 				<div className="edit-course-content-body">
 					<div className="content-body-half1">
 						<form className='edit-class-form' onSubmit={handleSubmit}>
-							{/* Class Name Input */}
+							{/* Course Name (Read-only) */}
+							<div className="edit-class-form-group">
+								<label htmlFor="courseName">Course Name:</label>
+								<input
+									type="text"
+									id="courseName"
+									value={courseName}
+									readOnly
+									className="read-only-input"
+								/>
+							</div>
+
+							{/* Class Name (Read-only) */}
 							<div className="edit-class-form-group">
 								<label htmlFor="className">Class Name:</label>
 								<input
 									type="text"
 									id="className"
 									value={className}
-									onChange={(e) => setClassName(e.target.value)}
-									required
+									
 								/>
 							</div>
 
-							{/* Lecturer Name Input */}
+							{/* Lecturer (Searchable Input) */}
 							<div className="edit-class-form-group">
-								<label htmlFor="lecturer">Assign Lecturer:</label>
+								<label htmlFor="lecturer">Lecturer</label>
 								<input
-									type="text"
+									type="search"
 									id="lecturer"
 									value={lecturer}
 									onChange={(e) => setLecturer(e.target.value)}
 									required
+									className="search-input"
 								/>
 							</div>
 
@@ -87,7 +99,9 @@ export default function EditClass() {
 							</div>
 
 							{/* Submit Button */}
-							<button className="edit-class-submit-button" onClick={() => navigate("/EditClass")}>Update Class</button>
+							<button className="edit-class-submit-button" onClick={() => navigate("/EditClass")}>
+								Update Class
+							</button>
 						</form>
 					</div>
 					<div className="content-body-half2">
