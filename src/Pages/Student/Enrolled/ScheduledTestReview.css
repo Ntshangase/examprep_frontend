@@ -44,7 +44,7 @@ h1 {
   font-size: 1.2em;
 }
 
-button {
+/* button {
   background-color: var(--color-primary);
   color: white;
   padding: 15px 30px;
@@ -58,4 +58,4 @@ button {
 
 button:hover {
   background-color: var(--color-primary-dark);
-}
+} */
