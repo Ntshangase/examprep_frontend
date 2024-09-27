@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import DatacaptureSidebar from "../../../src/Components/Sidebar/DatacaptureSidebar";
 import "./UploadDumps.css";
+import courses from "../../Data/Courses.json";
 
 const UploadDumps = () => {
 	const [file, setFile] = useState(null);
@@ -28,17 +29,16 @@ const UploadDumps = () => {
 				<div className="content-area">
 					<h3 className="page-title">Upload Dump</h3>
 					<form onSubmit={handleSubmit} className="upload-form">
-						<label htmlFor="upload-dump-dropdown-input" className="upload-dump-dropdown-label">
-							Select Option:
-						</label>
-						<select id="upload-dump-dropdown-input" className="upload-dump-dropdown-input" required>
-							<option value="" disabled selected>
-								Select an option
-							</option>
-							<option value="option1">Option 1</option>
-							<option value="option2">Option 2</option>
-							<option value="option3">Option 3</option>
-						</select>
+					<div className="add-questions-info-flow">
+					<img
+						src={courses[0].image}
+						alt={courses[0].title}
+						className="add-questions-course-image"
+					/>
+					<div className="add-questions-course-title">
+						<h3>{courses[0].title}</h3>
+					</div>
+				</div>
 						<label htmlFor="file-input" className="file-label">
 							<img
 								src="/assets/uploadfile.png"

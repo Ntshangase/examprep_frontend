@@ -1,0 +1,86 @@
+.manage-class-student-container {
+	display: flex;
+	flex-direction: row;
+	height: 100vh;
+}
+
+.manage-class-student-content {
+	flex: 1;
+	flex-direction: column;
+	padding: 20px;
+}
+
+.manage-class-student-course-image {
+	width: 150px;
+	height: 150px;
+	object-fit: cover;
+	border-radius: 10px;
+	margin-bottom: 20px;
+}
+
+.manage-class-student-approve-button {
+	background-color: var(--color-primary);
+	color: white;
+	border: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.manage-class-student-approve-button:hover {
+	background-color: var(--color-primary-dark);
+	transform: scale(1.05);
+}
+
+/* Student list container */
+.manage-class-student-list {
+	display: flex;
+	flex-direction: column;
+	gap: 15px; /* Adds spacing between each student item */
+	padding: 20px;
+	background-color: var(
+		--background-light
+	); /* Background to differentiate the list */
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for modern look */
+	max-height: 400px; /* Limit height for scrolling */
+	overflow-y: auto; /* Adds scroll if list is too long */
+	margin-bottom: 20px; /* Spacing below the list */
+}
+
+/* Student item styling */
+.manage-class-student-item {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 15px;
+	background-color: var(--background-grey);
+	border-radius: 8px;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+	transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.manage-class-student-item:hover {
+	background-color: var(--color-primary-light);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Student name text styling */
+.manage-class-student-item span {
+	font-size: 1.2rem;
+	color: var(--text-dark); /* Text color for better contrast */
+	font-weight: 500; /* Slightly bolder for readability */
+}
+
+/* Delete icon styling */
+.manage-class-student-delete-icon {
+	color: var(--danger-color); /* Red color to represent delete */
+	cursor: pointer;
+	font-size: 1.2rem; /* Adjust icon size */
+	transition: color 0.3s ease;
+}
+
+.manage-class-student-delete-icon:hover {
+	color: darkred; /* Darker color on hover */
+}

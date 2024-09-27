@@ -1,9 +1,11 @@
 .approve-student-container {
     display: flex;
     flex-direction: row;
-    min-height: 100vh;
+    height: 100vh;
 }
 .approve-student-content {
+    display: flex;
+    flex-direction: column;
     flex: 1;
     padding: 20px;
 }
@@ -11,51 +13,45 @@
     color: var(--color-primary);
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 140px;
+    margin-bottom: 50px;
 }
+
 .approve-student-content-dody {
     display: flex;
     flex-direction: row;
     border-bottom: black 3px solid;
 }
 
-.approve-student-button {
+/* Container for the approve and delete icons */
+.manage-class-student-actions {
     display: flex;
-    flex-direction: row;
-    padding: 7px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Adds space between the icons */
+    padding: 5px;
     margin-left: auto;
 }
 
-.approve-student-button button {
-    margin: 0 10px;
+/* Approve icon styling */
+.manage-class-student-approve-icon {
+    color: var(--success-color); /* Green color to represent approval */
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
 }
 
-.approve-button-approve {
-    background-color: green;
-    display: block;
-	width: 160px;
-    color: white;
-    border: none;
-    border-radius: 14px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
+.manage-class-student-approve-icon:hover {
+    color: green; /* Darker green on hover */
 }
 
-.approve-button-approve:hover {
-    background-color: darkgreen;
-    transform: scale(1.05);
+/* Delete icon styling */
+.manage-class-student-delete-icon {
+    color: var(--danger-color); /* Red color for delete */
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s ease;
 }
 
-.approve-button-decline {
-    background-color: red;
-    display: block;
-	width: 160px;
-    color: white;
-    border: none;
-    border-radius: 14px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-}
-
-.approve-button-decline:hover {
-    background-color: darkred;
-    transform: scale(1.05);
+.manage-class-student-delete-icon:hover {
+    color: darkred; /* Darker red on hover */
 }

@@ -50,6 +50,7 @@ import ModerateQuestion from "./Pages/Moderator/ModerateQuestion";
 import TakeTest from "./Pages/Student/Enrolled/TakeTest";
 import TestResults from "./Pages/Student/Enrolled/TestResults";
 import ScheduledTestReview from "./Pages/Student/Enrolled/ScheduledTestReview";
+import ManageClassStudents from "./Pages/Admin/ManageClassStudents";
 
 function App() {
 	return (
@@ -103,6 +104,7 @@ function App() {
 				<Route path="/TakeTest" element={<TakeTest />} />
 				<Route path="/TestResults" element={<TestResults />} />
 				<Route path="/ScheduledTestReview" element={<ScheduledTestReview />} />
+				<Route path="/ManageClassStudents" element={<ManageClassStudents />} />
 			</Routes>
 		</Router>
 	);

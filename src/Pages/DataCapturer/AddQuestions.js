@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import DatacaptureSidebar from "../../Components/Sidebar/DatacaptureSidebar";
 import "./AddQuestions.css";
 import courses from "../../Data/Courses.json";
+import { useNavigate } from "react-router-dom";
 
 export default function AddQuestions() {
 	const [selectedDomain, setSelectedDomain] = useState("");
@@ -59,6 +60,9 @@ export default function AddQuestions() {
 		// };
 	};
 
+	//navigation
+	const navigate = useNavigate();
+
 	return (
 		<div className="add-questions-container">
 			<DatacaptureSidebar />
@@ -73,8 +77,9 @@ export default function AddQuestions() {
 					<div className="add-questions-course-title">
 						<h3>{courses[0].title}</h3>
 					</div>
+					<button className="add-question-upload-dump-button" onClick={() => {navigate("/UploadDumps")}}>Upload Dump</button>
 				</div>
-				<div>
+				<div className="add-questions-form-scrollable">
 					<form onSubmit={handleSubmit}>
 						{/* Domain Selection */}
 						<div className="add-questions-form-group">

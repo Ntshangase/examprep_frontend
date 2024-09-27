@@ -4,7 +4,7 @@
     height: 100vh;
     font-family: 'Arial', sans-serif;
   }
-  
+
   /* Sidebar design */
   .sidebar {
     background-color: #006FBF;
@@ -101,7 +101,7 @@
   }
   
 
-  
+  /* */
   .edit-class-cancel-button {
     background-color: #F44336;
     color: white;
@@ -117,7 +117,7 @@
 .edit-course-container {
 	display: flex;
 	flex-direction: row;
-	min-height: 100vh;
+	height: 100vh;
 }
 
 .edit-course-content {
@@ -139,7 +139,15 @@
 }
 
 .content-body-half1 {
-	flex: 1;
+	flex: 2; /* Increase the flex value to take up more space */
+	height: 500px; /* You can adjust this based on your design */
+	overflow-y: auto; /* Enables vertical scrolling */
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	border-radius: 6px;
+	background-color: var(--form-background);
+	width: 100%; /* Ensures the width is full */
+	overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 .content-body-half2 {
 	flex: 1;
@@ -152,7 +160,7 @@
 
 /*form css belo*/
 .edit-class-form{
-	width: 100%;
+	width: 90%;
 	padding: 40px;
 }
 
