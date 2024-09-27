@@ -45,7 +45,6 @@ const IndStudentCreateTest = () => {
 
     setSelectedTopics(newSelectedTopics);
 
-    // Calculate total weight
     let total = 0;
     Object.values(newSelectedTopics).forEach((domainTopics) => {
       Object.values(domainTopics).forEach((count) => {
@@ -56,12 +55,11 @@ const IndStudentCreateTest = () => {
   };
 
   const handleGenerateTest = () => {
-    setIsModalOpen(true); // Show the modal
+    setIsModalOpen(true); 
   };
 
   const handleStartTest = () => {
-    setIsModalOpen(false); // Close the modal
-    // Navigate to the test writing page with selected topics
+    setIsModalOpen(false); 
     navigate('/IndStudentWriteTest', { state: { selectedTopics } });
   };
 
@@ -70,7 +68,7 @@ const IndStudentCreateTest = () => {
       
       <div className="dashboard-content">
         <IndependentStudentSidebar />
-        <div className="content-area">
+        <div className="independent-student-content-area">
           <div className="create-test-container">
             <h1>Select Domains to Generate Test</h1>
 
@@ -94,17 +92,14 @@ const IndStudentCreateTest = () => {
             ))}
 
             <div className="total-weight-section">
-              <span>Total Weight for the Test:</span>
-              <input type="text" value={totalWeight} readOnly />
+              <p className="independent-student-total-weight-text">Total:</p>
+              <input className="independent-student-total-weight" type="text" value={totalWeight} readOnly />
             </div>
           </div>
-          <br />
           <button className="generate-test-button" onClick={handleGenerateTest}>
             Generate Test
           </button>
 
-
-          {/* Modal */}
           {isModalOpen && (
             <div className="modal-overlay">
               <div className="modal-content">

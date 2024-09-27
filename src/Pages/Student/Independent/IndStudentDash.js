@@ -1,71 +1,51 @@
 import React from "react";
-import IndependentStudentSidebar from '../../../Components/Sidebar/IndependentStudentSidebar';
-import { useNavigate } from 'react-router-dom'; // Import hooks for routing
-import './IndStudentDash.css';
+import { useNavigate } from "react-router-dom"; // Import useNavigate
+import "./IndStudentDash.css";
+import IndependentStudentSidebar from "../../../Components/Sidebar/IndependentStudentSidebar";
 
+const AWSBadge = `${process.env.PUBLIC_URL}/assets/AWS-Cloud-Practitioner-Badge.jpeg`;
+const CompTIABadge = `${process.env.PUBLIC_URL}/assets/CompTIA-A+-Badge.jpg`;
 
-
-const enrolledCourse = {
-  title: 'CompTIA A+ Certified',
-  description: 'CompTIA A+ is an entry-level certification for IT professionals, covering foundational IT skills such as hardware, networking, and troubleshooting.',
-  domains: 'This course comes with 5 Domains',
-  image: '/assets/comptia.png',
-  progress: 75, // Percentage of course completed
-};
-
-const exploreCourses = [
-  { title: 'Introduction to React', image: '/assets/react.png' },
-  { title: 'Advanced JavaScript', image: '/assets/cisco.png' },
-  { title: 'Web Development Fundamentals', image: '/assets/web-dev.png' },
-  { title: 'CompTIA Penetration Testng', image: '/assets/Comptia-PenTest-course.png' }
+const courses = [
+	{ name: "AWS Cloud Practitioner", image: AWSBadge },
+	{ name: "CompTIA A+ Certified", image: CompTIABadge }
 ];
 
+const ModeratorDashboard = () => {
+	const navigate = useNavigate(); // Initialize navigate
+	const viewQuestions = () => {
+		navigate("/IndStudentCourseDetails");
+	};
 
-const IndependentStudentCourses = () => {
-  const navigate = useNavigate(); // Initialize navigate
-
-  return (
-    <div className="independent-student-courses">
-      
-      <div className="dashboard-content">
-        <IndependentStudentSidebar />
-        <div className="content-area">
-          <h1>Enrolled Course</h1>
-          <div className="enrolled-course-section">
-            {/* Enrolled Course on the left */}
-            <div className="enrolled-course-card">
-              <img src={enrolledCourse.image} alt={enrolledCourse.title} className="course-image" />
-              <h2 className="course-title">{enrolledCourse.title}</h2>
-              <div className="progress-container">
-                <div className="progress-bar" style={{ width: `${enrolledCourse.progress}%` }}></div>
-              </div>
-              <p>{enrolledCourse.progress}% Completed</p>
-            </div>
-
-            {/* Course description on the right */}
-            <div className="course-description">
-              <h3>Course Description</h3>
-              <p>{enrolledCourse.description}</p>
-              <br/>
-              <h3>Number of Domains</h3>
-              <p>{enrolledCourse.domains}</p>
-              <button onClick={() => navigate("/IndStudentCreateTest")} className="continue-button">Create Test</button>
-            </div>
-          </div>
-          {/* Explore other courses section */}
-          <h2 className="explore-courses-title">Explore Courses</h2>
-          <div className="courses-grid">
-            {exploreCourses.map((course, index) => (
-              <div key={index} className="course-card unavailable">
-                <img src={course.image} alt={course.title} className="course-image" />
-                <h2 className="course-title">{course.title}</h2>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div> 
-    </div>
-  );
+	return (
+		<div className="exam-prep-container">
+			<div className="dashboard-content">
+				<IndependentStudentSidebar />
+				<div className="content-area">
+					<h2>Select Course to Moderate</h2>
+					{/* Certification Badges with Labels */}
+					<div className="badge-section">
+						{courses.map((course) => (
+							<div
+								className="badge-card"
+								key={course.name}
+								onClick={viewQuestions}
+							>
+								<div className="badge">
+									<img
+										src={course.image}
+										alt={course.name}
+										className="badge-image"
+									/>
+									<p>{course.name}</p>
+								</div>
+							</div>
+						))}
+					</div>
+				</div>
+			</div>
+		</div>
+	);
 };
 
-export default IndependentStudentCourses;
+export default ModeratorDashboard;

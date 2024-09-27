@@ -5,24 +5,17 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const ScheduledTests = () => {
   const tests = [
     {
-      name: "Domain 1 Test",
-      status: "Submitted",
-      dueDate: "2024-09-16",
-      grade: "30/50",
-      canAttempt: false,
-    },
-    {
-      name: "Domain 2 Test",
+      name: "Test 1",
       status: "Not Submitted",
       dueDate: "2024-10-15",
-      grade: "_/50",
+      grade: "  /50",
       canAttempt: true,
     },
     {
-      name: "Domain 3 Test",
+      name: "Test 2",
       status: "Not Submitted",
       dueDate: "2024-09-28",
-      grade: "_/50",
+      grade: "  /50",
       canAttempt: true,
     },
   ];
@@ -40,7 +33,7 @@ const ScheduledTests = () => {
           <table className="tests-table">
             <thead>
               <tr>
-                <th>Item Name</th>
+                <th>Test Name</th>
                 <th>Status</th>
                 <th>Due Date</th>
                 <th>Grade</th>

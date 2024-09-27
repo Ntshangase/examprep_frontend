@@ -19,20 +19,18 @@ const IndStudentCourseDetails = () => {
             <div className="top-section">
               {/* Left Section: Course Image */}
               <div className="course-image">
-                <img src="/assets/comptiaS+.png" alt="CompTIA Security+" />
+                <img src="/assets/AWS-Cloud-Practitioner-Badge.jpeg" alt="CompTIA Security+" />
               </div>
 
               {/* Right Section: Course Details */}
-              <div className="course-info">
-                <h1>CompTIA Security+</h1>
-                <h2>About Course</h2>
-                <p>
+              <div className="independent-student-course-info">
+                <h1>AWS-Cloud-Practitioner</h1>
+                <p className="independent-student-about-course">
                   The CompTIA Security+ certification is recognized globally as a trusted validation of
                   foundational, vendor-neutral IT security knowledge and skills. It covers essential principles
                   in network security and risk management.
                 </p>
 
-                {/* Grey Line Separator */}
                 <hr className="separator" />
 
                 <p><strong>Number of Modules:</strong> 5</p>
@@ -42,7 +40,7 @@ const IndStudentCourseDetails = () => {
               </div>
             </div>
 
-            {/* Bottom Section: Class Info and Generate Test Button */}
+      
             <div className="class-info-container">
               {/* <p><strong>Class: </strong> ComptiaS+</p> */}
               <div className="generate-test-container">

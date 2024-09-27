@@ -44,7 +44,7 @@ const DataCaptureDashboard = () => {
 											alt={course.name}
 											className="badge-image"
 										/>
-										<p>{course.name}</p>
+										<p className="data-capture-about-course">{course.name}</p>
 									</div>
 								</div>
 							))}
