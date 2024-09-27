@@ -1,6 +1,7 @@
 .add-questions-container{
     display: flex;
     flex-direction: row;
+    height: 100vh;
 }
 
 .add-questions-content {
@@ -142,3 +143,30 @@
 .add-question-buttton:hover {
     background-color: #2563eb; /* Darker blue on hover */
 }
+
+.add-question-upload-dump-button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #3b82f6; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 20px; /* Adds space above the button */
+    margin-left: 200px;
+}
+.add-question-upload-dump-button:hover {
+    background-color: #2563eb;
+}
+
+.add-questions-form-scrollable {
+    height: 500px; /* You can adjust this based on your design */
+    overflow-y: auto; /* Enables vertical scrolling */
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background-color: var(--form-background);
+  }
