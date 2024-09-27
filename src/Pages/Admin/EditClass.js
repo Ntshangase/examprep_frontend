@@ -119,7 +119,7 @@ export default function EditClass() {
 					</div>
 					<div className="content-body-half2">
 						<div className="card">
-							<Link to="/ApproveStudent" className="remove-underline">
+							<Link to="/ManageClassStudents" className="remove-underline">
 								<h2>25</h2>
 								<p>Students Enrolled</p>
 							</Link>
