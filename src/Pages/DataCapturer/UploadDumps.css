@@ -78,3 +78,9 @@
 .upload-dump-submit-button:hover {
     background-color: #357ab8;
 }
+
+.upload-dump-dropdown-input {
+    padding: 15px;
+    width: 50%;
+    margin-bottom: 50px;
+}

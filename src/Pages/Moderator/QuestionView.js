@@ -7,10 +7,14 @@ import Navbar from "../../Components/Navbar/Navbar";
 
 const QuestionView = () => {
   // Example data
-  const dumpDetails = {
-    name: 'CompTIA A+ Core Exam',
-    version: '1.0.0',
-  };
+
+  const ModerateQuestion = () => {
+		navigate("/ModerateQuestion");
+	};
+  // const dumpDetails = {
+  //   name: 'CompTIA A+ Core Exam',
+  //   version: '1.0.0',
+  // };
 
   const navigate = useNavigate(); // Initialize navigate
 
@@ -39,12 +43,23 @@ const QuestionView = () => {
         <div className="dashboard-content">
           <div className="content-area">
 
-
-
             {/* Dump Details */}
             <div className="dump-details">
-              <h2>{dumpDetails.name}</h2>
-              <p>Version: {dumpDetails.version}</p>
+              <h2>Aws Cloud Practisioner</h2>
+
+            </div>
+
+            {/* Search Input */}
+            <div className="question-view-search-container">
+              <label htmlFor="search-input" className="search-label">
+                Search by Question ID:
+              </label>
+              <input
+                id="search-input"
+                type="text"
+                className="search-input"
+                placeholder="Enter Course ID"
+              />
             </div>
 
             {/* Questions Section */}
@@ -53,7 +68,7 @@ const QuestionView = () => {
                 <div key={question.id} className="question-card">
                   <div className="question-header">
                     <p>{question.question}</p>
-                    <button className="edit-btn">
+                    <button onClick={ModerateQuestion} className="edit-btn">
                       <FontAwesomeIcon icon={faEdit} />
                     </button>
                   </div>

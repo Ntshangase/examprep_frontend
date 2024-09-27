@@ -11,9 +11,9 @@ const ManageUser = () => {
     { name: 'John Ngubo', role: 'Lecturer', img: '/assets/images.jpeg' },
     { name: 'Mbali Zulu', role: 'Data Capture', img: '/assets/images.jpeg' },
     { name: 'Sipho Mtshali', role: 'Moderator', img: '/assets/images.jpeg' },
-    { name: 'Simphiwe Ntshangase', role: 'Lecturer', img: '/assets/images.jpeg' },
+    { name: 'Simmi Zulu', role: 'Lecturer', img: '/assets/images.jpeg' },
     { name: 'Mondli Zulu', role: 'Data Capture', img: '/assets/images.jpeg' },
-    
+
   ];
 
   return (

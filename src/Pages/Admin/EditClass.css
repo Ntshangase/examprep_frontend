@@ -4,7 +4,7 @@
     height: 100vh;
     font-family: 'Arial', sans-serif;
   }
-  
+
   /* Sidebar design */
   .sidebar {
     background-color: #006FBF;
@@ -100,15 +100,9 @@
     width: 200px;
   }
   
-  /* Buttons */
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    gap: 20px; /* Added space between the buttons */
-  }
-  
-  .cancel-button {
+
+  /* */
+  .edit-class-cancel-button {
     background-color: #F44336;
     color: white;
     border: none;
@@ -118,20 +112,12 @@
     font-size: 16px;
   }
   
-  .update-button {
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
+
   
 .edit-course-container {
 	display: flex;
 	flex-direction: row;
-	min-height: 100vh;
+	height: 100vh;
 }
 
 .edit-course-content {
@@ -153,7 +139,15 @@
 }
 
 .content-body-half1 {
-	flex: 1;
+	flex: 2; /* Increase the flex value to take up more space */
+	height: 500px; /* You can adjust this based on your design */
+	overflow-y: auto; /* Enables vertical scrolling */
+	padding: 10px;
+	border: 1px solid var(--border-color);
+	border-radius: 6px;
+	background-color: var(--form-background);
+	width: 100%; /* Ensures the width is full */
+	overflow-x: hidden; /* Prevents horizontal scrolling */
 }
 .content-body-half2 {
 	flex: 1;
@@ -165,13 +159,13 @@
 }
 
 /*form css belo*/
-form {
-	width: 100%;
+.edit-class-form{
+	width: 90%;
 	padding: 40px;
 }
 
 /* Form group spacing */
-.form-group {
+.edit-class-form-group {
 	margin-bottom: 25px;
 }
 
@@ -209,7 +203,7 @@ input[type="date"]:focus {
 
 .edit-class-submit-button {
 	display: block;
-	width: 90%;
+	width: 100%;
 	padding: 16px;
 	background-color: var(--color-primary);
 	color: white;
@@ -219,7 +213,7 @@ input[type="date"]:focus {
 	cursor: pointer;
 	transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
 }
-.buttonCancel {
+.edit-class-cancel-button{
 	display: block;
 	width: 100%;
 	padding: 16px;
@@ -237,7 +231,7 @@ input[type="date"]:focus {
 	background-color: #357bb5;
 	transform: translateY(-2px); /* Lift effect on hover */
 }
-.buttonCancel:hover {
+.edit-class-cancel-button:hover {
 	background-color: #ce2c27;
 	transform: translateY(-2px); /* Lift effect on hover */
 }
@@ -293,3 +287,29 @@ input[type="date"]::placeholder {
 	transform: scale(1.05);
 	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
+
+/* Read-only Input Styling */
+.read-only-input {
+	background-color: #e9ecef;
+	color: #6c757d;
+	border: 1px solid #ced4da;
+	padding: 0.5rem;
+	border-radius: 4px;
+	font-size: 1rem;
+}
+
+/* Search Input Styling */
+.search-input {
+	padding: 0.5rem;
+	border: 1px solid #ced4da;
+	border-radius: 4px;
+	width: 100%;
+	font-size: 1rem;
+}
+
+.search-input:focus {
+	border-color: #007bff;
+	outline: none;
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
