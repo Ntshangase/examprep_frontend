@@ -114,3 +114,9 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+.question-view-search-container {
+  margin-bottom: 20px;
+  width: 50%;
+}
+

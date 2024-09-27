@@ -14,7 +14,7 @@ export default function EditCourse() {
 	const handleCourseDescriptionChange = (e) =>
 		setCourseDescription(e.target.value);
 
-  const navigate = useNavigate();
+	const navigate = useNavigate();
 	const handleUpdateCourse = () => {
 		navigate("/ManageCourse");
 	};
@@ -28,62 +28,76 @@ export default function EditCourse() {
 	};
 
 	return (
-		<div className="container">
+		<div className="edit-course-container">
 			<AdminSidebar />
-			<main className="main">
-				<h1>Edit Course</h1>
-				<div className="content">
-					<div className="content-div">
-          <form className="form">
-						<div className="input-group">
-							<label>Course Name</label>
-							<input
-								type="text"
-								value={courseName}
-								onChange={handleCourseNameChange}
-								disabled
-							/>
-						</div>
-
-						<div className="input-group">
-							<label>Course Description</label>
-							<textarea
-								value={courseDescription}
-								onChange={handleCourseDescriptionChange}
-								rows="5"
-							/>
-						</div>
-
-						<div className="input-group">
-							<label>Edit Domain Name</label>
-							<div className="domain-list">
-								{domains.map((domain, index) => (
-									<button key={index} className="domain-button">
-										{domain}
-									</button>
-								))}
+			<div className="edit-course-content">
+				<h1 className="edit-course-content-h1">Edit Course</h1>
+				<div className="edit-course-content-display">
+					<div className="edit-course-content-display-half1">
+						<form>
+							<div className="edit-course-input-group">
+								<label>Course Name</label>
+								<input
+									type="text"
+									value={courseName}
+									onChange={handleCourseNameChange}
+									disabled
+								/>
 							</div>
-						</div>
-					</form>
 
-					<div className="image-upload">
-						<img src="/assets/aws.png" alt="AWS" className="course-image" />
-						<button onClick={handleImageUpload} className="upload-button">
-							Upload Image
-						</button>
+							<div className="edit-course-input-group">
+								<label>Course Description</label>
+								<textarea
+									value={courseDescription}
+									onChange={handleCourseDescriptionChange}
+									rows="5"
+								/>
+							</div>
+
+							<div className="edit-course-input-group">
+								<label>Edit Domain Name</label>
+								<div className="domain-list">
+									{domains.map((domain, index) => (
+										<button key={index} className="domain-button">
+											{domain}
+										</button>
+									))}
+								</div>
+							</div>
+						</form>
 					</div>
-          </div>
+					<div className="edit-course-content-display-half2">
+						<div className="edit-course-image-upload">
+							<img
+								src="/assets/aws.png"
+								alt="AWS"
+								className="edit-course-course-image"
+							/>
+							<button
+								onClick={handleImageUpload}
+								className="edit-course-upload-button"
+							>
+								Upload Image
+							</button>
+						</div>
 
-					<div className="update-remove-buttons">
-						<button onClick={handleUpdateCourse} className="update-button">
-							Update
-						</button>
-						<button onClick={handleRemoveCourse} className="edit-delete-button">
-							Remove
-						</button>
+						<div className="update-remove-buttons-div">
+							<button
+								onClick={handleUpdateCourse}
+								className="edit-course-update-button"
+							>
+								Update
+							</button>
+							<button
+								onClick={handleRemoveCourse}
+								className="edit-course-delete-button"
+							>
+								Remove
+							</button>
+						</div>
 					</div>
 				</div>
-			</main>
+			</div>
 		</div>
 	);
 }

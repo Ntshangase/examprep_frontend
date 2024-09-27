@@ -30,7 +30,7 @@ const TestResults = () => {
       <div className="test-results-content">
         <h1>Domain 2 Test Result</h1>
         <h1>Your Score: {score}/{questions.length}</h1>
-        <button onClick={handleNext}>Next: Review Answers</button>
+        <button className='test-result-button' onClick={handleNext}>Next: Review Answers</button>
       </div>
     </div>
   );

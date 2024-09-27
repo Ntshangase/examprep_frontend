@@ -1,20 +1,21 @@
-import React, { useState } from "react";
-import DatacaptureSidebar from "../../Components/Sidebar/DatacaptureSidebar";
-import "./AddQuestions.css";
-import courses from "../../Data/Courses.json";
+import React, {useState} from 'react';
+import "./ModerateQuestion.css";
+import ModeratorSidebar from '../../Components/Sidebar/ModeratorSidebar';
+import { useNavigate } from 'react-router-dom';
 
-export default function AddQuestions() {
-	const [selectedDomain, setSelectedDomain] = useState("");
-	const [selectedTopic, setSelectedTopic] = useState("");
-	const [question, setQuestion] = useState("");
-	const [correctAnswers, setCorrectAnswers] = useState([""]);
-	const [incorrectAnswers, setIncorrectAnswers] = useState([""]);
-	const [correctAnswerDescription, setCorrectAnswerDescription] = useState("");
+export default function ModerateQuestion() {
 
-	const domains = ["Math", "Science", "History"];
+    const [selectedDomain, setSelectedDomain] = useState("Aws");
+	const [selectedTopic, setSelectedTopic] = useState("Database");
+	const [question, setQuestion] = useState("Which of the following ports is typically used by HTTPS?");
+	const [correctAnswers, setCorrectAnswers] = useState(["80"]);
+	const [incorrectAnswers, setIncorrectAnswers] = useState(["90","80","200"]);
+	const [correctAnswerDescription, setCorrectAnswerDescription] = useState("Port 80 is the fastest and safest port for database connection");
+
+	const domains = ["Copmtia", "Aws", "History"];
 	const topics = {
 		Math: ["Algebra", "Geometry", "Calculus"],
-		Science: ["Physics", "Chemistry", "Biology"],
+		Aws: ["Physics", "Database", "Biology"],
 		History: ["World History", "Ancient Civilizations", "Modern History"],
 	};
 
@@ -31,53 +32,30 @@ export default function AddQuestions() {
 		setIncorrectAnswers(updatedIncorrectAnswers);
 	};
 
-	const addCorrectAnswer = () => {
-		setCorrectAnswers([...correctAnswers, ""]);
-	};
 
-	const addIncorrectAnswer = () => {
-		setIncorrectAnswers([...incorrectAnswers, ""]);
-	};
 
+    const navigate = useNavigate();
+    const QuestionView = () => {
+		navigate("/QuestionView");
+	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		setSelectedDomain("");
-		setSelectedTopic("");
-		setQuestion("");
-		setCorrectAnswers([""]); // Reset to initial state with one empty input
-		setIncorrectAnswers([""]); // Reset to initial state with one empty input
-		setCorrectAnswerDescription("");
 
-		// const questionData = {
-		// 	domain: selectedDomain,
-		// 	topic: selectedTopic,
-		// 	question,
-		// 	correctAnswers,
-		// 	incorrectAnswers,
-		// 	correctAnswerDescription,
-		// };
+
 	};
 
-	return (
-		<div className="add-questions-container">
-			<DatacaptureSidebar />
-			<div className="add-questions-content">
-				<h2 className="add-questions-content-h2">Add Question</h2>
-				<div className="add-questions-info-flow">
-					<img
-						src={courses[0].image}
-						alt={courses[0].title}
-						className="add-questions-course-image"
-					/>
-					<div className="add-questions-course-title">
-						<h3>{courses[0].title}</h3>
-					</div>
-				</div>
-				<div>
-					<form onSubmit={handleSubmit}>
+
+  return (
+    <div>
+        <div className='moderate-question-container'>
+            <ModeratorSidebar />
+            <div className='moderate-question-content'>
+                <h2>Moderate Question</h2>
+                <h4>Aws Cloud Practisioner</h4>
+                <form onSubmit={handleSubmit}>
 						{/* Domain Selection */}
-						<div className="add-questions-form-group">
+						<div className="moderate-question-form-group">
 							<label>Select Domain</label>
 							<select
 								value={selectedDomain}
@@ -99,7 +77,7 @@ export default function AddQuestions() {
 
 						{/* Topic Selection */}
 						{selectedDomain && (
-							<div className="add-questions-form-group">
+							<div className="moderate-question-form-group">
 								<label>Select Topic</label>
 								<select
 									value={selectedTopic}
@@ -118,7 +96,7 @@ export default function AddQuestions() {
 						)}
 
 						{/* Question Input */}
-						<div className="add-questions-form-group">
+						<div className="moderate-question-form-group">
 							<label>Question</label>
 							<textarea
 								value={question}
@@ -128,7 +106,7 @@ export default function AddQuestions() {
 						</div>
 
 						{/* Dynamic Correct Answer Inputs */}
-						<div className="add-questions-form-group">
+						<div className="moderate-question-form-group">
 							<label>Correct Answers</label>
 							{correctAnswers.map((answer, index) => (
 								<div key={index}>
@@ -140,17 +118,13 @@ export default function AddQuestions() {
 										}
 										placeholder={`Correct Answer ${index + 1}`}
 									/>
-									{index === correctAnswers.length - 1 && (
-										<button type="button" onClick={addCorrectAnswer}>
-											Add Correct Answer
-										</button>
-									)}
+
 								</div>
 							))}
 						</div>
 
 						{/* Dynamic Incorrect Answer Inputs */}
-						<div className="add-questions-form-group">
+						<div className="moderate-question-form-group">
 							<label>Incorrect Answers</label>
 							{incorrectAnswers.map((answer, index) => (
 								<div key={index}>
@@ -162,17 +136,13 @@ export default function AddQuestions() {
 										}
 										placeholder={`Incorrect Answer ${index + 1}`}
 									/>
-									{index === incorrectAnswers.length - 1 && (
-										<button type="button" onClick={addIncorrectAnswer}>
-											Add Incorrect Answer
-										</button>
-									)}
+
 								</div>
 							))}
 						</div>
 
 						{/* Correct Answer Description */}
-						<div className="add-questions-form-group">
+						<div className="moderate-question-form-group">
 							<label>Correct Answer Description</label>
 							<textarea
 								value={correctAnswerDescription}
@@ -182,10 +152,10 @@ export default function AddQuestions() {
 						</div>
 
 						{/* Submit Button */}
-						<button className="add-question-button" type="submit">Add Question</button>
+						<button onClick={QuestionView} className="moderate-question-button" type="submit">Approve</button>
 					</form>
-				</div>
-			</div>
-		</div>
-	);
+            </div>
+        </div>
+    </div>
+  )
 }

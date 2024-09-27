@@ -40,7 +40,7 @@ const ScheduledTestReview = () => {
             </div>
           );
         })}
-        <button onClick={handleBackToTests}>Back to Scheduled Tests</button>
+        <button className='scheduled-test-review-button' onClick={handleBackToTests}>Back to Scheduled Tests</button>
       </div>
     </div>
   );

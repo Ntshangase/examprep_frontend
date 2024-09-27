@@ -44,7 +44,7 @@ h1 {
   font-size: 1.2em;
 }
 
-button {
+.scheduled-test-review-button{
   background-color: var(--color-primary);
   color: white;
   padding: 15px 30px;
@@ -56,6 +56,6 @@ button {
   margin-top: 20px;
 }
 
-button:hover {
+.scheduled-test-review-button:hover {
   background-color: var(--color-primary-dark);
 }

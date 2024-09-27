@@ -100,15 +100,9 @@
     width: 200px;
   }
   
-  /* Buttons */
-  .buttons {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    gap: 20px; /* Added space between the buttons */
-  }
+
   
-  .cancel-button {
+  .edit-class-cancel-button {
     background-color: #F44336;
     color: white;
     border: none;
@@ -118,15 +112,7 @@
     font-size: 16px;
   }
   
-  .update-button {
-    background-color: #2196F3;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
+
   
 .edit-course-container {
 	display: flex;
@@ -165,13 +151,13 @@
 }
 
 /*form css belo*/
-form {
+.edit-class-form{
 	width: 100%;
 	padding: 40px;
 }
 
 /* Form group spacing */
-.form-group {
+.edit-class-form-group {
 	margin-bottom: 25px;
 }
 
@@ -209,7 +195,7 @@ input[type="date"]:focus {
 
 .edit-class-submit-button {
 	display: block;
-	width: 90%;
+	width: 100%;
 	padding: 16px;
 	background-color: var(--color-primary);
 	color: white;
@@ -219,7 +205,7 @@ input[type="date"]:focus {
 	cursor: pointer;
 	transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
 }
-.buttonCancel {
+.edit-class-cancel-button{
 	display: block;
 	width: 100%;
 	padding: 16px;
@@ -237,7 +223,7 @@ input[type="date"]:focus {
 	background-color: #357bb5;
 	transform: translateY(-2px); /* Lift effect on hover */
 }
-.buttonCancel:hover {
+.edit-class-cancel-button:hover {
 	background-color: #ce2c27;
 	transform: translateY(-2px); /* Lift effect on hover */
 }

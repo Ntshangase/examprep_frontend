@@ -37,9 +37,9 @@ export default function EditClass() {
 				<h2>EditClass</h2>
 				<div className="edit-course-content-body">
 					<div className="content-body-half1">
-						<form onSubmit={handleSubmit}>
+						<form className='edit-class-form' onSubmit={handleSubmit}>
 							{/* Class Name Input */}
-							<div className="form-group">
+							<div className="edit-class-form-group">
 								<label htmlFor="className">Class Name:</label>
 								<input
 									type="text"
@@ -51,7 +51,7 @@ export default function EditClass() {
 							</div>
 
 							{/* Lecturer Name Input */}
-							<div className="form-group">
+							<div className="edit-class-form-group">
 								<label htmlFor="lecturer">Assign Lecturer:</label>
 								<input
 									type="text"
@@ -63,7 +63,7 @@ export default function EditClass() {
 							</div>
 
 							{/* Start Date Input */}
-							<div className="form-group">
+							<div className="edit-class-form-group">
 								<label htmlFor="startDate">Start Date:</label>
 								<input
 									type="date"
@@ -75,7 +75,7 @@ export default function EditClass() {
 							</div>
 
 							{/* End Date Input */}
-							<div className="form-group">
+							<div className="edit-class-form-group">
 								<label htmlFor="endDate">End Date:</label>
 								<input
 									type="date"
@@ -99,7 +99,7 @@ export default function EditClass() {
 						</div>
 						<div className="cancel-button-div">
 							<button
-								className="buttonCancel"
+								className="edit-class-cancel-button"
 								onClick={() => navigate("/CourseDetails")}
 							>
 								Cancel

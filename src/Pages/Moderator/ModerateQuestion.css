@@ -1,0 +1,115 @@
+.moderate-question-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+/* Content area for moderating questions */
+.moderate-question-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px; /* General padding */
+    flex-grow: 1; /* Take remaining space beside sidebar */
+    overflow-y: auto; /* Enable scrolling for overflow content */
+}
+
+/* Header styling */
+.moderate-question-content h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--color-primary);
+}
+
+/* Form group styling */
+.moderate-question-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    width: 50%; /* Ensure it takes full width */
+}
+
+/* Label styling */
+.moderate-question-form-group label {
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 8px;
+    color: #555; /* Slightly darker color for labels */
+}
+
+/* Inputs (text, textarea, and select) */
+.moderate-question-form-group select,
+.moderate-question-form-group input,
+.moderate-question-form-group textarea {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc; /* Soft border */
+    border-radius: 6px;
+    background-color: white; /* Neutral background */
+    color: #333;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
+}
+
+/* Focus state for inputs */
+.moderate-question-form-group select:focus,
+.moderate-question-form-group input:focus,
+.moderate-question-form-group textarea:focus {
+    border-color: #3b82f6; /* Light blue on focus */
+}
+
+/* Textarea specific styling */
+.moderate-question-form-group textarea {
+    resize: vertical; /* Allow vertical resizing */
+    min-height: 100px; /* Minimum height for textareas */
+}
+
+/* Dynamic input containers */
+.moderate-question-form-group div {
+    display: flex;
+    align-items: center;
+    margin-top: 10px; /* Spacing between inputs */
+}
+
+/* Button styling */
+.moderate-question-button {
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #4ade80; /* Green button */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    align-self: center; /* Center the submit button */
+}
+
+.moderate-question-button:hover {
+    background-color: #22c55e; /* Darker green on hover */
+}
+
+/* Ensure consistent spacing */
+.moderate-question-form-group input,
+.moderate-question-form-group select,
+.moderate-question-form-group textarea {
+    margin-bottom: 10px; /* Space below inputs */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .moderate-question-container {
+        flex-direction: column; /* Stack sidebar and content on smaller screens */
+    }
+
+    .moderate-question-content {
+        padding: 10px; /* Reduced padding on smaller screens */
+    }
+
+    .moderate-question-form-group {
+        margin-bottom: 15px; /* Adjusted spacing for smaller screens */
+    }
+
+    .moderate-question-content h2 {
+        font-size: 18px; /* Slightly smaller heading */
+    }
+}

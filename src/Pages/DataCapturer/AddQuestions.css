@@ -1,90 +1,144 @@
-.upload-questions-dashboard {
+.add-questions-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.add-questions-content {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    padding-left: 20px;
+    width: 50%;
 }
 
-.dashboard-content {
-    display: flex;
-    flex: 1;
-}
-
-.content-area {
-    flex: 1;
-    padding: 20px;
-    background-color: #fff;
-}
-
-.upload-header {
-    font-size: 28px;
+/* Header styling */
+.add-questions-content-h2 {
+    text-align: center;
     margin-bottom: 20px;
+    color: var(--color-primary);
+}
+
+/* Info flow section */
+.add-questions-info-flow {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.add-questions-course-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.add-questions-course-title h3 {
+    font-size: 20px;
+    font-weight: 500;
     color: #333;
 }
 
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* Two equal columns */
-    grid-gap: 20px; /* Spacing between fields */
+/* Form group styling */
+.add-questions-form-group {
+    display: flex;
+    flex-direction: column;
     margin-bottom: 20px;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-}
-
-.form-group label {
+.add-questions-form-group label {
+    font-size: 16px;
+    font-weight: 500;
     margin-bottom: 8px;
-    font-size: 16px;
+    color: #555;
+}
+
+/* Inputs (text, textarea, and select) */
+.add-questions-form-group select,
+.add-questions-form-group input,
+.add-questions-form-group textarea {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc; /* Soft border */
+    border-radius: 6px;
+    background-color: white; /* Neutral background */
     color: #333;
+    outline: none;
+    transition: border-color 0.2s ease-in-out;
 }
 
-.form-group input,
-.form-group select,
-.form-group textarea {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
+.add-questions-form-group select:focus,
+.add-questions-form-group input:focus,
+.add-questions-form-group textarea:focus {
+    border-color: #3b82f6; /* Light blue on focus */
 }
 
-.add-question-field {
+/* Textarea specific styling */
+.add-questions-form-group textarea {
     resize: vertical;
-    min-height: 80px;
+    min-height: 100px;
 }
 
-/* Buttons area */
-.button-group {
+/* Dynamic input containers */
+.add-questions-form-group div {
     display: flex;
-    justify-content: flex-end;
-    margin-top: 20px;
-    gap: 10px; /* Space between buttons */
+    align-items: center;
+    margin-top: 10px;
 }
 
-.quit-button {
-    background-color: red;
+/* Button styling inside dynamic inputs */
+.add-questions-form-group button {
+    margin-left: 10px;
+    padding: 8px 12px;
+    font-size: 12px;
+    background-color: #3b82f6; /* Blue button */
     color: white;
-    padding: 10px 20px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
-.add-question-submit-button {
-    background-color: blue;
+.add-questions-form-group button:hover {
+    background-color: #2563eb; /* Darker blue on hover */
+}
+
+/* Submit button styling */
+.add-questions-submit-btn {
+    padding: 12px 20px;
+    font-size: 16px;
+    background-color: #4ade80; /* Green submit button */
     color: white;
-    padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 6px;
     cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
 }
 
-.quit-button:hover {
-    background-color: darkred;
+.add-questions-submit-btn:hover {
+    background-color: #22c55e; /* Darker green on hover */
 }
 
-.add-question-submit-button:hover {
-    background-color: darkblue;
+/* Ensure all form elements have consistent spacing */
+.add-questions-form-group input,
+.add-questions-form-group select,
+.add-questions-form-group textarea {
+    margin-bottom: 10px;
+}
+
+.add-question-button {
+    display: inline-block;
+    padding: 12px 20px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: #3b82f6; /* Blue button */
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    margin-top: 20px; /* Adds space above the button */
+}
+
+.add-question-buttton:hover {
+    background-color: #2563eb; /* Darker blue on hover */
 }
