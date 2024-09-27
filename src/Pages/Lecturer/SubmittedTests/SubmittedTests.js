@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import BackButton from "../../../Components/BackButton/BackButton"
 import styles from './SubmittedTests.module.css'; // Import your CSS module (optional)
 
 // Dummy data for submitted tests
@@ -21,9 +22,12 @@ const SubmittedTests = () => {
 
     return (
         <div className={styles.submittedTests}>
-            <div className={styles.submittedContent}>
             <LecturerSidebar />
+            <div className={styles.submittedContent}>
                 <div className={styles.contentArea}>
+                    {/* Adding the BackButton */}
+                    <BackButton label="Go Back" />
+
                     <h2>Submitted Tests</h2>
                     <ul className={styles.testList}>
                         {submittedTestsData.map(test => (
@@ -38,4 +42,4 @@ const SubmittedTests = () => {
     );
 };
 
-export default SubmittedTests;  
+export default SubmittedTests;
