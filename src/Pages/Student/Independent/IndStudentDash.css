@@ -1,109 +1,124 @@
-/* General layout */
-.independent-student-courses {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dashboard-content {
-    display: flex;
-  }
-  
-  .content-area {
-    flex-grow: 1;
+.exam-prep-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;  
+}
+
+  .main-content {
+    width: 100%;
     padding: 20px;
+    height: 100%;
   }
   
-  /* Enrolled course section */
-  .enrolled-course-section {
+  .profile-section {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 30px;
-  }
-  
-  .enrolled-course-card {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    margin-right: 20px;
-  }
-  
-  .course-description {
-    flex: 2;
-  }
-  
-  .course-description h3 {
-    margin-bottom: 10px;
-  }
-  
-  .course-image {
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
-  }
-  
-  .course-title {
-    font-size: 18px;
-    font-weight: bold;
-  }
-  
-  /* Explore courses section */
-  .explore-courses-title {
-    margin-top: 40px;
     margin-bottom: 20px;
   }
   
-  .courses-grid {
-    display: flex;
-    gap: 20px;
+  .profile-picture img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
   }
   
-  .course-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .profile-info {
+    margin-left: 20px;
+  }
+  
+  .profile-info h4 {
+    margin-bottom: 10px;
+  }
+  
+  .profile-info button {
+    display: block;
+    margin: 5px 0;
     padding: 10px;
-  }  
+    background-color: #3498db;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  /* Badge section styling */
+.badge-section {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  background-color: white;
+}
 
-  .progress-container {
-    width: 100%;
-    background-color: #e0e0e0;
-    border-radius: 8px;
-    margin: 10px 0;
-    overflow: hidden;
-  }
-  
-  .progress-bar {
-    height: 10px;
-    background-color: #76c7c0; /* Change color as needed */
-    transition: width 0.5s ease;
-  }
-  
-  .progress-container p {
-    text-align: center;
-    margin-top: 5px;
-  }
+.content-area{
+  background-color: white;
+  height: 100%;
+}
 
-  /* Continue button styling */
-.continue-button-container {
-    text-align: center; /* Center the button */
-    margin-top: 20px;  /* Space above the button */
+/* Badge card styles */
+.badge-card {
+  width: 180px;
+  /* Set card width */
+  padding: 15px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Adds shadow for card effect */
+  text-align: center;
+  transition: transform 0.3s ease;
+  /* Adds smooth transition effect */
+}
+
+.badge-card:hover {
+  transform: translateY(-10px);
+  /* Adds hover effect */
+}
+
+.badge-image {
+  width: 100px;
+  /* Set desired width */
+  height: auto;
+  /* Maintain aspect ratio */
+  margin-bottom: 10px;
+}
+
+.badge p {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+  .badge-card {
+    width: 150px;
+    /* Adjust card width for smaller screens */
   }
-  
-  .continue-button {
-    background-color: transparent; /* Transparent background */
-    border: 2px solid #2C97DE; /* Border color matching the progress bar */
-    border-radius: 10px; /* Round shape */
-    color: #2C97DE; /* Text color matching the border */
-    padding: 10px 20px; /* Padding for size */
-    font-size: 16px; /* Font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s, color 0.3s; /* Transition effects */
-  }
-  
-  .continue-button:hover {
-    background-color: #338796; /* Change background on hover */
-    color: #4A4A4A; /* Change text color on hover */
-  }
-  
+}
+
+/* logout to the bottom */
+/* Ensure the ul takes the full height of its parent */
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  /* Full height of the viewport */
+  justify-content: space-between;
+  /* Space between elements */
+  list-style-type: none;
+  /* Remove bullet points */
+  padding: 0;
+  margin: 0;
+}
+
+/* Optional styling for list items */
+.menu li {
+  padding: 10px;
+  font-size: 18px;
+}
+
+/* Add some styling to the LogOut button */
+.menu .logout {
+  margin-bottom: 10px;
+}

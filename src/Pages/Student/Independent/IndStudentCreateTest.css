@@ -1,156 +1,172 @@
-/* Ensure full-screen layout */
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  font-family: 'Arial', sans-serif;
-}
-
-.lecturer-dashboard {
+/* General layout */
+.generate-test-dashboard {
   display: flex;
-  flex-direction: column;
-  height: 100vh; /* Full height for the dashboard */
+  height: 100vh;
+  background-color: #f8f9fa;
+  overflow: hidden;
 }
 
 .dashboard-content {
   display: flex;
-  flex: 1; /* Allow to fill remaining space */
-  height: 100%; /* Ensure it takes the full height */
+  width: 100%;
+  overflow: hidden;
 }
 
-.sidebar {
-  width: 250px;
-  background-color: #f0f0f0;
-  padding: 20px;
-  box-sizing: border-box; /* Include padding in the width */
-}
-
-.content-area {
-  flex: 1; /* Allow to grow and fill available space */
-  padding: 20px;
-  overflow-y: auto; /* Enable scrolling for overflow content */
+.independent-student-content-area {
+  flex-grow: 1;
+  padding: 2rem;
   background-color: #fff;
+  overflow-y: auto; /* Scrollable content */
 }
 
+/* Create Test Container */
 .create-test-container {
-  background-color: #ffffff;
-  padding: 20px;
+  background-color: #fff;
+  padding: 2rem;
   border-radius: 8px;
-  overflow-y: auto; /* Enable scrolling if content exceeds height */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  flex: 1; /* Allow it to grow and fill available space */
-  height: auto; /* Allow height to adjust based on content */
-  min-height: 80vh; /* Set a minimum height for better visibility */
-  width: 100%; /* Expand to full width */
-  max-width: 1200px; /* Set a max width for larger screens */
-  margin: 0 auto; /* Center the container on the page */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .create-test-container h1 {
-  font-size: 24px;
-  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #343a40;
+  margin-bottom: 1.5rem;
+  text-align: center;
 }
 
 .domain-section {
-  margin-bottom: 30px;
+  margin-bottom: 2rem;
 }
 
 .domain-section h2 {
-  font-size: 20px;
-  margin-bottom: 15px;
+  font-size: 1.5rem;
+  color: #007bff;
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.5rem;
 }
 
 .topic-item {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  margin-bottom: 1rem;
 }
 
 .topic-item label {
-  font-size: 16px;
-  width: 70%;
+  flex-grow: 1;
+  color: #495057;
+  font-weight: 500;
 }
 
-.topic-item input[type="number"] {
-  width: 60px;
-  padding: 5px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.topic-item input {
+  width: 100px;
+  padding: 0.5rem;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  font-size: 1rem;
 }
 
+.topic-item input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
+/* Total Weight Section */
 .total-weight-section {
   display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  margin-top: 20px;
 }
 
-.total-weight-section span {
-  font-size: 16px;
-  margin-right: 10px;
-}
-
-.total-weight-section input {
-  width: 60px; /* Adjusted for better visibility */
-  padding: 5px;
-  font-size: 16px;
+.independent-student-total-weight{
   text-align: center;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+  margin-left:80%;
 }
 
+/* Button Styling */
 .generate-test-button {
-  background-color: #007bff;
+  display: block;
+  width: 100%;
+  max-width: 300px;
+  margin: 2rem auto;
+  padding: 0.8rem;
+  font-size: 1.2rem;
   color: white;
+  background-color: #28a745;
   border: none;
-  border-radius: 5px;
-  padding: 10px 20px;
-  font-size: 16px;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
-  margin-top: 20px;
-  float: right; /* Keep the button on the right */
+  transition: background-color 0.3s ease;
+  text-align: center;
 }
 
 .generate-test-button:hover {
-  background-color: #0056b3;
+  background-color: #218838;
 }
 
+/* Modal Styles */
 .modal-overlay {
-  display: flex;
   position: fixed;
-  z-index: 1000;
-  left: 0;
   top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5); /* Dark background with opacity */
-  align-items: center; /* Center vertically */
-  justify-content: center; /* Center horizontally */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
-  background-color: #ffffff;
-  padding: 20px;
+  background: white;
+  padding: 2rem;
   border-radius: 8px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-  text-align: center; /* Center text */
-  width: 90%; /* Width of modal */
-  max-width: 400px; /* Max width */
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .modal-button {
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  background-color: #4b4d50; /* Primary button color */
+  margin-top: 1.5rem;
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
   color: white;
+  border: none;
+  border-radius: 4px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 }
 
 .modal-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
+  background-color: #0056b3;
+}
+
+/* Scrollbar Styling for content area */
+.content-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.content-area::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.content-area::-webkit-scrollbar-thumb {
+  background-color: #007bff;
+  border-radius: 10px;
+}
+
+.content-area::-webkit-scrollbar-thumb:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .create-test-container {
+    padding: 1.5rem;
+  }
+
+  .generate-test-button {
+    max-width: 100%;
+    font-size: 1.1rem;
+  }
 }
