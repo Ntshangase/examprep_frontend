@@ -50,12 +50,12 @@ function Login() {
 						Continue
 					</button>
 					<div className="login-signup">
-						Don't have an account? <a href="/Signup">Sign up</a>
+						Don&apos;t have an account? <a href="/Signup">Sign up</a>
 					</div>
 				</form>
 			</div>
 			<div className="login-right-div">
-				<h1 className="login-right-div-h1"> Africa College</h1>
+				<h1 className="login-right-div-h1">Certified Pro</h1>
 				<p className="login-right-div-text">
 					continue your journey toward top tech certifications like AWS and
 					CompTIA. Elevate your skills and stay ahead in the tech world!
