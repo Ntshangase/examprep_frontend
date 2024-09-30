@@ -16,7 +16,7 @@ const TestReview = () => {
         setShowModal(true);
         // Automatically redirect after 3 seconds
         setTimeout(() => {
-            navigate('/IndStudentDash');
+            navigate('/StudentDashBoard');
         }, 3000);
     };
 

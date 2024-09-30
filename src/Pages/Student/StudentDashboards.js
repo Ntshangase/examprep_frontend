@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '../../../src/Components/Sidebar/Sidebar';
+import DashSidebar from '../../../src/Components/Sidebar/DashSidebar';
 
 import './StudentDashboard.css';
 
@@ -8,11 +8,11 @@ const StudentDashboard = () => {
     <div className="student-dashboard">
       
       <div className="dashboard-content">
-        <Sidebar />
+        <DashSidebar />
         <div className="content-area">
           <h1>Welcome to the Student Dashboard</h1>
           <div className="card-container">
-            <div className="card" onClick={() => window.location.href='/IndStudentDash'}>
+            <div className="card" onClick={() => window.location.href='/IndStudentCourses'}>
               <img src="/assets/independentStudent.jpg" alt="Independent Student" />
               <h2>Independent Student</h2>
               <p>Access resources and manage your learning independently.</p>
