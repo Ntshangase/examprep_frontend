@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './Sidebar.css';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 export default function AdminSidebar() {
 	return (
@@ -19,6 +21,13 @@ export default function AdminSidebar() {
 					<Link to="/ManageClass">Manage Classes</Link>
 				</li>
 			</ul>
+			<div className="sidebar-user-details">
+				<FontAwesomeIcon icon={faUser} className="sidebar-user-icon" />
+				<div className="sidebar-user-details-content">
+					<p className="sidebar-user-details-name">Vezindlebe Ntshangase</p>
+					<p className="sidebar-user-details-email">simphiwe@gmail.com</p>
+				</div>
+			</div>
 		</aside>
 	);
 }
