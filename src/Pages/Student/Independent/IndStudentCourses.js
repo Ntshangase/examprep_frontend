@@ -25,7 +25,7 @@ const IndStudentCourses = () => {
   // Function to handle course selection
   const handleCourseSelect = (course) => {
     // Navigate to course detail page, passing course data as state
-    navigate("/IndStudentCourseDets", { state: { course } });
+    navigate("/IndStudentCourseDetails", { state: { course } });
   };
 
   return (

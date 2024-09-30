@@ -2,7 +2,7 @@ import React from "react";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
 
-const IndependentStudentSidebar = () => {
+const Sidebar = () => {
 	return (
 		<aside className="sidebar-component-container">
 			<Link to="/">
@@ -10,17 +10,11 @@ const IndependentStudentSidebar = () => {
 			</Link>
 			<ul className="sidebar-content">
 				<li className="sidebar-link">
-					<Link to="/StudentDashboards">Home</Link>
-				</li>
-				<li className="sidebar-link">
-					<Link to="/IndStudentdash">Course Details </Link>
-				</li>
-				<li className="sidebar-link">
-					<Link to="/TestReview">Test review</Link>
+					<Link to="/">Home</Link>
 				</li>
 			</ul>
 		</aside>
 	);
 };
 
-export default IndependentStudentSidebar;
+export default Sidebar;
