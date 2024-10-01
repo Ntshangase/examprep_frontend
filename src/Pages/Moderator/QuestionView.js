@@ -1,7 +1,7 @@
 import React from 'react';
 import './QuestionView.css'; // Import the CSS for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faArrowLeftLong, faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { faEdit, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom'; // Import hooks for routing
 import Navbar from "../../Components/Navbar/Navbar";
 
@@ -87,10 +87,6 @@ const QuestionView = () => {
             <div className="button-container">
               <button onClick={() => navigate("/ModeratorDashboard")} className="back-btn">
                 <FontAwesomeIcon icon={faArrowLeftLong} /> Back
-              </button>
-
-              <button onClick={() => navigate('/ModeratorDashboard')} className="done-btn">
-                <FontAwesomeIcon icon={faCheckCircle} /> Done
               </button>
             </div>
           </div>
