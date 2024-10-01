@@ -22,7 +22,7 @@ const ModeratorDashboard = () => {
 			<div className="dashboard-content">
 				<IndependentStudentSidebar />
 				<div className="content-area">
-					<h2>Select Course to Moderate</h2>
+					<h2>Select Course to Generate Test</h2>
 					{/* Certification Badges with Labels */}
 					<div className="badge-section">
 						{courses.map((course) => (

@@ -22,13 +22,12 @@ function Home() {
 
 	return (
 		<div>
-			<h1>Temporal landing page for exam prep application</h1>
+			<h1>CertifiedPro temporal landing page</h1>
 			<button onClick={handleNavigateModerator}>Moderator</button>
 			<button onClick={handleNavigateLecture}>Lecture</button>
 			<button onClick={handleNavigateAdmin}>Admin</button>
 			<button onClick={handleNavigateStudent}>Student</button>
 			<button onClick={handleNavigateDataCaptureDashboard}>Data Capture</button>
-
 		</div>
 	);
 }
