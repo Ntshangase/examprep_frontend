@@ -2,13 +2,12 @@
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;  
+  width: 100vw;
 }
 
   .main-content {
     width: 100%;
     padding: 20px;
-    height: 100%;
   }
   
   .profile-section {
@@ -53,7 +52,6 @@
 
 .content-area{
   background-color: white;
-  height: 100%;
 }
 
 /* Badge card styles */
@@ -98,12 +96,9 @@
 }
 
 /* logout to the bottom */
-/* Ensure the ul takes the full height of its parent */
 .menu {
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  /* Full height of the viewport */
   justify-content: space-between;
   /* Space between elements */
   list-style-type: none;
