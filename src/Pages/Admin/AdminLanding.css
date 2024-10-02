@@ -8,7 +8,7 @@
 }
 
 /* Main Section */
-.main-section {
+.admin-landing-main-section {
   display: flex;
   flex-direction: column;
   min-height: 95vh;
@@ -18,29 +18,29 @@
   margin-top: 250px;
 }
 
-.text-content {
+.admin-landing-text-content {
   flex: 1;
   padding-right: 20px;
 }
 
-.text-content h1 {
+.admin-landing-text-content h1 {
   font-size: 2.5rem;
   color: #4d9fce;
   margin-bottom: 10px;
 }
 
-.text-content p {
+.admin-landing-text-content p {
   font-size: 1.2rem;
   color: #4d9fce;
 }
 
-.icon-content {
+.admin-landing-icon-content {
   flex: 1;
   text-align: right;
   color: #4d9fce;
 }
 
-.icon-content i {
+.admin-landing-icon-content i {
   font-size: 6rem;
 }
 

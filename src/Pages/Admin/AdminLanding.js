@@ -6,12 +6,12 @@ export default function AdminLanding() {
 	return (
 		<div className="admin-landing">
 			<AdminSidebar />
-			<div className="main-section">
-				<div className="text-content">
+			<div className="admin-landing-main-section">
+				<div className="admin-landing-text-content">
 					<h1>Welcome to the Exam Prep System</h1>
 					<p>Handle all your Course needs in one place.</p>
 				</div>
-				<div className="icon-content">
+				<div className="admin-landing-icon-content">
 					<i className="fas fa-laptop fa-10x"></i>{" "}
 					{/* Laptop icon as a placeholder */}
 				</div>

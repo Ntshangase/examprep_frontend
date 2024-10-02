@@ -1,119 +1,122 @@
-.exam-prep-container {
+.moderator-dashboard-container {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	width: 100vw;
+}
+
+.main-content {
+	width: 100%;
+	padding: 20px;
+}
+
+.profile-section {
+	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.profile-picture img {
+	border-radius: 50%;
+	width: 100px;
+	height: 100px;
+}
+
+.profile-info {
+	margin-left: 20px;
+}
+
+.profile-info h4 {
+	margin-bottom: 10px;
+}
+
+.profile-info button {
+	display: block;
+	margin: 5px 0;
+	padding: 10px;
+	background-color: #3498db;
+	color: white;
+	border: none;
+	cursor: pointer;
+}
+
+/* Badge section styling */
+.badge-section {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	gap: 20px;
+	padding: 20px;
+	background-color: white;
+}
+
+.moderator-content-area-h2{
+  align-self: center;
+}
+
+.moderator-content-area {
+  padding: 20px;
   display: flex;
   flex-direction: column;
-  height: 100vh;
-  width: 100vw;
-}
-
-  .main-content {
-    width: 100%;
-    padding: 20px;
-  }
-  
-  .profile-section {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .profile-picture img {
-    border-radius: 50%;
-    width: 100px;
-    height: 100px;
-  }
-  
-  .profile-info {
-    margin-left: 20px;
-  }
-  
-  .profile-info h4 {
-    margin-bottom: 10px;
-  }
-  
-  .profile-info button {
-    display: block;
-    margin: 5px 0;
-    padding: 10px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
-  
-  /* Badge section styling */
-.badge-section {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 20px;
-  background-color: white;
-}
-
-.content-area{
-  background-color: white;
+  overflow-y: auto;
 }
 
 /* Badge card styles */
 .badge-card {
-  width: 180px;
-  /* Set card width */
-  padding: 15px;
-  background-color: white;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Adds shadow for card effect */
-  text-align: center;
-  transition: transform 0.3s ease;
-  /* Adds smooth transition effect */
+	width: 180px;
+	padding: 15px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	transition: transform 0.3s ease;
 }
 
 .badge-card:hover {
-  transform: translateY(-10px);
-  /* Adds hover effect */
+	transform: translateY(-10px);
+	/* Adds hover effect */
 }
 
 .badge-image {
-  width: 100px;
-  /* Set desired width */
-  height: auto;
-  /* Maintain aspect ratio */
-  margin-bottom: 10px;
+	width: 100px;
+	/* Set desired width */
+	height: auto;
+	/* Maintain aspect ratio */
+	margin-bottom: 10px;
 }
 
 .badge p {
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: bold;
+	margin-top: 10px;
+	font-size: 14px;
+	font-weight: bold;
 }
 
 /* Media query for responsiveness */
 @media (max-width: 768px) {
-  .badge-card {
-    width: 150px;
-    /* Adjust card width for smaller screens */
-  }
+	.badge-card {
+		width: 150px;
+		/* Adjust card width for smaller screens */
+	}
 }
 
 /* logout to the bottom */
 .menu {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  /* Space between elements */
-  list-style-type: none;
-  /* Remove bullet points */
-  padding: 0;
-  margin: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	/* Space between elements */
+	list-style-type: none;
+	/* Remove bullet points */
+	padding: 0;
+	margin: 0;
 }
 
 /* Optional styling for list items */
 .menu li {
-  padding: 10px;
-  font-size: 18px;
+	padding: 10px;
+	font-size: 18px;
 }
 
 /* Add some styling to the LogOut button */
 .menu .logout {
-  margin-bottom: 10px;
+	margin-bottom: 10px;
 }
