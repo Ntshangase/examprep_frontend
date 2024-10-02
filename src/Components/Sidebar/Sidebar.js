@@ -7,6 +7,9 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 const Sidebar = () => {
 	return (
 		<aside className="sidebar-component-container">
+			<Link to="/Home">
+				<img src="/assets/certifiedpro.jpeg" alt="sidebar-logo" />
+			</Link>
 			<ul className="sidebar-content">
 				<li className="sidebar-link">
 					<Link to="/">Home</Link>
