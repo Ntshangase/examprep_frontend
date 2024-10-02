@@ -5,8 +5,8 @@ import courses from "../../Data/Courses.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faEye,
-	faTimes,
 	faPlusCircle,
+	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
@@ -52,7 +52,7 @@ export default function CourseDetails() {
 								<Link to="/EditClass">
 									<FontAwesomeIcon icon={faEye} className="icon-eye" />
 								</Link>
-								<FontAwesomeIcon icon={faTimes} className="icon-delete" />
+								<FontAwesomeIcon icon={faTrash} className="icon-delete" />
 							</div>
 						</div>
 					</div>

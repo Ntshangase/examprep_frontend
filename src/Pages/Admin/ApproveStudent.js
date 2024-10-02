@@ -17,7 +17,7 @@ function ApproveStudent() {
 						alt={courses[0].title}
 						className="manage-class-student-course-image"
 					/>
-					<h3>{courses[0].title}</h3>
+					<h3>June Intake</h3>
 					<div className="approve-student-content-dody">
 						<div>
 							<p>Khethokwakhe Mhlaba</p>

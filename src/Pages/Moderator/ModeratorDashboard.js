@@ -24,11 +24,11 @@ const ModeratorDashboard = () => {
 	};
 
 	return (
-		<div className="exam-prep-container">
+		<div className="moderator-dashboard-container">
 			<div className="dashboard-content">
 				<ModeratorSidebar />
-				<div className="content-area">
-					<h2>Select Course to Moderate</h2>
+				<div className="moderator-content-area">
+					<h2 className="moderator-content-area-h2">Select Course to Moderate</h2>
 					{/* Certification Badges with Labels */}
 					<div className="badge-section">
 						{courses.map((course) => (
