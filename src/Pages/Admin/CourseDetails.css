@@ -86,7 +86,7 @@
 /* Emoji Icons (Eye and Delete) */
 .class-details-emoji {
   display: flex;
-  gap: 15px; /* Space between the icons */
+  gap: 15px;
 }
 
 .icon-eye, .icon-delete {
@@ -95,7 +95,7 @@
 }
 
 .icon-eye {
-  font-size: 5rem;
+  font-size: 2rem;
   color: #4d9fce;
 }
 
@@ -105,7 +105,7 @@
 }
 
 .icon-delete {
-  font-size: 5rem;
+  font-size: 2rem;
   color: red;
 }
 

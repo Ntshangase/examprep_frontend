@@ -1,7 +1,7 @@
 import React from 'react';
 import './ManageUser.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {faPlusCircle,} from "@fortawesome/free-solid-svg-icons";
+import {faPlusCircle, faTrash} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
 
@@ -38,7 +38,7 @@ const ManageUser = () => {
                 <p>{user.role}</p>
                 <div className="actions">
                   <button className="view-btn">👁</button>
-                  <button className="delete-btn">❌</button>
+                  <FontAwesomeIcon icon={faTrash}/>
                 </div>
               </div>
             </div>
