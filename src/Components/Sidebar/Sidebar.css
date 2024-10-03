@@ -20,7 +20,7 @@
 	height: 80%;
 }
 
-/** .sidebar-component-container img {
+.sidebar-component-container img {
 	width: 180px;
 	margin-bottom: 40px;
 	transition: transform 0.3s ease;
@@ -28,8 +28,6 @@
   .sidebar-component-container img:hover {
 	transform: scale(1.05);
   }
-  **/
-
 
 /*User-details*/
 .sidebar-user-details {

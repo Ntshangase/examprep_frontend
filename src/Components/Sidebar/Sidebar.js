@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-const Sidebar = () => {
+const Sidebar = ({ links }) => {
 
-	const linking = [
-		{route: "/Home", routeName: "Home"},
-		{route: "/AdminLanding", routeName: "AdminLanding"}
-	]
+	// const linking = [
+	// 	{route: "/Home", routeName: "Home"},
+	// 	{route: "/AdminLanding", routeName: "AdminLanding"}
+	// ]
 
 	return (
 		<aside className="sidebar-component-container">
@@ -17,18 +17,7 @@ const Sidebar = () => {
 				<img src="/assets/certifiedpro.jpeg" alt="sidebar-logo" />
 			</Link>
 			<ul className="sidebar-content">
-				<li className="sidebar-link">
-					<Link to="/">Home</Link>
-				</li>
-				<li className="sidebar-link">
-					<Link to="/">Testing </Link>
-				</li>
-				<li className="sidebar-link">
-					<Link to="/">Testing</Link>
-				</li>
-				<li className="sidebar-link">
-					<Link to="/">Testing</Link>
-				</li>
+				{links.map( (link,index) => <li key={index}> <Link to={link.route}>{link.routeName}</Link> </li>)}
 			</ul>
 			<div className="sidebar-user-details">
 				<FontAwesomeIcon icon={faUser} className="sidebar-user-icon" />
