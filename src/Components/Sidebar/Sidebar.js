@@ -5,6 +5,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
+
+	const linking = [
+		{route: "/Home", routeName: "Home"},
+		{route: "/AdminLanding", routeName: "AdminLanding"}
+	]
+
 	return (
 		<aside className="sidebar-component-container">
 			<Link to="/Home">
