@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import Sidebar from "./Components/Sidebar/Sidebar";
 
 function Home() {
 	const navigate = useNavigate(); // Get the navigate function
@@ -23,7 +22,6 @@ function Home() {
 
 	return (
 		<div>
-			<Sidebar />
 			<h1>CertifiedPro temporal landing page</h1>
 			<button onClick={handleNavigateModerator}>Moderator</button>
 			<button onClick={handleNavigateLecture}>Lecture</button>

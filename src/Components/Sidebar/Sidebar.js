@@ -3,13 +3,9 @@ import "./Sidebar.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
+import PropTypes from "prop-types";
 
 const Sidebar = ({ links }) => {
-
-	// const linking = [
-	// 	{route: "/Home", routeName: "Home"},
-	// 	{route: "/AdminLanding", routeName: "AdminLanding"}
-	// ]
 
 	return (
 		<aside className="sidebar-component-container">
@@ -17,7 +13,12 @@ const Sidebar = ({ links }) => {
 				<img src="/assets/certifiedpro.jpeg" alt="sidebar-logo" />
 			</Link>
 			<ul className="sidebar-content">
-				{links.map( (link,index) => <li key={index}> <Link to={link.route}>{link.routeName}</Link> </li>)}
+				{links.map((link, index) => (
+					<li key={index}>
+						{" "}
+						<Link to={link.path}>{link.pathName}</Link>{" "}
+					</li>
+				))}
 			</ul>
 			<div className="sidebar-user-details">
 				<FontAwesomeIcon icon={faUser} className="sidebar-user-icon" />
@@ -29,5 +30,18 @@ const Sidebar = ({ links }) => {
 		</aside>
 	);
 };
+
+Sidebar.propTypes = {
+	links: PropTypes.arrayOf(
+		PropTypes.shape({
+			path: PropTypes.string.isRequired,
+			pathName: PropTypes.string.isRequired,
+		})
+	),
+};
+
+// Sidebar.defaultProps = {  //cannot read properties of undefiened
+// 	links: [],
+// }
 
 export default Sidebar;

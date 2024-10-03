@@ -3,9 +3,16 @@ import "./AdminLanding.css"; // Import the CSS file
 import Sidebar from "../../Components/Sidebar/Sidebar";
 
 export default function AdminLanding() {
+	const linking = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
 	return (
 		<div className="admin-landing">
-			<Sidebar />
+			<Sidebar links={linking}/>
 			<div className="admin-landing-main-section">
 				<div className="admin-landing-text-content">
 					<h1>Welcome to the Exam Prep System</h1>

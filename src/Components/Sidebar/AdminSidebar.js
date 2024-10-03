@@ -7,7 +7,7 @@ import { faUser } from "@fortawesome/free-solid-svg-icons";
 export default function AdminSidebar() {
 	return (
 		<aside className="sidebar-component-container">
-			
+
 			{/* <Link to="/Home">
 				<img src="/assets/certifiepro-white.png" alt="sidebar-logo" />
 			</Link> */}
