@@ -1,8 +1,14 @@
 import React from "react";
-import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './Analytics.module.css'; // Create a new CSS module for Analytics
 
 const Analytics = () => {
+
+    const links = [
+		{path: "/LecturerDashboard", pathName: "Home"},
+		{path: "/AddStudent", pathName: "Add Student"}
+	]
+
     // Example data (replace with actual dump data)
     const analyticsData = [
         { id: 1, testName: "Test 1", averageScore: 85, participationRate: "90%" },
@@ -13,7 +19,7 @@ const Analytics = () => {
     return (
         <div className={styles['analytics']}>
             <div className={styles['analytics-content']}>
-            <LecturerSidebar />
+            <Sidebar links={links}/>
                 <div className={styles['content-area']}>
                     <h2>GenerateTestPage Test</h2>
                     <p>{analyticsData.testName}</p>

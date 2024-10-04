@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './StudPerfom.module.css';
 
 const StudPerfom = () => {
+
+    const links = [
+		{path: "/LecturerDashboard", pathName: "Home"},
+		{path: "/AddStudent", pathName: "Add Student"}
+	]
+
     const { studentId } = useParams();
     const [student, setStudent] = useState(null);
     const [tests, setTests] = useState([]);
@@ -37,7 +43,7 @@ const StudPerfom = () => {
     return (
         <div className={styles.studPerfom}>
             <div className={styles.content}>
-            <LecturerSidebar />
+            <Sidebar links={links}/>
                 <div className={styles.mainContent}>
                     <h2>{student.firstName} {student.lastName}</h2>
                     <table className={styles.testTable}>

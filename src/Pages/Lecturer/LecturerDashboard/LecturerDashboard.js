@@ -1,18 +1,20 @@
-import React from "react"; 
-// import Navbar from "../../../Components/Navbar/Navbar";
+import React from "react";
 import CourseCard from "../../../Components/CourseCard/CourseCard";
 import './LecturerDashboard.css';
-
-// data
 import courses from '../../../Data/Courses.json';  // Corrected path
-import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 
 const LecturerDashboard = () => {
+  const links = [
+		{path: "/LecturerDashboard", pathName: "Home"},
+		{path: "/AddStudent", pathName: "Add Student"}
+	]
+
     return (
         <div className="lecturer-dashboard">
 
         <div className="dashboard-content">
-            <LecturerSidebar/>
+            <Sidebar links={links}/>
           <div className="content-area">
             <h1>Courses</h1>
             <div className="courses-grid">

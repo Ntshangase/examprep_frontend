@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './AddStudent.module.css'; // Updated to use CSS modules
 
 const AddStudent = () => {
+
+    const links = [
+		{path: "/LecturerDashboard", pathName: "Home"},
+		{path: "/AddStudent", pathName: "Add Student"}
+	]
+
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
@@ -56,7 +62,7 @@ const AddStudent = () => {
     return (
         <div className={styles['add-student']}>
             <div className={styles['addstudent-content']}>
-            <LecturerSidebar />
+            <Sidebar links={links}/>
                 <div className={styles['content-area']}>
                     <h2>Add New Student</h2>
                     <form onSubmit={handleSubmit} className={styles['add-student-form']}>
