@@ -69,6 +69,12 @@ textarea {
   margin-bottom: 10px;
 }
 
+.add-course-selected-image-preview {
+  max-width: 200px;   /*setting max-width/max-height allows the image to mantain its configurations*/
+  max-height: 200px;
+  padding: 10px;
+}
+
 .add-course-add-topic-button,
 .add-course-add-domain-button {
   background-color: #1771c5;

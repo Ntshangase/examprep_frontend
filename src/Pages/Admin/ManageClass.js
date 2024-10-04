@@ -14,8 +14,8 @@ export default function ManageClass() {
 
   const navigate = useNavigate();
 
-  const handleViewCourse = (courseId) => {
-    navigate(`/CourseDetails`);   ///course-details/${courseId} for dynamic rendering
+  const handleViewCourse = () => {
+    navigate(`/CourseDetails`);
   };
 
   return (
@@ -23,12 +23,12 @@ export default function ManageClass() {
       <Sidebar links={links}/>
       <div className="manage-class-content">
         <h2>Select Course to view classes</h2>
-        <div className='courses-grid'>
+        <div className='manage-class-courses-grid'>
           {courses.map((course) => (
-            <div key={course.id} className="course-card">
-              <img src={course.image} alt={course.title} className="course-image" />
-              <h3 className="course-name">{course.title}</h3>
-              <button className="view-course-button" onClick={() => handleViewCourse(course.id)}>
+            <div key={course.id} className="manage-class-course-card">
+              <img src={course.image} alt={course.title} className="manage-student-course-image" />
+              <h3 className="manage-class-course-name">{course.title}</h3>
+              <button className="manage-class-view-course-button" onClick={handleViewCourse}>
                 View Classes
               </button>
             </div>

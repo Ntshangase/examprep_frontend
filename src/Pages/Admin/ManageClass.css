@@ -10,7 +10,7 @@
     overflow-y: auto;
   }
 
-  .courses-grid {
+  .manage-class-courses-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 25px; /* Reduced gap */
@@ -24,7 +24,7 @@
     text-align: center;
   }
 
-  .course-card {
+  .manage-class-course-card {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -36,23 +36,23 @@
     transition: transform 0.3s ease;
   }
 
-  .course-card:hover {
+  .manage-class-course-card:hover {
     transform: scale(1.05);
   }
   
-  .course-image {
+  .manage-student-course-image {
     width: 100%;
     height: 200px; /* Increased height */
     object-fit: cover;
     border-radius: 10px;
   }
-  
-  .course-name {
+
+  .manage-class-course-name {
     font-size: 1.3rem; /* Reduced font size */
     margin-bottom: 15px; /* Reduced margin */
   }
   
-  .view-course-button {
+  .manage-class-view-course-button {
     padding: 10px 25px; /* Reduced padding */
     background-color: #4d9fce;
     color: black;
