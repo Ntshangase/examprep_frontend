@@ -1,7 +1,7 @@
 import React from 'react';
 import './ScheduledTests.css';
 import Sidebar from '../../../Components/Sidebar/Sidebar';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const ScheduledTests = () => {
@@ -13,7 +13,7 @@ const ScheduledTests = () => {
 		{path: "/ScheduledTests", pathName:"Scheduled Test"},
 		{path: "/StudentProfile", pathName:"Student Profile"},
 	]
-  
+
   const tests = [
     {
       name: "Test 1",
