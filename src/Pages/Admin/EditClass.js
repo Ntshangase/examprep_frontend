@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import './EditClass.css';
-import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import { Link, useNavigate } from "react-router-dom";
 
 export default function EditClass() {
+	const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
 	// State for form inputs
 	const [courseName] = useState("AWS Solutions Architect"); // Read-only course name
 	const [className] = useState("June Intake"); // Read-only class name
@@ -34,7 +41,7 @@ export default function EditClass() {
 
 	return (
 		<div className="edit-course-container">
-			<AdminSidebar />
+			<Sidebar links={links}/>
 			<div className="edit-course-content">
 				<h2>Edit Class</h2>
 				<div className="edit-course-content-body">

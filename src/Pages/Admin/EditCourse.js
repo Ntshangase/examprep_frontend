@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import "./EditCourse.css";
-import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 
 export default function EditCourse() {
+	const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
 	const [courseName, setCourseName] = useState("AWS Solutions Architect");
 	const [courseDescription, setCourseDescription] = useState(
 		"The course intends to prepare individuals to function as Cloud Administrators responsible for overseeing cloud platforms and computing resources."
@@ -46,7 +53,7 @@ export default function EditCourse() {
 
 	return (
 		<div className="edit-course-container">
-			<AdminSidebar />
+			<Sidebar links={links}/>
 			<div className="edit-course-wrapper">
 				<h1 className="edit-course-header">Edit Course</h1>
 				<div className="edit-course-form">

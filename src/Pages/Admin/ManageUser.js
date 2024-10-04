@@ -3,9 +3,16 @@ import './ManageUser.css';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {faPlusCircle, faTrash} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 
 const ManageUser = () => {
+  const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
   const users = [
     { name: 'John Smith', role: 'Lecture', img: '/assets/images.jpeg' },
     { name: 'John Ngubo', role: 'Lecturer', img: '/assets/images.jpeg' },
@@ -18,7 +25,7 @@ const ManageUser = () => {
 
   return (
     <div className="admin-container">
-      <AdminSidebar />
+      <Sidebar links={links}/>
 
       <main className="main-content">
         <div className='manage-user-heading'>

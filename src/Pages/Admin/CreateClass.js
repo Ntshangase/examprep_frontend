@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./CreateClass.css";
-import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import courses from "../../Data/Courses.json";
 
@@ -73,9 +73,16 @@ export default function CreateClass() {
 		setLecturers([]); // Clear the list after selection
 	};
 
+	const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
 	return (
 		<div className="create-class-container">
-			<AdminSidebar />
+			<Sidebar links={links}/>
 			<div className="create-class-content">
 				<h2>Create Class</h2>
 				<div className="class-content-body">

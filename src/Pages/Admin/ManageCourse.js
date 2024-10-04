@@ -1,6 +1,6 @@
 import React from 'react';
 import './ManageCourse.css';
-import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import course from '../../Data/Course.json';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -8,6 +8,13 @@ import {faPlusCircle,} from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 
 export default function ManageCourse() {
+  const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
   const navigate = useNavigate();
 
   const handleEditCourse = () => {  //removed courseId
@@ -16,7 +23,7 @@ export default function ManageCourse() {
 
   return (
     <div className="manage-course-container">
-      <AdminSidebar />
+      <Sidebar links={links}/>
       <div className="manage-course-content">
       <div className="admin-manage-course-heading">
 					<h2>Course Details</h2>

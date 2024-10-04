@@ -1,9 +1,16 @@
 import React, { useState } from 'react';
 import './AddCourse.css';
 import { useNavigate } from 'react-router-dom';
-import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 
 export default function AddCourse() {
+  const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
   const [courseName, setCourseName] = useState('');
   const [courseDescription, setCourseDescription] = useState('');
   const [courseImage, setCourseImage] = useState(null);
@@ -45,7 +52,7 @@ export default function AddCourse() {
 
   return (
     <div className="add-course-container">
-      <AdminSidebar />
+      <Sidebar links={links}/>
 
       <main className="add-course-main">
         <h1 className="add-course-title">Add Course</h1>

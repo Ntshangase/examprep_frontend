@@ -2,9 +2,16 @@ import React from 'react';
 import './ManageClass.css';
 import courses from '../../Data/Courses.json';
 import { useNavigate } from 'react-router-dom';
-import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 
 export default function ManageClass() {
+  const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
   const navigate = useNavigate();
 
   const handleViewCourse = (courseId) => {
@@ -13,7 +20,7 @@ export default function ManageClass() {
 
   return (
     <div className="manage-class-container">
-      <AdminSidebar />
+      <Sidebar links={links}/>
       <div className="manage-class-content">
         <h2>Select Course to view classes</h2>
         <div className='courses-grid'>
