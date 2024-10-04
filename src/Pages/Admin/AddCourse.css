@@ -1,7 +1,6 @@
 .add-course-container {
   display: flex;
-  height: 100vh; /* Full viewport height */
-  overflow: hidden;
+  height: 100vh; 
 }
 
 .add-course-main {

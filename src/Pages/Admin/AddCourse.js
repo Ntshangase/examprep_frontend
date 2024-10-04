@@ -96,7 +96,7 @@ export default function AddCourse() {
 							<img
 								src={URL.createObjectURL(courseImage)}
 								alt="Course Preview"
-                className="add-course-selected-image-preview"
+								className="add-course-selected-image-preview"
 							/>
 						)}
 					</div>
