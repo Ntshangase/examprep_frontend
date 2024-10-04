@@ -1,8 +1,19 @@
 import React from 'react';
 import './ScheduledTests.css';
-import EnrolledStudentSidebar from '../../../Components/Sidebar/EnrolledStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 import { useLocation, useNavigate } from 'react-router-dom';
+
+
 const ScheduledTests = () => {
+
+  const links = [
+		{path: "/StudentDashboards", pathName:"Home"},
+		{path: "/Classes", pathName:"Active Classes"},
+		{path: "/PanelEnrolled", pathName:"Enrolled Class"},
+		{path: "/ScheduledTests", pathName:"Scheduled Test"},
+		{path: "/StudentProfile", pathName:"Student Profile"},
+	]
+  
   const tests = [
     {
       name: "Test 1",
@@ -27,7 +38,7 @@ const ScheduledTests = () => {
     <div className="scheduled-tests-page">
       
       <div className="content">
-        <EnrolledStudentSidebar />
+        <Sidebar links={links}/>
         <div className="main-content">
           <h1 className="page-heading">Scheduled Tests</h1>
           <table className="tests-table">

@@ -1,9 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import EnrolledStudentSidebar from '../../../Components/Sidebar/EnrolledStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './TakeTest.css';
 
 const TakeTest = () => {
+
+  const links = [
+		{path: "/StudentDashboards", pathName:"Home"},
+		{path: "/Classes", pathName:"Active Classes"},
+		{path: "/PanelEnrolled", pathName:"Enrolled Class"},
+		{path: "/ScheduledTests", pathName:"Scheduled Test"},
+		{path: "/StudentProfile", pathName:"Student Profile"},
+	]
+  
   const navigate = useNavigate();
   const [answers, setAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -40,7 +49,7 @@ const TakeTest = () => {
   
   return (
     <div className="take-test-page">
-      <EnrolledStudentSidebar />
+      <Sidebar links={links}/>
       <div className="take-test-content">
         <h1 className="test-title">Comptia S+ Domain 2 Test</h1>
         <form className="test-form">

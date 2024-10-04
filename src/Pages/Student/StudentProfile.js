@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
-import Navbar from "../../Components/Navbar/Navbar";
-import EnrolledStudentSidebar from "../../Components/Sidebar/EnrolledStudentSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import './StudentProfile.css';
 
 
 const StudentProfile = () => {
+  const links = [
+		{path: "/StudentDashboards", pathName:"Home"},
+		{path: "/Classes", pathName:"Active Classes"},
+		{path: "/PanelEnrolled", pathName:"Enrolled Class"},
+		{path: "/ScheduledTests", pathName:"Scheduled Test"},
+		{path: "/StudentProfile", pathName:"Student Profile"},
+	]
+
   const [isEditing, setIsEditing] = useState(false);
 
   const [studentInfo, setStudentInfo] = useState({
@@ -36,9 +43,8 @@ const StudentProfile = () => {
 
   return (
     <div className="profile-page">
-      <Navbar />
       <div className="content">
-        <EnrolledStudentSidebar />
+        <Sidebar links={links} />
         <div className="main-content">
           <div className="profile-details">
             <h1>Profile</h1>
