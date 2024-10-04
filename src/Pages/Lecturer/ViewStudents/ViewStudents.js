@@ -12,7 +12,7 @@ const ViewStudents = () => {
 
     const navigate = useNavigate();
 
-    const handleStudentClick = (studentId) => {
+    const handleStudentClick = () => {
         navigate(`/StudPerfom`);
     };
 
