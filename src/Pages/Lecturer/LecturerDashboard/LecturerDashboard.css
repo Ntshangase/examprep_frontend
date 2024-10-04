@@ -1,27 +1,24 @@
 /* src/app/pages/LecturerDashboard/LecturerDashboard.css */
-.lecturer-dashboard {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .dashboard-content {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .content-area {
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .courses-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-  
-  h1 {
-    font-size: var(--heading-font-size);
-    color: var(--primary-color);
-  }
-  
+.lecturer-dashboard-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.lecture-dashboard-content-area {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  padding: 20px;
+}
+
+.lecture-dashboard-courses-grid{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  padding: 25px;
+}
+
+.lecture-dashboard-h1 {
+	color: var(--color-primary);
+}
