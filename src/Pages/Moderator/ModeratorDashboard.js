@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./ModeratorDashboard.css";
-import ModeratorSidebar from "../../Components/Sidebar/ModeratorSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 
 const AWSBadge = `${process.env.PUBLIC_URL}/assets/AWS-Cloud-Practitioner-Badge.jpeg`;
 const CompTIABadge = `${process.env.PUBLIC_URL}/assets/CompTIA-A+-Badge.jpg`;
@@ -18,6 +18,11 @@ const courses = [
 ];
 
 const ModeratorDashboard = () => {
+	const links = [
+		{path: "/ModeratorDashboard", pathName: "Home"},
+		{path: "/QuestionView", pathName: "Questions"}
+	]
+
 	const navigate = useNavigate(); // Initialize navigate
 	const viewQuestions = () => {
 		navigate("/QuestionView");
@@ -26,7 +31,7 @@ const ModeratorDashboard = () => {
 	return (
 		<div className="moderator-dashboard-container">
 			<div className="dashboard-content">
-				<ModeratorSidebar />
+				<Sidebar links={links}/>
 				<div className="moderator-content-area">
 					<h2 className="moderator-content-area-h2">Select Course to Moderate</h2>
 					{/* Certification Badges with Labels */}
