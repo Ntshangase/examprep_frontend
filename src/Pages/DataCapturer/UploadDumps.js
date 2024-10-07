@@ -1,9 +1,14 @@
 import React, { useState } from "react";
-import DatacaptureSidebar from "../../../src/Components/Sidebar/DatacaptureSidebar";
+import Sidebar from "../../../src/Components/Sidebar/Sidebar";
 import "./UploadDumps.css";
 import courses from "../../Data/Courses.json";
 
 const UploadDumps = () => {
+
+	const links = [
+		{path: "/DataCaptureDashboard", pathName: "Home"}
+	]
+	
 	const [file, setFile] = useState(null);
 
 	const handleFileChange = (e) => {
@@ -25,7 +30,7 @@ const UploadDumps = () => {
 	return (
 		<div className="lecturer-dashboard">
 			<div className="dashboard-content">
-				<DatacaptureSidebar />
+				<Sidebar links={links} />
 				<div className="content-area">
 					<h3 className="page-title">Upload Dump</h3>
 					<form onSubmit={handleSubmit} className="upload-form">

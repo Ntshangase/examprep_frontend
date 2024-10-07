@@ -1,9 +1,14 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import DatacaptureSidebar from "../../../src/Components/Sidebar/DatacaptureSidebar";
+import Sidebar from "../../../src/Components/Sidebar/Sidebar";
 import "./DataCaptureDashboard.css"; // CSS for styling
 
 const DataCaptureDashboard = () => {
+
+	const links = [
+		{path: "/DataCaptureDashboard", pathName: "Home"}
+	]
+
 	const navigate = useNavigate();
 	const handleCourseSelect = (course) => {
 		navigate("/AddQuestions", { state: { course } }); // Navigate and pass course data
@@ -26,7 +31,7 @@ const DataCaptureDashboard = () => {
 	return (
 		<div className="data-capture-dashboard">
 			<div className="dashboard-content">
-				<DatacaptureSidebar />
+				<Sidebar links={links}/>
 				<div className="content-area">
 					<div className="content-area">
 						<h2>Select Course to Add Question</h2>
