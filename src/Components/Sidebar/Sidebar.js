@@ -32,8 +32,8 @@ const Sidebar = ({ links }) => {
             <div className="sidebar-user-details">
                 <FontAwesomeIcon icon={faUser} className="sidebar-user-icon" />
                 <div className="sidebar-user-details-content">
-                    <p className="sidebar-user-details-name">Vezindlebe Ntshangase</p>
-                    <p className="sidebar-user-details-email">simphiwe@gmail.com</p>
+                    <p className="sidebar-user-details-name">Elain Zulu</p>
+                    <p className="sidebar-user-details-email">elain@gmail.com</p>
                 </div>
             </div>
         </aside>
