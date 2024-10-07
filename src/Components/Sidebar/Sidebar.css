@@ -4,8 +4,6 @@
     background-color: var(--color-primary); /* Dark theme for sidebar */
     color: white;
     height: 100vh;
-    top: 0;
-    left: 0;
     display: flex;
     flex-direction: column;
     padding: 20px;
@@ -99,6 +97,17 @@
     color: white;
 }
 
+/* Toggle button */
+.toggle-button {
+    display: none; /* Hide the toggle button by default */
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Space between button and content */
+}
+
 /* Responsive behavior */
 @media (max-width: 1024px) {
     .sidebar-component-container {
@@ -126,8 +135,12 @@
 }
 
 @media (max-width: 768px) {
+    .toggle-button {
+        display: block; /* Show the toggle button on smaller screens */
+    }
+
     .sidebar-component-container {
-        width: 100px;
+        width: 100px; /* Width for smaller screens */
         padding: 10px;
     }
 
@@ -163,13 +176,18 @@
 /* Sidebar collapse for mobile */
 @media (max-width: 480px) {
     .sidebar-component-container {
-        width: 60px;
+        width: 60px; /* Width of the collapsed sidebar */
         padding: 5px;
     }
 
     .sidebar-content-link {
         font-size: 12px; /* Reduce font size for smaller screens */
         padding: 8px; /* Adjust padding */
+        display: none; /* Hide links in collapsed state */
+    }
+
+    .sidebar-component-container:not(.collapsed) .sidebar-content-link {
+        display: block; /* Show links when expanded */
     }
 
     .sidebar-user-details {
@@ -177,6 +195,11 @@
         align-items: start; /* Adjust alignment */
         padding: 4%;
         height: auto;
+        display: none; /* Hide user details in collapsed state */
+    }
+
+    .sidebar-component-container:not(.collapsed) .sidebar-user-details {
+        display: flex; /* Show user details when expanded */
     }
 
     .sidebar-user-details-name,
@@ -188,5 +211,5 @@
 
 /* Optional: animation for sidebar collapse */
 .sidebar-component-container.collapsed {
-    width: 80px;
+    width: 80px; /* Adjust width for collapsed state */
 }

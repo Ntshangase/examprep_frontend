@@ -3,10 +3,14 @@ import './QuestionView.css'; // Import the CSS for styling
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faArrowLeftLong } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom'; // Import hooks for routing
-import Navbar from "../../Components/Navbar/Navbar";
+import Sidebar from '../../Components/Sidebar/Sidebar';
 
 const QuestionView = () => {
-  // Example data
+
+  const links = [
+		{path: "/ModeratorDashboard", pathName: "Home"},
+		{path: "/QuestionView", pathName: "Questions"}
+	]
 
   const ModerateQuestion = () => {
 		navigate("/ModerateQuestion");
@@ -38,8 +42,7 @@ const QuestionView = () => {
 
   return (
     <div className="question-view-container">
-      <div className="dashboard">
-        <Navbar />
+        <Sidebar links={links}/>
         <div className="dashboard-content">
           <div className="content-area">
 
@@ -75,7 +78,7 @@ const QuestionView = () => {
                   <div className="options-list">
                     {question.options.map((option, index) => (
                       <div key={index} className="option">
-                        <input type="radio" name={`question_${question.id}`} value={option} disabled />
+                        {/* <input type="radio" name={`question_${question.id}`} value={option} disabled /> */}
                         <label>{option}</label>
                       </div>
                     ))}
@@ -91,7 +94,6 @@ const QuestionView = () => {
             </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };
