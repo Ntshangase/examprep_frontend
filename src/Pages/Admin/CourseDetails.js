@@ -49,7 +49,7 @@ export default function CourseDetails() {
 									<strong>Class:</strong> June Intake{" "}
 								</p>
 								<p>
-									<strong>Instructor:</strong> Dr. J. Jumbo
+									<strong>Lecturer:</strong> Dr. J. Jumbo
 								</p>
 								<p>
 									<strong>Duration:</strong> 01/06/2024 - 01/09/2024

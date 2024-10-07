@@ -11,7 +11,7 @@ const PanelEnrolled = () => {
 		{path: "/ScheduledTests", pathName:"Scheduled Test"},
 		{path: "/StudentProfile", pathName:"Student Profile"},
 	]
-  
+
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleGenerateTest = () => setModalOpen(true);
