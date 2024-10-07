@@ -1,9 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
-import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './AssignedClasses.module.css';
 
 const AssignedClasses = () => {
+
+    const links = [
+		{path: "/LecturerDashboard", pathName: "Home"},
+		{path: "/AddStudent", pathName: "Add Student"}
+	]
+
     const navigate = useNavigate(); 
 
     const classes = [
@@ -38,7 +44,7 @@ const AssignedClasses = () => {
     return (
         <div className={styles.assignedClasses}>
             <div className={styles.dashboardContent}>
-            <LecturerSidebar />
+            <Sidebar links={links}/>
                 <div className={styles.contentArea}>
                     <div className={styles.banner}>
                         <img src="/assets/aws patrict.png" alt="Architecting on AWS" className={styles.courseImage} />

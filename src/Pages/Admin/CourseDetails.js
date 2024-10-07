@@ -1,6 +1,6 @@
 import React from "react";
 import "./CourseDetails.css";
-import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import courses from "../../Data/Courses.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -11,9 +11,16 @@ import {
 import { Link } from "react-router-dom";
 
 export default function CourseDetails() {
+	const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
 	return (
 		<div className="admin-course-details-container">
-			<AdminSidebar />
+			<Sidebar links={links}/>
 			<div className="admin-course-detail-content">
 				<div className="admin-course-detail-heading">
 					<h2>Course Details</h2>

@@ -1,10 +1,17 @@
 import React, { useState } from 'react';
 import './AddUser.css';
 import "../../Styles/global.css";
-import AdminSidebar from '../../Components/Sidebar/AdminSidebar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
 
 function AddUser() {
+  const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -38,7 +45,7 @@ function AddUser() {
 
   return (
     <div className="add-user-page">
-      <AdminSidebar />
+      <Sidebar links={links}/>
 
       <div className="main-content">
         <h1 className="form-title">Add User</h1>

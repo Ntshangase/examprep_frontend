@@ -1,11 +1,17 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from "./ViewClass.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 const ViewClass = () => {
+
+	const links = [
+		{path: "/LecturerDashboard", pathName: "Home"},
+		{path: "/AddStudent", pathName: "Add Student"}
+	]
+
 	const navigate = useNavigate();
 	const handleStudentsClick = () => {
 		navigate("/ViewStudents");
@@ -23,7 +29,7 @@ const ViewClass = () => {
 	return (
 		<div className={styles.classDetails}>
 			<div className={styles.dashboardContent}>
-				<LecturerSidebar />
+				<Sidebar links={links}/>
 				<div className={styles.contentArea}>
 					{/* Class Info Banner */}
 					<div className={styles.banner}>

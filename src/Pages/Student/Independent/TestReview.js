@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import IndependentStudentSidebar from '../../../Components/Sidebar/IndependentStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './TestReview.css';
 
 const TestReview = () => {
+
+    const links = [
+		{path: "/StudentDashboards", pathName: "Home"},
+		{path: "/IndStudentdash", pathName: "Course Details"},
+	]
+    
     const location = useLocation();
     const navigate = useNavigate();
     const { reviewResults } = location.state || {};
@@ -28,7 +34,7 @@ const TestReview = () => {
         <div className="review-dashboard">
            
             <div className="dashboard-content">
-                <IndependentStudentSidebar />
+                <Sidebar links={links} />
                 <div className="content-area">
                     <div className="header">
                         <h1>Submitted Answers</h1>

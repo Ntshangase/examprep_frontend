@@ -1,7 +1,6 @@
 .add-course-container {
   display: flex;
-  height: 100vh; /* Full viewport height */
-  overflow: hidden;
+  height: 100vh; 
 }
 
 .add-course-main {
@@ -67,6 +66,12 @@ textarea {
 
 .add-course-topic-input {
   margin-bottom: 10px;
+}
+
+.add-course-selected-image-preview {
+  max-width: 200px;   /*setting max-width/max-height allows the image to mantain its configurations*/
+  max-height: 200px;
+  padding: 10px;
 }
 
 .add-course-add-topic-button,

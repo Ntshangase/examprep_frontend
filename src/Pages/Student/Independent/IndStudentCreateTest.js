@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './IndStudentCreateTest.css';
-import IndependentStudentSidebar from '../../../Components/Sidebar/IndependentStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 
 const domains = [
   {
@@ -29,6 +29,12 @@ const domains = [
 ];
 
 const IndStudentCreateTest = () => {
+
+  const links = [
+		{path: "/StudentDashboards", pathName: "Home"},
+		{path: "/IndStudentdash", pathName: "Course Details"},
+	]
+  
   const [selectedTopics, setSelectedTopics] = useState({});
   const [totalWeight, setTotalWeight] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
@@ -67,7 +73,7 @@ const IndStudentCreateTest = () => {
     <div className="generate-test-dashboard">
       
       <div className="dashboard-content">
-        <IndependentStudentSidebar />
+        <Sidebar links={links}/>
         <div className="independent-student-content-area">
           <div className="create-test-container">
             <h1>Select Domains to Generate Test</h1>

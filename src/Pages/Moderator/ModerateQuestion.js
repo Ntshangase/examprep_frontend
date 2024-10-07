@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
 import "./ModerateQuestion.css";
-import ModeratorSidebar from '../../Components/Sidebar/ModeratorSidebar';
+import Sidebar from '../../Components/Sidebar/Sidebar';
 import { useNavigate } from 'react-router-dom';
 
 export default function ModerateQuestion() {
+
+	const links = [
+		{path: "/ModeratorDashboard", pathName: "Home"},
+		{path: "/QuestionView", pathName: "Questions"}
+	]
 
     const [selectedDomain, setSelectedDomain] = useState("Aws");
 	const [selectedTopic, setSelectedTopic] = useState("Database");
@@ -49,7 +54,7 @@ export default function ModerateQuestion() {
   return (
     <div>
         <div className='moderate-question-container'>
-            <ModeratorSidebar />
+            <Sidebar links={links}/>
             <div className='moderate-question-content'>
                 <h2>Moderate Question</h2>
                 <h4>Aws Cloud Practisioner</h4>

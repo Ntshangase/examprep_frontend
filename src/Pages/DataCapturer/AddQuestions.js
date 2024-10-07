@@ -1,10 +1,15 @@
 import React, { useState } from "react";
-import DatacaptureSidebar from "../../Components/Sidebar/DatacaptureSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./AddQuestions.css";
 import courses from "../../Data/Courses.json";
 import { useNavigate } from "react-router-dom";
 
 export default function AddQuestions() {
+
+	const links = [
+		{path: "/DataCaptureDashboard", pathName: "Home"}
+	]
+	
 	const [selectedDomain, setSelectedDomain] = useState("");
 	const [selectedTopic, setSelectedTopic] = useState("");
 	const [question, setQuestion] = useState("");
@@ -65,7 +70,7 @@ export default function AddQuestions() {
 
 	return (
 		<div className="add-questions-container">
-			<DatacaptureSidebar />
+			<Sidebar links={links} />
 			<div className="add-questions-content">
 				<h2 className="add-questions-content-h2">Add Question</h2>
 				<div className="add-questions-info-flow">

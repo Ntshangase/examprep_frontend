@@ -1,95 +1,13 @@
-/* Global Variables */
+
 :root {
-    /* Color Palette */
-    --color-primary: #2C97DE;  /* Blue */
-    --color-primary-dark: #1F3A93; /* Dark Blue */
-    --color-secondary: #F7CA18;  /* Yellow */
-    --color-error: #E74C3C;  /* Red */
-    --color-background: #FFFFFF;  /* White */
-    --color-text-dark: #333333;  /* Dark Gray */
-    --color-text-light: #4A4A4A;  /* Gray */
-    --color-gray-light: #F5F5F5;  /* Light Gray */
-    --color-border-light: #E0E0E0;  /* Light border color */
-  
-    /* Typography */
-    --font-primary: 'Poppins', sans-serif;
-    --font-size-h1: 32px;
-    --font-size-h2: 24px;
-    --font-size-body: 16px;
-    --font-size-small: 12px;
-    --font-weight-light: 300;
-    --font-weight-regular: 400;
-    --font-weight-bold: 700;
-  
-    /* Spacing */
-    --spacing-small: 8px;
-    --spacing-medium: 16px;
-    --spacing-large: 24px;
-    --spacing-xlarge: 32px;
-  
-    /* Border Radius */
-    --border-radius: 4px;
-  }
-  
-body {
-    font-family: var(--font-primary);
-    font-size: var(--font-size-body);
-    color: var(--color-text-light);
-    background-color: var(--color-background);
-    margin: 0;
-    padding: 0;
-  }
-  
-  /* Typography */
-  h1 {
-    font-size: var(--font-size-h1);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-primary-dark);
-  }
-  
-  h2 {
-    font-size: var(--font-size-h2);
-    font-weight: var(--font-weight-bold);
-    color: var(--color-text-dark);
-  }
-  
-  p {
-    font-size: var(--font-size-body);
-    font-weight: var(--font-weight-regular);
-    color: var(--color-text-light);
-  }
-  
-  /* Buttons */
-  button.primary {
-    background-color: var(--color-primary);
-    color: var(--color-background);
-    border: none;
-    border-radius: var(--border-radius);
-    padding: var(--spacing-medium) var(--spacing-large);
-    font-size: var(--font-size-small);
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  button.primary:hover {
-    background-color: var(--color-primary-dark);
-  }
-  
-  button.secondary {
-    background-color: var(--color-gray-light);
-    color: var(--color-text-dark);
-    border: 1px solid var(--color-text-dark);
-    border-radius: var(--border-radius);
-    padding: var(--spacing-small) var(--spacing-medium);
-    font-size: var(--font-size-small);
-    cursor: pointer;
-  }
-  
-  button.secondary:hover {
-    background-color: var(--color-border-light);
-  }
-  
-  /* Spacing */
-  .container {
-    padding: var(--spacing-medium);
-  }
+	/* Color Palette */
+	--color-primary: #2c97de; /* Blue */
+	--color-primary-dark: #1f3a93; /* Dark Blue */
+	--color-secondary: #f7ca18; /* Yellow */
+	--color-error: #e74c3c; /* Red */
+	--color-background: #ffffff; /* White */
+	--color-text-dark: #333333; /* Dark Gray */
+	--color-text-light: #4a4a4a; /* Gray */
+	--color-gray-light: #f5f5f5; /* Light Gray */
+	--color-border-light: #e0e0e0; /* Light border color */
+}

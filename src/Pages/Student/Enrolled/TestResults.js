@@ -1,9 +1,18 @@
 import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import EnrolledStudentSidebar from '../../../Components/Sidebar/EnrolledStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './TestResults.css';
 
 const TestResults = () => {
+
+  const links = [
+		{path: "/StudentDashboards", pathName:"Home"},
+		{path: "/Classes", pathName:"Active Classes"},
+		{path: "/PanelEnrolled", pathName:"Enrolled Class"},
+		{path: "/ScheduledTests", pathName:"Scheduled Test"},
+		{path: "/StudentProfile", pathName:"Student Profile"},
+	]
+  
   const navigate = useNavigate();
   const { state } = useLocation();
   const { answers, questions } = state;
@@ -26,7 +35,7 @@ const TestResults = () => {
 
   return (
     <div className="test-results-page">
-      <EnrolledStudentSidebar />
+      <Sidebar links={links}/>
       <div className="test-results-content">
         <h1>Domain 2 Test Result</h1>
         <h1>Your Score: {score}/{questions.length}</h1>

@@ -1,14 +1,21 @@
 import React from 'react';
-import DashSidebar from '../../../src/Components/Sidebar/DashSidebar';
+import Sidebar from '../../../src/Components/Sidebar/Sidebar';
 
 import './StudentDashboard.css';
 
 const StudentDashboard = () => {
+
+  const links = [
+    {path: "/StudentDashboards", pathName: "Home"},
+    {path: "/IndStudentCourses", pathName: "Indipendent Student"},
+    {path: "/Classes", pathName: "Enrolled Student"},
+  ]
+
   return (
     <div className="student-dashboard">
       
       <div className="dashboard-content">
-        <DashSidebar />
+        <Sidebar links={links} />
         <div className="content-area">
           <h1>Welcome to the Student Dashboard</h1>
           <div className="card-container">

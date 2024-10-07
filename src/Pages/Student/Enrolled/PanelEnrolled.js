@@ -1,8 +1,17 @@
 import React, { useState } from 'react';
 import './PanelEnrolled.css';
-import EnrolledStudentSidebar from '../../../Components/Sidebar/EnrolledStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 
 const PanelEnrolled = () => {
+
+  const links = [
+		{path: "/StudentDashboards", pathName:"Home"},
+		{path: "/Classes", pathName:"Active Classes"},
+		{path: "/PanelEnrolled", pathName:"Enrolled Class"},
+		{path: "/ScheduledTests", pathName:"Scheduled Test"},
+		{path: "/StudentProfile", pathName:"Student Profile"},
+	]
+  
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleGenerateTest = () => setModalOpen(true);
@@ -11,7 +20,7 @@ const PanelEnrolled = () => {
   return (
     <div className="classes-page">
       <div className="content">
-        <EnrolledStudentSidebar />
+        <Sidebar links={links}/>
         <div className="main-content">
           <div className="course-detail-content">
             {/* Top Section: Course Image and Info */}

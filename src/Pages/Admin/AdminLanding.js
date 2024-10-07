@@ -1,11 +1,18 @@
 import React from "react";// Import Link from react-router-dom
 import "./AdminLanding.css"; // Import the CSS file
-import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 
 export default function AdminLanding() {
+	const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
 	return (
 		<div className="admin-landing">
-			<AdminSidebar />
+			<Sidebar links={links}/>
 			<div className="admin-landing-main-section">
 				<div className="admin-landing-text-content">
 					<h1>Welcome to the Exam Prep System</h1>

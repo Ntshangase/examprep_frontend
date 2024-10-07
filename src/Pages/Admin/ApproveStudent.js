@@ -1,14 +1,21 @@
 import React from "react";
 import "./ApproveStudent.css";
-import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import courses from "../../Data/Courses.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
 function ApproveStudent() {
+	const links = [
+		{path: "/AdminLanding", pathName: "Home"},
+		{path: "/ManageUser", pathName: "Manage Users"},
+		{path: "/ManageCourse", pathName: "Manage Courses"},
+		{path: "/ManageClass", pathName: "Manage Classes"}
+	]
+
 	return (
 		<div className="approve-student-container">
-			<AdminSidebar />
+			<Sidebar links={links}/>
 			<div className="approve-student-content">
 				<h2>Approve Students</h2>
 				<div>

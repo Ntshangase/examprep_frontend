@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
-import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 import BackButton from "../../../Components/BackButton/BackButton"
 import styles from './SubmittedTests.module.css'; // Import your CSS module (optional)
 
@@ -14,6 +14,11 @@ const submittedTestsData = [
 ];
 
 const SubmittedTests = () => {
+    const links = [
+		{path: "/LecturerDashboard", pathName: "Home"},
+		{path: "/AddStudent", pathName: "Add Student"}
+	]
+
     const navigate = useNavigate(); // Initialize useNavigate
 
     const handleTestClick = (testId) => {
@@ -22,7 +27,7 @@ const SubmittedTests = () => {
 
     return (
         <div className={styles.submittedTests}>
-            <LecturerSidebar />
+            <Sidebar links={links}/>
             <div className={styles.submittedContent}>
                 <div className={styles.contentArea}>
                     {/* Adding the BackButton */}

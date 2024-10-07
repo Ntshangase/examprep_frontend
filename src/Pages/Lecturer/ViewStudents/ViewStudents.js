@@ -1,12 +1,18 @@
 import React from "react";
-import LecturerSidebar from "../../../Components/Sidebar/LecturerSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 import { useNavigate } from 'react-router-dom';
 import styles from './ViewStudents.module.css'; // Import your CSS module
 
 const ViewStudents = () => {
+
+    const links = [
+		{path: "/LecturerDashboard", pathName: "Home"},
+		{path: "/AddStudent", pathName: "Add Student"}
+	]
+
     const navigate = useNavigate();
 
-    const handleStudentClick = (studentId) => {
+    const handleStudentClick = () => {
         navigate(`/StudPerfom`);
     };
 
@@ -26,7 +32,7 @@ const ViewStudents = () => {
         <div className={styles.viewStudents}>
             <div className={styles.studentsContent}>
                 <div className={styles.sidebar}>
-                <LecturerSidebar />
+                <Sidebar links={links}/>
                 </div>
                 <div className={styles.contentArea}>
                     <h2>Students Enrolled In This Class:</h2>

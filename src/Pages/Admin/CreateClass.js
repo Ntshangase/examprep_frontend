@@ -1,36 +1,31 @@
 import React, { useState } from "react";
 import "./CreateClass.css";
-import AdminSidebar from "../../Components/Sidebar/AdminSidebar";
+import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import courses from "../../Data/Courses.json";
 
 export default function CreateClass() {
 	// State for form inputs
 	const [className, setClassName] = useState("");
-	const [lecturerId, setLecturerId] = useState(""); // Changed to store lecturer ID
+	const [lecturerId, setLecturerId] = useState("");
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
-	const [classDescription, setClassDescription] = useState(""); // Added class description state
-	const [selectedImage, setSelectedImage] = useState(null);
-	const [lecturerSearch, setLecturerSearch] = useState(""); // State for searching lecturers
-	const [lecturers, setLecturers] = useState([]); // Mock data for lecturers
+	const [classDescription, setClassDescription] = useState("");
+	const [lecturerSearch, setLecturerSearch] = useState("");
+	const [lecturers, setLecturers] = useState([]);
 	const [file, setFile] = useState(null);
 
 	const navigate = useNavigate(); //for multiple use purposes
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		// Form validation
 		if (
 			!className ||
 			!lecturerId ||
 			!startDate ||
 			!endDate ||
-			!classDescription
-		) {
-			alert("All fields are required!");
-			return;
-		}
+			!classDescription 	//skipped !file check since we want to be able to create a class without any students.
+		)
 
 		// Clear input fields after form submission
 		setClassName("");
@@ -38,17 +33,16 @@ export default function CreateClass() {
 		setStartDate("");
 		setEndDate("");
 		setClassDescription("");
-		navigate("/Home");
+		setLecturerSearch("");
+		setFile(file);
+		document.getElementById("fileUpload").value = "";
+
+		//navigate("/Home");
 	};
+
 	const handleFileChange = (e) => {
 		if (e.target.files && e.target.files[0]) {
 			setFile(e.target.files[0]);
-		}
-	};
-
-	const handleImageChange = (e) => {
-		if (e.target.files && e.target.files[0]) {
-			setSelectedImage(URL.createObjectURL(e.target.files[0]));
 		}
 	};
 
@@ -73,9 +67,16 @@ export default function CreateClass() {
 		setLecturers([]); // Clear the list after selection
 	};
 
+	const links = [
+		{ path: "/AdminLanding", pathName: "Home" },
+		{ path: "/ManageUser", pathName: "Manage Users" },
+		{ path: "/ManageCourse", pathName: "Manage Courses" },
+		{ path: "/ManageClass", pathName: "Manage Classes" },
+	];
+
 	return (
 		<div className="create-class-container">
-			<AdminSidebar />
+			<Sidebar links={links} />
 			<div className="create-class-content">
 				<h2>Create Class</h2>
 				<div className="class-content-body">
@@ -149,16 +150,16 @@ export default function CreateClass() {
 								/>
 							</div>
 
-	{/* File Upload Input */}
-	<div className="create-class-form-group">
-	<label htmlFor="fileUpload">Upload Student from file:</label>
-	<input
-		type="file"
-		id="fileUpload"
-		onChange={handleFileChange}
-		required
-	/>
-</div>
+							{/* File Upload Input */}
+							<div className="create-class-form-group">
+								<label htmlFor="fileUpload">Upload Student from file:</label>
+								<input
+									type="file"
+									id="fileUpload"
+									onChange={handleFileChange}
+									required
+								/>
+							</div>
 							{/* Submit Button */}
 							<button type="submit" className="create-class-submit-button">
 								Create Class
@@ -166,12 +167,16 @@ export default function CreateClass() {
 						</form>
 					</div>
 					<div className="content-body2">
-						<div>	{/**no styling */}
+						<div>
+							{" "}
+							{/**no styling */}
 							<img src={courses[0].image} alt={courses[0].title} />
 							<div>
 								<h3>{courses[0].title}</h3>
 							</div>
 						</div>
+
+						<button className="create-class-back-buttons" onClick={() => navigate("/CourseDetails")}>Back</button>
 					</div>
 				</div>
 			</div>
