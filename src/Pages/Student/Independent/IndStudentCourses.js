@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./IndStudentCourses.css";
-import IndependentStudentSidebar from "../../../Components/Sidebar/IndependentStudentSidebar";
+import Sidebar from "../../../Components/Sidebar/Sidebar";
 
 const AWSBadge = `${process.env.PUBLIC_URL}/assets/AWS-Cloud-Practitioner-Badge.jpeg`;
 const CompTIABadge = `${process.env.PUBLIC_URL}/assets/CompTIA-A+-Badge.jpg`;
@@ -20,6 +20,12 @@ const courses = [
 ];
 
 const IndStudentCourses = () => {
+
+  const links = [
+		{path: "/StudentDashboards", pathName: "Home"},
+		{path: "/IndStudentdash", pathName: "Course Details"},
+	]
+  
   const navigate = useNavigate(); // Initialize navigate
 
   // Function to handle course selection
@@ -31,7 +37,7 @@ const IndStudentCourses = () => {
   return (
     <div className="exam-prep-container">
       <div className="dashboard-content">
-        <IndependentStudentSidebar />
+        <Sidebar links={links}/>
         <div className="content-area">
           <h2>Available Courses</h2>
           {/* Certification Badges with Labels */}

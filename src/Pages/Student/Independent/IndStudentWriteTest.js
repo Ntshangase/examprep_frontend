@@ -1,9 +1,15 @@
 import React, { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import IndependentStudentSidebar from '../../../Components/Sidebar/IndependentStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './IndStudentWriteTest.css';
 
 const IndStudentWriteTest = () => {
+
+    const links = [
+		{path: "/StudentDashboards", pathName: "Home"},
+		{path: "/IndStudentdash", pathName: "Course Details"},
+	]
+    
     const location = useLocation();
     const navigate = useNavigate();
     const { selectedTopics } = location.state || {};
@@ -98,7 +104,7 @@ const IndStudentWriteTest = () => {
         <div className="student-dashboard">
             
             <div className="dashboard-content">
-                <IndependentStudentSidebar />
+                <Sidebar links={links}/>
                 <div className="content-area">
                     <h1>Write Your Test</h1>
                     {currentQuestionIndex < questions.length ? (

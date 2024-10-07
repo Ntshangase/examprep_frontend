@@ -1,8 +1,13 @@
 import React from 'react';
-import IndependentSudentSidebar from '../../../Components/Sidebar/IndependentStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 import './IndStudentCourseDetails.css';
 
 const IndStudentCourseDetails = () => {
+
+  const links = [
+		{path: "/StudentDashboards", pathName: "Home"},
+		{path: "/IndStudentdash", pathName: "Course Details"},
+	]
   
   // Function for button click
   const handleGenerateTest = () => {
@@ -12,7 +17,7 @@ const IndStudentCourseDetails = () => {
   return (
     <div className="course-detail">
       <div className="dashboard-content">
-        <IndependentSudentSidebar />
+        <Sidebar links={links} />
         <div className="content-area">
           <div className="course-detail-content">
             {/* Top Section: Course Image and Info */}

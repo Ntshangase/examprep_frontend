@@ -1,9 +1,15 @@
 import React from "react";
-import IndependentStudentSidebar from '../../../Components/Sidebar/IndependentStudentSidebar';
+import Sidebar from '../../../Components/Sidebar/Sidebar';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './IndStudentCourseDets.css';
 
 const IndStudentCourseDets = () => {
+
+  const links = [
+		{path: "/StudentDashboards", pathName: "Home"},
+		{path: "/IndStudentdash", pathName: "Course Details"},
+	]
+  
   const location = useLocation();
   const navigate = useNavigate();
   const course = location.state?.course || {
@@ -24,7 +30,7 @@ const IndStudentCourseDets = () => {
   return (
     <div className="independent-student-courses">
       <div className="dashboard-content">
-        <IndependentStudentSidebar />
+        <Sidebar links={links} />
         <div className="content-area">
           <div className="page-content">
             {/* Upper Half: Course Details */}
