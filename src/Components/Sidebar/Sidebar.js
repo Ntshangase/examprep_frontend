@@ -16,7 +16,7 @@ const Sidebar = ({ links }) => {
 				{links.map((link, index) => (
 					<li key={index}>
 						{" "}
-						<Link to={link.path}>{link.pathName}</Link>{" "}
+						<Link to={link.path} className="sidebar-content-link">{link.pathName}</Link>{" "}
 					</li>
 				))}
 			</ul>
