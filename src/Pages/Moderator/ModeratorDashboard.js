@@ -20,7 +20,8 @@ const courses = [
 const ModeratorDashboard = () => {
 	const links = [
 		{path: "/ModeratorDashboard", pathName: "Home"},
-		{path: "/QuestionView", pathName: "Questions"}
+		{path: "/QuestionView", pathName: "Questions"},
+		{path: "/FlaggedQuestionView", pathName: "Flagged"}
 	]
 
 	const navigate = useNavigate(); // Initialize navigate
