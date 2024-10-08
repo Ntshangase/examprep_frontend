@@ -4,13 +4,13 @@
     height: 100vh;
 }
 
-/* Content area for moderating questions */
+
 .moderate-question-content {
     display: flex;
     flex-direction: column;
-    padding: 20px; /* General padding */
-    flex-grow: 1; /* Take remaining space beside sidebar */
-    overflow-y: auto; /* Enable scrolling for overflow content */
+    padding: 20px;
+    width: 80%;
+    overflow-y: auto;
 }
 
 /* Header styling */
@@ -25,7 +25,7 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
-    width: 50%; /* Ensure it takes full width */
+    width: 80%;
 }
 
 /* Label styling */
@@ -57,10 +57,10 @@
     border-color: #3b82f6; /* Light blue on focus */
 }
 
-/* Textarea specific styling */
 .moderate-question-form-group textarea {
-    resize: vertical; /* Allow vertical resizing */
-    min-height: 100px; /* Minimum height for textareas */
+    resize: vertical;
+    min-height: 100px;
+    width: 97%;
 }
 
 /* Dynamic input containers */

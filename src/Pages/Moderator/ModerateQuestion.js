@@ -38,17 +38,12 @@ export default function ModerateQuestion() {
 		setIncorrectAnswers(updatedIncorrectAnswers);
 	};
 
-
-
     const navigate = useNavigate();
     const QuestionView = () => {
 		navigate("/QuestionView");
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
-
-
-
 	};
 
 
@@ -58,9 +53,7 @@ export default function ModerateQuestion() {
             <Sidebar links={links}/>
             <div className='moderate-question-content'>
                 <h2>Moderate Question</h2>
-                <h4>Aws Cloud Practisioner</h4>
                 <form onSubmit={handleSubmit}>
-						{/* Domain Selection */}
 						<div className="moderate-question-form-group">
 							<label>Select Domain</label>
 							<select
