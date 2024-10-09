@@ -8,16 +8,17 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    align-items: center;
 }
 
 .indipendent-student-write-test-h2 {
     font-size: 2rem;
     color: #2c97de;
     margin: 20px;
-    align-self: center;
 }
 
 .indipendent-student-write-test-question-section {
+    width: 90%;
 	padding: 20px;
 }
 
@@ -40,7 +41,7 @@
 	color: white;
 	cursor: pointer;
 	transition: background-color 0.3s;
-    margin-top: 20px;
+    margin-top: 3rem;
 }
 
 .indipendent-student-write-test-button:hover {
