@@ -9,7 +9,7 @@ const IndStudentWriteTest = () => {
 		{path: "/StudentDashboards", pathName: "Home"},
 		{path: "/IndStudentdash", pathName: "Course Details"},
 	]
-    
+
     const location = useLocation();
     const navigate = useNavigate();
     const { selectedTopics } = location.state || {};
@@ -101,15 +101,13 @@ const IndStudentWriteTest = () => {
     };
 
     return (
-        <div className="student-dashboard">
-            
-            <div className="dashboard-content">
+            <div className="indipendent-student-write-test-container">
                 <Sidebar links={links}/>
-                <div className="content-area">
-                    <h1>Write Your Test</h1>
+                <div className="indipendent-student-write-test-content">
+                    <h2 className='indipendent-student-write-test-h2'>Write Your Test</h2>
                     {currentQuestionIndex < questions.length ? (
-                        <div className="question-section">
-                            <h2>{questions[currentQuestionIndex].domain}</h2>
+                        <div className="indipendent-student-write-test-question-section">
+                            <h3>{questions[currentQuestionIndex].domain}</h3>
                             <p>{questions[currentQuestionIndex].question}</p>
                             {questions[currentQuestionIndex].type === 'multiple-choice' ? (
                                 <div>
@@ -166,11 +164,10 @@ const IndStudentWriteTest = () => {
                         </div>
                     )}
                 </div>
-            </div>
-            {showModal && (
-                <div className="modal">
-                    <div className="modal-content">
-                        <span className="close" onClick={closeModalAndNavigate}>&times;</span>
+                {showModal && (
+                <div className="indipendent-student-write-test-modal">
+                    <div className="indipendent-student-write-test-modal-content">
+                        <span className="indipendent-student-write-test-modal-close" onClick={closeModalAndNavigate}>&times;</span>
                         <h2>Exam Results</h2>
                         <p><strong>User:</strong> {examResults.user}</p>
                         <p><strong>Time Taken:</strong> {examResults.timeTaken}</p>
@@ -180,7 +177,7 @@ const IndStudentWriteTest = () => {
                     </div>
                 </div>
             )}
-        </div>
+            </div>
     );
 };
 
