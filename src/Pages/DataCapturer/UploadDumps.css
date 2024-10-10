@@ -41,7 +41,7 @@
     margin-bottom: 20px;
 }
 
-.action-buttons {
+.upload-dump-action-buttons {
     display: flex;
     justify-content: center;
     gap: 20px;

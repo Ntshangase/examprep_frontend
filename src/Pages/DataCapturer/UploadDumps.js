@@ -66,7 +66,7 @@ const UploadDumps = () => {
 						Choose File
 					</button>
 				</form>
-				<div className="action-buttons">
+				<div className="upload-dump-action-buttons">
 					<button type="button" className="upload-dump-quit-button">
 						Quit
 					</button>
