@@ -55,3 +55,8 @@
     max-width: 50%;
     height: auto;
 }
+@media (max-width: 768px) {
+    .badge-card {
+        flex: 1 0 45%; /* Take more space on smaller screens */
+    }
+}

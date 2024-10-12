@@ -26,6 +26,7 @@ const DataCaptureDashboard = () => {
 	];
 
 	return (
+
 		<div className="data-capture-dashboard-container">
 			<Sidebar links={links} />
 			<div className="data-capture-content-area">

@@ -1,59 +1,87 @@
 /* Aligning the layout similar to LecturerDashboard */
 .student-dashboards-container {
-    display: flex;
-    flex-direction: row;
-    height: 100vh;
-  }
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+}
 
-  .student-dashboards-content {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
+.student-dashboards-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.student-dashboards-content-h2 {
+  font-size: 2rem;
+  color: #3498db;
+  margin: 20px;
+  align-self: center;
+}
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between cards */
+  margin-top: 40px;
+  flex-wrap: wrap; /* Allow cards to wrap onto the next line */
+}
+
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 300px; /* Fixed width for larger screens */
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.card img {
+  width: 100px; /* Image size */
+  height: 100px; /* Maintain aspect ratio */
+  margin-bottom: 20px;
+}
+
+.card h2 {
+  font-size: 1.5em;
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.card p {
+  color: var(--color-text-light);
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale effect on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .student-dashboards-content-h2 {
-    font-size: 2rem;
-    color: #3498db;
-    margin: 20px;
-    align-self: center;
+      font-size: 1.5rem; /* Smaller heading font size */
   }
-  
-  .card-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    margin-top: 40px;
-  }
-  
-  .card {
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    padding: 20px;
-    text-align: center;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .card img {
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
-  }
-  
-  .card h2 {
-    font-size: 1.5em;
-    color: #3498db;
-    margin-bottom: 10px;
-  }
-  
-  .card p {
-    color: var(--color-text-light);
-  }
-  
-  .card:hover {
-    transform: scale(1.05);
-  }
-  
 
-  
+  .card-container {
+      justify-content: center; /* Center cards on smaller screens */
+  }
+
+  .card {
+      flex: 1 0 90%; /* Allow cards to take more space on smaller screens */
+      max-width: 90%; /* Remove max-width constraint */
+  }
+
+  .card img {
+      width: 80px; /* Smaller image size for mobile */
+      height: 80px; /* Maintain aspect ratio */
+  }
+
+  .card h2 {
+      font-size: 1.25em; /* Smaller font size for heading */
+  }
+
+  .card p {
+      font-size: 0.9em; /* Smaller paragraph font size */
+  }
+}

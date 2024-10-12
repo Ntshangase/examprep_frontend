@@ -1,6 +1,7 @@
 /* eslint-disable react/react-in-jsx-scope */
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
+import React from 'react';
 import Admin from "./Pages/Admin/AdminLanding";
 import ModerateAws from "./Pages/Moderator/ModerateAws";
 import ModeratorDashboard from "./Pages/Moderator/ModeratorDashboard";
@@ -56,59 +57,60 @@ import FlaggedQuestionView from "./Pages/Moderator/FlaggedQuestionView";
 function App() {
 	return (
 		<Router>
-			<Routes>
-				<Route path="/" element={<Login />} />
-				<Route path="/Home" element={<Home />} />
-				<Route path="/AdminLanding" element={<Admin />} />
-				<Route path="/ModerateAws" element={<ModerateAws />} />
-				<Route path="/ModeratorDashboard" element={<ModeratorDashboard />} />
-				<Route path="/QuestionView" element={<QuestionView />} />
-				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
-				<Route path="/StudentDashboard" element={<StudentDashboard />} />
-				<Route path="/ManageUser" element={<ManageUser />} />
-				<Route path="/StudentDashboards" element={<StudentDashboards />} />
-				<Route path="/TestPage" element={<TestPage />} />
-				<Route path="/SubmittedTests" element={<SubmittedTests />} />
-				<Route path="/IndStudentDash" element={<IndStudentDash />} />
-				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
-				<Route path="/AddCourse" element={<AddCourse />} />
-				<Route path="/CourseDetails" element={<CourseDetails />} />
-				<Route path="/CreateClass" element={<CreateClass />} />
-				<Route path="/EditClass" element={<EditClass />} />
-				<Route path="/ManageClass" element={<ManageClass />} />
-				<Route path="/EditCourse" element={<EditCourse />} />
-				<Route path="/ManageStudents" element={<ManageStudents />} />
-				<Route path="/PanelEnrolled" element={<PanelEnrolled />} />
-				<Route path="/Classes" element={<Classes />} />
-				<Route path="/ScheduledTests" element={<ScheduledTests />} />
-				<Route path="/ManageCourse" element={<ManageCourse />} />
-				<Route path="/StudentsSubmitted/:testId" element={<StudentsSubmitted />} />
-				<Route path="/StudPerfom" element={<StudPerfom />} />
-				<Route path="/viewclass/:courseId" element={<ViewClass />} />
-				<Route path="/ViewStudents" element={<ViewStudents />} />
-				<Route path="/AssignedClasses/:courseId" element={<AssignedClasses />} />
-				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
-				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
-				<Route path="/AddStudent" element={<AddStudent />} />
-				<Route path="/Analytics" element={<Analytics />} />
-				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
-				<Route path="/ApproveStudent" element={<ApproveStudent />} />
-				<Route path="/TestReview" element={<TestReview />} />
-				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
-				<Route path="/AddQuestions" element={<AddQuestions />} />
-				<Route path="/UploadDumps" element={<UploadDumps />} />
-				<Route path="/AddUser" element={<AddUser />} />
-				<Route path="/StudentProfile" element={<StudentProfile />} />
-				<Route path="/IndStudentCourses" element={<IndStudentCourses />} />
-				<Route path="/IndStudentCourseDets" element={<IndStudentCourseDets />} />
-				<Route path="/ModerateQuestion" element={<ModerateQuestion />} />
-				<Route path="/TakeTest" element={<TakeTest />} />
-				<Route path="/TestResults" element={<TestResults />} />
-				<Route path="/ScheduledTestReview" element={<ScheduledTestReview />} />
-				<Route path="/ManageClassStudents" element={<ManageClassStudents />} />
-				<Route path="/FlaggedQuestionView" element={<FlaggedQuestionView />} />
-			</Routes>
+				<Routes>
+					<Route path="/" element={<Login />} />
+					<Route path="/Home" element={<Home />} />
+					<Route path="/AdminLanding" element={<Admin />} />
+					<Route path="/ModerateAws" element={<ModerateAws />} />
+					<Route path="/ModeratorDashboard" element={<ModeratorDashboard />} />
+					<Route path="/QuestionView" element={<QuestionView />} />
+					<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
+					<Route path="/StudentDashboard" element={<StudentDashboard />} />
+					<Route path="/ManageUser" element={<ManageUser />} />
+					<Route path="/StudentDashboards" element={<StudentDashboards />} />
+					<Route path="/TestPage" element={<TestPage />} />
+					<Route path="/SubmittedTests" element={<SubmittedTests />} />
+					<Route path="/IndStudentDash" element={<IndStudentDash />} />
+					<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
+					<Route path="/AddCourse" element={<AddCourse />} />
+					<Route path="/CourseDetails" element={<CourseDetails />} />
+					<Route path="/CreateClass" element={<CreateClass />} />
+					<Route path="/EditClass" element={<EditClass />} />
+					<Route path="/ManageClass" element={<ManageClass />} />
+					<Route path="/EditCourse" element={<EditCourse />} />
+					<Route path="/ManageStudents" element={<ManageStudents />} />
+					<Route path="/PanelEnrolled" element={<PanelEnrolled />} />
+					<Route path="/Classes" element={<Classes />} />
+					<Route path="/ScheduledTests" element={<ScheduledTests />} />
+					<Route path="/ManageCourse" element={<ManageCourse />} />
+					<Route path="/StudentsSubmitted/:testId" element={<StudentsSubmitted />} />
+					<Route path="/StudPerfom" element={<StudPerfom />} />
+					<Route path="/viewclass/:courseId" element={<ViewClass />} />
+					<Route path="/ViewStudents" element={<ViewStudents />} />
+					<Route path="/AssignedClasses/:courseId" element={<AssignedClasses />} />
+					<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
+					<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
+					<Route path="/AddStudent" element={<AddStudent />} />
+					<Route path="/Analytics" element={<Analytics />} />
+					<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
+					<Route path="/ApproveStudent" element={<ApproveStudent />} />
+					<Route path="/TestReview" element={<TestReview />} />
+					<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
+					<Route path="/AddQuestions" element={<AddQuestions />} />
+					<Route path="/UploadDumps" element={<UploadDumps />} />
+					<Route path="/AddUser" element={<AddUser />} />
+					<Route path="/StudentProfile" element={<StudentProfile />} />
+					<Route path="/IndStudentCourses" element={<IndStudentCourses />} />
+					<Route path="/IndStudentCourseDets" element={<IndStudentCourseDets />} />
+					<Route path="/ModerateQuestion" element={<ModerateQuestion />} />
+					<Route path="/TakeTest" element={<TakeTest />} />
+					<Route path="/TestResults" element={<TestResults />} />
+					<Route path="/ScheduledTestReview" element={<ScheduledTestReview />} />
+					<Route path="/ManageClassStudents" element={<ManageClassStudents />} />
+					<Route path="/FlaggedQuestionView" element={<FlaggedQuestionView />} />
+				</Routes>
 		</Router>
+
 	);
 }
 
