@@ -30,7 +30,7 @@ const Classes = () => {
 							</strong>
 						</p>
 						<p>
-							<strong>Instructor:</strong> Dr. J. Smith
+							<strong>Lecturer:</strong> Dr. J. Smith
 						</p>
 						<p>
 							<strong>Course:</strong> CompTIA Security+
@@ -56,7 +56,7 @@ const Classes = () => {
 							</strong>
 						</p>
 						<p>
-							<strong>Instructor:</strong> Prof. A. Green
+							<strong>Lecturer:</strong> Prof. A. Green
 						</p>
 						<p>
 							<strong>Course:</strong> CompTIA A+
@@ -82,7 +82,7 @@ const Classes = () => {
 							</strong>
 						</p>
 						<p>
-							<strong>Instructor:</strong> Ms. L. Brown
+							<strong>Lecturer:</strong> Ms. L. Brown
 						</p>
 						<p>
 							<strong>Course:</strong> CompTIA Cloud+

@@ -100,3 +100,51 @@
 .sidebar nav ul li {
   margin-bottom: 30px;
 }
+
+
+/*Testing search input*/
+.add-user-course-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid #ddd;
+  max-height: 150px;
+  overflow-y: auto; /* Allows scrolling if the list is long */
+}
+
+.add-user-course-list li {
+  padding: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-user-course-list li:hover {
+  background-color: #f0f0f0;
+}
+
+.add-user-selected-courses {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.add-user-selected-course {
+  background-color: #007bff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.remove-course-btn {
+  background: none;
+  border: none;
+  color: white;
+  margin-left: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  line-height: 1;
+}

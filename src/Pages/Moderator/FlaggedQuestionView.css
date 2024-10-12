@@ -1,0 +1,111 @@
+/* General container for the page */
+.flagged-question-view-container {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+  }
+  
+  .flagged-question-view-content {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    margin-left: 20px;
+  }
+  
+  .flagged-question-view-content-h2 {
+    color: #3498db;
+    margin: 20px;
+    align-self: center;
+    font-size: 2rem;
+  }
+  
+  .flagged-question-view-search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+  
+  /* Flagged question card styling */
+  .flagged-questions-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+    max-height: 80vh; /* Adjust the height as needed */
+  }
+  
+  .flagged-question-view-question-card {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .flagged-question-view-question-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .flagged-question-view-question-header p {
+    font-size: 18px;
+    color: #34495e;
+  }
+  
+  .flagged-question-view-edit-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: #3498db;
+  }
+  
+  .flagged-question-view-edit-btn:hover {
+    color: #2980b9;
+  }
+  
+  /* Options list */
+  .flagged-question-view-options-list {
+    margin-top: 10px;
+  }
+  
+  .flagged-question-view-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .flagged-question-view-option input[type='radio'] {
+    margin-right: 10px;
+  }
+  
+  .flagged-question-view-option label {
+    font-size: 16px;
+    color: #2c3e50;
+  }
+  
+  /* Button container */
+  .flagged-question-view-button-container {
+    display: flex;
+    justify-content: flex-start;
+    margin: 20px 0;
+  }
+  
+  .flagged-question-view-back-btn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .flagged-question-view-back-btn:hover {
+    background-color: #2980b9;
+  }

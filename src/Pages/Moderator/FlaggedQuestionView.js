@@ -1,15 +1,15 @@
 import React from "react";
-import "./QuestionView.css"; // Import the CSS for styling
+import "./FlaggedQuestionView.css"; // Import the CSS for styling
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom"; // Import hooks for routing
 import Sidebar from "../../Components/Sidebar/Sidebar";
 
-const QuestionView = () => {
+const FlaggedQuestionView = () => {
 	const links = [
 		{ path: "/ModeratorDashboard", pathName: "Home" },
-		{ path: "/QuestionView", pathName: "Questions" },
-    {path: "/FlaggedQuestionView", pathName: "Flagged "}
+        {path: "/QuestionView", pathName: "Questions"},
+		{ path: "/FlaggedQuestionView", pathName: "Flagged" }
 	];
 
 	const ModerateQuestion = () => {
@@ -18,7 +18,7 @@ const QuestionView = () => {
 
 	const navigate = useNavigate(); // Initialize navigate
 
-	const questions = [
+	const flaggedQuestions = [
 		{
 			id: 1,
 			question: "Which of the following ports is typically used by HTTPS?",
@@ -49,33 +49,33 @@ const QuestionView = () => {
 	];
 
 	return (
-		<div className="question-view-container">
+		<div className="flagged-question-view-container">
 			<Sidebar links={links} />
-			<div className="question-view-content">
-				<h2 className="question-view-content-h2">Aws Cloud Practisioner</h2>
-				<div className="question-view-search-container">
-					<label htmlFor="search-input" className="search-label">
+			<div className="flagged-question-view-content">
+				<h2 className="flagged-question-view-content-h2">Flagged Questions</h2>
+				<div className="flagged-question-view-search-container">
+					<label htmlFor="search-input" className="flagged-question-view-search-label">
 						Search by Question ID:
 					</label>
 					<input
 						id="search-input"
 						type="text"
-						className="search-input"
-						placeholder="Enter Course ID"
+						className="flagged-question-view-search-input"
+						placeholder="Enter Question ID"
 					/>
 				</div>
-				<div className="questions-section">
-					{questions.map((question) => (
-						<div key={question.id} className="question-card">
-							<div className="question-header">
+				<div className="flagged-questions-section">
+					{flaggedQuestions.map((question) => (
+						<div key={question.id} className="flagged-question-view-question-card">
+							<div className="flagged-question-view-question-header">
 								<p>{question.question}</p>
-								<button onClick={ModerateQuestion} className="edit-btn">
+								<button onClick={ModerateQuestion} className="flagged-question-view-edit-btn">
 									<FontAwesomeIcon icon={faEdit} />
 								</button>
 							</div>
-							<div className="options-list">
+							<div className="flagged-question-view-options-list">
 								{question.options.map((option, index) => (
-									<div key={index} className="option">
+									<div key={index} className="flagged-question-view-option">
 										<label>{option}</label>
 									</div>
 								))}
@@ -83,10 +83,10 @@ const QuestionView = () => {
 						</div>
 					))}
 				</div>
-				<div className="question-view-button-container">
+				<div className="flagged-question-view-button-container">
 					<button
 						onClick={() => navigate("/ModeratorDashboard")}
-						className="question-view-back-btn"
+						className="flagged-question-view-back-btn"
 					>
 						<FontAwesomeIcon icon={faArrowLeftLong} /> Back
 					</button>
@@ -96,4 +96,4 @@ const QuestionView = () => {
 	);
 };
 
-export default QuestionView;
+export default FlaggedQuestionView;

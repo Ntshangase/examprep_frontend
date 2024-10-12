@@ -1,127 +1,215 @@
 /* Sidebar container */
 .sidebar-component-container {
-	width: 200px;
-	background-color: var(--color-primary); /* Dark theme for sidebar */
-	color: white;
-	height: 100vh;
-	top: 0;
-	left: 0;
-	display: flex;
-	flex-direction: column;
-	padding: 20px;
-	transition: all 0.3s ease-in-out;
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-	z-index: 1000;
+    width: 200px;
+    background-color: var(--color-primary); /* Dark theme for sidebar */
+    color: white;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-x: hidden;
 }
 
 /* Sidebar link list */
 .sidebar-content {
-	list-style: none;
-	height: 80%;
+    list-style: none;
+    height: auto; /* Allow height to adjust based on content */
+    flex-grow: 1; /* Allow it to fill the remaining space */
+    display: flex; /* Add this to allow flex properties */
+    flex-direction: column; /* Stack links vertically */
+    align-items: flex-start; /* Align links to start */
 }
 
 .sidebar-component-container img {
-	width: 180px;
-	margin-bottom: 40px;
-	transition: transform 0.3s ease;
-  }
-  .sidebar-component-container img:hover {
-	transform: scale(1.05);
-  }
+    width: 100%; /* Make image responsive */
+    height: auto; /* Maintain aspect ratio */
+    max-width: 180px; /* Set max width for larger screens */
+    margin-bottom: 40px;
+    transition: transform 0.3s ease;
+}
 
-/*User-details*/
+.sidebar-component-container img:hover {
+    transform: scale(1.05);
+}
+
+/* User-details */
 .sidebar-user-details {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  padding: 6%;
-  background-color: var(--color-primary);
-  border-radius: 8px;
-  height: 20%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 6%;
+    background-color: var(--color-primary);
+    border-radius: 8px;
+    height: auto; /* Adjust height to auto for responsiveness */
 }
 
 .sidebar-user-icon {
-  font-size: 28px;
-  margin-right: 12px;
-  color: white;
+    font-size: 28px;
+    margin-right: 12px;
+    color: white;
 }
 
 .sidebar-user-details-content {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-user-details-name {
-  margin: 0;
-  font-size: 18px;
-  font-weight: bold;
-  color: white;
+    margin: 0;
+    font-size: 18px; /* Default size for larger screens */
+    font-weight: bold;
+    color: white;
 }
 
 .sidebar-user-details-email {
-  margin: 0;
-  font-size: 14px;
-  color: white;
+    margin: 0;
+    font-size: 14px; /* Default size for larger screens */
+    color: white;
 }
 
 /* Individual link styles */
 .sidebar-link {
-	margin-bottom: 20px;
+    margin-bottom: 20px;
 }
 
-.sidebar-link a {
-	text-decoration: none;
-	color: #ffffff;
-	font-size: 18px;
-	padding: 10px 15px;
-	display: block;
-	border-radius: 5px;
-	transition: background-color 0.3s, color 0.3s;
+.sidebar-content-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 18px; /* Default size for larger screens */
+    padding: 10px 15px;
+    display: block;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
 /* Hover and active link styles */
-.sidebar-link a:hover {
-	background-color: white;
-	color: black;
+.sidebar-content-link:hover {
+    background-color: white;
+    color: black;
 }
 
 /* Active link styles */
-.sidebar-link a.active {
-	background-color: #007bff;
-	color: white;
+.sidebar-content-link.active {
+    background-color: #007bff;
+    color: white;
+}
+
+/* Toggle button */
+.toggle-button {
+    display: none; /* Hide the toggle button by default */
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    margin-bottom: 20px; /* Space between button and content */
 }
 
 /* Responsive behavior */
+@media (max-width: 1024px) {
+    .sidebar-component-container {
+        width: 150px;
+        padding: 15px;
+    }
+
+    .sidebar-content-link {
+        font-size: 16px;
+        padding: 8px 10px; /* Adjust padding */
+        white-space: normal; /* Allow text to wrap */
+    }
+
+    .sidebar-user-details {
+        padding: 4%;
+    }
+
+    .sidebar-user-details-name {
+        font-size: 16px; /* Adjust font size */
+    }
+
+    .sidebar-user-details-email {
+        font-size: 12px; /* Adjust font size */
+    }
+}
+
 @media (max-width: 768px) {
-	.sidebar-component-container {
-		width: 80px;
-		padding: 10px;
-	}
+    .toggle-button {
+        display: block; /* Show the toggle button on smaller screens */
+    }
 
-	.sidebar-link a {
-		font-size: 14px;
-		padding: 10px;
-	}
+    .sidebar-component-container {
+        width: 100px; /* Width for smaller screens */
+        padding: 10px;
+    }
 
-	.sidebar-link {
-		margin-bottom: 15px;
-	}
+    .sidebar-content {
+        align-items: flex-start; /* Align links to start on smaller screens */
+    }
+
+    .sidebar-content-link {
+        font-size: 14px;
+        padding: 8px; /* Adjust padding */
+    }
+
+    .sidebar-link {
+        margin-bottom: 15px; /* Reduce margin */
+    }
+
+    .sidebar-user-details {
+        flex-direction: column;
+        align-items: flex-start; /* Adjust alignment */
+        padding: 4%;
+        height: auto;
+    }
+
+    .sidebar-user-details-name {
+        font-size: 14px; /* Adjust font size */
+    }
+
+    .sidebar-user-details-email {
+        font-size: 12px; /* Adjust font size */
+    }
 }
 
 /* Sidebar collapse for mobile */
 @media (max-width: 480px) {
-	.sidebar-component-container {
-		width: 60px;
-		padding: 5px;
-	}
+    .sidebar-component-container {
+        width: 60px; /* Width of the collapsed sidebar */
+        padding: 5px;
+    }
 
-	.sidebar-link a {
-		font-size: 12px;
-		padding: 8px;
-	}
+    .sidebar-content-link {
+        font-size: 12px; /* Reduce font size for smaller screens */
+        padding: 8px; /* Adjust padding */
+        display: none; /* Hide links in collapsed state */
+    }
+
+    .sidebar-component-container:not(.collapsed) .sidebar-content-link {
+        display: block; /* Show links when expanded */
+    }
+
+    .sidebar-user-details {
+        flex-direction: column;
+        align-items: start; /* Adjust alignment */
+        padding: 4%;
+        height: auto;
+        display: none; /* Hide user details in collapsed state */
+    }
+
+    .sidebar-component-container:not(.collapsed) .sidebar-user-details {
+        display: flex; /* Show user details when expanded */
+    }
+
+    .sidebar-user-details-name,
+    .sidebar-user-details-email {
+        font-size: 10px; /* Adjust font size for small screens */
+        margin-bottom: 2px;
+    }
 }
 
 /* Optional: animation for sidebar collapse */
 .sidebar-component-container.collapsed {
-	width: 80px;
+    width: 80px; /* Adjust width for collapsed state */
 }

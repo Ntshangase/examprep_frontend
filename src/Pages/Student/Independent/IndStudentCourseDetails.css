@@ -1,6 +1,20 @@
-.course-detail {
+.indipendent-student-course-details-container {
   display: flex;
-  height: 100vh; /* Full height */
+  flex-direction: row;
+  height: 100vh;
+}
+
+.indipendent-student-course-details-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.indipendent-student-course-details-h2 {
+  font-size: 2rem;
+  color: #2c97de;
+  margin: 20px;
+  align-self: center;
 }
 
 .dashboard-content {
@@ -15,23 +29,16 @@
   flex-direction: column;
 }
 
-.course-detail-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
 
-.top-section {
+
+.indipendent-student-course-details-information-view {
   display: flex;
+  flex: 1;
   align-items: flex-start; /* Align items at the start */
   margin-bottom: 20px; /* Space below the top section */
 }
 
-.course-image {
-  flex: 1; /* Take up one part of the flex container */
-}
-
-.course-image img {
+.indipendent-student-course-details-course-image {
   width: 100%; /* Responsive image */
   max-width: 300px; /* Max width for better sizing */
   height: auto; /* Maintain aspect ratio */
@@ -45,27 +52,21 @@
 }
 
 
-.class-info-container {
-  margin-top: 20px; /* Space above class details */
-  display: flex;
-  justify-content: space-between; /* Align class info and button */
+.indipendent-student-course-details-button-div {
+  flex: 1;
 }
 
-.generate-test-container {
-  margin-top: 20px; /* Space above the button */
-}
-
-.generate-test-button {
-  padding: 10px 20px;
+.indipendent-student-course-details-button {
+  padding: 15px 40px;
   border: none;
   border-radius: 5px;
   background-color: var(--color-primary); /* Button color */
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  align-items: center;
+  margin-left: 40%;
 }
 
-.generate-test-button:hover {
-  background-color: #338796; /* Darker shade on hover */
+.indipendent-student-course-details-button:hover {
+  background-color: #145da0; /* Darker shade on hover */
 }

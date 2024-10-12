@@ -1,17 +1,20 @@
 /* Aligning the layout similar to LecturerDashboard */
-.student-dashboard {
+.student-dashboards-container {
     display: flex;
-    flex-direction: column;
-  }
-  
-  .dashboard-content {
-    display: flex;
+    flex-direction: row;
     height: 100vh;
   }
-  
-  .content-area {
+
+  .student-dashboards-content {
+    display: flex;
+    flex-direction: column;
     flex: 1;
-    padding: 20px;
+  }
+  .student-dashboards-content-h2 {
+    font-size: 2rem;
+    color: #3498db;
+    margin: 20px;
+    align-self: center;
   }
   
   .card-container {
@@ -40,7 +43,7 @@
   
   .card h2 {
     font-size: 1.5em;
-    color: var(--color-primary-dark);
+    color: #3498db;
     margin-bottom: 10px;
   }
   
@@ -52,9 +55,5 @@
     transform: scale(1.05);
   }
   
-  h1 {
-    font-size: 2.5em;
-    color: var(--color-primary);
-    margin-bottom: 40px;
-  }
+
   

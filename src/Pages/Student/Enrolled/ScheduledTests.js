@@ -16,15 +16,13 @@ const ScheduledTests = () => {
 
   const tests = [
     {
-      name: "Test 1",
-      status: "Not Submitted",
+      name: "Networking Test",
       dueDate: "2024-10-15",
       grade: "  /50",
       canAttempt: true,
     },
     {
-      name: "Test 2",
-      status: "Not Submitted",
+      name: "Database Test",
       dueDate: "2024-09-28",
       grade: "  /50",
       canAttempt: true,
@@ -45,7 +43,6 @@ const ScheduledTests = () => {
             <thead>
               <tr>
                 <th>Test Name</th>
-                <th>Status</th>
                 <th>Due Date</th>
                 <th>Grade</th>
                 <th>Action</th>
@@ -55,7 +52,6 @@ const ScheduledTests = () => {
               {tests.map((test, index) => (
                 <tr key={index}>
                   <td>{test.name}</td>
-                  <td>{test.status}</td>
                   <td>{test.dueDate}</td>
                   <td>{test.grade}</td>
                   <td>

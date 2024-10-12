@@ -20,7 +20,8 @@ const courses = [
 const ModeratorDashboard = () => {
 	const links = [
 		{path: "/ModeratorDashboard", pathName: "Home"},
-		{path: "/QuestionView", pathName: "Questions"}
+		{path: "/QuestionView", pathName: "Questions"},
+		{path: "/FlaggedQuestionView", pathName: "Flagged"}
 	]
 
 	const navigate = useNavigate(); // Initialize navigate
@@ -30,23 +31,22 @@ const ModeratorDashboard = () => {
 
 	return (
 		<div className="moderator-dashboard-container">
-			<div className="dashboard-content">
 				<Sidebar links={links}/>
 				<div className="moderator-content-area">
 					<h2 className="moderator-content-area-h2">Select Course to Moderate</h2>
 					{/* Certification Badges with Labels */}
-					<div className="badge-section">
+					<div className="moderator-badge-section">
 						{courses.map((course) => (
 							<div
-								className="badge-card"
+								className="moderator-badge-card"
 								key={course.name}
 								onClick={viewQuestions}
 							>
-								<div className="badge">
+								<div className="moderator-badge">
 									<img
 										src={course.image}
 										alt={course.name}
-										className="badge-image"
+										className="moderator-badge-image"
 									/>
 									<p>{course.name}</p>
 								</div>
@@ -54,7 +54,6 @@ const ModeratorDashboard = () => {
 						))}
 					</div>
 				</div>
-			</div>
 		</div>
 	);
 };

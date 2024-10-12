@@ -34,7 +34,7 @@ const IndStudentCreateTest = () => {
 		{path: "/StudentDashboards", pathName: "Home"},
 		{path: "/IndStudentdash", pathName: "Course Details"},
 	]
-  
+
   const [selectedTopics, setSelectedTopics] = useState({});
   const [totalWeight, setTotalWeight] = useState(0);
   const [isModalOpen, setIsModalOpen] = useState(false); // Modal state
@@ -70,17 +70,14 @@ const IndStudentCreateTest = () => {
   };
 
   return (
-    <div className="generate-test-dashboard">
-      
-      <div className="dashboard-content">
+    <div className="indipendent-student-create-test-container">
         <Sidebar links={links}/>
         <div className="independent-student-content-area">
           <div className="create-test-container">
             <h1>Select Domains to Generate Test</h1>
-
             {domains.map((domain) => (
-              <div key={domain.title} className="domain-section">
-                <h2>{domain.title}</h2>
+              <div key={domain.title} className="indipendent-student-create-test-domain-section">
+                <h2 className='indipendent-student-create-test-domain-section-h2'>{domain.title}</h2>
 
                 {domain.topics.map((topic) => (
                   <div key={topic} className="topic-item">
@@ -117,7 +114,6 @@ const IndStudentCreateTest = () => {
             </div>
           )}
         </div>
-      </div>
     </div>
   );
 };

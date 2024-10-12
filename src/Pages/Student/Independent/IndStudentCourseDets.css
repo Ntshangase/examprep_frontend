@@ -4,20 +4,7 @@
     flex-direction: column;
     height: 100vh; /* Full height view */
   }
-  
-  .dashboard-content {
-    display: flex;
-    width: 100%;
-  }
-  
-  .content-area {
-    flex-grow: 1;
-    padding: 20px;
-    background-color: #f9f9f9;
-    display: flex;
-    flex-direction: column;
-  }
-  
+
   /* Page content grid layout */
   .page-content {
     display: flex;

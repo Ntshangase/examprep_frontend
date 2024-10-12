@@ -1,129 +1,91 @@
-.student-dashboard {
+.indipendent-student-write-test-container {
+	display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+.indipendent-student-write-test-content {
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
-    font-family: Arial, sans-serif;
-    background-color: #eaeaea;
-    /* Light gray background */
-}
-
-.dashboard-content {
-    display: flex;
     flex: 1;
-    padding: 20px;
-    background-color: #f9f9f9;
+    align-items: center;
 }
 
-.content-area {
-    flex: 1;
-    padding: 20px;
-    background-color: #ffffff;
-    /* White background */
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    /* Depth */
+.indipendent-student-write-test-h2 {
+    font-size: 2rem;
+    color: #2c97de;
+    margin: 20px;
 }
 
-.question-section {
-    margin: 20px 0;
+.indipendent-student-write-test-question-section {
+    width: 90%;
+	padding: 20px;
 }
 
-.question-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+.indipendent-student-write-test-question-section h3 {
+	font-size: 1.5rem;
+	margin-bottom: 10px;
 }
 
-.question-section p {
-    font-size: 1.2rem;
-    margin-bottom: 15px;
+.indipendent-student-write-test-question-section p {
+	font-size: 1.2rem;
+	margin-bottom: 15px;
 }
 
-textarea {
-    width: 100%;
-    height: 100px;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #dcdcdc;
-    font-size: 16px;
-    margin-bottom: 15px;
-    resize: none;
-    /* Prevent resizing */
-}
 
 .indipendent-student-write-test-button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #007bff; /* Primary color */
-    color: white;
-    cursor: pointer;
-    transition: background-color 0.3s;
+	padding: 10px 20px;
+	border: none;
+	border-radius: 5px;
+	background-color: #007bff;
+	color: white;
+	cursor: pointer;
+	transition: background-color 0.3s;
+    margin-top: 3rem;
 }
 
 .indipendent-student-write-test-button:hover {
-    background-color: #0056b3; /* Darker shade on hover */
+	background-color: #0056b3;
 }
 
 .indipendent-student-write-test-button:disabled {
-    background-color: #cccccc; /* Disabled  color */
-    cursor: not-allowed; /* Change cursor when disabled */
+	background-color: #cccccc;
+	cursor: not-allowed;
 }
 
-    h1 {
-        margin-bottom: 20px;
-    }
 
-    .modal {
-        display: flex;
-        position: fixed;
-        z-index: 1000;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.5);
-        /* Darker background for modal */
-    }
 
-    .modal-content {
-        background-color: #ffffff;
-        margin: auto;
-        /* Center modal */
-        padding: 20px;
-        border: 1px solid #888;
-        border-radius: 8px;
-        width: 90%;
-        /* Width of modal */
-        max-width: 600px;
-        /* Max width */
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        /* Slightly stronger shadow */
-        transition: all 0.3s ease;
-        /* Smooth transition */
-    }
+.indipendent-student-write-test-modal {
+	display: flex;
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5);
+}
 
-    .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
-    }
+.indipendent-student-write-test-modal-content {
+	background-color: #ffffff;
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #888;
+	border-radius: 8px;
+	width: 90%;
+	max-width: 600px;
+	box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease;
+}
 
-    .close:hover,
-    .close:focus {
-        color: #000;
-        /* Darker color on hover */
-        text-decoration: none;
-        cursor: pointer;
-    }
+.indipendent-student-write-test-modal-close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
 
-    h2 {
-        margin-top: 0;
-        /* Remove top margin for header */
-    }
-
-    p {
-        font-size: 1.1rem;
-        /* Slightly larger text for readability */
-    }
+.indipendent-student-write-test-modal-close:hover,
+.indipendent-student-write-test-modal-close:focus {
+	color: #000;
+	/* Darker color on hover */
+	text-decoration: none;
+	cursor: pointer;
+}

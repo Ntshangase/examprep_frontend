@@ -1,50 +1,36 @@
 /* General layout */
-.generate-test-dashboard {
+.indipendent-student-create-test-container {
   display: flex;
+  flex-direction: row;
   height: 100vh;
-  background-color: #f8f9fa;
-  overflow: hidden;
-}
-
-.dashboard-content {
-  display: flex;
-  width: 100%;
-  overflow: hidden;
 }
 
 .independent-student-content-area {
-  flex-grow: 1;
-  padding: 2rem;
-  background-color: #fff;
+  flex: 1;
   overflow-y: auto; /* Scrollable content */
 }
 
 /* Create Test Container */
 .create-test-container {
-  background-color: #fff;
   padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  max-width: 900px;
   margin: 0 auto;
 }
 
 .create-test-container h1 {
   font-size: 2rem;
-  color: #343a40;
+  color: #2C97DE;
   margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.domain-section {
+.indipendent-student-create-test-domain-section {
   margin-bottom: 2rem;
 }
 
-.domain-section h2 {
+.indipendent-student-create-test-domain-section-h2 {
   font-size: 1.5rem;
-  color: #007bff;
   margin-bottom: 1rem;
-  border-bottom: 2px solid #007bff;
+  border-bottom: 2px solid black;
   padding-bottom: 0.5rem;
 }
 

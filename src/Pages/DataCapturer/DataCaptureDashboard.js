@@ -4,10 +4,7 @@ import Sidebar from "../../../src/Components/Sidebar/Sidebar";
 import "./DataCaptureDashboard.css"; // CSS for styling
 
 const DataCaptureDashboard = () => {
-
-	const links = [
-		{path: "/DataCaptureDashboard", pathName: "Home"}
-	]
+	const links = [{ path: "/DataCaptureDashboard", pathName: "Home" }];
 
 	const navigate = useNavigate();
 	const handleCourseSelect = (course) => {
@@ -29,32 +26,28 @@ const DataCaptureDashboard = () => {
 	];
 
 	return (
-		<div className="data-capture-dashboard">
-			<div className="dashboard-content">
-				<Sidebar links={links}/>
-				<div className="content-area">
-					<div className="content-area">
-						<h2>Select Course to Add Question</h2>
-						{/* Certification Badges with Labels */}
-						<div className="badge-section">
-							{courses.map((course) => (
-								<div
-									className="badge-card"
-									key={course.name}
-									onClick={() => handleCourseSelect(course)}
-								>
-									<div className="badge">
-										<img
-											src={course.image}
-											alt={course.name}
-											className="badge-image"
-										/>
-										<p className="data-capture-about-course">{course.name}</p>
-									</div>
-								</div>
-							))}
+		<div className="data-capture-dashboard-container">
+			<Sidebar links={links} />
+			<div className="data-capture-content-area">
+				<h2>Select Course to Add Question</h2>
+				{/* Certification Badges with Labels */}
+				<div className="badge-section">
+					{courses.map((course) => (
+						<div
+							className="badge-card"
+							key={course.name}
+							onClick={() => handleCourseSelect(course)}
+						>
+							<div className="badge">
+								<img
+									src={course.image}
+									alt={course.name}
+									className="badge-image"
+								/>
+								<p className="data-capture-about-course">{course.name}</p>
+							</div>
 						</div>
-					</div>
+					))}
 				</div>
 			</div>
 		</div>

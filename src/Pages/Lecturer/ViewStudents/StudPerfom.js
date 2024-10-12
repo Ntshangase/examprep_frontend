@@ -28,9 +28,9 @@ const StudPerfom = () => {
             // Simulate fetching tests data
             const testsData = [
                 { id: 101, name: "Test 1", status: "Submitted",scored:56, grade: 60},
-                { id: 102, name: "PracticeTest01", status: "Not submitted",scored:10, grade: 80 },
+                { id: 102, name: "PracticeTest01", status: "Submitted",scored:10, grade: 80 },
                 { id: 103, name: "DomainsTest01", status: "Submitted",scored:36, grade: 60 },
-                { id: 104, name: "FinalTest01", status: "Not submitted",scored:60, grade: 100}
+                { id: 104, name: "FinalTest01", status: "Submitted",scored:60, grade: 100}
             ];
             setTests(testsData);
         };

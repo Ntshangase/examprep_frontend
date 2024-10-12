@@ -1,24 +1,66 @@
 /* Main container styling */
-.admin-container {
+.manage-user-admin-container {
   display: flex;
+  flex-direction: row;
+  height: 100vh;
 }
 
-/* Sidebar styling */
-.sidebar {
-  width: 250px;
-  background-color: #61b5f5;
+.manage-user-admin-content {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  height: 100vh;
   padding: 20px;
-  position: relative;
+  width: 80%;
+  overflow-y: auto;
 }
 
-.logo-container {
-  text-align: center;
-  margin-bottom: 20px;
+.manage-user-admin-heading {
+  display: flex;
+  flex-direction: row;
+  margin: 20px;
+  justify-content: space-evenly;
 }
+
+.manage-user-admin-h2 {
+  color: #3498db;
+  font-size: 2rem;
+}
+
+.manage-user-link-div {
+  padding-top: -10px;
+}
+
+/* Search bar container */
+.manage-user-admin-search {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+/* Label styling */
+.manage-user-admin-search-label {
+  font-size: 1rem;
+  margin-right: 10px;
+  margin-left: 30px;
+}
+
+/* Input field styling */
+.manage-user-admin-search-input {
+  max-width: 90%;
+  border: 1px solid #dcdcdc;
+  border-radius: 5px;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.manage-user-admin-search-input:focus {
+  border-color: #3498db; /* Blue border on focus */
+}
+
+.manage-user-admin-search-input::placeholder {
+  color: #bdc3c7;
+}
+
 
 /* Sidebar user info section */
 .user-info {
@@ -55,18 +97,6 @@ nav ul li {
 /* Navigation hover effect */
 nav ul li:hover {
   color: #000080; /* Change to dark blue on hover */
-}
-
-/* Main content styling */
-.main-content {
-  flex: 1;
-  padding: 20px;
-}
-
-h1 {
-  color: var(--color-primary);
-  font-size: 2rem;
-  text-align: center;
 }
 
 /* User grid */
