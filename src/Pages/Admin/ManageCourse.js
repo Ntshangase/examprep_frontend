@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ManageCourse.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import course from "../../Data/Course.json";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
@@ -17,6 +16,7 @@ export default function ManageCourse() {
 	];
 
 	const navigate = useNavigate();
+	const [courseState, setCourseState] = useState([]);
 
 	const handleEditCourse = () => {
 		//removed courseId
@@ -25,16 +25,21 @@ export default function ManageCourse() {
 
 	//DATABASE
 
-	const fetchData = async () => {
-		try {
-		  const response = await getData("/api/courses");
-		  console.log(response);
-		} catch (error) {
-		  console.error(error);
-		}
-	  };
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await getData("/api/courses");
+				setCourseState(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
 
-	fetchData();
+		fetchData();
+	},[]);
+
+	console.log(typeof courseState);
+	console.log(courseState);
 
 	return (
 		<div className="manage-course-container">
@@ -49,22 +54,22 @@ export default function ManageCourse() {
 					</div>
 				</div>
 				<div className="manage-courses-grid">
-					{course.map((course) => (
-						<div key={course.id} className="manage-course-card">
+					{/* {courseState.map((course) => (
+						<div key={course.courseId} className="manage-course-card">
 							<img
 								src={course.image}
-								alt={course.title}
+								alt={course.courseName}
 								className="manage-course-image"
 							/>
-							<h3 className="manage-course-name">{course.title}</h3>
+							<h3 className="manage-course-name">{course.courseName}</h3>
 							<button
 								className="edit-course-button"
-								onClick={() => handleEditCourse(course.id)}
+								onClick={() => handleEditCourse(course.courseId)}
 							>
 								Edit Course
 							</button>
 						</div>
-					))}
+					))} */}
 				</div>
 			</div>
 		</div>
