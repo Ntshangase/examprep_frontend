@@ -13,6 +13,7 @@ function AddUser() {
   ];
 
   const [formData, setFormData] = useState({
+    title: '', // Add title field here
     firstName: '',
     lastName: '',
     username: '',
@@ -74,6 +75,24 @@ function AddUser() {
       <div className="main-content">
         <h1 className="form-title">Add User</h1>
         <form className="add-user-form" onSubmit={handleSubmit}>
+          {/* Title Field */}
+          <div className="form-group">
+            <label>Title</label>
+            <select
+              name="title"
+              value={formData.title}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled selected>Select title</option>
+              <option value="Prof">Prof</option>
+              <option value="Dr">Dr</option>
+              <option value="Mr">Mr</option>
+              <option value="Ms">Ms</option>
+              <option value="Mrs">Mrs</option>
+            </select>
+          </div>
+
           <div className="form-group">
             <label>First Name</label>
             <input
@@ -118,9 +137,7 @@ function AddUser() {
               onChange={handleChange}
               required
             >
-              <option value="" disabled selected>
-                Select role
-              </option>
+              <option value="" disabled selected>Select role</option>
               <option value="Lecturer">Lecturer</option>
               <option value="Student">Student</option>
               <option value="Admin">Admin</option>
@@ -130,48 +147,46 @@ function AddUser() {
           </div>
 
           {/* Conditionally render the search field for Student, Data Capture, Moderator */}
-{(formData.role === 'Student' || formData.role === 'DataCapture' || formData.role === 'Moderator') && (
-  <div className="form-group">
-    <label>Search Courses</label>
-    <input
-      type="text"
-      value={courseSearch}
-      onChange={handleCourseSearch}
-      placeholder="Search for courses"
-    />
+          {(formData.role === 'Student' || formData.role === 'DataCapture' || formData.role === 'Moderator') && (
+            <div className="form-group">
+              <label>Search Courses</label>
+              <input
+                type="text"
+                value={courseSearch}
+                onChange={handleCourseSearch}
+                placeholder="Search for courses"
+              />
 
-    {/* Only show the course list if the user is typing something in the search box */}
-    {courseSearch && (
-      <ul className="add-user-course-list">
-        {availableCourses
-          .filter((course) =>
-            course.toLowerCase().includes(courseSearch.toLowerCase())
-          )
-          .map((course, index) => (
-            <li key={index} onClick={() => handleSelectCourse(course)}>
-              {course}
-            </li>
-          ))}
-      </ul>
-    )}
+              {courseSearch && (
+                <ul className="add-user-course-list">
+                  {availableCourses
+                    .filter((course) =>
+                      course.toLowerCase().includes(courseSearch.toLowerCase())
+                    )
+                    .map((course, index) => (
+                      <li key={index} onClick={() => handleSelectCourse(course)}>
+                        {course}
+                      </li>
+                    ))}
+                </ul>
+              )}
 
-    {/* Display selected courses */}
-    <div className="add-user-selected-courses">
-      {formData.selectedCourses.map((course, index) => (
-        <span key={index} className="add-user-selected-course">
-          {course}
-          <button
-            type="button"
-            className="remove-course-btn"
-            onClick={() => handleRemoveCourse(course)}
-          >
-            &times;
-          </button>
-        </span>
-      ))}
-    </div>
-  </div>
-)}
+              <div className="add-user-selected-courses">
+                {formData.selectedCourses.map((course, index) => (
+                  <span key={index} className="add-user-selected-course">
+                    {course}
+                    <button
+                      type="button"
+                      className="remove-course-btn"
+                      onClick={() => handleRemoveCourse(course)}
+                    >
+                      &times;
+                    </button>
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
 
           <div className="form-group">
             <label>Upload Image</label>
