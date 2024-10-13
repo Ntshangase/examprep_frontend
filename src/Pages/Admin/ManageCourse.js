@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { getData } from "../../Api/Api";
 
 export default function ManageCourse() {
 	const links = [
@@ -21,6 +22,19 @@ export default function ManageCourse() {
 		//removed courseId
 		navigate(`/EditCourse`); // /${courseId} This will lead to a course editing page
 	};
+
+	//DATABASE
+
+	const fetchData = async () => {
+		try {
+		  const response = await getData("/api/courses");
+		  console.log(response);
+		} catch (error) {
+		  console.error(error);
+		}
+	  };
+
+	fetchData();
 
 	return (
 		<div className="manage-course-container">
