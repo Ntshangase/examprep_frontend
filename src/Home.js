@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import { getData } from "./Api/Api";
 
 function Home() {
 	const navigate = useNavigate(); // Get the navigate function
@@ -19,6 +20,18 @@ function Home() {
 	const handleNavigateDataCaptureDashboard = () => {
 		navigate("/DataCaptureDashboard");
 	};
+
+	const fetchData = async () => {
+		try {
+		  const response = await getData("/api/courses");
+		  console.log(response);
+		} catch (error) {
+		  console.error(error);
+		}
+	  };
+
+	fetchData();
+
 
 	return (
 		<div>
