@@ -12,6 +12,8 @@ const apiClient = axios.create({
 
 //expose the (GET,PUT,CREATE,DELETE ) functions to the global application.
 export const getData = (endpoint) => apiClient.get(endpoint);
+export const updateData = (endpoint, courseData) => apiClient.put(endpoint, courseData);
+export const deleteData = (endpoint) => apiClient.delete(endpoint);
 
 //User related ENDPOINTS
 export const createUser = (userData) => apiClient.post("/users", userData);
