@@ -71,10 +71,8 @@ export default function AddCourse() {
 	  courseDescription: courseData.courseDescription,
       //image: courseData.courseImage ? courseData.courseImage : null, // Upload image and get URL if needed
 	  domains: courseData.domains.map(domain => ({
-		domainId: 0, // Set to appropriate value if needed or remove if not applicable
 		domainName: domain.domainName,
 		topics: domain.topics.map(topic => ({
-		  topicId: 0, // Set to appropriate value if needed or remove if not applicable
 		  topicName: topic.topicName
 		}))
 	  })),
