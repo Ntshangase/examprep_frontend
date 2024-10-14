@@ -36,10 +36,10 @@ export default function ManageCourse() {
 		};
 
 		fetchData();
-	},[]);
+	}, []);
 
-	console.log(typeof courseState);
-	console.log(courseState);
+	//console.log(typeof courseState);
+	//console.log(courseState);
 
 	return (
 		<div className="manage-course-container">
@@ -47,14 +47,12 @@ export default function ManageCourse() {
 			<div className="manage-course-content">
 				<div className="admin-manage-course-heading">
 					<h2>Course Details</h2>
-					<div className="link-div">
-						<Link to="/AddCourse">
-							<FontAwesomeIcon icon={faPlusCircle} className="icon-plus" />
-						</Link>
-					</div>
+					<Link to="/AddCourse">
+						<FontAwesomeIcon icon={faPlusCircle} className="manage-course-icon-plus" />
+					</Link>
 				</div>
 				<div className="manage-courses-grid">
-					{/* {courseState.map((course) => (
+					{courseState.map((course) => (
 						<div key={course.courseId} className="manage-course-card">
 							<img
 								src={course.image}
@@ -69,7 +67,7 @@ export default function ManageCourse() {
 								Edit Course
 							</button>
 						</div>
-					))} */}
+					))}
 				</div>
 			</div>
 		</div>
