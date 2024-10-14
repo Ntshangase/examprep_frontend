@@ -34,6 +34,7 @@ export default function EditCourse() {
 				setDomains(response.data.domains || []); // Ensure domains are initialized
 				setTopics(response.data.topics || []); // Ensure topics are initialized
 				setImage(response.data.image || null); // Set initial image if available
+				console.log(response.data); //see what's in the box
 			} catch (error) {
 				console.error("Error fetching course data:", error);
 			}
