@@ -76,7 +76,7 @@ function App() {
 				<Route path="/CreateClass" element={<CreateClass />} />
 				<Route path="/EditClass" element={<EditClass />} />
 				<Route path="/ManageClass" element={<ManageClass />} />
-				<Route path="/EditCourse" element={<EditCourse />} />
+				<Route path="/EditCourse/:courseId" element={<EditCourse />} />
 				<Route path="/ManageStudents" element={<ManageStudents />} />
 				<Route path="/PanelEnrolled" element={<PanelEnrolled />} />
 				<Route path="/Classes" element={<Classes />} />

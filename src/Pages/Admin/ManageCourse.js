@@ -18,9 +18,9 @@ export default function ManageCourse() {
 	const navigate = useNavigate();
 	const [courseState, setCourseState] = useState([]);
 
-	const handleEditCourse = () => {
+	const handleEditCourse = (x) => {
 		//removed courseId
-		navigate(`/EditCourse`); // /${courseId} This will lead to a course editing page
+		navigate(`/EditCourse/${x}`); // /${courseId} This will lead to a course editing page
 	};
 
 	//DATABASE
