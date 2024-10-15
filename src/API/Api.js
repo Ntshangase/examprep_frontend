@@ -16,7 +16,7 @@ export const updateData = (endpoint, courseData) => apiClient.put(endpoint, cour
 export const deleteData = (endpoint) => apiClient.delete(endpoint);
 
 //User related ENDPOINTS
-export const createUser = (userData) => apiClient.post("/users", userData);
+export const createUser = (userData) => apiClient.post("/api/users/register", userData);
 export const updateUser = (userId, userData) =>
 	apiClient.put(`/users/${userId}`, userData);
 export const deleteUser = (userId) => apiClient.delete(`/users/${userId}`);

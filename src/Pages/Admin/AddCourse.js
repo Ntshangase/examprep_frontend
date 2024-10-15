@@ -77,7 +77,7 @@ export default function AddCourse() {
 		}))
 	  })),
 	};
-  
+
 	try {
 	  // Send the JSON payload to the backend API
 	  console.log(typeof payload);
