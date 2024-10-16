@@ -72,7 +72,6 @@ function AddUser() {
 		event.preventDefault();
 
 		try {
-			console.log(payload);
 			createUser(payload);
 		} catch (error) {
 			console.log(error);
