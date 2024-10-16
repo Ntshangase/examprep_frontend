@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AddCourse.css";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { createCourse } from "../../Api/Api";
 
@@ -20,7 +20,7 @@ export default function AddCourse() {
     domains: [{ domainName: "", topics: [{ topicName: "" }] }],
   });
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
 
   // Update course name and description
   const handleChange = (e) => {

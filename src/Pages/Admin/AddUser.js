@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import "./AddUser.css";
 import "../../Styles/global.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import { useNavigate } from "react-router-dom";
-import { createUser } from "../../Api/Api";
+//import { useNavigate } from "react-router-dom";
+//import { createUser } from "../../Api/Api";
+//import { sendemail } from "../../App/Mailer";
+
+
 
 function AddUser() {
 	const links = [
@@ -74,6 +77,7 @@ function AddUser() {
 		try {
 			console.log(payload);
 			//createUser(addUser);
+			//sendemail().then(result => console.log('email sent: ', result)).catch((error) => console.log(error.message));
 		} catch (error) {
 			console.log(error);
 		}
@@ -107,7 +111,7 @@ function AddUser() {
 		setSelectedOption(event.target.value);
 	};
 
-	const navigate = useNavigate();
+	//const navigate = useNavigate();
 
 	return (
 		<div className="add-user-page">
