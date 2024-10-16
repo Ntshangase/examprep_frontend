@@ -3,10 +3,7 @@ import "./AddUser.css";
 import "../../Styles/global.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 //import { useNavigate } from "react-router-dom";
-//import { createUser } from "../../Api/Api";
-//import { sendemail } from "../../App/Mailer";
-
-
+import { createUser } from "../../Api/Api";
 
 function AddUser() {
 	const links = [
@@ -50,7 +47,7 @@ function AddUser() {
 
 	const payload = {
 		email: addUser.email,
-    password: generatePassword(12),
+		password: generatePassword(12),
 		title: addUser.title,
 		fullNames: addUser.fullNames,
 		surname: addUser.surname,
@@ -76,8 +73,7 @@ function AddUser() {
 
 		try {
 			console.log(payload);
-			//createUser(addUser);
-			//sendemail().then(result => console.log('email sent: ', result)).catch((error) => console.log(error.message));
+			createUser(payload);
 		} catch (error) {
 			console.log(error);
 		}
