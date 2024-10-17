@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditCourse.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData, updateData, deleteData } from "../../Api/Api"; // Ensure you have these functions defined
+import { getData, updateCourse, deleteData } from "../../Api/Api";
 
 export default function EditCourse() {
 	const links = [
@@ -21,27 +21,27 @@ export default function EditCourse() {
 	const [topics, setTopics] = useState([]); // State for topics
 	const [newDomain, setNewDomain] = useState("");
 	const [newTopic, setNewTopic] = useState(""); // State for new topic
-	const [image, setImage] = useState(null); // State for image
+	const [existingImage, setExistingImage] = useState(null); // State for existing image
+	const [previewImage, setPreviewImage] = useState(null); // State for new image preview
 
 	// Fetch course data when the component mounts
 	useEffect(() => {
 		const fetchCourseData = async () => {
 			try {
 				const response = await getData(`/api/courses/${courseId}`);
-				setCourseData(response.data); // Save it in state
+				setCourseData(response.data);
 				setCourseName(response.data.courseName);
 				setCourseDescription(response.data.courseDescription);
-				setDomains(response.data.domains || []); // Ensure domains are initialized
-				setTopics(response.data.topics || []); // Ensure topics are initialized
-				setImage(response.data.image || null); // Set initial image if available
-				console.log(response.data); //see what's in the box
+				setDomains(response.data.domains || []);
+				setTopics(response.data.topics || []);
+				setExistingImage(response.data.image || null); // Set initial existing image if available
 			} catch (error) {
 				console.error("Error fetching course data:", error);
 			}
 		};
 
 		fetchCourseData();
-	}, [courseId]); // Run this effect when courseId changes
+	}, [courseId]);
 
 	// Handle course name change
 	const handleCourseNameChange = (e) => setCourseName(e.target.value);
@@ -56,13 +56,19 @@ export default function EditCourse() {
 			courseName,
 			courseDescription,
 			domains,
-			topics,
-			image, // Include image in the payload if needed
+		};
+		//console.log(payload);	//correct
+
+		const updateData = {
+			courseDetails: JSON.stringify(payload),
+			image: previewImage || existingImage,
 		};
 
 		try {
-			await updateData(`/api/courses/${courseId}`, payload); // Send the payload to update the course
-			navigate("/ManageCourse"); // Redirect after successful update
+			console.log(typeof updateData.courseDetails);
+			console.log(updateData.image);
+			await updateCourse(`/api/courses/${courseId}`, updateData);
+			//navigate("/ManageCourse");
 		} catch (error) {
 			console.error("Error updating course:", error);
 		}
@@ -72,7 +78,7 @@ export default function EditCourse() {
 	const handleAddDomain = () => {
 		if (newDomain.trim()) {
 			setDomains([...domains, newDomain.trim()]);
-			setNewDomain(""); // Clear input field
+			setNewDomain("");
 		}
 	};
 
@@ -88,7 +94,7 @@ export default function EditCourse() {
 	const handleAddTopic = () => {
 		if (newTopic.trim()) {
 			setTopics([...topics, newTopic.trim()]);
-			setNewTopic(""); // Clear input field
+			setNewTopic("");
 		}
 	};
 
@@ -98,12 +104,17 @@ export default function EditCourse() {
 		setTopics(updatedTopics);
 	};
 
-	// Handle image upload (dummy function for now)
+	// Handle image upload
 	const handleImageUpload = (e) => {
 		if (e.target.files && e.target.files[0]) {
 			const file = e.target.files[0];
-			setImage(URL.createObjectURL(file)); // Preview the image locally
-			// You can also implement logic to upload the image to your server here.
+			const reader = new FileReader();
+	
+			reader.onloadend = () => {
+				setPreviewImage(reader.result); // Set the preview of the new image as base64 string
+			};
+	
+			reader.readAsDataURL(file); // Read the file as data URL (base64)
 		}
 	};
 
@@ -111,8 +122,8 @@ export default function EditCourse() {
 	const handleRemoveCourse = async () => {
 		if (window.confirm("Are you sure you want to remove this course?")) {
 			try {
-				await deleteData(`/api/courses/${courseId}`); // Call the API to delete the course
-				navigate("/ManageCourse"); // Redirect after deletion
+				await deleteData(`/api/courses/${courseId}`);
+				navigate("/ManageCourse");
 			} catch (error) {
 				console.error("Error removing course:", error);
 			}
@@ -155,11 +166,11 @@ export default function EditCourse() {
 						<div className="edit-course-input-group">
 							<label>Domains</label>
 							<div className="edit-course-domain-list">
-								{domains.map((domain, index) => (
+								{domains.map((domains, index) => (
 									<div key={index} className="edit-course-domain-item">
 										<input
 											type="text"
-											value={domain}
+											value={domains}
 											onChange={(e) => {
 												const updatedDomains = [...domains];
 												updatedDomains[index] = e.target.value; // Update domain in place
@@ -238,37 +249,45 @@ export default function EditCourse() {
 						</div>
 					</div>
 					<div className="edit-course-right">
-							{/* Image Upload Section */}
-							<div className="edit-course-image-upload">
-								{image && (
-									<img
-										src={image}
-										alt="Course"
-										className="edit-course-image-preview"
-									/>
-								)}
-								<input
-									type="file"
-									accept="image/*"
-									onChange={handleImageUpload}
+						{/* Image Upload Section */}
+						<div className="edit-course-image-upload">
+							{previewImage ? (
+								<img
+									src={previewImage}
+									alt="New Course Preview"
+									className="edit-course-image-preview"
 								/>
-							</div>
-
-							<div className="edit-course-actions">
-								<button
-									onClick={handleUpdateCourse}
-									className="edit-course-button update"
-								>
-									Update Course
-								</button>
-								<button
-									onClick={handleRemoveCourse}
-									className="edit-course-button remove"
-								>
-									Remove Course
-								</button>
-							</div>
+							) : existingImage ? (
+								<img
+									src={`data:image/jpeg;base64,${existingImage}`}
+									alt="Existing Course"
+									className="edit-course-image-preview"
+								/>
+							) : (
+								<p>No image uploaded</p>
+							)}
+							<input
+								type="file"
+								accept="image/*"
+								onChange={handleImageUpload}
+								className="edit-course-image-input"
+							/>
 						</div>
+						<div className="edit-course-actions">
+							<button
+								onClick={handleUpdateCourse}
+								className="edit-course-upload-button"
+							>
+								Update Course
+							</button>
+							<button
+								onClick={handleRemoveCourse}
+								className="edit-course-delete-button"
+							>
+								Delete Course
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>

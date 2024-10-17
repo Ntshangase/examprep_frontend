@@ -156,35 +156,24 @@
 	background-color: #0056b3;
 }
 
-/* Actions (Update & Remove) */
-.edit-course-actions {
-	display: flex;
-	justify-content: space-between;
-}
-
-.edit-course-button {
-	padding: 0.8rem 1.5rem;
+.edit-course-delete-button {
+	padding: 0.6rem 1.2rem;
 	border: none;
+	background-color: #dc3545;
+	color: white;
 	border-radius: 5px;
-	font-size: 1rem;
 	cursor: pointer;
+	font-size: 1rem;
 	transition: background-color 0.3s ease;
 }
 
-.edit-course-button.update {
-	background-color: #007bff;
-	color: white;
-}
-
-.edit-course-button.update:hover {
-	background-color: #007bff;
-}
-
-.edit-course-button.remove {
-	background-color: #dc3545;
-	color: white;
-}
-
-.edit-course-button.remove:hover {
+.edit-course-delete-button:hover {
 	background-color: #c82333;
+}
+
+/* Actions (Update & Remove) */
+.edit-course-actions {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid black;
 }
