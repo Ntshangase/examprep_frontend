@@ -65,8 +65,7 @@ export default function AddCourse() {
 		setCourseData({ ...courseData, domains: newDomains });
 	};
 
-	const payload = {
-		//for first part of the multi-part form upload.
+	const payload = {		//for first part of the multi-part form upload.
 		courseName: courseData.courseName,
 		courseDescription: courseData.courseDescription,
 		domains: courseData.domains
@@ -81,20 +80,8 @@ export default function AddCourse() {
 			image: courseData.courseImage,
 		}
 
-		// Append course image if it's present
-		// if (courseData.courseImage) {
-		// 	sendData.append("courseImage", courseData.courseImage);
-		// }
-
 		try {
-			// Make the API call using the formData object
-			console.log(typeof sendData);
-			console.log(typeof sendData.courseDetails);
-			console.log(typeof sendData.image);
 			await createCourse(sendData);
-			console.log("Course added successfully");
-
-			// After successful creation, you can navigate to another page
 			// navigate("/ManageCourse"); // Uncomment if you want to navigate
 		} catch (error) {
 			console.error("Error adding course:", error.message);
