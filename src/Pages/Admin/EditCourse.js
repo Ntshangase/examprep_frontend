@@ -17,7 +17,10 @@ export default function EditCourse() {
 	const [courseData, setCourseData] = useState(null);
 	const [courseName, setCourseName] = useState("");
 	const [courseDescription, setCourseDescription] = useState("");
-	const [domains, setDomains] = useState([]);
+	const [domains, setDomains] = useState([{
+		domainName: "",
+		topics: []
+	}]);
 	const [topics, setTopics] = useState([]); // State for topics
 	const [newDomain, setNewDomain] = useState("");
 	const [newTopic, setNewTopic] = useState(""); // State for new topic
@@ -134,6 +137,8 @@ export default function EditCourse() {
 		return <div>Loading...</div>; // Show loading while fetching data
 	}
 
+	console.log(domains)
+
 	return (
 		<div className="edit-course-container">
 			<Sidebar links={links} />
@@ -166,11 +171,11 @@ export default function EditCourse() {
 						<div className="edit-course-input-group">
 							<label>Domains</label>
 							<div className="edit-course-domain-list">
-								{domains.map((domains, index) => (
+								{domains.map((domain, index) => (
 									<div key={index} className="edit-course-domain-item">
 										<input
 											type="text"
-											value={domains}
+											value={domain.domainName}
 											onChange={(e) => {
 												const updatedDomains = [...domains];
 												updatedDomains[index] = e.target.value; // Update domain in place
@@ -213,7 +218,7 @@ export default function EditCourse() {
 									<div key={index} className="edit-course-topic-item">
 										<input
 											type="text"
-											value={topic}
+											value={topic.topicName}
 											onChange={(e) => {
 												const updatedTopics = [...topics];
 												updatedTopics[index] = e.target.value; // Update topic in place
