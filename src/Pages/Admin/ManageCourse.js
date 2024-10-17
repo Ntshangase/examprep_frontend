@@ -19,11 +19,8 @@ export default function ManageCourse() {
 	const [courseState, setCourseState] = useState([]);
 
 	const handleEditCourse = (x) => {
-		//removed courseId
-		navigate(`/EditCourse/${x}`); // /${courseId} This will lead to a course editing page
+		navigate(`/EditCourse/${x}`);
 	};
-
-	//DATABASE
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -37,9 +34,6 @@ export default function ManageCourse() {
 
 		fetchData();
 	}, []);
-
-	//console.log(typeof courseState);
-	//console.log(courseState);
 
 	return (
 		<div className="manage-course-container">
