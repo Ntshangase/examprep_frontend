@@ -137,7 +137,6 @@ export default function EditCourse() {
 		return <div>Loading...</div>; // Show loading while fetching data
 	}
 
-	console.log(domains)
 
 	return (
 		<div className="edit-course-container">
