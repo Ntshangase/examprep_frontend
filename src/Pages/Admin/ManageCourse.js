@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { getData } from "../../Api/Api";
+import { getCourse } from "../../Api/Api";
 
 export default function ManageCourse() {
 	const links = [
@@ -18,17 +18,14 @@ export default function ManageCourse() {
 	const navigate = useNavigate();
 	const [courseState, setCourseState] = useState([]);
 
-	const handleEditCourse = () => {
-		//removed courseId
-		navigate(`/EditCourse`); // /${courseId} This will lead to a course editing page
+	const handleEditCourse = (x) => {
+		navigate(`/EditCourse/${x}`);
 	};
-
-	//DATABASE
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await getData("/api/courses");
+				const response = await getCourse("/api/courses");
 				setCourseState(response.data);
 			} catch (error) {
 				console.log(error);
@@ -36,10 +33,7 @@ export default function ManageCourse() {
 		};
 
 		fetchData();
-	},[]);
-
-	console.log(typeof courseState);
-	console.log(courseState);
+	}, []);
 
 	return (
 		<div className="manage-course-container">
@@ -47,17 +41,15 @@ export default function ManageCourse() {
 			<div className="manage-course-content">
 				<div className="admin-manage-course-heading">
 					<h2>Course Details</h2>
-					<div className="link-div">
-						<Link to="/AddCourse">
-							<FontAwesomeIcon icon={faPlusCircle} className="icon-plus" />
-						</Link>
-					</div>
+					<Link to="/AddCourse">
+						<FontAwesomeIcon icon={faPlusCircle} className="manage-course-icon-plus" />
+					</Link>
 				</div>
 				<div className="manage-courses-grid">
-					{/* {courseState.map((course) => (
+					{courseState.map((course) => (
 						<div key={course.courseId} className="manage-course-card">
 							<img
-								src={course.image}
+								src={`data:image/jpeg;base64,${course.image}`}
 								alt={course.courseName}
 								className="manage-course-image"
 							/>
@@ -69,7 +61,7 @@ export default function ManageCourse() {
 								Edit Course
 							</button>
 						</div>
-					))} */}
+					))}
 				</div>
 			</div>
 		</div>
