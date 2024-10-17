@@ -4,9 +4,9 @@ import axios from "axios";
 const apiClient = axios.create({
 	baseURL: "http://localhost:8080",
 	timeout: 10000,
-	headers: {		//important when sending data to backend.
-		'Accept': 'application/json'
-	}
+	// headers: {		//important when sending data to backend.
+	// 	'Accept': 'application/json'
+	// }
 });
 
 
@@ -22,4 +22,7 @@ export const updateUser = (userId, userData) =>
 export const deleteUser = (userId) => apiClient.delete(`/users/${userId}`);
 
 //COURSE RELATED ENDPOINTS
-export const createCourse = (courseData) => apiClient.post("/api/courses", courseData);
+export const createCourse = (courseData) => apiClient.post("/api/courses/saveCourse", courseData,{headers: {
+      'Content-Type': 'multipart/form-data',
+    }});
+export const getCourse = (endpoint) => apiClient.get(endpoint);

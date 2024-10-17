@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { getData } from "../../Api/Api";
+import { getCourse } from "../../Api/Api";
 
 export default function ManageCourse() {
 	const links = [
@@ -28,7 +28,7 @@ export default function ManageCourse() {
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await getData("/api/courses");
+				const response = await getCourse("/api/courses");
 				setCourseState(response.data);
 			} catch (error) {
 				console.log(error);
@@ -55,7 +55,7 @@ export default function ManageCourse() {
 					{courseState.map((course) => (
 						<div key={course.courseId} className="manage-course-card">
 							<img
-								src={course.image}
+								src={`data:image/jpeg;base64,${course.image}`}
 								alt={course.courseName}
 								className="manage-course-image"
 							/>
