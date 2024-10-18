@@ -189,3 +189,47 @@
 	flex-direction: column;
 	gap: 1rem;
 }
+
+.course-domain-container {
+    margin-bottom: 30px; /* Space between domain containers */
+}
+
+.course-domain-item {
+    background-color: #ffffff; /* White background for each domain */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    padding: 15px; /* Padding for inner spacing */
+    margin-bottom: 20px; /* Space between domains */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.domain-input-row {
+    display: flex; /* Flex for alignment */
+    justify-content: space-between; /* Space between input and any buttons */
+}
+
+.domain-input {
+    flex-grow: 1; /* Expand to fill available space */
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 14px; /* Font size */
+}
+
+.topic-list-container {
+    margin-top: 15px; /* Space above topic list */
+    padding-left: 15px; /* Indent for topics */
+}
+
+.topic-input-row {
+    display: flex; /* Flex for alignment */
+    margin-bottom: 10px; /* Space between topic inputs */
+}
+
+.topic-input {
+    width: 90%; /* Full width for topic inputs */
+    padding: 10px; /* Padding inside input */
+    border: 1px solid #ccc; /* Border color */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 14px; /* Font size */
+}
