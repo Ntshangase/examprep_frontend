@@ -134,7 +134,7 @@ export default function EditCourse() {
 						</div>
 
 						<div className="edit-course-input-group">
-							<label>Domains</label>
+							<label>Domains And Topics</label>
 							<div className="edit-course-domain-list">
 								{domains.map((domain, domainIndex) => (
 									<div key={domainIndex} className="edit-course-domain-item">
@@ -197,7 +197,7 @@ export default function EditCourse() {
 								className="edit-course-image-input"
 							/>
 						</div>
-						<div className="edit-course-actions">
+						<div className="edit-course-buttons-div">
 							<button
 								onClick={handleUpdateCourse}
 								className="edit-course-upload-button"
