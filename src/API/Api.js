@@ -34,3 +34,4 @@ export const updateCourse = (endpoint, courseData) => apiClient.put(endpoint, co
 //CLASS RELATED ENDPOINTS
 export const getClasses = (endpoint) => apiClient.get(endpoint);
 export const getCourseWithClasses = (endpoint) => apiClient.get(endpoint);
+export const deleteClass = (endpoint) => apiClient.delete(endpoint);

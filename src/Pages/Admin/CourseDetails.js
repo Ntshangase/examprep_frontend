@@ -8,7 +8,7 @@ import {
 	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { getCourseWithClasses } from "../../Api/Api";
+import { getCourseWithClasses, deleteClass } from "../../Api/Api";
 import { useParams } from "react-router-dom";
 
 export default function CourseDetails() {
@@ -41,6 +41,12 @@ export default function CourseDetails() {
 	if (loading) {
 		return <div>Loading...</div>; // Display while fetching data
 	}
+
+	const handleDeleteClass = async (x) => {
+		await deleteClass(`/api/classes/${x}`)
+	}
+
+	console.log(classes);
 
 	return (
 		<div className="admin-course-details-container">
@@ -85,7 +91,7 @@ export default function CourseDetails() {
 								<Link to="/EditClass">
 									<FontAwesomeIcon icon={faEye} className="icon-eye" />
 								</Link>
-								<FontAwesomeIcon icon={faTrash} className="icon-delete" />
+								<FontAwesomeIcon icon={faTrash} className="icon-delete" onClick={() => handleDeleteClass(course.classesId)} />
 							</div>
 						</div>
 					</div>
