@@ -23,7 +23,6 @@ export default function EditCourse() {
 			topics: [],
 		},
 	]);
-	const [topics, setTopics] = useState([]);
 	const [existingImage, setExistingImage] = useState(null);
 	const [previewImage, setPreviewImage] = useState(null);
 
@@ -36,7 +35,6 @@ export default function EditCourse() {
 				setCourseName(response.data.courseName);
 				setCourseDescription(response.data.courseDescription);
 				setDomains(response.data.domains || []);
-				setTopics(response.data.topics || []);
 				setExistingImage(response.data.image || null); // Set initial existing image if available
 			} catch (error) {
 				console.error("Error fetching course data:", error);
@@ -46,20 +44,31 @@ export default function EditCourse() {
 		fetchCourseData();
 	}, [courseId]);
 
-
+	// Handlers for course name and description
 	const handleCourseNameChange = (e) => setCourseName(e.target.value);
-
 	const handleCourseDescriptionChange = (e) =>
 		setCourseDescription(e.target.value);
 
+	// Handle updates for domains and topics
+	const handleDomainChange = (index, value) => {
+		const updatedDomains = [...domains];
+		updatedDomains[index].domainName = value;
+		setDomains(updatedDomains);
+	};
 
+	const handleTopicChange = (domainIndex, topicIndex, value) => {
+		const updatedDomains = [...domains];
+		updatedDomains[domainIndex].topics[topicIndex].topicName = value;
+		setDomains(updatedDomains);
+	};
+
+	// Update course data
 	const handleUpdateCourse = async () => {
 		const payload = {
 			courseName,
 			courseDescription,
 			domains,
 		};
-		//console.log(payload);	//correct
 
 		const updateData = {
 			courseDetails: JSON.stringify(payload),
@@ -67,36 +76,20 @@ export default function EditCourse() {
 		};
 
 		try {
-			console.log(typeof updateData.courseDetails);
-			console.log(updateData.image);
 			await updateCourse(`/api/courses/${courseId}`, updateData);
-			//navigate("/ManageCourse");
+			navigate("/ManageCourse");
 		} catch (error) {
 			console.error("Error updating course:", error);
 		}
-	};
-
-	const handleRemoveDomain = (indexToRemove) => {
-		const updatedDomains = domains.filter(
-			(_, index) => index !== indexToRemove
-		);
-		setDomains(updatedDomains);
-	};
-
-	const handleRemoveTopic = (indexToRemove) => {
-		const updatedTopics = topics.filter((_, index) => index !== indexToRemove);
-		setTopics(updatedTopics);
 	};
 
 	const handleImageUpload = (e) => {
 		if (e.target.files && e.target.files[0]) {
 			const file = e.target.files[0];
 			const reader = new FileReader();
-
 			reader.onloadend = () => {
 				setPreviewImage(reader.result); // Set the preview of the new image as base64 string
 			};
-
 			reader.readAsDataURL(file); // Read the file as data URL (base64)
 		}
 	};
@@ -148,45 +141,34 @@ export default function EditCourse() {
 						<div className="edit-course-input-group">
 							<label>Domains</label>
 							<div className="edit-course-domain-list">
-								{domains.map((domain, index) => (
-									<div key={index} className="edit-course-domain-item">
+								{domains.map((domain, domainIndex) => (
+									<div key={domainIndex} className="edit-course-domain-item">
 										<div className="edit-course-make-row">
 											<input
 												type="text"
 												value={domain.domainName}
-												onChange={(e) => {
-													const updatedDomains = [...domains];
-													updatedDomains[index] = e.target.value;
-													setDomains(updatedDomains);
-												}}
+												onChange={(e) =>
+													handleDomainChange(domainIndex, e.target.value)
+												}
 												className="edit-course-domain-input"
 											/>
-											<button
-												onClick={() => handleRemoveDomain(index)}
-												className="edit-course-remove-domain"
-											>
-												&times;
-											</button>
 										</div>
+
 										<div className="edit-course-topic-list">
-											{domain.topics.map((topic, index) => (
-												<div key={index} className="edit-course-make-row">
+											{domain.topics.map((topic, topicIndex) => (
+												<div key={topicIndex} className="edit-course-make-row">
 													<input
 														type="text"
 														value={topic.topicName}
-														onChange={(e) => {
-															const updatedTopics = [...topics];
-															updatedTopics[index] = e.target.value; // Update topic in place
-															setTopics(updatedTopics);
-														}}
+														onChange={(e) =>
+															handleTopicChange(
+																domainIndex,
+																topicIndex,
+																e.target.value
+															)
+														}
 														className="edit-course-topic-input"
 													/>
-													<button
-														onClick={() => handleRemoveTopic(index)}
-														className="edit-course-remove-topic"
-													>
-														&times;
-													</button>
 												</div>
 											))}
 										</div>
@@ -195,6 +177,7 @@ export default function EditCourse() {
 							</div>
 						</div>
 					</div>
+
 					<div className="edit-course-right">
 						<div className="edit-course-image-upload">
 							{previewImage ? (
