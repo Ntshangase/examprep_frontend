@@ -84,7 +84,6 @@
 	flex-direction: row;
 	gap: 1rem;
 	align-items: center;
-	overflow-y: scroll;
 	border-bottom: 0.15rem solid black;
 }
 .edit-course-make-row {

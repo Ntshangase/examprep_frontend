@@ -44,6 +44,8 @@ export default function EditCourse() {
 		fetchCourseData();
 	}, [courseId]);
 
+	console.log(typeof existingImage)
+
 	// Handlers for course name and description
 	const handleCourseNameChange = (e) => setCourseName(e.target.value);
 	const handleCourseDescriptionChange = (e) =>
@@ -85,12 +87,7 @@ export default function EditCourse() {
 
 	const handleImageUpload = (e) => {
 		if (e.target.files && e.target.files[0]) {
-			const file = e.target.files[0];
-			const reader = new FileReader();
-			reader.onloadend = () => {
-				setPreviewImage(reader.result); // Set the preview of the new image as base64 string
-			};
-			reader.readAsDataURL(file); // Read the file as data URL (base64)
+			setPreviewImage(e.target.files[0]); // Store the image file directly, no conversion to base64
 		}
 	};
 
@@ -180,16 +177,16 @@ export default function EditCourse() {
 
 					<div className="edit-course-right">
 						<div className="edit-course-image-upload">
-							{previewImage ? (
+							{existingImage && !previewImage ? (
 								<img
-									src={previewImage}
-									alt="New Course Preview"
+									src={existingImage} // Directly use the existing image URL or path
+									alt="Existing Course"
 									className="edit-course-image-preview"
 								/>
-							) : existingImage ? (
+							) : previewImage ? (
 								<img
-									src={`data:image/jpeg;base64,${existingImage}`}
-									alt="Existing Course"
+									src={URL.createObjectURL(previewImage)} // Create an object URL for the preview image file
+									alt="New Course Preview"
 									className="edit-course-image-preview"
 								/>
 							) : (
