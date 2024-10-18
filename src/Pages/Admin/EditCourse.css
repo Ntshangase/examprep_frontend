@@ -81,7 +81,20 @@
 
 .edit-course-domain-item {
 	display: flex;
+	flex-direction: row;
+	gap: 1rem;
 	align-items: center;
+	overflow-y: scroll;
+	border-bottom: 0.15rem solid black;
+}
+.edit-course-make-row {
+	display: flex;
+	flex-direction: row;
+}
+.edit-course-topic-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .edit-course-domain {
@@ -175,5 +188,5 @@
 .edit-course-actions {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid black;
+	gap: 1rem;
 }
