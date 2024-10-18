@@ -196,7 +196,7 @@ function AddUser() {
 							<option value={selectedOption} onChange={handleOptionChange}>
 								Select role
 							</option>
-							<option value="LECTURE">Lecturer</option>
+							<option value="LECTURER">Lecturer</option>
 							<option value="STUDENT">Student</option>
 							<option value="ADMIN">Admin</option>
 							<option value="DATA CAPTURE">Data Capture</option>
