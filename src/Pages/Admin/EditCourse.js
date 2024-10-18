@@ -138,43 +138,46 @@ export default function EditCourse() {
 							/>
 						</div>
 
-						<div className="edit-course-input-group">
-							<label>Domains</label>
-							<div className="edit-course-domain-list">
-								{domains.map((domain, domainIndex) => (
-									<div key={domainIndex} className="edit-course-domain-item">
-										<div className="edit-course-make-row">
-											<input
-												type="text"
-												value={domain.domainName}
-												onChange={(e) =>
-													handleDomainChange(domainIndex, e.target.value)
-												}
-												className="edit-course-domain-input"
-											/>
-										</div>
+						<div className="course-input-group-domains-topics">
+							<label>Domains And Topics</label>
+							<div className="course-domain-container">
+    {domains.map((domain, domainIndex) => (
+        <div key={domainIndex} className="course-domain-item">
+            <div className="domain-input-row">
+                <input
+                    type="text"
+                    value={domain.domainName}
+                    onChange={(e) =>
+                        handleDomainChange(domainIndex, e.target.value)
+                    }
+                    className="domain-input"
+                    placeholder="Enter Domain Name"
+                />
+            </div>
 
-										<div className="edit-course-topic-list">
-											{domain.topics.map((topic, topicIndex) => (
-												<div key={topicIndex} className="edit-course-make-row">
-													<input
-														type="text"
-														value={topic.topicName}
-														onChange={(e) =>
-															handleTopicChange(
-																domainIndex,
-																topicIndex,
-																e.target.value
-															)
-														}
-														className="edit-course-topic-input"
-													/>
-												</div>
-											))}
-										</div>
-									</div>
-								))}
-							</div>
+            <div className="topic-list-container">
+                {domain.topics.map((topic, topicIndex) => (
+                    <div key={topicIndex} className="topic-input-row">
+                        <input
+                            type="text"
+                            value={topic.topicName}
+                            onChange={(e) =>
+                                handleTopicChange(
+                                    domainIndex,
+                                    topicIndex,
+                                    e.target.value
+                                )
+                            }
+                            className="topic-input"
+                            placeholder="Enter Topic Name"
+                        />
+                    </div>
+                ))}
+            </div>
+        </div>
+    ))}
+</div>
+
 						</div>
 					</div>
 
