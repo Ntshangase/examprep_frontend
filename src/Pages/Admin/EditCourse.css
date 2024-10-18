@@ -175,5 +175,5 @@
 .edit-course-actions {
 	display: flex;
 	flex-direction: column;
-	border: 1px solid black;
+	gap: 1rem; 
 }
