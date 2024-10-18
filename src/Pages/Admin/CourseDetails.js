@@ -18,6 +18,8 @@ export default function CourseDetails() {
 		{path: "/ManageClass", pathName: "Manage Classes"}
 	]
 
+	console.log(courses);
+
 	return (
 		<div className="admin-course-details-container">
 			<Sidebar links={links}/>

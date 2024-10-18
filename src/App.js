@@ -72,7 +72,7 @@ function App() {
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
 				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
 				<Route path="/AddCourse" element={<AddCourse />} />
-				<Route path="/CourseDetails" element={<CourseDetails />} />
+				<Route path="/CourseDetails/:courseId" element={<CourseDetails />} />
 				<Route path="/CreateClass" element={<CreateClass />} />
 				<Route path="/EditClass" element={<EditClass />} />
 				<Route path="/ManageClass" element={<ManageClass />} />

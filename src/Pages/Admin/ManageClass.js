@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import './ManageClass.css';
-import courses from '../../Data/Courses.json';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../Components/Sidebar/Sidebar';
 import { getClasses } from '../../Api/Api';
@@ -15,8 +14,8 @@ export default function ManageClass() {
 
   const navigate = useNavigate();
 
-  const handleViewCourse = () => {
-    navigate(`/CourseDetails`);
+  const handleViewCourse = (x) => {
+    navigate(`/CourseDetails/${x}`);
   };
 
   const [ classes, setClasses ] = useState();
@@ -25,7 +24,7 @@ export default function ManageClass() {
   useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await getClasses("/api/classes");
+				const response = await getClasses("/api/courses/with-classes");
 				setClasses(response.data);
 			} catch (error) {
 				console.log(error);
@@ -43,7 +42,6 @@ if (loading) {
 }
 
   console.log(classes);
-  console.log(courses)
 
   return (
     <div className="manage-class-container">
@@ -52,10 +50,10 @@ if (loading) {
         <h2>Select Course to view classes</h2>
         <div className='manage-class-courses-grid'>
           {classes.map((course) => (
-            <div key={course.course.courseId} className="manage-class-course-card">
-              <img src={course.image} alt={course.title} className="manage-student-course-image" />
-              <h3 className="manage-class-course-name">{course.title}</h3>
-              <button className="manage-class-view-course-button" onClick={handleViewCourse}>
+            <div key={course.courseId} className="manage-class-course-card">
+              <img src={`data:image/jpeg;base64,${course.image}`} alt={course.courseName} className="manage-student-course-image" />
+              <h3 className="manage-class-course-name">{course.courseName}</h3>
+              <button className="manage-class-view-course-button" onClick={() => handleViewCourse(course.courseId)}>
                 View Classes
               </button>
             </div>
