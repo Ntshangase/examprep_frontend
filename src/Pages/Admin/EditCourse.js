@@ -44,8 +44,6 @@ export default function EditCourse() {
 		fetchCourseData();
 	}, [courseId]);
 
-	console.log(typeof existingImage)
-
 	// Handlers for course name and description
 	const handleCourseNameChange = (e) => setCourseName(e.target.value);
 	const handleCourseDescriptionChange = (e) =>
@@ -180,7 +178,7 @@ export default function EditCourse() {
 							{existingImage && !previewImage ? (
 								<img
 									src={existingImage} // Directly use the existing image URL or path
-									alt="Existing Course"
+									alt="Existing Image"
 									className="edit-course-image-preview"
 								/>
 							) : previewImage ? (
