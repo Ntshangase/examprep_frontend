@@ -36,7 +36,7 @@ export default function CourseDetails() {
 		};
 
 		fetchData();
-	}, [ ]);
+	}, [courseId]);
 
 	if (loading) {
 		return <div>Loading...</div>; // Display while fetching data
