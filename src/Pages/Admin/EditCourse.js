@@ -178,7 +178,7 @@ export default function EditCourse() {
 							{existingImage && !previewImage ? (
 								<img
 									src={existingImage} // Directly use the existing image URL or path
-									alt="Existing Image"
+									alt="Existing course"
 									className="edit-course-image-preview"
 								/>
 							) : previewImage ? (
