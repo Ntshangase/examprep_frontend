@@ -10,7 +10,16 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+<<<<<<< HEAD
     "bootstrap": "^5.3.3",
+=======
+    "axios": "^1.7.7",
+    "buffer": "^6.0.3",
+    "dotenv": "^16.4.5",
+    "googleapis": "^144.0.0",
+    "nodemailer": "^6.9.15",
+    "path-browserify": "^1.0.1",
+>>>>>>> dfc0b71b84c2d7b9163af8d43f69cb3bcb681b55
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

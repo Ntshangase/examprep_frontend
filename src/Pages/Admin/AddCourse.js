@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./AddCourse.css";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { createCourse } from "../../API/Api.js";
 
 export default function AddCourse() {
 	const links = [
@@ -11,49 +12,73 @@ export default function AddCourse() {
 		{ path: "/ManageClass", pathName: "Manage Classes" },
 	];
 
-	const [courseName, setCourseName] = useState("");
-	const [courseDescription, setCourseDescription] = useState("");
-	const [courseImage, setCourseImage] = useState(null);
-	const [domains, setDomains] = useState([{ name: "", topics: [""] }]);
+	const [courseData, setCourseData] = useState({
+		// course id is automatic
+		courseName: "",
+		courseDescription: "",
+		courseImage: null,
+		domains: [{ domainName: "", topics: [{ topicName: "" }] }],
+	});
 
 	const navigate = useNavigate();
 
-	function handleCourseNameChange(e) {
-		return setCourseName(e.target.value);
-	}
-	function handleCourseDescriptionChange(e) {
-		return setCourseDescription(e.target.value);
-	}
-	function handleCourseImageChange(e) {
-		return setCourseImage(e.target.files[0]);
-	}
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setCourseData({ ...courseData, [name]: value });
+	};
+
+	const handleCourseImageChange = (e) => {
+		setCourseData({ ...courseData, courseImage: e.target.files[0] });
+	};
 
 	const handleDomainChange = (index, value) => {
-		const newDomains = [...domains];
-		newDomains[index].name = value;
-		setDomains(newDomains);
+		const newDomains = [...courseData.domains];
+		newDomains[index].domainName = value;
+		setCourseData({ ...courseData, domains: newDomains });
 	};
 
 	const handleTopicChange = (domainIndex, topicIndex, value) => {
-		const newDomains = [...domains];
-		newDomains[domainIndex].topics[topicIndex] = value;
-		setDomains(newDomains);
+		const newDomains = [...courseData.domains];
+		newDomains[domainIndex].topics[topicIndex].topicName = value;
+		setCourseData({ ...courseData, domains: newDomains });
 	};
 
 	const handleAddDomain = () => {
-		setDomains([...domains, { name: "", topics: [""] }]);
+		setCourseData({
+			...courseData,
+			domains: [
+				...courseData.domains,
+				{ domainName: "", topics: [{ topicName: "" }] },
+			],
+		});
 	};
 
-	const handleAddTopic = (index) => {
-		const newDomains = [...domains];
-		newDomains[index].topics.push("");
-		setDomains(newDomains);
+	const handleAddTopic = (domainIndex) => {
+		const newDomains = [...courseData.domains];
+		newDomains[domainIndex].topics.push({ topicName: "" });
+		setCourseData({ ...courseData, domains: newDomains });
 	};
 
-	const handleSubmit = (e) => {
+	const payload = {
+		courseName: courseData.courseName,
+		courseDescription: courseData.courseDescription,
+		domains: courseData.domains
+	};
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// handle form submission logic
-		navigate("/ManageCourse");
+
+		const sendData = {
+			courseDetails: JSON.stringify(payload),
+			image: courseData.courseImage,
+		}
+
+		try {
+			await createCourse(sendData);
+			navigate("/ManageCourse");
+		} catch (error) {
+			console.error("Error adding course:", error.message);
+		}
 	};
 
 	return (
@@ -67,8 +92,9 @@ export default function AddCourse() {
 						<label>Course Name</label>
 						<input
 							type="text"
-							value={courseName}
-							onChange={handleCourseNameChange}
+							name="courseName"
+							value={courseData.courseName}
+							onChange={handleChange}
 							placeholder="Enter course name"
 							required
 						/>
@@ -77,8 +103,9 @@ export default function AddCourse() {
 					<div className="add-course-form-group">
 						<label>Course Description</label>
 						<textarea
-							value={courseDescription}
-							onChange={handleCourseDescriptionChange}
+							name="courseDescription"
+							value={courseData.courseDescription}
+							onChange={handleChange}
 							placeholder="Enter course description"
 							required
 						/>
@@ -88,13 +115,12 @@ export default function AddCourse() {
 						<label>Upload Course Image</label>
 						<input
 							type="file"
-							alt="courseImage"
 							onChange={handleCourseImageChange}
 							accept="image/*"
 						/>
-						{courseImage && ( //allows for preview of selected image, also helps silence an error of unasigned courseImage
+						{courseData.courseImage && (
 							<img
-								src={URL.createObjectURL(courseImage)}
+								src={URL.createObjectURL(courseData.courseImage)}
 								alt="Course Preview"
 								className="add-course-selected-image-preview"
 							/>
@@ -102,13 +128,13 @@ export default function AddCourse() {
 					</div>
 
 					<div className="add-course-domains-section">
-						{domains.map((domain, domainIndex) => (
+						{courseData.domains.map((domain, domainIndex) => (
 							<div key={domainIndex} className="add-course-domain-group">
 								<div className="add-course-form-group">
 									<label>Domain Name</label>
 									<input
 										type="text"
-										value={domain.name}
+										value={domain.domainName}
 										onChange={(e) =>
 											handleDomainChange(domainIndex, e.target.value)
 										}
@@ -126,7 +152,7 @@ export default function AddCourse() {
 										>
 											<input
 												type="text"
-												value={topic}
+												value={topic.topicName}
 												onChange={(e) =>
 													handleTopicChange(
 														domainIndex,
