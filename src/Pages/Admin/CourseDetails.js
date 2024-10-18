@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./CourseDetails.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import courses from "../../Data/Courses.json";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faEye,
