@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./AddCourse.css";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { createCourse } from "../../Api/Api";
 
@@ -20,34 +20,29 @@ export default function AddCourse() {
 		domains: [{ domainName: "", topics: [{ topicName: "" }] }],
 	});
 
-	//const navigate = useNavigate();
+	const navigate = useNavigate();
 
-	// Update course name and description
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setCourseData({ ...courseData, [name]: value });
 	};
 
-	// Handle course image change
 	const handleCourseImageChange = (e) => {
 		setCourseData({ ...courseData, courseImage: e.target.files[0] });
 	};
 
-	// Handle domain name change
 	const handleDomainChange = (index, value) => {
 		const newDomains = [...courseData.domains];
 		newDomains[index].domainName = value;
 		setCourseData({ ...courseData, domains: newDomains });
 	};
 
-	// Handle topic name change
 	const handleTopicChange = (domainIndex, topicIndex, value) => {
 		const newDomains = [...courseData.domains];
 		newDomains[domainIndex].topics[topicIndex].topicName = value;
 		setCourseData({ ...courseData, domains: newDomains });
 	};
 
-	// Add a new domain
 	const handleAddDomain = () => {
 		setCourseData({
 			...courseData,
@@ -58,20 +53,18 @@ export default function AddCourse() {
 		});
 	};
 
-	// Add a new topic to a domain
 	const handleAddTopic = (domainIndex) => {
 		const newDomains = [...courseData.domains];
 		newDomains[domainIndex].topics.push({ topicName: "" });
 		setCourseData({ ...courseData, domains: newDomains });
 	};
 
-	const payload = {		//for first part of the multi-part form upload.
+	const payload = {
 		courseName: courseData.courseName,
 		courseDescription: courseData.courseDescription,
 		domains: courseData.domains
 	};
 
-	// Handle form submission
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
@@ -82,7 +75,7 @@ export default function AddCourse() {
 
 		try {
 			await createCourse(sendData);
-			// navigate("/ManageCourse"); // Uncomment if you want to navigate
+			navigate("/ManageCourse");
 		} catch (error) {
 			console.error("Error adding course:", error.message);
 		}

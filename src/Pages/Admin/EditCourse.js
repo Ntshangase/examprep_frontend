@@ -12,20 +12,19 @@ export default function EditCourse() {
 		{ path: "/ManageClass", pathName: "Manage Classes" },
 	];
 
-	const { courseId } = useParams(); // Get courseId from URL
-	const navigate = useNavigate(); // For navigation after updating or deleting
+	const { courseId } = useParams();
+	const navigate = useNavigate();
 	const [courseData, setCourseData] = useState(null);
 	const [courseName, setCourseName] = useState("");
 	const [courseDescription, setCourseDescription] = useState("");
-	const [domains, setDomains] = useState([{
-		domainName: "",
-		topics: []
-	}]);
-	const [topics, setTopics] = useState([]); // State for topics
-	const [newDomain, setNewDomain] = useState("");
-	const [newTopic, setNewTopic] = useState(""); // State for new topic
-	const [existingImage, setExistingImage] = useState(null); // State for existing image
-	const [previewImage, setPreviewImage] = useState(null); // State for new image preview
+	const [domains, setDomains] = useState([
+		{
+			domainName: "",
+			topics: [],
+		},
+	]);
+	const [existingImage, setExistingImage] = useState(null);
+	const [previewImage, setPreviewImage] = useState(null);
 
 	// Fetch course data when the component mounts
 	useEffect(() => {
@@ -36,7 +35,6 @@ export default function EditCourse() {
 				setCourseName(response.data.courseName);
 				setCourseDescription(response.data.courseDescription);
 				setDomains(response.data.domains || []);
-				setTopics(response.data.topics || []);
 				setExistingImage(response.data.image || null); // Set initial existing image if available
 			} catch (error) {
 				console.error("Error fetching course data:", error);
@@ -46,21 +44,31 @@ export default function EditCourse() {
 		fetchCourseData();
 	}, [courseId]);
 
-	// Handle course name change
+	// Handlers for course name and description
 	const handleCourseNameChange = (e) => setCourseName(e.target.value);
-
-	// Handle course description change
 	const handleCourseDescriptionChange = (e) =>
 		setCourseDescription(e.target.value);
 
-	// Handle updating the course using a payload
+	// Handle updates for domains and topics
+	const handleDomainChange = (index, value) => {
+		const updatedDomains = [...domains];
+		updatedDomains[index].domainName = value;
+		setDomains(updatedDomains);
+	};
+
+	const handleTopicChange = (domainIndex, topicIndex, value) => {
+		const updatedDomains = [...domains];
+		updatedDomains[domainIndex].topics[topicIndex].topicName = value;
+		setDomains(updatedDomains);
+	};
+
+	// Update course data
 	const handleUpdateCourse = async () => {
 		const payload = {
 			courseName,
 			courseDescription,
 			domains,
 		};
-		//console.log(payload);	//correct
 
 		const updateData = {
 			courseDetails: JSON.stringify(payload),
@@ -68,60 +76,24 @@ export default function EditCourse() {
 		};
 
 		try {
-			console.log(typeof updateData.courseDetails);
-			console.log(updateData.image);
 			await updateCourse(`/api/courses/${courseId}`, updateData);
-			//navigate("/ManageCourse");
+			navigate("/ManageCourse");
 		} catch (error) {
 			console.error("Error updating course:", error);
 		}
 	};
 
-	// Handle adding a new domain
-	const handleAddDomain = () => {
-		if (newDomain.trim()) {
-			setDomains([...domains, newDomain.trim()]);
-			setNewDomain("");
-		}
-	};
-
-	// Handle removing a domain
-	const handleRemoveDomain = (indexToRemove) => {
-		const updatedDomains = domains.filter(
-			(_, index) => index !== indexToRemove
-		);
-		setDomains(updatedDomains);
-	};
-
-	// Handle adding a new topic
-	const handleAddTopic = () => {
-		if (newTopic.trim()) {
-			setTopics([...topics, newTopic.trim()]);
-			setNewTopic("");
-		}
-	};
-
-	// Handle removing a topic
-	const handleRemoveTopic = (indexToRemove) => {
-		const updatedTopics = topics.filter((_, index) => index !== indexToRemove);
-		setTopics(updatedTopics);
-	};
-
-	// Handle image upload
 	const handleImageUpload = (e) => {
 		if (e.target.files && e.target.files[0]) {
 			const file = e.target.files[0];
 			const reader = new FileReader();
-	
 			reader.onloadend = () => {
 				setPreviewImage(reader.result); // Set the preview of the new image as base64 string
 			};
-	
 			reader.readAsDataURL(file); // Read the file as data URL (base64)
 		}
 	};
 
-	// Handle course removal
 	const handleRemoveCourse = async () => {
 		if (window.confirm("Are you sure you want to remove this course?")) {
 			try {
@@ -134,9 +106,8 @@ export default function EditCourse() {
 	};
 
 	if (!courseData) {
-		return <div>Loading...</div>; // Show loading while fetching data
+		return <div>Loading...</div>;
 	}
-
 
 	return (
 		<div className="edit-course-container">
@@ -170,90 +141,44 @@ export default function EditCourse() {
 						<div className="edit-course-input-group">
 							<label>Domains</label>
 							<div className="edit-course-domain-list">
-								{domains.map((domain, index) => (
-									<div key={index} className="edit-course-domain-item">
-										<input
-											type="text"
-											value={domain.domainName}
-											onChange={(e) => {
-												const updatedDomains = [...domains];
-												updatedDomains[index] = e.target.value; // Update domain in place
-												setDomains(updatedDomains);
-											}}
-											className="edit-course-domain-input"
-										/>
-										<button
-											onClick={() => handleRemoveDomain(index)}
-											className="edit-course-remove-domain"
-										>
-											&times;
-										</button>
+								{domains.map((domain, domainIndex) => (
+									<div key={domainIndex} className="edit-course-domain-item">
+										<div className="edit-course-make-row">
+											<input
+												type="text"
+												value={domain.domainName}
+												onChange={(e) =>
+													handleDomainChange(domainIndex, e.target.value)
+												}
+												className="edit-course-domain-input"
+											/>
+										</div>
+
+										<div className="edit-course-topic-list">
+											{domain.topics.map((topic, topicIndex) => (
+												<div key={topicIndex} className="edit-course-make-row">
+													<input
+														type="text"
+														value={topic.topicName}
+														onChange={(e) =>
+															handleTopicChange(
+																domainIndex,
+																topicIndex,
+																e.target.value
+															)
+														}
+														className="edit-course-topic-input"
+													/>
+												</div>
+											))}
+										</div>
 									</div>
 								))}
-							</div>
-
-							<div className="edit-course-add-domain">
-								<input
-									type="text"
-									placeholder="Add new domain"
-									value={newDomain}
-									onChange={(e) => setNewDomain(e.target.value)}
-									className="edit-course-input"
-								/>
-								<button
-									onClick={handleAddDomain}
-									className="edit-course-add-button"
-								>
-									Add Domain
-								</button>
-							</div>
-						</div>
-
-						{/* Topics Section */}
-						<div className="edit-course-input-group">
-							<label>Topics</label>
-							<div className="edit-course-topic-list">
-								{topics.map((topic, index) => (
-									<div key={index} className="edit-course-topic-item">
-										<input
-											type="text"
-											value={topic.topicName}
-											onChange={(e) => {
-												const updatedTopics = [...topics];
-												updatedTopics[index] = e.target.value; // Update topic in place
-												setTopics(updatedTopics);
-											}}
-											className="edit-course-topic-input"
-										/>
-										<button
-											onClick={() => handleRemoveTopic(index)}
-											className="edit-course-remove-topic"
-										>
-											&times;
-										</button>
-									</div>
-								))}
-							</div>
-
-							<div className="edit-course-add-topic">
-								<input
-									type="text"
-									placeholder="Add new topic"
-									value={newTopic}
-									onChange={(e) => setNewTopic(e.target.value)}
-									className="edit-course-input"
-								/>
-								<button
-									onClick={handleAddTopic}
-									className="edit-course-add-button"
-								>
-									Add Topic
-								</button>
 							</div>
 						</div>
 					</div>
+
 					<div className="edit-course-right">
-						{/* Image Upload Section */}
 						<div className="edit-course-image-upload">
 							{previewImage ? (
 								<img
