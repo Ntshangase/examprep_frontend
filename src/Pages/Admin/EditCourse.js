@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditCourse.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData, updateCourse, deleteData } from "../../Api/Api";
+import { getData, updateCourse, deleteData } from "../../API/Api.js";
 
 export default function EditCourse() {
 	const links = [
@@ -17,15 +17,13 @@ export default function EditCourse() {
 	const [courseData, setCourseData] = useState(null);
 	const [courseName, setCourseName] = useState("");
 	const [courseDescription, setCourseDescription] = useState("");
-	const [domains, setDomains] = useState([{
-		domainName: "",
-		topics: []
-	}]);
+	const [domains, setDomains] = useState([{ domainName: "", topics: [] }]);
 	const [topics, setTopics] = useState([]); // State for topics
 	const [newDomain, setNewDomain] = useState("");
 	const [newTopic, setNewTopic] = useState(""); // State for new topic
 	const [existingImage, setExistingImage] = useState(null); // State for existing image
 	const [previewImage, setPreviewImage] = useState(null); // State for new image preview
+	const [imageFile, setImageFile] = useState(null); // Store image file for uploading
 
 	// Fetch course data when the component mounts
 	useEffect(() => {
@@ -53,25 +51,46 @@ export default function EditCourse() {
 	const handleCourseDescriptionChange = (e) =>
 		setCourseDescription(e.target.value);
 
+	// Handle image upload and preview display
+const handleImageUpload = (e) => {
+    const file = e.target.files[0]; // Get the file object
+    if (file) {
+        setImageFile(file); // Store the file for later upload
+
+        // Create a URL for the image preview
+        const reader = new FileReader();
+        reader.onload = () => {
+            setPreviewImage(reader.result); // Show the image preview
+        };
+        reader.readAsDataURL(file); // Read the file as a base64 encoded URL
+    }
+};
+
 	// Handle updating the course using a payload
 	const handleUpdateCourse = async () => {
 		const payload = {
 			courseName,
 			courseDescription,
-			domains,
+			domains
 		};
-		//console.log(payload);	//correct
 
-		const updateData = {
-			courseDetails: JSON.stringify(payload),
-			image: previewImage || existingImage,
-		};
+		const formData = new FormData();
+		formData.append("courseDetails", JSON.stringify(payload));
+
+		if (imageFile) {
+			formData.append("image", previewImage);
+		}
+
+		console.log("Course Details (Payload):", JSON.stringify(payload, null, 2));
+
 
 		try {
-			console.log(typeof updateData.courseDetails);
-			console.log(updateData.image);
-			await updateCourse(`/api/courses/${courseId}`, updateData);
-			//navigate("/ManageCourse");
+			await updateCourse(`/api/courses/${courseId}`, formData, {
+				headers: {
+				  'Content-Type': 'multipart/form-data', // Important for handling FormData
+				},
+			  });
+			navigate("/ManageCourse");
 		} catch (error) {
 			console.error("Error updating course:", error);
 		}
@@ -80,23 +99,21 @@ export default function EditCourse() {
 	// Handle adding a new domain
 	const handleAddDomain = () => {
 		if (newDomain.trim()) {
-			setDomains([...domains, newDomain.trim()]);
+			setDomains([...domains, { domainName: newDomain.trim(), topics: [] }]);
 			setNewDomain("");
 		}
 	};
 
 	// Handle removing a domain
 	const handleRemoveDomain = (indexToRemove) => {
-		const updatedDomains = domains.filter(
-			(_, index) => index !== indexToRemove
-		);
+		const updatedDomains = domains.filter((_, index) => index !== indexToRemove);
 		setDomains(updatedDomains);
 	};
 
 	// Handle adding a new topic
 	const handleAddTopic = () => {
 		if (newTopic.trim()) {
-			setTopics([...topics, newTopic.trim()]);
+			setTopics([...topics, { topicName: newTopic.trim() }]);
 			setNewTopic("");
 		}
 	};
@@ -107,19 +124,7 @@ export default function EditCourse() {
 		setTopics(updatedTopics);
 	};
 
-	// Handle image upload
-	const handleImageUpload = (e) => {
-		if (e.target.files && e.target.files[0]) {
-			const file = e.target.files[0];
-			const reader = new FileReader();
-	
-			reader.onloadend = () => {
-				setPreviewImage(reader.result); // Set the preview of the new image as base64 string
-			};
-	
-			reader.readAsDataURL(file); // Read the file as data URL (base64)
-		}
-	};
+
 
 	// Handle course removal
 	const handleRemoveCourse = async () => {
@@ -258,7 +263,7 @@ export default function EditCourse() {
 							{previewImage ? (
 								<img
 									src={previewImage}
-									alt="New Course Preview"
+									alt="Course Preview"
 									className="edit-course-image-preview"
 								/>
 							) : existingImage ? (
@@ -273,6 +278,7 @@ export default function EditCourse() {
 							<input
 								type="file"
 								accept="image/*"
+								id="courseImage"
 								onChange={handleImageUpload}
 								className="edit-course-image-input"
 							/>
