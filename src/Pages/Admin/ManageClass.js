@@ -41,8 +41,6 @@ if (loading) {
   return <div>Loading...</div>; // Display while fetching data
 }
 
-  console.log(classes);
-
   return (
     <div className="manage-class-container">
       <Sidebar links={links}/>
