@@ -8,6 +8,7 @@ import {
 	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { getCourseWithClasses, deleteClass } from "../../Api/Api";
 import { useParams } from "react-router-dom";
 
@@ -22,11 +23,12 @@ export default function CourseDetails() {
 	const { courseId } = useParams();
 	const [classes, setClasses] = useState();
 	const [loading, setLoading] = useState(true);
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await getCourseWithClasses(`/api/courses/courses/${courseId}`);
+				const response = await getCourseWithClasses(courseId);
 				setClasses(response.data);
 			} catch (error) {
 				console.log(error);
@@ -43,10 +45,14 @@ export default function CourseDetails() {
 	}
 
 	const handleDeleteClass = async (x) => {
-		await deleteClass(`/api/classes/${x}`)
-	}
+		await deleteClass(`/api/classes/${x}`);
+	};
 
-	console.log(classes);
+	const handleCreateClass = () => {
+		navigate(`/CreateClass/${courseId}`);
+	};
+
+	//console.log(classes.classes);
 
 	return (
 		<div className="admin-course-details-container">
@@ -55,9 +61,13 @@ export default function CourseDetails() {
 				<div className="admin-course-detail-heading">
 					<h2>Course Details</h2>
 					<div className="link-div">
-						<Link to="/CreateClass">
-							<FontAwesomeIcon icon={faPlusCircle} className="icon-plus" />
-						</Link>
+						<FontAwesomeIcon
+							icon={faPlusCircle}
+							className="icon-plus"
+							onClick={() => {
+								handleCreateClass();
+							}}
+						/>
 					</div>
 				</div>
 				<div className="admin-course-info">
@@ -74,28 +84,34 @@ export default function CourseDetails() {
 				{classes.classes.map((course, index) => (
 					<div key={index}>
 						<div className="classes">
-					<div>
-						<div className="class-display">
-							<div className="class-details">
-								<p>
-									<strong>Class:</strong> {course.className}
-								</p>
-								<p>
-									<strong>Lecturer:</strong> {course.lecturerName}
-								</p>
-								<p>
-									<strong>Duration:</strong> {course.startDate}{" -- " }{course.endDate}
-								</p>
-							</div>
-							<div className="class-details-emoji">
-								<Link to="/EditClass">
-									<FontAwesomeIcon icon={faEye} className="icon-eye" />
-								</Link>
-								<FontAwesomeIcon icon={faTrash} className="icon-delete" onClick={() => handleDeleteClass(course.classesId)} />
+							<div>
+								<div className="class-display">
+									<div className="class-details">
+										<p>
+											<strong>Class:</strong> {course.className}
+										</p>
+										<p>
+											<strong>Lecturer:</strong> {course.lecturerName}
+										</p>
+										<p>
+											<strong>Duration:</strong> {course.startDate}
+											{" -- "}
+											{course.endDate}
+										</p>
+									</div>
+									<div className="class-details-emoji">
+										<Link to="/EditClass">
+											<FontAwesomeIcon icon={faEye} className="icon-eye" />
+										</Link>
+										<FontAwesomeIcon
+											icon={faTrash}
+											className="icon-delete"
+											onClick={() => handleDeleteClass}
+										/>
+									</div>
+								</div>
 							</div>
 						</div>
-					</div>
-				</div>
 					</div>
 				))}
 			</div>
