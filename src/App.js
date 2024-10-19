@@ -95,7 +95,7 @@ function App() {
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 				<Route path="/TestReview" element={<TestReview />} />
 				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
-				<Route path="/AddQuestions" element={<AddQuestions />} />
+				<Route path="/AddQuestions/:courseId" element={<AddQuestions />} />
 				<Route path="/UploadDumps" element={<UploadDumps />} />
 				<Route path="/AddUser" element={<AddUser />} />
 				<Route path="/StudentProfile" element={<StudentProfile />} />
