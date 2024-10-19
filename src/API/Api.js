@@ -36,3 +36,7 @@ export const getClasses = (endpoint) => apiClient.get(endpoint);
 export const getCourseWithClasses = (courseId) => apiClient.get(`/api/courses/classes/${courseId}`);
 export const deleteClass = (endpoint) => apiClient.delete(endpoint);
 export const createClass = (courseId, classData) => apiClient.post(`/api/classes/${courseId}/addClassAndStudents`, classData, {headers: { 'Content-Type': 'multipart/form-data', }});
+
+
+//USER RELATED ENDPOINT
+export const getAllUser = () => apiClient.get("api/user/all");
