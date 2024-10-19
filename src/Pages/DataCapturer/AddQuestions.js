@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./AddQuestions.css";
-import courses from "../../Data/Courses.json";
 import { useNavigate, useParams } from "react-router-dom";
 import { getData } from "../../Api/Api";
 
 export default function AddQuestions() {
-
-	const links = [
-		{path: "/DataCaptureDashboard", pathName: "Home"}
-	]
+	const links = [{ path: "/DataCaptureDashboard", pathName: "Home" }];
 
 	const navigate = useNavigate();
 	const [selectedDomain, setSelectedDomain] = useState("");
@@ -20,30 +16,52 @@ export default function AddQuestions() {
 	const [correctAnswerDescription, setCorrectAnswerDescription] = useState("");
 	const [courseData, setCourseData] = useState();
 	const [loadingState, setLoadingState] = useState(true);
-	const {courseId} = useParams();
+	const { courseId } = useParams();
 
-	const domains = ["Math", "Science", "History"];
-	const topics = {
-		Math: ["Algebra", "Geometry", "Calculus"],
-		Science: ["Physics", "Chemistry", "Biology"],
-		History: ["World History", "Ancient Civilizations", "Modern History"],
-	};
+	//const domains = ["Math", "Science", "History"];
+	// const topics = {
+	// 	Math: ["Algebra", "Geometry", "Calculus"],
+	// 	Science: ["Physics", "Chemistry", "Biology"],
+	// 	History: ["World History", "Ancient Civilizations", "Modern History"],
+	// };
 
 	useEffect(() => {
 		const fetchData = async () => {
-			try{
+			try {
 				const response = await getData(`/api/courses/${courseId}`);
 				setCourseData(response.data);
-			}catch(error){
+			} catch (error) {
 				console.log(error.message);
-			}finally{
+			} finally {
 				setLoadingState(false);
 			}
-		}
+		};
 		fetchData();
 	}, [courseId]);
 
-	console.log(courseData);
+	//console.log(courseData);
+	const domainsArray = [];
+	if (courseData && courseData.domains) {
+		courseData.domains.forEach((domain) => {
+			domainsArray.push(domain.domainName);
+		});
+	}
+	console.log(domainsArray);
+
+	const topics = {}; // Initialize an empty object
+
+if (courseData && courseData.domains) {
+  courseData.domains.forEach((domain) => {
+    topics[domain.domainName] = domain.topics.map(topic => topic.topicName);
+    // domain.domainName as key, and an array of topic names as value
+  });
+}
+
+console.log(topics);
+
+	// const selectedDomainTopics =
+	// 	topicsArray.find((item) => item.domain === selectedDomain)?.topics || [];
+	// console.log(selectedDomainTopics);
 
 	// Handle dynamic inputs for correct and incorrect answers
 	const handleCorrectAnswerChange = (index, value) => {
@@ -86,8 +104,8 @@ export default function AddQuestions() {
 		// };
 	};
 
-	if(loadingState) {
-		return <div>...Loading</div>
+	if (loadingState) {
+		return <div>...Loading</div>;
 	}
 
 	return (
@@ -104,7 +122,14 @@ export default function AddQuestions() {
 					<div className="add-questions-course-title">
 						<h3>{courseData.courseName}</h3>
 					</div>
-					<button className="add-question-upload-dump-button" onClick={() => {navigate("/UploadDumps")}}>Upload Dump</button>
+					<button
+						className="add-question-upload-dump-button"
+						onClick={() => {
+							navigate("/UploadDumps");
+						}}
+					>
+						Upload Dump
+					</button>
 				</div>
 				<div className="add-questions-form-scrollable">
 					<form onSubmit={handleSubmit}>
@@ -121,7 +146,7 @@ export default function AddQuestions() {
 								<option value="" disabled>
 									Select a domain
 								</option>
-								{domains.map((domain, index) => (
+								{domainsArray.map((domain, index) => (
 									<option key={index} value={domain}>
 										{domain}
 									</option>
@@ -214,7 +239,9 @@ export default function AddQuestions() {
 						</div>
 
 						{/* Submit Button */}
-						<button className="add-question-button" type="submit">Add Question</button>
+						<button className="add-question-button" type="submit">
+							Add Question
+						</button>
 					</form>
 				</div>
 			</div>
