@@ -37,7 +37,7 @@ export default function EditClass() {
 			}
 		};
 		fetchClassData();
-	}, []);
+	}, [classesId]);
 
 	console.log(classData);
 
