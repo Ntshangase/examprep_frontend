@@ -7,7 +7,6 @@ import {
 	faPlusCircle,
 	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import { getCourseWithClasses, deleteClass } from "../../Api/Api";
 import { useParams } from "react-router-dom";
@@ -45,14 +44,22 @@ export default function CourseDetails() {
 	}
 
 	const handleDeleteClass = async (x) => {
-		await deleteClass(`/api/classes/${x}`);
+		try {
+			await deleteClass(`/api/classes/${x}`);
+		} catch (error) {
+			console.log(error.message);
+		}
 	};
 
 	const handleCreateClass = () => {
 		navigate(`/CreateClass/${courseId}`);
 	};
 
-	//console.log(classes.classes);
+	const handleEditClass = (x) => {
+		navigate(`/EditClass/${x}`);
+	};
+
+	//console.log(classes);
 
 	return (
 		<div className="admin-course-details-container">
@@ -100,9 +107,11 @@ export default function CourseDetails() {
 										</p>
 									</div>
 									<div className="class-details-emoji">
-										<Link to="/EditClass">
-											<FontAwesomeIcon icon={faEye} className="icon-eye" />
-										</Link>
+										<FontAwesomeIcon
+											icon={faEye}
+											className="icon-eye"
+											onClick={() => handleEditClass(course.classesId)}
+										/>
 										<FontAwesomeIcon
 											icon={faTrash}
 											className="icon-delete"

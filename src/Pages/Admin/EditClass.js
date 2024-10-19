@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './EditClass.css';
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { getClasses } from '../../Api/Api';
 
 export default function EditClass() {
 	const links = [
@@ -18,8 +19,27 @@ export default function EditClass() {
 	const [description, setDescription] = useState(""); // New state for edit description
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
+	const [classData, setClassData] = useState();
+	const [loadingState, setLoadingState] = useState();
+	const {classesId} = useParams();
+	const navigate = useNavigate();
 
-	const navigate = useNavigate(); // for multiple use purposes
+	useEffect(() => {
+		const fetchClassData = async () => {
+
+			try{
+				const response = await getClasses(`api/classes/${classesId}`);
+				setClassData(response);
+			}catch(error){
+				console.log(error.message);
+			}finally{
+				setLoadingState(false);
+			}
+		};
+		fetchClassData();
+	}, []);
+
+	console.log(classData);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -38,6 +58,10 @@ export default function EditClass() {
 
 		//alert("Form submitted successfully!");
 	};
+
+	if(loadingState){
+		return <div>...Loading</div>;
+	}
 
 	return (
 		<div className="edit-course-container">
@@ -66,6 +90,7 @@ export default function EditClass() {
 									type="text"
 									id="className"
 									value={className}
+									readOnly
 								/>
 							</div>
 
@@ -90,6 +115,7 @@ export default function EditClass() {
 									value={description}
 									onChange={(e) => setDescription(e.target.value)}
 									placeholder="Enter class description"
+
 									required
 								/>
 							</div>
