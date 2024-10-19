@@ -32,7 +32,6 @@ export default function AddQuestions() {
 		fetchData();
 	}, [courseId]);
 
-	//console.log(courseData);
 	const domainsArray = [];
 	if (courseData && courseData.domains) {
 		courseData.domains.forEach((domain) => {
@@ -73,21 +72,28 @@ export default function AddQuestions() {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		setSelectedDomain("");
-		setSelectedTopic("");
-		setQuestion("");
-		setCorrectAnswers([""]); // Reset to initial state with one empty input
-		setIncorrectAnswers([""]); // Reset to initial state with one empty input
-		setCorrectAnswerDescription("");
+		const questionData = {
+			questionText: question,
+			courseId: courseId,
+			domainId: selectedDomain,
+			topicId: selectedTopic,
+			answerDescription: correctAnswerDescription,
+			answers: [
+				{
+					answerText: correctAnswers[0],
+					answerDescription: correctAnswerDescription,
+					correct: true,
+				},
+				...incorrectAnswers.map((answer) => ({
+					answerText: answer,
+					answerDescription: "",
+					correct: false,
+				})),
+			],
+		};
 
-		// const questionData = {
-		// 	domain: selectedDomain,
-		// 	topic: selectedTopic,
-		// 	question,
-		// 	correctAnswers,
-		// 	incorrectAnswers,
-		// 	correctAnswerDescription,
-		// };
+		console.log(questionData);
+		console.log(selectedDomain);
 	};
 
 	if (loadingState) {
