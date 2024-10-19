@@ -1,21 +1,26 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./AddQuestions.css";
 import courses from "../../Data/Courses.json";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getData } from "../../Api/Api";
 
 export default function AddQuestions() {
 
 	const links = [
 		{path: "/DataCaptureDashboard", pathName: "Home"}
 	]
-	
+
+	const navigate = useNavigate();
 	const [selectedDomain, setSelectedDomain] = useState("");
 	const [selectedTopic, setSelectedTopic] = useState("");
 	const [question, setQuestion] = useState("");
 	const [correctAnswers, setCorrectAnswers] = useState([""]);
 	const [incorrectAnswers, setIncorrectAnswers] = useState([""]);
 	const [correctAnswerDescription, setCorrectAnswerDescription] = useState("");
+	const [courseData, setCourseData] = useState();
+	const [loadingState, setLoadingState] = useState(true);
+	const {courseId} = useParams();
 
 	const domains = ["Math", "Science", "History"];
 	const topics = {
@@ -23,6 +28,22 @@ export default function AddQuestions() {
 		Science: ["Physics", "Chemistry", "Biology"],
 		History: ["World History", "Ancient Civilizations", "Modern History"],
 	};
+
+	useEffect(() => {
+		const fetchData = async () => {
+			try{
+				const response = await getData(`/api/courses/${courseId}`);
+				setCourseData(response.data);
+			}catch(error){
+				console.log(error.message);
+			}finally{
+				setLoadingState(false);
+			}
+		}
+		fetchData();
+	}, [courseId]);
+
+	console.log(courseData);
 
 	// Handle dynamic inputs for correct and incorrect answers
 	const handleCorrectAnswerChange = (index, value) => {
@@ -65,8 +86,9 @@ export default function AddQuestions() {
 		// };
 	};
 
-	//navigation
-	const navigate = useNavigate();
+	if(loadingState) {
+		return <div>...Loading</div>
+	}
 
 	return (
 		<div className="add-questions-container">
@@ -75,12 +97,12 @@ export default function AddQuestions() {
 				<h2 className="add-questions-content-h2">Add Question</h2>
 				<div className="add-questions-info-flow">
 					<img
-						src={courses[0].image}
-						alt={courses[0].title}
+						src={`data:image/jpeg;base64,${courseData.image}`}
+						alt={courseData.courseName}
 						className="add-questions-course-image"
 					/>
 					<div className="add-questions-course-title">
-						<h3>{courses[0].title}</h3>
+						<h3>{courseData.courseName}</h3>
 					</div>
 					<button className="add-question-upload-dump-button" onClick={() => {navigate("/UploadDumps")}}>Upload Dump</button>
 				</div>
