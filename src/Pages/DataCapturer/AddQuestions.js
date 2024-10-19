@@ -18,13 +18,6 @@ export default function AddQuestions() {
 	const [loadingState, setLoadingState] = useState(true);
 	const { courseId } = useParams();
 
-	//const domains = ["Math", "Science", "History"];
-	// const topics = {
-	// 	Math: ["Algebra", "Geometry", "Calculus"],
-	// 	Science: ["Physics", "Chemistry", "Biology"],
-	// 	History: ["World History", "Ancient Civilizations", "Modern History"],
-	// };
-
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -46,22 +39,15 @@ export default function AddQuestions() {
 			domainsArray.push(domain.domainName);
 		});
 	}
-	console.log(domainsArray);
+	//console.log(domainsArray);
+	const topics = {};
+	if (courseData && courseData.domains) {
+		courseData.domains.forEach((domain) => {
+			topics[domain.domainName] = domain.topics.map((topic) => topic.topicName);
+		});
+	}
 
-	const topics = {}; // Initialize an empty object
-
-if (courseData && courseData.domains) {
-  courseData.domains.forEach((domain) => {
-    topics[domain.domainName] = domain.topics.map(topic => topic.topicName);
-    // domain.domainName as key, and an array of topic names as value
-  });
-}
-
-console.log(topics);
-
-	// const selectedDomainTopics =
-	// 	topicsArray.find((item) => item.domain === selectedDomain)?.topics || [];
-	// console.log(selectedDomainTopics);
+	//console.log(topics);
 
 	// Handle dynamic inputs for correct and incorrect answers
 	const handleCorrectAnswerChange = (index, value) => {
