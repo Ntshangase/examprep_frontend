@@ -44,10 +44,19 @@ export default function CourseDetails() {
 	}
 
 	const handleDeleteClass = async (x) => {
-		try {
-			await deleteClass(`/api/classes/${x}`);
-		} catch (error) {
-			console.log(error.message);
+		const areYouSure = window.confirm(
+			"are you sure you want to delete class? "
+		);
+
+		if (areYouSure) {
+			try {
+				alert("you sure you want to delete class");
+				await deleteClass(`/api/classes/with-students/${x}`);
+			} catch (error) {
+				console.log(error);
+			}
+		} else {
+			console.log("action cancelled ");
 		}
 	};
 
@@ -59,7 +68,7 @@ export default function CourseDetails() {
 		navigate(`/EditClass/${x}`);
 	};
 
-	//console.log(classes);
+	console.log(classes);
 
 	return (
 		<div className="admin-course-details-container">
@@ -115,7 +124,7 @@ export default function CourseDetails() {
 										<FontAwesomeIcon
 											icon={faTrash}
 											className="icon-delete"
-											onClick={() => handleDeleteClass}
+											onClick={() => handleDeleteClass(course.classesId)}
 										/>
 									</div>
 								</div>

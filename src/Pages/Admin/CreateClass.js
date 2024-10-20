@@ -27,8 +27,9 @@ export default function CreateClass() {
 	const [loadingState, setLoadingState] = useState(true);
 	const [lectureList, setLectureList] = useState([]);
 	const [lecturer, setLecturer] = useState("");
+	const [lectureId, setLectureId] = useState();
 
-	const navigate = useNavigate(); 
+	const navigate = useNavigate();
 	const { courseId } = useParams();
 
 	useEffect(() => {
@@ -54,17 +55,14 @@ export default function CreateClass() {
 		}
 	};
 	useEffect(() => {
-		if (lecturer.length > 2) {
+		if (lecturer.length > 1) {
 			const delayApiCallWithEveryKey = setTimeout(() => {
-				fetchAllLectures(lecturer);
-			}, 100);
+				fetchAllLectures();
+			}, 500);
 
 			return () => clearTimeout(delayApiCallWithEveryKey);
 		}
 	}, [lecturer]);
-
-	//console.log(lectureList);
-	//console.log(courseData);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -80,20 +78,21 @@ export default function CreateClass() {
 			classDescription: classDescription,
 			startDate: startDate,
 			endDate: endDate,
-			userId: 0,
+			userId: lectureId,
 		};
 
 		const userData = {
-			classDetails: payload,
+			//courseId:courseId,
+			classDetails: JSON.stringify(payload),
 			file: file,
 		};
 
 		try {
-			console.log(userData);
 			await createClass(courseId, userData);
+			alert("class succefully created..");
 			//navigate(`/CourseDetails/${courseId}`);
 		} catch (error) {
-			console.log(error.message);
+			console.log(error);
 		}
 	};
 
@@ -102,6 +101,15 @@ export default function CreateClass() {
 			setFile(e.target.files[0]);
 		}
 	};
+
+	const getTodayDate = () => {
+		const today = new Date();
+		const year = today.getFullYear();
+		const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so +1
+		const day = String(today.getDate()).padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	  };
+
 
 	if (loadingState) {
 		return <div>...Loading</div>;
@@ -144,6 +152,7 @@ export default function CreateClass() {
 												key={lecture.id}
 												onClick={() => {
 													setLecturer(lecture.fullNames);
+													setLectureId(lecture.id);
 													setLectureList([]);
 												}}
 											>
@@ -169,6 +178,7 @@ export default function CreateClass() {
 								<input
 									type="date"
 									id="startDate"
+									min={getTodayDate()}
 									value={startDate}
 									onChange={(e) => setStartDate(e.target.value)}
 									required

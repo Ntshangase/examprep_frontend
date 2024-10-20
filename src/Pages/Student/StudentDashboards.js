@@ -6,7 +6,7 @@ import "./StudentDashboard.css";
 const StudentDashboard = () => {
 	const links = [
 		{ path: "/StudentDashboards", pathName: "Home" },
-		{ path: "/IndStudentCourses", pathName: "Indipendent Student" },
+		{ path: "/IndStudentCourses", pathName: "Independent Student" },
 		{ path: "/Classes", pathName: "Enrolled Student" },
 	];
 
