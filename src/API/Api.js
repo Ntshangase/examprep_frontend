@@ -34,3 +34,6 @@ export const createClass = (courseId, classData) => apiClient.post(`/api/classes
 
 //USER RELATED ENDPOINT
 export const getAllUser = () => apiClient.get("api/user/all");
+
+//DATA CAPTURE RELAATED ENDPOINTS
+export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData);

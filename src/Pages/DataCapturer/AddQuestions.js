@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./AddQuestions.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData } from "../../Api/Api";
+import { getData, addQuestion } from "../../Api/Api";
 
 export default function AddQuestions() {
 	const links = [{ path: "/DataCaptureDashboard", pathName: "Home" }];
@@ -35,14 +35,21 @@ export default function AddQuestions() {
 	const domainsArray = [];
 	if (courseData && courseData.domains) {
 		courseData.domains.forEach((domain) => {
-			domainsArray.push(domain.domainName);
+			domainsArray.push({
+				domainName: domain.domainName,
+				domainId: domain.domainId,
+			});
 		});
 	}
-	//console.log(domainsArray);
+
+	// For topics, include both topicName and topicId
 	const topics = {};
 	if (courseData && courseData.domains) {
 		courseData.domains.forEach((domain) => {
-			topics[domain.domainName] = domain.topics.map((topic) => topic.topicName);
+			topics[domain.domainId] = domain.topics.map((topic) => ({
+				topicName: topic.topicName,
+				topicId: topic.topicId,
+			}));
 		});
 	}
 
@@ -69,12 +76,12 @@ export default function AddQuestions() {
 		setIncorrectAnswers([...incorrectAnswers, ""]);
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		const questionData = {
 			questionText: question,
-			courseId: courseId,
+			courseId: Number(courseId),
 			domainId: selectedDomain,
 			topicId: selectedTopic,
 			answerDescription: correctAnswerDescription,
@@ -92,8 +99,20 @@ export default function AddQuestions() {
 			],
 		};
 
-		console.log(questionData);
-		console.log(selectedDomain);
+		try {
+			await addQuestion(questionData);
+		} catch (error) {
+			console.log(error.message);
+		}
+
+		alert("Question added successfully!");
+		// Reset the form after successful submission
+		setSelectedDomain("");
+		setSelectedTopic("");
+		setQuestion("");
+		setCorrectAnswers([""]);
+		setIncorrectAnswers([""]);
+		setCorrectAnswerDescription("");
 	};
 
 	if (loadingState) {
@@ -131,7 +150,7 @@ export default function AddQuestions() {
 							<select
 								value={selectedDomain}
 								onChange={(e) => {
-									setSelectedDomain(e.target.value);
+									setSelectedDomain(Number(e.target.value));
 									setSelectedTopic(""); // Reset topic when domain changes
 								}}
 							>
@@ -139,8 +158,8 @@ export default function AddQuestions() {
 									Select a domain
 								</option>
 								{domainsArray.map((domain, index) => (
-									<option key={index} value={domain}>
-										{domain}
+									<option key={index} value={domain.domainId}>
+										{domain.domainName}
 									</option>
 								))}
 							</select>
@@ -152,14 +171,14 @@ export default function AddQuestions() {
 								<label>Select Topic</label>
 								<select
 									value={selectedTopic}
-									onChange={(e) => setSelectedTopic(e.target.value)}
+									onChange={(e) => setSelectedTopic(Number(e.target.value))}
 								>
 									<option value="" disabled>
 										Select a topic
 									</option>
 									{topics[selectedDomain].map((topic, index) => (
-										<option key={index} value={topic}>
-											{topic}
+										<option key={index} value={topic.topicId}>
+											{topic.topicName}
 										</option>
 									))}
 								</select>
