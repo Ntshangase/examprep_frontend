@@ -158,7 +158,7 @@ export default function EditClass() {
 					</div>
 					<div className="edit-class-content-body-half2">
 						<div className="edit-class-card">
-							<Link to="/ManageClassStudents" className="remove-underline">
+							<Link to={`/ManageClassStudents/${classesId}`} className="remove-underline">
 								<h2>25</h2>
 								<p>Students Enrolled</p>
 							</Link>
