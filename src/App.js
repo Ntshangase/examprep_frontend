@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Admin from "./Pages/Admin/AdminLanding";
@@ -105,7 +105,7 @@ function App() {
 				<Route path="/TakeTest" element={<TakeTest />} />
 				<Route path="/TestResults" element={<TestResults />} />
 				<Route path="/ScheduledTestReview" element={<ScheduledTestReview />} />
-				<Route path="/ManageClassStudents" element={<ManageClassStudents />} />
+				<Route path="/ManageClassStudents/:classesId" element={<ManageClassStudents />} />
 				<Route path="/FlaggedQuestionView" element={<FlaggedQuestionView />} />
 			</Routes>
 		</Router>

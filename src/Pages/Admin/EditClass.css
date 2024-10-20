@@ -1,155 +1,38 @@
-/* Overall container layout */
-.container {
-    display: flex;
-    height: 100vh;
-    font-family: 'Arial', sans-serif;
-  }
-
-  /* Sidebar design */
-  .sidebar {
-    background-color: #006FBF;
-    color: white;
-    width: 250px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-  }
-  
-  .logo {
-    width: 150px;
-    margin-bottom: 40px;
-  }
-  
-  .sidebar nav ul {
-    list-style-type: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 20px;
-  }
-  
-  .sidebar nav ul li {
-    padding: 15px 0;
-    font-size: 18px;
-  }
-  
-  .sidebar footer {
-    padding-top: 20px;
-    font-size: 14px;
-    text-align: center;
-  }
-  
-  /* Main content styling */
-  .main {
-    flex: 1;
-    padding: 40px;
-  }
-  
-  .main h1 {
-    font-size: 2rem;
-    margin-bottom: 30px;
-    text-align: left;
-    color: #006FBF;
-  }
-  
-  /* Form and students enrolled layout */
-  .content {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 20px; /* Added gap between form and enrolled students card */
-  }
-  
-  /* Form layout */
-  .form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 400px;
-  }
-  
-  .input-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  
-  .input-group label {
-    font-weight: bold;
-  }
-  
-  .input-group input {
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  /* Students enrolled box */
-  .students-enrolled {
-    background-color: #E0E7FF;
-    color: #5A67D8;
-    text-align: center;
-    font-size: 24px;
-    font-weight: bold;
-    padding: 20px;
-    border-radius: 5px;
-    height: fit-content;
-    width: 200px;
-  }
-  
-
-  /* */
-  .edit-class-cancel-button {
-    background-color: #F44336;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-
-  
-.edit-course-container {
+.edit-class-container {
 	display: flex;
 	flex-direction: row;
 	height: 100vh;
 }
 
-.edit-course-content {
+.edit-class-content {
 	flex: 1;
 	padding: 20px;
 }
 
-.edit-course-content-body {
+.edit-class-content-body {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
 }
 
-.edit-course-content h2 {
+.edit-class-content h2 {
 	color: var(--color-primary);
 	font-size: 2rem;
 	text-align: center;
 	margin-bottom: 20px;
 }
 
-.content-body-half1 {
-	flex: 2; /* Increase the flex value to take up more space */
-	height: 500px; /* You can adjust this based on your design */
-	overflow-y: auto; /* Enables vertical scrolling */
+.edit-class-content-body-half1 {
+	flex: 1;
+	height: 500px;
+	overflow-y: auto;
 	padding: 10px;
 	border: 1px solid var(--border-color);
 	border-radius: 6px;
 	background-color: var(--form-background);
-	width: 100%; /* Ensures the width is full */
-	overflow-x: hidden; /* Prevents horizontal scrolling */
+	overflow-x: hidden;
 }
-.content-body-half2 {
+.edit-class-content-body-half2 {
 	flex: 1;
 	padding: 20px;
 	display: flex;
@@ -158,18 +41,28 @@
 	justify-content: center;
 }
 
-/*form css belo*/
 .edit-class-form{
 	width: 90%;
 	padding: 40px;
 }
 
-/* Form group spacing */
 .edit-class-form-group {
 	margin-bottom: 25px;
 }
+.edit-class-form-group textarea {
+	width: 100%;
+	padding: 14px;
+	border: 2px solid #ccc;
+	border-radius: 8px;
+	font-size: 1rem;
+	background-color: #f7f7f7;
+	transition: border 0.3s ease, background-color 0.3s ease;
+	color: #333;
+	box-sizing: border-box;
+	resize: none;
+	min-height: 150px;
+}
 
-/* Modern label styling */
 label {
 	display: block;
 	margin-bottom: 10px;
@@ -178,24 +71,22 @@ label {
 	font-size: 1.1rem;
 }
 
-/* Styling for inputs */
 input[type="text"],
 input[type="date"] {
 	width: 100%;
 	padding: 14px;
-	border: 2px solid #ccc; /* Slightly thicker border for modern touch */
+	border: 2px solid #ccc;
 	border-radius: 8px;
-	font-size: 1rem; /* Increased font size for readability */
+	font-size: 1rem;
 	background-color: #f7f7f7;
 	transition: border 0.3s ease, background-color 0.3s ease;
 	color: #333;
 	box-sizing: border-box;
 }
 
-/* Styling for focus state */
 input[type="text"]:focus,
 input[type="date"]:focus {
-	border-color: #4d9fce; /* Blue border for focus */
+	border-color: #4d9fce;
 	background-color: #fff;
 	outline: none;
 }
@@ -211,7 +102,7 @@ input[type="date"]:focus {
 	border-radius: 8px;
 	font-size: 20px;
 	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
+	transition: background-color 0.3s ease, transform 0.2s ease;
 }
 .edit-class-cancel-button{
 	display: block;
@@ -223,36 +114,78 @@ input[type="date"]:focus {
 	border-radius: 8px;
 	font-size: 20px;
 	cursor: pointer;
-	transition: background-color 0.3s ease, transform 0.2s ease; /* Add smooth transition */
+	transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 
 .edit-class-submit-button:hover {
 	background-color: #357bb5;
-	transform: translateY(-2px); /* Lift effect on hover */
+	transform: translateY(-2px);
 }
 .edit-class-cancel-button:hover {
 	background-color: #ce2c27;
-	transform: translateY(-2px); /* Lift effect on hover */
+	transform: translateY(-2px);
 }
 
-.cancel-button-div {
+.edit-class-cancel-button-div {
 	width: 60%;
   padding-top: 50px;
 }
 
-/* Placeholder text color */
 input::placeholder {
 	color: #aaa;
 }
 
-/* Adjusted placeholder color */
 input[type="text"]::placeholder,
 input[type="date"]::placeholder {
 	color: #888;
 }
 
-/* Responsive styling for smaller screens */
+
+/*LEFT VIEW CSS*/
+.edit-class-card {
+	background-color: #fff;
+	border: 1px solid #ddd;
+	border-radius: 10px;
+	padding: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	text-align: center;
+	margin: 20px auto;
+	width: 50%;
+}
+.remove-underline {
+	text-decoration: none;
+}
+
+.edit-class-card:hover {
+	transform: scale(1.05);
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.edit-class-read-only-input {
+	background-color: #e9ecef;
+	color: #6c757d;
+	border: 1px solid #ced4da;
+	padding: 0.5rem;
+	border-radius: 4px;
+	font-size: 1rem;
+}
+
+.edit-class-search-input {
+	padding: 0.5rem;
+	border: 1px solid #ced4da;
+	border-radius: 4px;
+	width: 100%;
+	font-size: 1rem;
+}
+
+.edit-class-search-input:focus {
+	border-color: #007bff;
+	outline: none;
+	box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+}
+
 @media (max-width: 768px) {
 	.form-container {
 		padding: 20px;
@@ -266,50 +199,3 @@ input[type="date"]::placeholder {
 		font-size: 18px;
 	}
 }
-
-/*LEFT VIEW CSS*/
-.card {
-	background-color: #fff;
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	padding: 20px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	text-align: center;
-	max-width: 300px;
-	margin: 20px auto;
-}
-.remove-underline {
-	text-decoration: none;
-}
-
-.card:hover {
-	transform: scale(1.05);
-	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-/* Read-only Input Styling */
-.read-only-input {
-	background-color: #e9ecef;
-	color: #6c757d;
-	border: 1px solid #ced4da;
-	padding: 0.5rem;
-	border-radius: 4px;
-	font-size: 1rem;
-}
-
-/* Search Input Styling */
-.search-input {
-	padding: 0.5rem;
-	border: 1px solid #ced4da;
-	border-radius: 4px;
-	width: 100%;
-	font-size: 1rem;
-}
-
-.search-input:focus {
-	border-color: #007bff;
-	outline: none;
-	box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-}
-

@@ -13,9 +13,9 @@ export default function EditClass() {
 	]
 
 	// State for form inputs
-	const [courseName] = useState("AWS Solutions Architect"); // Read-only course name
-	const [className] = useState("June Intake"); // Read-only class name
-	const [lecturer, setLecturer] = useState(" Dr. J. Jumbo"); // Searchable Instructor
+	const [courseName, setCourseName] = useState(""); // Read-only course name
+	const [className, setClassName] = useState(""); // Read-only class name
+	const [lecturer, setLecturer] = useState(""); // Searchable Instructor
 	const [description, setDescription] = useState(""); // New state for edit description
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
@@ -28,8 +28,15 @@ export default function EditClass() {
 		const fetchClassData = async () => {
 
 			try{
-				const response = await getClasses(`api/classes/${classesId}`);
-				setClassData(response);
+				const response = await getClasses(`/api/classes/with-students/${classesId}`);
+				setClassData(response.data);
+
+				//prefill form
+				setCourseName(response.data.course.courseName);
+				setClassName(response.data.className);
+				//missing lecture from data.
+				setDescription(response.data.classDescription);
+				//missing start and end Date from API.
 			}catch(error){
 				console.log(error.message);
 			}finally{
@@ -64,12 +71,12 @@ export default function EditClass() {
 	}
 
 	return (
-		<div className="edit-course-container">
+		<div className="edit-class-container">
 			<Sidebar links={links}/>
-			<div className="edit-course-content">
-				<h2>Edit Class</h2>
-				<div className="edit-course-content-body">
-					<div className="content-body-half1">
+			<div className="edit-class-content">
+				<h2 className='edit-class-content h2'>Edit Class</h2>
+				<div className="edit-class-content-body">
+					<div className="edit-class-content-body-half1">
 						<form className='edit-class-form' onSubmit={handleSubmit}>
 							{/* Course Name (Read-only) */}
 							<div className="edit-class-form-group">
@@ -79,7 +86,7 @@ export default function EditClass() {
 									id="courseName"
 									value={courseName}
 									readOnly
-									className="read-only-input"
+									className="edit-class-read-only-input"
 								/>
 							</div>
 
@@ -103,7 +110,7 @@ export default function EditClass() {
 									value={lecturer}
 									onChange={(e) => setLecturer(e.target.value)}
 									required
-									className="search-input"
+									className="edit-class-search-input"
 								/>
 							</div>
 
@@ -115,7 +122,6 @@ export default function EditClass() {
 									value={description}
 									onChange={(e) => setDescription(e.target.value)}
 									placeholder="Enter class description"
-
 									required
 								/>
 							</div>
@@ -150,14 +156,14 @@ export default function EditClass() {
 							</button>
 						</form>
 					</div>
-					<div className="content-body-half2">
-						<div className="card">
-							<Link to="/ManageClassStudents" className="remove-underline">
+					<div className="edit-class-content-body-half2">
+						<div className="edit-class-card">
+							<Link to={`/ManageClassStudents/${classesId}`} className="remove-underline">
 								<h2>25</h2>
 								<p>Students Enrolled</p>
 							</Link>
 						</div>
-						<div className="cancel-button-div">
+						<div className="edit-class-cancel-button-div">
 							<button
 								className="edit-class-cancel-button"
 								onClick={() => navigate("/CourseDetails")}

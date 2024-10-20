@@ -19,6 +19,7 @@ export const updateUser = (userId, userData) =>
 	apiClient.put(`/users/${userId}`, userData);
 export const deleteUser = (userId) => apiClient.delete(`/users/${userId}`);
 export const getAllUser = () => apiClient.get("api/users/all");
+export const getAllLectures = () => apiClient.get("/api/users/lecturers");
 
 //COURSE RELATED ENDPOINTS
 export const createCourse = (courseData) => apiClient.post("/api/courses/saveCourse", courseData,{headers: {
