@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./AddUser.css";
 import "../../Styles/global.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-//import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createUser } from "../../Api/Api";
 
 function AddUser() {
@@ -28,6 +28,7 @@ function AddUser() {
 	const [selectedOption, setSelectedOption] = useState("");
 	const [courseSearch, setCourseSearch] = useState(""); //to be moved
 	const availableCourses = ["Aws", "Comptia", "Networking+", "Databases"]; // Dummy data for courses
+	const navigate = useNavigate();
 
 	const handleAddUserInputChange = (event) => {
 		const { name, value } = event.target;
@@ -39,7 +40,6 @@ function AddUser() {
 	};
 
 	const handleFileChange = (e) => {
-		//currently not in use waiting for updates from smizi.
 		setAddUser({
 			...addUser,
 			image: e.target.files[0],
@@ -77,11 +77,13 @@ function AddUser() {
 		event.preventDefault();
 
 		try {
-			console.log(userData);
 			createUser(userData);
 		} catch (error) {
 			console.log(error);
 		}
+
+		alert("User successfuly created");
+		navigate("/ManageUser");
 	};
 
 	const handleCourseSearch = (e) => {
@@ -112,12 +114,9 @@ function AddUser() {
 		setSelectedOption(event.target.value);
 	};
 
-	//const navigate = useNavigate();
-
 	return (
 		<div className="add-user-page">
 			<Sidebar links={links} />
-
 			<div className="main-content">
 				<h1 className="form-title">Add User</h1>
 				<form className="add-user-form" onSubmit={handleSubmit}>
