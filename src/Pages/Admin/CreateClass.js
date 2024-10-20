@@ -3,7 +3,11 @@ import "./CreateClass.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
-import { createClass, getCourseWithClasses } from "../../Api/Api";
+import {
+	createClass,
+	getAllLectures,
+	getCourseWithClasses,
+} from "../../Api/Api";
 
 export default function CreateClass() {
 	const links = [
@@ -15,17 +19,16 @@ export default function CreateClass() {
 
 	// State for form inputs
 	const [className, setClassName] = useState("");
-	const [lecturerId, setLecturerId] = useState("");
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
 	const [classDescription, setClassDescription] = useState("");
-	const [lecturerSearch, setLecturerSearch] = useState("");
-	const [lecturers, setLecturers] = useState([]);
 	const [file, setFile] = useState(null);
 	const [courseData, setCourseData] = useState();
 	const [loadingState, setLoadingState] = useState(true);
+	const [lectureList, setLectureList] = useState([]);
+	const [lecturer, setLecturer] = useState("");
 
-	const navigate = useNavigate(); //for multiple use purposes
+	const navigate = useNavigate(); 
 	const { courseId } = useParams();
 
 	useEffect(() => {
@@ -42,13 +45,31 @@ export default function CreateClass() {
 		fetchCourseDetails();
 	}, [courseId]);
 
+	const fetchAllLectures = async () => {
+		try {
+			const response = await getAllLectures();
+			setLectureList(response.data);
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+	useEffect(() => {
+		if (lecturer.length > 2) {
+			const delayApiCallWithEveryKey = setTimeout(() => {
+				fetchAllLectures(lecturer);
+			}, 100);
+
+			return () => clearTimeout(delayApiCallWithEveryKey);
+		}
+	}, [lecturer]);
+
+	//console.log(lectureList);
 	//console.log(courseData);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (
 			!className ||
-			!lecturerId ||
 			!startDate ||
 			!endDate ||
 			!classDescription //skipped !file check since we want to be able to create a class without any students.
@@ -59,17 +80,17 @@ export default function CreateClass() {
 			classDescription: classDescription,
 			startDate: startDate,
 			endDate: endDate,
-			userId:0,
-		}
+			userId: 0,
+		};
 
 		const userData = {
 			classDetails: payload,
 			file: file,
-		}
+		};
 
 		try {
 			console.log(userData);
-			//await createClass(courseId, userData);
+			await createClass(courseId, userData);
 			//navigate(`/CourseDetails/${courseId}`);
 		} catch (error) {
 			console.log(error.message);
@@ -80,27 +101,6 @@ export default function CreateClass() {
 		if (e.target.files && e.target.files[0]) {
 			setFile(e.target.files[0]);
 		}
-	};
-
-	const handleLecturerSearch = (e) => {
-		setLecturerSearch(e.target.value);
-		// You can implement actual API call or filtering logic here
-		// For now, we will use mock data to demonstrate functionality
-		const allLecturers = [
-			{ name: "John Doe" },
-			{ name: "Jane Smith" },
-			{ name: "Alice Johnson" },
-		];
-		const filteredLecturers = allLecturers.filter((lecturer) =>
-			lecturer.name.toLowerCase().includes(e.target.value.toLowerCase())
-		);
-		setLecturers(filteredLecturers);
-	};
-
-	const handleLecturerSelect = (lecturer) => {
-		setLecturerId(lecturer.id);
-		setLecturerSearch(lecturer.name); // Set the search input to the selected lecturer's name
-		setLecturers([]); // Clear the list after selection
 	};
 
 	if (loadingState) {
@@ -132,19 +132,22 @@ export default function CreateClass() {
 								<input
 									type="text"
 									id="lecturer"
-									value={lecturerSearch}
-									onChange={handleLecturerSearch}
-									placeholder="Search by Lecturer ID or Name"
+									value={lecturer}
+									onChange={(e) => setLecturer(e.target.value)}
+									placeholder="Search by Lecturer Name"
 									required
 								/>
-								{lecturers.length > 0 && (
+								{lectureList.length > 0 && (
 									<ul className="lecturer-suggestions">
-										{lecturers.map((lecturer) => (
+										{lectureList.map((lecture) => (
 											<li
-												key={lecturer.id}
-												onClick={() => handleLecturerSelect(lecturer)}
+												key={lecture.id}
+												onClick={() => {
+													setLecturer(lecture.fullNames);
+													setLectureList([]);
+												}}
 											>
-												{lecturer.name} (ID: {lecturer.id})
+												{lecture.fullNames}
 											</li>
 										))}
 									</ul>
