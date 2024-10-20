@@ -1,28 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./AddQuestions.css";
-import courses from "../../Data/Courses.json";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { getData, addQuestion } from "../../Api/Api";
 
 export default function AddQuestions() {
+	const links = [{ path: "/DataCaptureDashboard", pathName: "Home" }];
 
-	const links = [
-		{path: "/DataCaptureDashboard", pathName: "Home"}
-	]
-	
+	const navigate = useNavigate();
 	const [selectedDomain, setSelectedDomain] = useState("");
 	const [selectedTopic, setSelectedTopic] = useState("");
 	const [question, setQuestion] = useState("");
 	const [correctAnswers, setCorrectAnswers] = useState([""]);
 	const [incorrectAnswers, setIncorrectAnswers] = useState([""]);
 	const [correctAnswerDescription, setCorrectAnswerDescription] = useState("");
+	const [courseData, setCourseData] = useState();
+	const [loadingState, setLoadingState] = useState(true);
+	const { courseId } = useParams();
 
-	const domains = ["Math", "Science", "History"];
-	const topics = {
-		Math: ["Algebra", "Geometry", "Calculus"],
-		Science: ["Physics", "Chemistry", "Biology"],
-		History: ["World History", "Ancient Civilizations", "Modern History"],
-	};
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const response = await getData(`/api/courses/${courseId}`);
+				setCourseData(response.data);
+			} catch (error) {
+				console.log(error.message);
+			} finally {
+				setLoadingState(false);
+			}
+		};
+		fetchData();
+	}, [courseId]);
+
+	const domainsArray = [];
+	if (courseData && courseData.domains) {
+		courseData.domains.forEach((domain) => {
+			domainsArray.push({
+				domainName: domain.domainName,
+				domainId: domain.domainId,
+			});
+		});
+	}
+
+	// For topics, include both topicName and topicId
+	const topics = {};
+	if (courseData && courseData.domains) {
+		courseData.domains.forEach((domain) => {
+			topics[domain.domainId] = domain.topics.map((topic) => ({
+				topicName: topic.topicName,
+				topicId: topic.topicId,
+			}));
+		});
+	}
+
+	//console.log(topics);
 
 	// Handle dynamic inputs for correct and incorrect answers
 	const handleCorrectAnswerChange = (index, value) => {
@@ -45,28 +76,48 @@ export default function AddQuestions() {
 		setIncorrectAnswers([...incorrectAnswers, ""]);
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
+		const questionData = {
+			questionText: question,
+			courseId: Number(courseId),
+			domainId: selectedDomain,
+			topicId: selectedTopic,
+			answerDescription: correctAnswerDescription,
+			answers: [
+				{
+					answerText: correctAnswers[0],
+					answerDescription: correctAnswerDescription,
+					correct: true,
+				},
+				...incorrectAnswers.map((answer) => ({
+					answerText: answer,
+					answerDescription: "",
+					correct: false,
+				})),
+			],
+		};
+
+		try {
+			await addQuestion(questionData);
+		} catch (error) {
+			console.log(error.message);
+		}
+
+		alert("Question added successfully!");
+		// Reset the form after successful submission
 		setSelectedDomain("");
 		setSelectedTopic("");
 		setQuestion("");
-		setCorrectAnswers([""]); // Reset to initial state with one empty input
-		setIncorrectAnswers([""]); // Reset to initial state with one empty input
+		setCorrectAnswers([""]);
+		setIncorrectAnswers([""]);
 		setCorrectAnswerDescription("");
-
-		// const questionData = {
-		// 	domain: selectedDomain,
-		// 	topic: selectedTopic,
-		// 	question,
-		// 	correctAnswers,
-		// 	incorrectAnswers,
-		// 	correctAnswerDescription,
-		// };
 	};
 
-	//navigation
-	const navigate = useNavigate();
+	if (loadingState) {
+		return <div>...Loading</div>;
+	}
 
 	return (
 		<div className="add-questions-container">
@@ -75,14 +126,21 @@ export default function AddQuestions() {
 				<h2 className="add-questions-content-h2">Add Question</h2>
 				<div className="add-questions-info-flow">
 					<img
-						src={courses[0].image}
-						alt={courses[0].title}
+						src={`data:image/jpeg;base64,${courseData.image}`}
+						alt={courseData.courseName}
 						className="add-questions-course-image"
 					/>
 					<div className="add-questions-course-title">
-						<h3>{courses[0].title}</h3>
+						<h3>{courseData.courseName}</h3>
 					</div>
-					<button className="add-question-upload-dump-button" onClick={() => {navigate("/UploadDumps")}}>Upload Dump</button>
+					<button
+						className="add-question-upload-dump-button"
+						onClick={() => {
+							navigate("/UploadDumps");
+						}}
+					>
+						Upload Dump
+					</button>
 				</div>
 				<div className="add-questions-form-scrollable">
 					<form onSubmit={handleSubmit}>
@@ -92,16 +150,16 @@ export default function AddQuestions() {
 							<select
 								value={selectedDomain}
 								onChange={(e) => {
-									setSelectedDomain(e.target.value);
+									setSelectedDomain(Number(e.target.value));
 									setSelectedTopic(""); // Reset topic when domain changes
 								}}
 							>
 								<option value="" disabled>
 									Select a domain
 								</option>
-								{domains.map((domain, index) => (
-									<option key={index} value={domain}>
-										{domain}
+								{domainsArray.map((domain, index) => (
+									<option key={index} value={domain.domainId}>
+										{domain.domainName}
 									</option>
 								))}
 							</select>
@@ -113,14 +171,14 @@ export default function AddQuestions() {
 								<label>Select Topic</label>
 								<select
 									value={selectedTopic}
-									onChange={(e) => setSelectedTopic(e.target.value)}
+									onChange={(e) => setSelectedTopic(Number(e.target.value))}
 								>
 									<option value="" disabled>
 										Select a topic
 									</option>
 									{topics[selectedDomain].map((topic, index) => (
-										<option key={index} value={topic}>
-											{topic}
+										<option key={index} value={topic.topicId}>
+											{topic.topicName}
 										</option>
 									))}
 								</select>
@@ -192,7 +250,9 @@ export default function AddQuestions() {
 						</div>
 
 						{/* Submit Button */}
-						<button className="add-question-button" type="submit">Add Question</button>
+						<button className="add-question-button" type="submit">
+							Add Question
+						</button>
 					</form>
 				</div>
 			</div>

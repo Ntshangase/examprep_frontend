@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditCourse.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData, updateCourse, deleteData } from "../../API/Api.js";
+import { getData, updateCourse, deleteData } from "../../Api/Api";
 
 export default function EditCourse() {
 	const links = [
@@ -67,7 +67,7 @@ export default function EditCourse() {
 		const payload = {
 			courseName,
 			courseDescription,
-			domains
+			domains,
 		};
 
 		const updateData = {
@@ -85,12 +85,7 @@ export default function EditCourse() {
 
 	const handleImageUpload = (e) => {
 		if (e.target.files && e.target.files[0]) {
-			const file = e.target.files[0];
-			const reader = new FileReader();
-			reader.onloadend = () => {
-				setPreviewImage(reader.result); // Set the preview of the new image as base64 string
-			};
-			reader.readAsDataURL(file); // Read the file as data URL (base64)
+			setPreviewImage(e.target.files[0]); // Store the image file directly, no conversion to base64
 		}
 	};
 
@@ -138,61 +133,58 @@ export default function EditCourse() {
 							/>
 						</div>
 
-						<div className="course-input-group-domains-topics">
+						<div className="edit-course-input-group">
 							<label>Domains And Topics</label>
-							<div className="course-domain-container">
-    {domains.map((domain, domainIndex) => (
-        <div key={domainIndex} className="course-domain-item">
-            <div className="domain-input-row">
-                <input
-                    type="text"
-                    value={domain.domainName}
-                    onChange={(e) =>
-                        handleDomainChange(domainIndex, e.target.value)
-                    }
-                    className="domain-input"
-                    placeholder="Enter Domain Name"
-                />
-            </div>
+							<div className="edit-course-domain-list">
+								{domains.map((domain, domainIndex) => (
+									<div key={domainIndex} className="edit-course-domain-item">
+										<div className="edit-course-make-row">
+											<input
+												type="text"
+												value={domain.domainName}
+												onChange={(e) =>
+													handleDomainChange(domainIndex, e.target.value)
+												}
+												className="edit-course-domain-input"
+											/>
+										</div>
 
-            <div className="topic-list-container">
-                {domain.topics.map((topic, topicIndex) => (
-                    <div key={topicIndex} className="topic-input-row">
-                        <input
-                            type="text"
-                            value={topic.topicName}
-                            onChange={(e) =>
-                                handleTopicChange(
-                                    domainIndex,
-                                    topicIndex,
-                                    e.target.value
-                                )
-                            }
-                            className="topic-input"
-                            placeholder="Enter Topic Name"
-                        />
-                    </div>
-                ))}
-            </div>
-        </div>
-    ))}
-</div>
-
+										<div className="edit-course-topic-list">
+											{domain.topics.map((topic, topicIndex) => (
+												<div key={topicIndex} className="edit-course-make-row">
+													<input
+														type="text"
+														value={topic.topicName}
+														onChange={(e) =>
+															handleTopicChange(
+																domainIndex,
+																topicIndex,
+																e.target.value
+															)
+														}
+														className="edit-course-topic-input"
+													/>
+												</div>
+											))}
+										</div>
+									</div>
+								))}
+							</div>
 						</div>
 					</div>
 
 					<div className="edit-course-right">
 						<div className="edit-course-image-upload">
-							{previewImage ? (
+							{existingImage && !previewImage ? (
 								<img
-									src={previewImage}
-									alt="Course Preview"
+									src={existingImage} // Directly use the existing image URL or path
+									alt="Existing course"
 									className="edit-course-image-preview"
 								/>
-							) : existingImage ? (
+							) : previewImage ? (
 								<img
-									src={`data:image/jpeg;base64,${existingImage}`}
-									alt="Existing Course"
+									src={URL.createObjectURL(previewImage)} // Create an object URL for the preview image file
+									alt="New Course Preview"
 									className="edit-course-image-preview"
 								/>
 							) : (
@@ -201,12 +193,11 @@ export default function EditCourse() {
 							<input
 								type="file"
 								accept="image/*"
-								id="courseImage"
 								onChange={handleImageUpload}
 								className="edit-course-image-input"
 							/>
 						</div>
-						<div className="edit-course-actions">
+						<div className="edit-course-buttons-div">
 							<button
 								onClick={handleUpdateCourse}
 								className="edit-course-upload-button"

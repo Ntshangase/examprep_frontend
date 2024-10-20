@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ManageUser.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { getAllUser } from "../../Api/Api";
 
 const ManageUser = () => {
 	const links = [
@@ -21,7 +22,30 @@ const ManageUser = () => {
 		{ name: "Simmi Zulu", role: "Lecturer", img: "/assets/images.jpeg" },
 		{ name: "Mondli Zulu", role: "Data Capture", img: "/assets/images.jpeg" },
 	];
+	const [allUsers, setAllUsers] = useState();
+	const [loadingUsers, setLoadindUsers] = useState(true);
 
+	useEffect( ()  =>  {
+
+		const fetchUsers = async () => {
+
+			try{
+				const response = await getAllUser();
+				setAllUsers(response.data);
+			}catch(error) {
+				console.log(error.message);
+			}finally{
+				setLoadindUsers(false);
+			}
+		}
+		fetchUsers();
+	}, []);
+
+	console.log(typeof allUsers); //string i need mappable array!!!
+
+	if(loadingUsers){
+		return <div>...Loading</div>
+	}
 	return (
 		<div className="manage-user-admin-container">
 			<Sidebar links={links} />

@@ -1,10 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CreateClass.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
-import courses from "../../Data/Courses.json";
+import { useParams } from "react-router-dom";
+import { createClass, getCourseWithClasses } from "../../Api/Api";
 
 export default function CreateClass() {
+	const links = [
+		{ path: "/AdminLanding", pathName: "Home" },
+		{ path: "/ManageUser", pathName: "Manage Users" },
+		{ path: "/ManageCourse", pathName: "Manage Courses" },
+		{ path: "/ManageClass", pathName: "Manage Classes" },
+	];
+
 	// State for form inputs
 	const [className, setClassName] = useState("");
 	const [lecturerId, setLecturerId] = useState("");
@@ -14,30 +22,58 @@ export default function CreateClass() {
 	const [lecturerSearch, setLecturerSearch] = useState("");
 	const [lecturers, setLecturers] = useState([]);
 	const [file, setFile] = useState(null);
+	const [courseData, setCourseData] = useState();
+	const [loadingState, setLoadingState] = useState(true);
 
 	const navigate = useNavigate(); //for multiple use purposes
+	const { courseId } = useParams();
 
-	const handleSubmit = (e) => {
+	useEffect(() => {
+		const fetchCourseDetails = async () => {
+			try {
+				const response = await getCourseWithClasses(courseId);
+				setCourseData(response.data);
+			} catch (error) {
+				console.log(error.message); //everytime you work with API calls you need to try-catch.
+			} finally {
+				setLoadingState(false);
+			}
+		};
+		fetchCourseDetails();
+	}, [courseId]);
+
+	//console.log(courseData);
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (
 			!className ||
 			!lecturerId ||
 			!startDate ||
 			!endDate ||
-			!classDescription 	//skipped !file check since we want to be able to create a class without any students.
-		)
+			!classDescription //skipped !file check since we want to be able to create a class without any students.
+		);
 
-		// Clear input fields after form submission
-		setClassName("");
-		setLecturerId("");
-		setStartDate("");
-		setEndDate("");
-		setClassDescription("");
-		setLecturerSearch("");
-		setFile(file);
-		document.getElementById("fileUpload").value = "";
+		const payload = {
+			className: className,
+			classDescription: classDescription,
+			startDate: startDate,
+			endDate: endDate,
+			userId:0,
+		}
 
-		//navigate("/Home");
+		const userData = {
+			classDetails: payload,
+			file: file,
+		}
+
+		try {
+			console.log(userData);
+			//await createClass(courseId, userData);
+			//navigate(`/CourseDetails/${courseId}`);
+		} catch (error) {
+			console.log(error.message);
+		}
 	};
 
 	const handleFileChange = (e) => {
@@ -67,12 +103,9 @@ export default function CreateClass() {
 		setLecturers([]); // Clear the list after selection
 	};
 
-	const links = [
-		{ path: "/AdminLanding", pathName: "Home" },
-		{ path: "/ManageUser", pathName: "Manage Users" },
-		{ path: "/ManageCourse", pathName: "Manage Courses" },
-		{ path: "/ManageClass", pathName: "Manage Classes" },
-	];
+	if (loadingState) {
+		return <div>...Loading</div>;
+	}
 
 	return (
 		<div className="create-class-container">
@@ -149,8 +182,6 @@ export default function CreateClass() {
 									required
 								/>
 							</div>
-
-							{/* File Upload Input */}
 							<div className="create-class-form-group">
 								<label htmlFor="fileUpload">Upload Student from file:</label>
 								<input
@@ -160,7 +191,6 @@ export default function CreateClass() {
 									required
 								/>
 							</div>
-							{/* Submit Button */}
 							<button type="submit" className="create-class-submit-button">
 								Create Class
 							</button>
@@ -170,13 +200,21 @@ export default function CreateClass() {
 						<div>
 							{" "}
 							{/**no styling */}
-							<img src={courses[0].image} alt={courses[0].title} />
+							<img
+								src={`data:image/jpeg;base64,${courseData.image}`}
+								alt={courseData.courseName}
+							/>
 							<div>
-								<h3>{courses[0].title}</h3>
+								<h3>{courseData.courseName}</h3>
 							</div>
 						</div>
 
-						<button className="create-class-back-buttons" onClick={() => navigate("/CourseDetails")}>Back</button>
+						<button
+							className="create-class-back-buttons"
+							onClick={() => navigate(`/CourseDetails/${courseId}`)}
+						>
+							Back
+						</button>
 					</div>
 				</div>
 			</div>

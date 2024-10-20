@@ -72,9 +72,9 @@ function App() {
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
 				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
 				<Route path="/AddCourse" element={<AddCourse />} />
-				<Route path="/CourseDetails" element={<CourseDetails />} />
-				<Route path="/CreateClass" element={<CreateClass />} />
-				<Route path="/EditClass" element={<EditClass />} />
+				<Route path="/CourseDetails/:courseId" element={<CourseDetails />} />
+				<Route path="/CreateClass/:courseId" element={<CreateClass />} />
+				<Route path="/EditClass/:classesId" element={<EditClass />} />
 				<Route path="/ManageClass" element={<ManageClass />} />
 				<Route path="/EditCourse/:courseId" element={<EditCourse />} />
 				<Route path="/ManageStudents" element={<ManageStudents />} />
@@ -95,7 +95,7 @@ function App() {
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 				<Route path="/TestReview" element={<TestReview />} />
 				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
-				<Route path="/AddQuestions" element={<AddQuestions />} />
+				<Route path="/AddQuestions/:courseId" element={<AddQuestions />} />
 				<Route path="/UploadDumps" element={<UploadDumps />} />
 				<Route path="/AddUser" element={<AddUser />} />
 				<Route path="/StudentProfile" element={<StudentProfile />} />

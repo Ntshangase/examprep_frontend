@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { getCourse } from "../../API/Api.js";
+import { getCourse } from "../../Api/Api";
 
 export default function ManageCourse() {
 	const links = [

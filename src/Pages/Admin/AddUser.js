@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import "./AddUser.css";
 import "../../Styles/global.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-//import { useNavigate } from "react-router-dom";
-import { createUser } from "../../API/Api.js";
+import { useNavigate } from "react-router-dom";
+import { createUser } from "../../Api/Api";
 
 function AddUser() {
 	const links = [
@@ -22,11 +22,13 @@ function AddUser() {
 		surname: "",
 		contactNumber: "",
 		role: "",
+		image: null,
 	});
 
 	const [selectedOption, setSelectedOption] = useState("");
 	const [courseSearch, setCourseSearch] = useState(""); //to be moved
 	const availableCourses = ["Aws", "Comptia", "Networking+", "Databases"]; // Dummy data for courses
+	const navigate = useNavigate();
 
 	const handleAddUserInputChange = (event) => {
 		const { name, value } = event.target;
@@ -38,10 +40,9 @@ function AddUser() {
 	};
 
 	const handleFileChange = (e) => {
-		//currently not in use waiting for updates from smizi.
 		setAddUser({
 			...addUser,
-			picture: e.target.files[0],
+			image: e.target.files[0],
 		});
 	};
 
@@ -53,6 +54,7 @@ function AddUser() {
 		surname: addUser.surname,
 		contactNumber: addUser.contactNumber,
 		role: addUser.role,
+		courseIds: [],
 	};
 
 	function generatePassword(length) {
@@ -66,16 +68,22 @@ function AddUser() {
 		return password;
 	}
 
-	//console.log(generatePassword(12));
+	const userData = {
+		userDto: JSON.stringify(payload),
+		image: addUser.image,
+	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		try {
-			createUser(payload);
+			createUser(userData);
 		} catch (error) {
 			console.log(error);
 		}
+
+		alert("User successfuly created");
+		navigate("/ManageUser");
 	};
 
 	const handleCourseSearch = (e) => {
@@ -106,12 +114,9 @@ function AddUser() {
 		setSelectedOption(event.target.value);
 	};
 
-	//const navigate = useNavigate();
-
 	return (
 		<div className="add-user-page">
 			<Sidebar links={links} />
-
 			<div className="main-content">
 				<h1 className="form-title">Add User</h1>
 				<form className="add-user-form" onSubmit={handleSubmit}>
@@ -196,7 +201,7 @@ function AddUser() {
 							<option value={selectedOption} onChange={handleOptionChange}>
 								Select role
 							</option>
-							<option value="LECTURE">Lecturer</option>
+							<option value="LECTURER">Lecturer</option>
 							<option value="STUDENT">Student</option>
 							<option value="ADMIN">Admin</option>
 							<option value="DATA CAPTURE">Data Capture</option>
@@ -255,7 +260,6 @@ function AddUser() {
 						<label>Upload Image</label>
 						<input
 							type="file"
-							name="picture"
 							accept="image/*"
 							onChange={handleFileChange}
 							className="upload-image"
