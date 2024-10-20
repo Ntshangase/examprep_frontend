@@ -31,7 +31,7 @@ const ManageUser = () => {
 
 			try{
 				const response = await getAllUser();
-				setAllUsers(response);
+				setAllUsers(response.data);
 			}catch(error) {
 				console.log(error.message);
 			}finally{
@@ -41,7 +41,7 @@ const ManageUser = () => {
 		fetchUsers();
 	}, []);
 
-	console.log(allUsers);
+	console.log(typeof allUsers); //string i need mappable array!!!
 
 	if(loadingUsers){
 		return <div>...Loading</div>

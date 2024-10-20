@@ -22,6 +22,7 @@ function AddUser() {
 		surname: "",
 		contactNumber: "",
 		role: "",
+		image: null,
 	});
 
 	const [selectedOption, setSelectedOption] = useState("");
@@ -41,7 +42,7 @@ function AddUser() {
 		//currently not in use waiting for updates from smizi.
 		setAddUser({
 			...addUser,
-			picture: e.target.files[0],
+			image: e.target.files[0],
 		});
 	};
 
@@ -53,6 +54,7 @@ function AddUser() {
 		surname: addUser.surname,
 		contactNumber: addUser.contactNumber,
 		role: addUser.role,
+		courseIds: [],
 	};
 
 	function generatePassword(length) {
@@ -66,13 +68,17 @@ function AddUser() {
 		return password;
 	}
 
-	//console.log(generatePassword(12));
+	const userData = {
+		userDto: JSON.stringify(payload),
+		image: addUser.image,
+	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
 
 		try {
-			createUser(payload);
+			console.log(userData);
+			createUser(userData);
 		} catch (error) {
 			console.log(error);
 		}
@@ -255,7 +261,6 @@ function AddUser() {
 						<label>Upload Image</label>
 						<input
 							type="file"
-							name="picture"
 							accept="image/*"
 							onChange={handleFileChange}
 							className="upload-image"

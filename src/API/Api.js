@@ -12,10 +12,13 @@ export const updateData = (endpoint, courseData) => apiClient.put(endpoint, cour
 export const deleteData = (endpoint) => apiClient.delete(endpoint);
 
 //User related ENDPOINTS
-export const createUser = (userData) => apiClient.post("/api/users/register", userData);
+export const createUser = (userData) => apiClient.post("/api/users/register", userData, {headers: {
+	'Content-Type': 'multipart/form-data',
+}});
 export const updateUser = (userId, userData) =>
 	apiClient.put(`/users/${userId}`, userData);
 export const deleteUser = (userId) => apiClient.delete(`/users/${userId}`);
+export const getAllUser = () => apiClient.get("api/users/all");
 
 //COURSE RELATED ENDPOINTS
 export const createCourse = (courseData) => apiClient.post("/api/courses/saveCourse", courseData,{headers: {
@@ -31,9 +34,6 @@ export const getClasses = (endpoint) => apiClient.get(endpoint);
 export const getCourseWithClasses = (courseId) => apiClient.get(`/api/courses/classes/${courseId}`);
 export const deleteClass = (endpoint) => apiClient.delete(endpoint);
 export const createClass = (courseId, classData) => apiClient.post(`/api/classes/${courseId}/addClassAndStudents`, classData, {headers: { 'Content-Type': 'multipart/form-data', }});
-
-//USER RELATED ENDPOINT
-export const getAllUser = () => apiClient.get("api/user/all");
 
 //DATA CAPTURE RELAATED ENDPOINTS
 export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData);
