@@ -70,6 +70,7 @@ export default function EditClass() {
 		}
 
 		alert("Form submitted successfully!");
+		navigate(`/CourseDetails/${courseId}`);
 	};
 
 	if(loadingState){
