@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './EditClass.css';
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { getClasses } from '../../Api/Api';
+import { editClass, getClasses } from '../../Api/Api';
 
 export default function EditClass() {
 	const links = [
@@ -13,13 +13,13 @@ export default function EditClass() {
 	]
 
 	// State for form inputs
-	const [courseName, setCourseName] = useState(""); // Read-only course name
-	const [className, setClassName] = useState(""); // Read-only class name
-	const [lecturer, setLecturer] = useState(""); // Searchable Instructor
-	const [description, setDescription] = useState(""); // New state for edit description
+	const [courseName, setCourseName] = useState("");
+	const [className, setClassName] = useState("");
+	const [lecturer, setLecturer] = useState("");
+	const [description, setDescription] = useState("");
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
-	const [classData, setClassData] = useState();
+	const [courseId, setCourseId] = useState();
 	const [loadingState, setLoadingState] = useState();
 	const {classesId} = useParams();
 	const navigate = useNavigate();
@@ -29,7 +29,6 @@ export default function EditClass() {
 
 			try{
 				const response = await getClasses(`/api/classes/with-students/${classesId}`);
-				setClassData(response.data);
 
 				//prefill form
 				setCourseName(response.data.course.courseName);
@@ -38,6 +37,7 @@ export default function EditClass() {
 				setDescription(response.data.classDescription);
 				setStartDate(response.data.startDate);
 				setEndDate(response.data.endDate);
+				setCourseId(response.data.course.courseId)
 			}catch(error){
 				console.log(error.message);
 			}finally{
@@ -47,9 +47,14 @@ export default function EditClass() {
 		fetchClassData();
 	}, [classesId]);
 
-	console.log(classData);
+	const payload = {
+		className: className,
+  		classDescription: description,
+  		startDate: startDate,
+  		endDate: endDate
+	}
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		// Form validation (simple check if fields are not empty)
@@ -58,13 +63,13 @@ export default function EditClass() {
 			return;
 		}
 
-		// Clear input fields after form submission
-		setLecturer("");
-		setDescription(""); // Clear description
-		setStartDate("");
-		setEndDate("");
+		try{
+			await editClass(classesId,payload);
+		}catch(error){
+			console.log(error.message);
+		}
 
-		//alert("Form submitted successfully!");
+		alert("Form submitted successfully!");
 	};
 
 	if(loadingState){
@@ -98,7 +103,7 @@ export default function EditClass() {
 									type="text"
 									id="className"
 									value={className}
-									readOnly
+									onChange={(e) => setClassName(e.target.value)}
 								/>
 							</div>
 
@@ -112,6 +117,7 @@ export default function EditClass() {
 									onChange={(e) => setLecturer(e.target.value)}
 									required
 									className="edit-class-search-input"
+									readOnly
 								/>
 							</div>
 
@@ -152,7 +158,7 @@ export default function EditClass() {
 							</div>
 
 							{/* Submit Button */}
-							<button className="edit-class-submit-button" onClick={() => navigate("/EditClass")}>
+							<button className="edit-class-submit-button" type='submit'>
 								Update Class
 							</button>
 						</form>
@@ -167,7 +173,7 @@ export default function EditClass() {
 						<div className="edit-class-cancel-button-div">
 							<button
 								className="edit-class-cancel-button"
-								onClick={() => navigate(`/CourseDetails/${classesId}`)}
+								onClick={() => navigate(`/CourseDetails/${courseId}`)}
 							>
 								Cancel
 							</button>

@@ -68,8 +68,6 @@ export default function CourseDetails() {
 		navigate(`/EditClass/${x}`);
 	};
 
-	console.log(classes);
-
 	return (
 		<div className="admin-course-details-container">
 			<Sidebar links={links} />
