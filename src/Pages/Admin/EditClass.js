@@ -34,9 +34,10 @@ export default function EditClass() {
 				//prefill form
 				setCourseName(response.data.course.courseName);
 				setClassName(response.data.className);
-				//missing lecture from data.
+				setLecturer(response.data.lecturer.fullName)
 				setDescription(response.data.classDescription);
-				//missing start and end Date from API.
+				setStartDate(response.data.startDate);
+				setEndDate(response.data.endDate);
 			}catch(error){
 				console.log(error.message);
 			}finally{
@@ -166,7 +167,7 @@ export default function EditClass() {
 						<div className="edit-class-cancel-button-div">
 							<button
 								className="edit-class-cancel-button"
-								onClick={() => navigate("/CourseDetails")}
+								onClick={() => navigate(`/CourseDetails/${classesId}`)}
 							>
 								Cancel
 							</button>
