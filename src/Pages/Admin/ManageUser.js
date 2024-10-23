@@ -33,7 +33,6 @@ const ManageUser = () => {
 		fetchUsers();
 	}, []);
 
-	console.log(allUsers)
 	const navigate = useNavigate();
 	const handleEditUser = (userId) => {
 		navigate(`/EditUser/${userId}`);

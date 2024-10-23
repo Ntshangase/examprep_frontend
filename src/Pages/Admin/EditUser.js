@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditUser.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData, updateUser, deleteUser } from "../../Api/Api";
+import { getUserById, deleteUser, updateUser } from "../../Api/Api";
 
 export default function EditUser() {
     const links = [
@@ -18,6 +18,9 @@ export default function EditUser() {
     const [userName, setUserName] = useState("");
     const [userEmail, setUserEmail] = useState("");
     const [userRole, setUserRole] = useState("");
+    const [userTitle, setUserTitle] = useState(""); // New field for title
+    const [userSurname, setUserSurname] = useState(""); // New field for surname
+    const [userContactNumber, setUserContactNumber] = useState(""); // New field for contact number
     const [existingAvatar, setExistingAvatar] = useState(null);
     const [previewAvatar, setPreviewAvatar] = useState(null);
 
@@ -25,12 +28,15 @@ export default function EditUser() {
     useEffect(() => {
         const fetchUserData = async () => {
             try {
-                const response = await getData(`/api/users/${userId}`);
+                const response = await getUserById(userId);
                 setUserData(response.data);
-                setUserName(response.data.userName);
-                setUserEmail(response.data.userEmail);
-                setUserRole(response.data.userRole);
-                setExistingAvatar(response.data.avatar || null); // Set initial existing avatar if available
+                setUserName(response.data.fullNames);
+                setUserEmail(response.data.email);
+                setUserRole(response.data.role.name);
+                setUserTitle(response.data.title);
+                setUserSurname(response.data.surname);
+                setUserContactNumber(response.data.contactNumber);
+                setExistingAvatar(response.data.avatar || null);
             } catch (error) {
                 console.error("Error fetching user data:", error);
             }
@@ -43,26 +49,35 @@ export default function EditUser() {
     const handleUserNameChange = (e) => setUserName(e.target.value);
     const handleUserEmailChange = (e) => setUserEmail(e.target.value);
     const handleUserRoleChange = (e) => setUserRole(e.target.value);
+    const handleUserTitleChange = (e) => setUserTitle(e.target.value); // Handle title change
+    const handleUserSurnameChange = (e) => setUserSurname(e.target.value); // Handle surname change
+    const handleUserContactNumberChange = (e) => setUserContactNumber(e.target.value); // Handle contact number change
 
     // Update user data
-    const handleUpdateUser = async () => {
-        const payload = {
-            userName,
-            userEmail,
-            userRole,
-        };
+    const payload = {
+        email: userEmail,
+        //password: "string",
+        title: userTitle,
+        fullNames: userName,
+        surname: userSurname,
+        contactNumber: userContactNumber,
+        role: userRole,
+        //profileImage: "string",
+        //courseIds: [ ]
+    }
+    console.log(userRole)
+    const handleUpdateUser = async (e) => {
+        e.preventDefault();
 
-        const updateData = {
-            userDetails: JSON.stringify(payload),
-            avatar: previewAvatar || existingAvatar,
-        };
-
-        try {
-            await updateUser(`/api/users/${userId}`, updateData);
-            navigate("/ManageUser");
-        } catch (error) {
-            console.error("Error updating user:", error);
+        try{
+            //console.log(payload);
+            await updateUser(userId, payload)
+        }catch(error) {
+            console.log(error);
         }
+
+        alert("User Updated...")
+        navigate("/ManageUser");
     };
 
     const handleAvatarUpload = (e) => {
@@ -91,16 +106,46 @@ export default function EditUser() {
             <Sidebar links={links} />
             <div className="edit-user-wrapper">
                 <h1 className="edit-user-header">Edit User</h1>
-                <div className="edit-user-form">
+                <form onSubmit={handleUpdateUser} className="edit-user-form">
                     <div className="edit-user-left">
                         <div className="edit-user-input-group">
-                            <label htmlFor="userName">User Name</label>
+                            <label htmlFor="userTitle">Title</label>
+                            <select
+                                id="userTitle"
+                                value={userTitle}
+                                onChange={handleUserTitleChange}
+                                className="edit-user-input"
+                                required
+                            >
+                                <option value="Prof">Prof</option>
+                                <option value="Dr">Dr</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Mrs">Mrs</option>
+                            </select>
+                        </div>
+
+                        <div className="edit-user-input-group">
+                            <label htmlFor="userName">Full Names</label>
                             <input
                                 type="text"
                                 id="userName"
                                 value={userName}
                                 onChange={handleUserNameChange}
                                 className="edit-user-input"
+                                required
+                            />
+                        </div>
+
+                        <div className="edit-user-input-group">
+                            <label htmlFor="userSurname">Surname</label>
+                            <input
+                                type="text"
+                                id="userSurname"
+                                value={userSurname}
+                                onChange={handleUserSurnameChange}
+                                className="edit-user-input"
+                                required
                             />
                         </div>
 
@@ -112,18 +157,42 @@ export default function EditUser() {
                                 value={userEmail}
                                 onChange={handleUserEmailChange}
                                 className="edit-user-input"
+                                required
+                            />
+                        </div>
+
+                        <div className="edit-user-input-group">
+                            <label htmlFor="userContactNumber">Contact Number</label>
+                            <input
+                                type="tel"
+                                id="userContactNumber"
+                                value={userContactNumber}
+                                onChange={handleUserContactNumberChange}
+                                className="edit-user-input"
+                                pattern="[0-9]{10}"
+                                maxLength={10}
+                                required
                             />
                         </div>
 
                         <div className="edit-user-input-group">
                             <label htmlFor="userRole">Role</label>
-                            <input
-                                type="text"
-                                id="userRole"
-                                value={userRole}
-                                onChange={handleUserRoleChange}
-                                className="edit-user-input"
-                            />
+                            <select
+							name="role"
+                            id="userRole"
+							value={userRole.name}
+							onChange={handleUserRoleChange}
+							required
+						>
+                            <option value={userRole.name} >
+								{userRole}
+							</option>
+							<option value="LECTURER">Lecturer</option>
+							<option value="STUDENT">Student</option>
+							<option value="ADMIN">Admin</option>
+							<option value="DATA CAPTURE">Data Capture</option>
+							<option value="MODERATOR">Moderator</option>
+						</select>
                         </div>
                     </div>
 
@@ -131,13 +200,13 @@ export default function EditUser() {
                         <div className="edit-user-avatar-upload">
                             {existingAvatar && !previewAvatar ? (
                                 <img
-                                    src={existingAvatar} // Directly use the existing avatar URL or path
+                                    src={existingAvatar}
                                     alt="Existing user avatar"
                                     className="edit-user-avatar-preview"
                                 />
                             ) : previewAvatar ? (
                                 <img
-                                    src={URL.createObjectURL(previewAvatar)} // Create an object URL for the preview avatar file
+                                    src={URL.createObjectURL(previewAvatar)}
                                     alt="New Avatar Preview"
                                     className="edit-user-avatar-preview"
                                 />
@@ -153,7 +222,7 @@ export default function EditUser() {
                         </div>
                         <div className="edit-user-buttons-div">
                             <button
-                                onClick={handleUpdateUser}
+                                type="submit"
                                 className="edit-user-upload-button"
                             >
                                 Update User
@@ -166,7 +235,7 @@ export default function EditUser() {
                             </button>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     );

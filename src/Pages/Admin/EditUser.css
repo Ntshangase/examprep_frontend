@@ -1,7 +1,7 @@
 .edit-user-container {
     display: flex;
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 }
 
 .edit-user-wrapper {
@@ -110,4 +110,82 @@
     display: flex;
     flex-direction: column;
     gap: 1rem;
+}
+
+.edit-user-container {
+    display: flex;
+}
+
+.edit-user-wrapper {
+    flex: 1;
+    padding: 20px;
+}
+
+.edit-user-header {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.edit-user-form {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-user-left, .edit-user-right {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.edit-user-input-group {
+    margin-bottom: 15px;
+}
+
+.edit-user-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.edit-user-input:focus {
+    border-color: #007bff;
+}
+
+.edit-user-avatar-upload {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.edit-user-avatar-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.edit-user-avatar-input {
+    margin-bottom: 10px;
+}
+
+.edit-user-buttons-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-user-upload-button, .edit-user-delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-user-upload-button {
+    background-color: var((--primary-color));
+    color: white;
+}
+
+.edit-user-delete-button {
+    background-color: #dc3545;
+    color: white;
 }
