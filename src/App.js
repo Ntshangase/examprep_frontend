@@ -52,6 +52,7 @@ import TestResults from "./Pages/Student/Enrolled/TestResults";
 import ScheduledTestReview from "./Pages/Student/Enrolled/ScheduledTestReview";
 import ManageClassStudents from "./Pages/Admin/ManageClassStudents";
 import FlaggedQuestionView from "./Pages/Moderator/FlaggedQuestionView";
+import EditUser from "./Pages/Admin/EditUser";
 
 function App() {
 	return (
@@ -107,6 +108,7 @@ function App() {
 				<Route path="/ScheduledTestReview" element={<ScheduledTestReview />} />
 				<Route path="/ManageClassStudents/:classesId" element={<ManageClassStudents />} />
 				<Route path="/FlaggedQuestionView" element={<FlaggedQuestionView />} />
+				<Route path="/EditUser/:userId" element={<EditUser/>} />
 			</Routes>
 		</Router>
 	);

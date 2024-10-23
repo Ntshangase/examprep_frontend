@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './EditClass.css';
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { editClass, getClasses } from '../../Api/Api';
+import { editClass, getClasses, getAllLectures } from '../../Api/Api';
 
 export default function EditClass() {
 	const links = [
@@ -21,6 +21,8 @@ export default function EditClass() {
 	const [endDate, setEndDate] = useState("");
 	const [courseId, setCourseId] = useState();
 	const [loadingState, setLoadingState] = useState();
+	const [lectureList, setLectureList] = useState([]);
+	const [lectureId, setLectureId] = useState();
 	const {classesId} = useParams();
 	const navigate = useNavigate();
 
@@ -51,8 +53,28 @@ export default function EditClass() {
 		className: className,
   		classDescription: description,
   		startDate: startDate,
-  		endDate: endDate
+  		endDate: endDate,
+		lecturerId: lectureId,
 	}
+
+	const fetchAllLectures = async () => {
+		try {
+			const response = await getAllLectures();
+			setLectureList(response.data);
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+
+	useEffect(() => {
+		if (lecturer.length < 2) {
+			const delayApiCallWithEveryKey = setTimeout(() => {
+				fetchAllLectures();
+			}, 500);
+
+			return () => clearTimeout(delayApiCallWithEveryKey);
+		}
+	}, [lecturer]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -97,7 +119,6 @@ export default function EditClass() {
 								/>
 							</div>
 
-							{/* Class Name (Read-only) */}
 							<div className="edit-class-form-group">
 								<label htmlFor="className">Class Name:</label>
 								<input
@@ -116,10 +137,25 @@ export default function EditClass() {
 									id="lecturer"
 									value={lecturer}
 									onChange={(e) => setLecturer(e.target.value)}
+									placeholder="Search by Lecturer Name"
 									required
-									className="edit-class-search-input"
-									readOnly
 								/>
+								{lectureList.length > 0 && (
+									<ul className="edit-class-lecturer-suggestions">
+										{lectureList.map((lecture) => (
+											<li
+												key={lecture.id}
+												onClick={() => {
+													setLecturer(lecture.fullNames);
+													setLectureId(lecture.id);
+													setLectureList([]);
+												}}
+											>
+												{lecture.fullNames}
+											</li>
+										))}
+									</ul>
+								)}
 							</div>
 
 							{/* Edit Description */}
