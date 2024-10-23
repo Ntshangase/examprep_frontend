@@ -72,12 +72,13 @@ export default function ManageClassStudents() {
 						onClick={handleApproveStudent}
 						className="manage-class-student-approve-button"
 					>
-						Approve Student
+						View Students to be Approved
 					</button>
 				</div>
 				<div className="manage-class-student-list">
 					{" "}
 					{/**Display students */}
+					<h2>Enrolled Students</h2>
 					{classData.students.map((student,index) => (
 						<div key={index} className="manage-class-student-item">
 							<span>{student.fullName}</span>

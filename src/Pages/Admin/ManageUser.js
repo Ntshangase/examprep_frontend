@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import { getAllUser } from "../../Api/Api";
+import { getAllUser, deleteUser } from "../../Api/Api";
 
 const ManageUser = () => {
 	const links = [
@@ -37,6 +37,16 @@ const ManageUser = () => {
 	const handleEditUser = (userId) => {
 		navigate(`/EditUser/${userId}`);
 	}
+	const handleRemoveUser = async (userId) => {
+        if (window.confirm("Are you sure you want to remove this user?")) {
+            try {
+                await deleteUser(userId);
+                navigate("/ManageUser");
+            } catch (error) {
+                console.error("Error removing user:", error);
+            }
+        }
+    };
 
 	if(loadingUsers){
 		return <div>...Loading</div>
@@ -75,7 +85,7 @@ const ManageUser = () => {
 								<p>{user.role}</p>
 								<div className="actions">
 									<button className="view-btn" onClick={() => {handleEditUser(user.id)}} >👁</button>
-									<FontAwesomeIcon icon={faTrash} />
+									<FontAwesomeIcon icon={faTrash} onClick={() => {handleRemoveUser(user.id)}} />
 								</div>
 							</div>
 						</div>
