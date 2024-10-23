@@ -65,7 +65,7 @@ export default function EditUser() {
         //profileImage: "string",
         //courseIds: [ ]
     }
-    console.log(userRole)
+    
     const handleUpdateUser = async (e) => {
         e.preventDefault();
 
