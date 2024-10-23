@@ -72,7 +72,7 @@ const ManageUser = () => {
 							<img src={`data:image/jpeg;base64,${user.profileImage}`} alt={user.fullNames} className="profile-pic" />
 							<div className="user-details">
 								<p>{user.fullNames}</p>
-								<p>{user.role.name}</p>
+								<p>{user.role}</p>
 								<div className="actions">
 									<button className="view-btn" onClick={() => {handleEditUser(user.id)}} >👁</button>
 									<FontAwesomeIcon icon={faTrash} />

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./ManageClassStudents.css";
 import courses from "../../Data/Courses.json";
 import { useNavigate, useParams } from "react-router-dom";
@@ -15,11 +15,11 @@ export default function ManageClassStudents() {
 		{ path: "/ManageClass", pathName: "Manage Classes" },
 	];
 
-	const [students, setStudents] = useState([
-		{ id: 1, name: "Simphiwe Ntshangasee" },
-		{ id: 2, name: "Bravery  Mayor" },
-		{ id: 3, name: "Branvado Ngobeni " },
-	]);
+	// const [students, setStudents] = useState([
+	// 	{ id: 1, name: "Simphiwe Ntshangasee" },
+	// 	{ id: 2, name: "Bravery  Mayor" },
+	// 	{ id: 3, name: "Branvado Ngobeni " },
+	// ]);
 
 	const { classesId } = useParams();
 	const [classData, setClassData] = useState();
@@ -43,9 +43,9 @@ export default function ManageClassStudents() {
 
 	console.log(classData);
 
-	const handleDelete = (id) => {
-		setStudents(students.filter((student) => student.id !== id));
-	};
+	// const handleDelete = (id) => {
+	// 	setStudents(students.filter((student) => student.id !== id));
+	// };
 
 	const navigate = useNavigate();
 	const handleApproveStudent = () => {
@@ -81,11 +81,11 @@ export default function ManageClassStudents() {
 					{classData.students.map((student,index) => (
 						<div key={index} className="manage-class-student-item">
 							<span>{student.fullName}</span>
-							<FontAwesomeIcon
+							{/* <FontAwesomeIcon
 								icon={faTrash}
 								className="manage-class-student-delete-icon"
 								onClick={() => handleDelete(student.id)}
-							/>
+							/> */}
 						</div>
 					))}
 				</div>
