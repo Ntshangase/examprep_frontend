@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ManageUser.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { getAllUser } from "../../Api/Api";
 
@@ -33,7 +33,11 @@ const ManageUser = () => {
 		fetchUsers();
 	}, []);
 
-	console.log(allUsers);
+	console.log(allUsers)
+	const navigate = useNavigate();
+	const handleEditUser = (userId) => {
+		navigate(`/EditUser/${userId}`);
+	}
 
 	if(loadingUsers){
 		return <div>...Loading</div>
@@ -71,7 +75,7 @@ const ManageUser = () => {
 								<p>{user.fullNames}</p>
 								<p>{user.role.name}</p>
 								<div className="actions">
-									<button className="view-btn">👁</button>
+									<button className="view-btn" onClick={() => {handleEditUser(user.id)}} >👁</button>
 									<FontAwesomeIcon icon={faTrash} />
 								</div>
 							</div>
