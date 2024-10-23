@@ -6,6 +6,9 @@ const apiClient = axios.create({
 	timeout: 10000,
 });
 
+//LOGIN RELATED ENDPOINTS
+export const validateLogin = (email,password) => apiClient.post("/api/users/login", email,password);
+
 //expose the (GET,PUT,CREATE,DELETE ) functions to the global application.
 export const getData = (endpoint) => apiClient.get(endpoint);
 export const updateData = (endpoint, courseData) => apiClient.put(endpoint, courseData);
