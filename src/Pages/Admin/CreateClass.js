@@ -209,19 +209,17 @@ export default function CreateClass() {
 							</button>
 						</form>
 					</div>
-					<div className="content-body2">
+					<div className="create-class-content-body2">
 						<div>
-							{" "}
-							{/**no styling */}
 							<img
 								src={`data:image/jpeg;base64,${courseData.image}`}
 								alt={courseData.courseName}
+								className="create-class-image"
 							/>
 							<div>
 								<h3>{courseData.courseName}</h3>
 							</div>
 						</div>
-
 						<button
 							className="create-class-back-buttons"
 							onClick={() => navigate(`/CourseDetails/${courseId}`)}

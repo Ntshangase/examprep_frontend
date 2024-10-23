@@ -6,6 +6,9 @@ const apiClient = axios.create({
 	timeout: 10000,
 });
 
+//LOGIN RELATED ENDPOINTS
+export const validateLogin = (email,password) => apiClient.post("/api/users/login", email,password);
+
 //expose the (GET,PUT,CREATE,DELETE ) functions to the global application.
 export const getData = (endpoint) => apiClient.get(endpoint);
 export const updateData = (endpoint, courseData) => apiClient.put(endpoint, courseData);
@@ -16,9 +19,12 @@ export const createUser = (userData) => apiClient.post("/api/users/register", us
 	'Content-Type': 'multipart/form-data',
 }});
 export const updateUser = (userId, userData) =>
-	apiClient.put(`/users/${userId}`, userData);
-export const deleteUser = (userId) => apiClient.delete(`/users/${userId}`);
+	apiClient.put(`/api/users/update/${userId}`, userData, {headers: {
+		'Content-Type': 'multipart/form-data',
+	}});
+export const deleteUser = (userId) => apiClient.delete(`api/users/delete/${userId}`);
 export const getAllUser = () => apiClient.get("api/users/all");
+export const getUserById = (userId) => apiClient.get(`/api/users/${userId}`);
 export const getAllLectures = () => apiClient.get("/api/users/lecturers");
 
 //COURSE RELATED ENDPOINTS
@@ -35,6 +41,7 @@ export const getClasses = (endpoint) => apiClient.get(endpoint);
 export const getCourseWithClasses = (courseId) => apiClient.get(`/api/courses/classes/${courseId}`);
 export const deleteClass = (endpoint) => apiClient.delete(endpoint);
 export const createClass = (courseId, classData) => apiClient.post(`/api/classes/${courseId}/addClassAndStudents`, classData, {headers: { 'Content-Type': 'multipart/form-data', }});
+export const editClass = (classId,classData) => apiClient.put(`/api/classes/with-students/${classId}`, classData);
 
 //DATA CAPTURE RELAATED ENDPOINTS
 export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData);
