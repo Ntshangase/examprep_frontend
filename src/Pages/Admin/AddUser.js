@@ -48,7 +48,7 @@ function AddUser() {
 
 	const payload = {
 		email: addUser.email,
-		password: generatePassword(12),
+		password: "pass123",
 		title: addUser.title,
 		fullNames: addUser.fullNames,
 		surname: addUser.surname,
@@ -57,16 +57,17 @@ function AddUser() {
 		courseIds: [],
 	};
 
-	function generatePassword(length) {
-		const characters =
-			"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
-		let password = "";
-		for (let i = 0; i < length; i++) {
-			const randomIndex = Math.floor(Math.random() * characters.length);
-			password += characters[randomIndex];
-		}
-		return password;
-	}
+	// For testing pursposes let's mize the password.
+	// function generatePassword(length) {
+	// 	const characters =
+	// 		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+[]{}|;:,.<>?";
+	// 	let password = "";
+	// 	for (let i = 0; i < length; i++) {
+	// 		const randomIndex = Math.floor(Math.random() * characters.length);
+	// 		password += characters[randomIndex];
+	// 	}
+	// 	return password;
+	// }
 
 	const userData = {
 		userDto: JSON.stringify(payload),
