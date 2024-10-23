@@ -62,16 +62,20 @@ export default function EditUser() {
         surname: userSurname,
         contactNumber: userContactNumber,
         role: userRole,
-        //profileImage: "string",
         //courseIds: [ ]
     }
-    
+
+    const updateUserData = {
+        userDetails: JSON.stringify(payload),
+        profileImage: previewAvatar,
+    }
+
     const handleUpdateUser = async (e) => {
         e.preventDefault();
 
         try{
-            //console.log(payload);
-            await updateUser(userId, payload)
+            //console.log(updateUserData);
+            await updateUser(userId, updateUserData)
         }catch(error) {
             console.log(error);
         }
