@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditCourse.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData, updateCourse, deleteData } from "../../API/Api.js";
+import { getData, updateCourse, deleteData } from "../../Api/Api.js";
 
 export default function EditCourse() {
 	const links = [
