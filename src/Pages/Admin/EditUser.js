@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditUser.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData, updateUser, deleteData } from "../../Api/Api";
+import { getData, updateUser, deleteUser } from "../../Api/Api";
 
 export default function EditUser() {
     const links = [
@@ -74,7 +74,7 @@ export default function EditUser() {
     const handleRemoveUser = async () => {
         if (window.confirm("Are you sure you want to remove this user?")) {
             try {
-                await deleteData(`/api/users/${userId}`);
+                await deleteUser(userId);
                 navigate("/ManageUser");
             } catch (error) {
                 console.error("Error removing user:", error);

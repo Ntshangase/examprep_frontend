@@ -17,8 +17,9 @@ export const createUser = (userData) => apiClient.post("/api/users/register", us
 }});
 export const updateUser = (userId, userData) =>
 	apiClient.put(`/users/${userId}`, userData);
-export const deleteUser = (userId) => apiClient.delete(`/users/${userId}`);
+export const deleteUser = (userId) => apiClient.delete(`api/users/delete/${userId}`);
 export const getAllUser = () => apiClient.get("api/users/all");
+export const getUserById = (userId) => apiClient.get(`/api/user/${userId}`);
 export const getAllLectures = () => apiClient.get("/api/users/lecturers");
 
 //COURSE RELATED ENDPOINTS
