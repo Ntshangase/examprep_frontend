@@ -14,14 +14,6 @@ const ManageUser = () => {
 		{ path: "/ManageClass", pathName: "Manage Classes" },
 	];
 
-	const users = [
-		{ name: "John Smith", role: "Lecture", img: "/assets/images.jpeg" },
-		{ name: "John Ngubo", role: "Lecturer", img: "/assets/images.jpeg" },
-		{ name: "Mbali Zulu", role: "Data Capture", img: "/assets/images.jpeg" },
-		{ name: "Sipho Mtshali", role: "Moderator", img: "/assets/images.jpeg" },
-		{ name: "Simmi Zulu", role: "Lecturer", img: "/assets/images.jpeg" },
-		{ name: "Mondli Zulu", role: "Data Capture", img: "/assets/images.jpeg" },
-	];
 	const [allUsers, setAllUsers] = useState();
 	const [loadingUsers, setLoadindUsers] = useState(true);
 
@@ -41,7 +33,7 @@ const ManageUser = () => {
 		fetchUsers();
 	}, []);
 
-	console.log(typeof allUsers); //string i need mappable array!!!
+	console.log(allUsers);
 
 	if(loadingUsers){
 		return <div>...Loading</div>
@@ -72,12 +64,12 @@ const ManageUser = () => {
 				</div>
 
 				<div className="user-grid">
-					{users.map((user, index) => (
+					{allUsers.map((user, index) => (
 						<div key={index} className="user-card">
-							<img src={user.img} alt={user.name} className="profile-pic" />
+							<img src={`data:image/jpeg;base64,${user.profileImage}`} alt={user.fullNames} className="profile-pic" />
 							<div className="user-details">
-								<p>{user.name}</p>
-								<p>{user.role}</p>
+								<p>{user.fullNames}</p>
+								<p>{user.role.name}</p>
 								<div className="actions">
 									<button className="view-btn">👁</button>
 									<FontAwesomeIcon icon={faTrash} />
