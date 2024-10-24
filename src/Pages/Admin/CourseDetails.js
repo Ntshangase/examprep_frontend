@@ -8,7 +8,7 @@ import {
 	faTrash,
 } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
-import { getCourseWithClasses, deleteClass } from "../../Api/Api";
+import { getCourseWithClasses, deleteClass } from "../../API/Api.js";
 import { useParams } from "react-router-dom";
 
 export default function CourseDetails() {

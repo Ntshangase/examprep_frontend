@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './EditClass.css';
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { editClass, getClasses, getAllLectures } from '../../Api/Api';
+import { editClass, getClasses, getAllLectures } from '../../API/Api.js';
 
 export default function EditClass() {
 	const links = [

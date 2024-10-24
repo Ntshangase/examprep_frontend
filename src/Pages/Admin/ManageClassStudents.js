@@ -5,7 +5,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./ManageClassStudents.css";
 import courses from "../../Data/Courses.json";
 import { useNavigate, useParams } from "react-router-dom";
-import { getClasses } from "../../Api/Api";
+import { getClasses } from "../../API/Api.js";
 
 export default function ManageClassStudents() {
 	const links = [

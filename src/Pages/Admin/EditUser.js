@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditUser.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getUserById, deleteUser, updateUser } from "../../Api/Api";
+import { getUserById, deleteUser, updateUser } from "../../API/Api.js";
 
 export default function EditUser() {
     const links = [
