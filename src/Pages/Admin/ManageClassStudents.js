@@ -3,7 +3,6 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./ManageClassStudents.css";
-import courses from "../../Data/Courses.json";
 import { useNavigate, useParams } from "react-router-dom";
 import { getClasses } from "../../Api/Api";
 
@@ -50,14 +49,14 @@ export default function ManageClassStudents() {
 		<div className="manage-class-student-container">
 			<Sidebar links={links} />
 			<div className="manage-class-student-content">
-				<h2>Manage Students</h2>
+				<h2 className="manage-class-student-content-h2">Manage Students</h2>
 				<div className="manage-class-student-course-info">
 					<img
-						src={courses[0].image}
-						alt={classData.className}
+						src={`data:image/jpeg;base64,${classData.course.image}`}
+						alt={classData.course.courseName}
 						className="manage-class-student-course-image"
 					/>
-					<h3>{classData.className}</h3>
+					<h3>{classData.course.courseName}</h3>
 					<button
 						onClick={handleApproveStudent}
 						className="manage-class-student-approve-button"

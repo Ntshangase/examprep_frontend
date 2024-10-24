@@ -11,13 +11,23 @@
 	overflow-y: auto;
 }
 
+.manage-class-student-content-h2{
+	color: var(--color-primary);
+    font-size: 2rem;
+    text-align: center;
+}
+
 .manage-class-student-course-image {
 	width: 150px;
 	height: 150px;
 	object-fit: cover;
 	border-radius: 10px;
+	padding: 10px;
 	margin-bottom: 20px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	transition: box-shadow 0.3s ease;
 }
+
 
 .manage-class-student-approve-button {
 	background-color: var(--color-primary);
@@ -70,18 +80,18 @@
 /* Student name text styling */
 .manage-class-student-item span {
 	font-size: 1.2rem;
-	color: var(--text-dark); /* Text color for better contrast */
-	font-weight: 500; /* Slightly bolder for readability */
+	color: var(--text-dark);
+	font-weight: 500;
 }
 
 /* Delete icon styling */
 .manage-class-student-delete-icon {
-	color: var(--danger-color); /* Red color to represent delete */
+	color: var(--danger-color);
 	cursor: pointer;
-	font-size: 1.2rem; /* Adjust icon size */
+	font-size: 1.2rem;
 	transition: color 0.3s ease;
 }
 
 .manage-class-student-delete-icon:hover {
-	color: darkred; /* Darker color on hover */
+	color: darkred;
 }
