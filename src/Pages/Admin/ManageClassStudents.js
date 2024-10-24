@@ -68,12 +68,12 @@ export default function ManageClassStudents() {
 						className="manage-class-student-course-image"
 					/>
 					<h3>{classData.className}</h3>
-					<button
+					{/* <button
 						onClick={handleApproveStudent}
 						className="manage-class-student-approve-button"
 					>
 						View Students to be Approved
-					</button>
+					</button> */}
 				</div>
 				<div className="manage-class-student-list">
 					{" "}
