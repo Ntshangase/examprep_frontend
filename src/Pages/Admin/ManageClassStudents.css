@@ -8,6 +8,7 @@
 	flex: 1;
 	flex-direction: column;
 	padding: 20px;
+	overflow-y: auto;
 }
 
 .manage-class-student-course-image {
@@ -37,16 +38,16 @@
 .manage-class-student-list {
 	display: flex;
 	flex-direction: column;
-	gap: 15px; /* Adds spacing between each student item */
+	gap: 15px;
 	padding: 20px;
 	background-color: var(
 		--background-light
-	); /* Background to differentiate the list */
+	);
 	border-radius: 10px;
-	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow for modern look */
-	max-height: 400px; /* Limit height for scrolling */
-	overflow-y: auto; /* Adds scroll if list is too long */
-	margin-bottom: 20px; /* Spacing below the list */
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	max-height: 400px;
+	overflow-y: auto;
+	margin-bottom: 20px;
 }
 
 /* Student item styling */

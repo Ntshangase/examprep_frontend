@@ -15,12 +15,6 @@ export default function ManageClassStudents() {
 		{ path: "/ManageClass", pathName: "Manage Classes" },
 	];
 
-	// const [students, setStudents] = useState([
-	// 	{ id: 1, name: "Simphiwe Ntshangasee" },
-	// 	{ id: 2, name: "Bravery  Mayor" },
-	// 	{ id: 3, name: "Branvado Ngobeni " },
-	// ]);
-
 	const { classesId } = useParams();
 	const [classData, setClassData] = useState();
 	const [loadingState, setLoadingState] = useState(true);
@@ -42,10 +36,6 @@ export default function ManageClassStudents() {
 	},[classesId]);
 
 	console.log(classData);
-
-	// const handleDelete = (id) => {
-	// 	setStudents(students.filter((student) => student.id !== id));
-	// };
 
 	const navigate = useNavigate();
 	const handleApproveStudent = () => {
@@ -81,7 +71,11 @@ export default function ManageClassStudents() {
 					<h2>Enrolled Students</h2>
 					{classData.students.map((student,index) => (
 						<div key={index} className="manage-class-student-item">
+							<div>
 							<span>{student.fullName}</span>
+							<h4>{student.email}</h4>
+							<p>{student.contactNumber}</p>
+							</div>
 							{/* <FontAwesomeIcon
 								icon={faTrash}
 								className="manage-class-student-delete-icon"
