@@ -7,7 +7,8 @@ const apiClient = axios.create({
 });
 
 //LOGIN RELATED ENDPOINTS
-export const validateLogin = (email,password) => apiClient.post("/api/users/login", email,password);
+export const validateLogin = (email, password) => apiClient.post(`/api/users/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+//`login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
 
 //expose the (GET,PUT,CREATE,DELETE ) functions to the global application.
 export const getData = (endpoint) => apiClient.get(endpoint);

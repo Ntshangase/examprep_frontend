@@ -1,24 +1,37 @@
 import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
+import { validateLogin } from "../../Api/Api";
 
 function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const [error, setError] = useState(""); // State to hold error messages
+	const navigate = useNavigate();
 
-  const navigate = useNavigate();
-
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
-		// Handle login logic
-		console.log("Email:", email);
-		console.log("Password:", password);
+
+		try {
+			const response = await validateLogin(email,password);
+			console.log(response);
+			if (response.status === 200) {
+				console.log("Login successful:", response.data);
+				navigate("/Home");
+			}
+		} catch (error) {
+			// Handle error (e.g., invalid credentials)
+			setError("Invalid email or password. Please try again.");
+			console.error(error);
+		}
 	};
+
 	return (
 		<div className="login-container">
 			<div className="login-div">
 				<h2 className="login-h2">Welcome Back</h2>
 				<form className="login-form" onSubmit={handleSubmit}>
+					{error && <div className="error-message">{error}</div>}
 					<div className="login-input-group">
 						<label htmlFor="email">Email Address</label>
 						<input
@@ -46,7 +59,7 @@ function Login() {
 					<div className="login-forgot-password">
 						<a href="/ForgotPassword">Forgot Password?</a>
 					</div>
-					<button className="login-button" onClick={() => navigate("/Home")}>
+					<button className="login-button" type="submit">
 						Continue
 					</button>
 					<div className="login-signup">
