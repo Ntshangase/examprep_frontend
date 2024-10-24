@@ -72,7 +72,7 @@ export default function ManageClassStudents() {
 					{classData.students.map((student,index) => (
 						<div key={index} className="manage-class-student-item">
 							<div>
-							<span>{student.fullName}</span>
+							<span>{student.fullName}{" "}{student.surname}</span>
 							<h4>{student.email}</h4>
 							<p>{student.contactNumber}</p>
 							</div>
