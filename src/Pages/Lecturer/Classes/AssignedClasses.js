@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from './AssignedClasses.module.css';
+import { getLectureClasses } from "../../../Api/Api";
 
 const AssignedClasses = () => {
 
@@ -10,7 +11,32 @@ const AssignedClasses = () => {
 		{path: "/AddStudent", pathName: "Add Student"}
 	]
 
-    const navigate = useNavigate(); 
+    const navigate = useNavigate();
+
+    const [loadingState, setLoadingState] = useState(true);
+	const [lectureData, setLectureData] = useState();
+
+	useEffect(() => {
+		const fetchLecture = async () => {
+
+			try {
+				const response = await getLectureClasses(1);	//using one for test data
+				setLectureData(response.data)
+			} catch (error) {
+				console.log(error);
+			}finally {
+				setLoadingState(false);
+			}
+
+		}
+		fetchLecture();
+	},[]);
+
+	console.log(lectureData);
+
+	if(loadingState) {
+		return <div>...Loading</div>
+	}
 
     const classes = [
         {
@@ -30,7 +56,7 @@ const AssignedClasses = () => {
         }
         ,
         {
-            id: 3,
+            id: 4,
             name: "Intake October 2024",
             description: "Click to view details"
         }

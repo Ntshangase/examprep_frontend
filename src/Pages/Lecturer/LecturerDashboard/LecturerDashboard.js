@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import CourseCard from "../../../Components/CourseCard/CourseCard";
 import "./LecturerDashboard.css";
-import courses from "../../../Data/Courses.json"; // Corrected path
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import { getLectureClasses } from "../../../Api/Api";
 
@@ -44,7 +43,7 @@ const LecturerDashboard = () => {
         <div className="lecture-dashboard-courses-grid">
 					{lectureData.map((course) => (
 						<CourseCard
-							key={course.course.courseId}
+							key={course.classId}
 							id={course.id}
 							title={course.course.courseName}
 							image={`data:image/jpeg;base64,${course.course.image}`}
