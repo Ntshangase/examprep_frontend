@@ -14,10 +14,32 @@ function Login() {
 
 		try {
 			const response = await validateLogin(email,password);
-			console.log(response);
+			//console.log(response);
 			if (response.status === 200) {
-				console.log("Login successful:", response.data);
-				navigate("/Home");
+				console.log("Login successful");
+				const role  = response.data.role; // Extracting user role from the response
+				console.log(role);
+
+				// Redirect based on role
+				switch (role) {
+					case "ADMIN":
+						navigate("/AdminLanding");
+						break;
+					case "LECTURER":
+						navigate("/LecturerDashboard");
+						break;
+					case "DATA CAPTURE":
+						navigate("/DataCaptureDashboard");
+						break;
+					case "MODERATOR":
+						navigate("/ModeratorDashboard");
+						break;
+					case "STUDENT":
+						navigate("/StudentDashboards");
+						break;
+					default:
+						navigate("/Home"); // Default fallback
+				}
 			}
 		} catch (error) {
 			// Handle error (e.g., invalid credentials)

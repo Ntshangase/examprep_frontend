@@ -1,9 +1,10 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from "./ViewClass.module.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
+import { getClassDetails } from "../../../Api/Api";
 
 const ViewClass = () => {
 
@@ -13,8 +14,30 @@ const ViewClass = () => {
 	]
 
 	const navigate = useNavigate();
-	const handleStudentsClick = () => {
-		navigate("/ViewStudents");
+	const { classId } = useParams();
+	const [classData, setClassData] = useState();
+	const [loadingState, setLoadingState] = useState(true);
+
+
+	useEffect(() => {
+		const fetchClassData = async () => {
+
+			try {
+				const response = await getClassDetails(classId);
+				setClassData(response.data);
+			} catch (error) {
+				console.log(error);
+			}finally{
+				setLoadingState(false);
+			}
+		};
+		fetchClassData();
+	},[classId]);
+
+	console.log(classData);
+
+	const handleStudentsClick = (x) => {
+		navigate(`/ViewStudents/${x}`);
 	};
 	const handleButtonClick = () => {
 		navigate("/SubmittedTests");
@@ -26,6 +49,10 @@ const ViewClass = () => {
 		navigate("/TestGeneratePage");
 	};
 
+	if(loadingState){
+		return <div>...Loading</div>
+	}
+
 	return (
 		<div className={styles.classDetails}>
 			<div className={styles.dashboardContent}>
@@ -34,20 +61,20 @@ const ViewClass = () => {
 					{/* Class Info Banner */}
 					<div className={styles.banner}>
 						<img
-							src="/assets/aws patrict.png"
+							src={`data:image/jpeg;base64,${classData.course.image}`}
 							alt="Architecting on AWS"
 							className={styles.courseImage}
 						/>
 						<div className={styles.view_course_info}>
-							<h2 className={styles.courseTitle}>JuneIntake2024</h2>
-							<p>Duration: 01/06/2024 - 01/09/2024</p>
+							<h2 className={styles.courseTitle}>{classData.className}</h2>
+							<p>Duration: {classData.startDate} - {classData.endDate}</p>
 							<p>
 								Enrolled Students:
 								<button
-									onClick={handleStudentsClick}
+									onClick={() => {handleStudentsClick(classId)}}
 									className={styles.studentsButton}
 								>
-									23
+									{classData.students.length}
 								</button>
 							</p>
 							<p>
