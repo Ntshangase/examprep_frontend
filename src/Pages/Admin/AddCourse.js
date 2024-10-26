@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./AddCourse.css";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import { createCourse } from "../../Api/Api.js";
+import { createCourse } from "../../Api/Api";
 
 export default function AddCourse() {
 	const links = [

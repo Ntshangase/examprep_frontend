@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./ManageUser.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { getAllUser, deleteUser } from "../../Api/Api";
 
 const ManageUser = () => {
 	const links = [
@@ -13,15 +14,43 @@ const ManageUser = () => {
 		{ path: "/ManageClass", pathName: "Manage Classes" },
 	];
 
-	const users = [
-		{ name: "John Smith", role: "Lecture", img: "/assets/images.jpeg" },
-		{ name: "John Ngubo", role: "Lecturer", img: "/assets/images.jpeg" },
-		{ name: "Mbali Zulu", role: "Data Capture", img: "/assets/images.jpeg" },
-		{ name: "Sipho Mtshali", role: "Moderator", img: "/assets/images.jpeg" },
-		{ name: "Simmi Zulu", role: "Lecturer", img: "/assets/images.jpeg" },
-		{ name: "Mondli Zulu", role: "Data Capture", img: "/assets/images.jpeg" },
-	];
+	const [allUsers, setAllUsers] = useState();
+	const [loadingUsers, setLoadindUsers] = useState(true);
 
+	useEffect( ()  =>  {
+
+		const fetchUsers = async () => {
+
+			try{
+				const response = await getAllUser();
+				setAllUsers(response.data);
+			}catch(error) {
+				console.log(error.message);
+			}finally{
+				setLoadindUsers(false);
+			}
+		}
+		fetchUsers();
+	}, []);
+
+	const navigate = useNavigate();
+	const handleEditUser = (userId) => {
+		navigate(`/EditUser/${userId}`);
+	}
+	const handleRemoveUser = async (userId) => {
+        if (window.confirm("Are you sure you want to remove this user?")) {
+            try {
+                await deleteUser(userId);
+                navigate("/ManageUser");
+            } catch (error) {
+                console.error("Error removing user:", error);
+            }
+        }
+    };
+
+	if(loadingUsers){
+		return <div>...Loading</div>
+	}
 	return (
 		<div className="manage-user-admin-container">
 			<Sidebar links={links} />
@@ -48,15 +77,15 @@ const ManageUser = () => {
 				</div>
 
 				<div className="user-grid">
-					{users.map((user, index) => (
+					{allUsers.map((user, index) => (
 						<div key={index} className="user-card">
-							<img src={user.img} alt={user.name} className="profile-pic" />
+							<img src={`data:image/jpeg;base64,${user.profileImage}`} alt={user.fullNames} className="profile-pic" />
 							<div className="user-details">
-								<p>{user.name}</p>
+								<p>{user.fullNames}</p>
 								<p>{user.role}</p>
 								<div className="actions">
-									<button className="view-btn">👁</button>
-									<FontAwesomeIcon icon={faTrash} />
+									<button className="view-btn" onClick={() => {handleEditUser(user.id)}} >👁</button>
+									<FontAwesomeIcon icon={faTrash} onClick={() => {handleRemoveUser(user.id)}} />
 								</div>
 							</div>
 						</div>

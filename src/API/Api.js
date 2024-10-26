@@ -1,14 +1,14 @@
 import axios from "axios";
 
-// Create an Axios instance with default settings (base URL, headers)
+// Create an Axios instance with default settings (base URL)
 const apiClient = axios.create({
 	baseURL: "http://localhost:8080",
 	timeout: 10000,
-	// headers: {		//important when sending data to backend.
-	// 	'Accept': 'application/json'
-	// }
 });
 
+//LOGIN RELATED ENDPOINTS
+export const validateLogin = (email, password) => apiClient.post(`/api/users/login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`);
+//`login?email=${encodeURIComponent(email)}&password=${encodeURIComponent(password)}`
 
 //expose the (GET,PUT,CREATE,DELETE ) functions to the global application.
 export const getData = (endpoint) => apiClient.get(endpoint);
@@ -16,16 +16,37 @@ export const updateData = (endpoint, courseData) => apiClient.put(endpoint, cour
 export const deleteData = (endpoint) => apiClient.delete(endpoint);
 
 //User related ENDPOINTS
-export const createUser = (userData) => apiClient.post("/api/users/register", userData);
+export const createUser = (userData) => apiClient.post("/api/users/register", userData, {headers: {
+	'Content-Type': 'multipart/form-data',
+}});
 export const updateUser = (userId, userData) =>
-	apiClient.put(`/users/${userId}`, userData);
-export const deleteUser = (userId) => apiClient.delete(`/users/${userId}`);
+	apiClient.put(`/api/users/update/${userId}`, userData, {headers: {
+		'Content-Type': 'multipart/form-data',
+	}});
+export const deleteUser = (userId) => apiClient.delete(`api/users/delete/${userId}`);
+export const getAllUser = () => apiClient.get("api/users/all");
+export const getUserById = (userId) => apiClient.get(`/api/users/${userId}`);
+export const getAllLectures = () => apiClient.get("/api/users/lecturers");
 
 //COURSE RELATED ENDPOINTS
 export const createCourse = (courseData) => apiClient.post("/api/courses/saveCourse", courseData,{headers: {
       'Content-Type': 'multipart/form-data',
     }});
-export const getCourse = (endpoint) => apiClient.get(endpoint);
+export const getCourse = () => apiClient.get("/api/courses");
 export const updateCourse = (endpoint, courseData) => apiClient.put(endpoint, courseData, {headers: {
 	'Content-Type': 'multipart/form-data',
 }})
+
+//CLASS RELATED ENDPOINTS
+export const getClasses = (endpoint) => apiClient.get(endpoint);
+export const getCourseWithClasses = (courseId) => apiClient.get(`/api/courses/classes/${courseId}`);
+export const deleteClass = (endpoint) => apiClient.delete(endpoint);
+export const createClass = (courseId, classData) => apiClient.post(`/api/classes/${courseId}/addClassAndStudents`, classData, {headers: { 'Content-Type': 'multipart/form-data', }});
+export const editClass = (classId,classData) => apiClient.put(`/api/classes/with-students/${classId}`, classData);
+export const getClassDetails = (classId) => apiClient.get(`/api/classes/with-students/${classId}`);
+
+//LECTURE RELATED ENDPOINTS
+export const getLectureClasses = (lecturerId) => apiClient.get(`/api/classes/${lecturerId}/details`);
+
+//DATA CAPTURE RELAATED ENDPOINTS
+export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData);

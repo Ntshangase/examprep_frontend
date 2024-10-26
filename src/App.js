@@ -1,4 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
+import React from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import React from 'react';
@@ -53,6 +53,7 @@ import TestResults from "./Pages/Student/Enrolled/TestResults";
 import ScheduledTestReview from "./Pages/Student/Enrolled/ScheduledTestReview";
 import ManageClassStudents from "./Pages/Admin/ManageClassStudents";
 import FlaggedQuestionView from "./Pages/Moderator/FlaggedQuestionView";
+import EditUser from "./Pages/Admin/EditUser";
 
 function App() {
 	return (
@@ -125,9 +126,9 @@ function App() {
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
 				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
 				<Route path="/AddCourse" element={<AddCourse />} />
-				<Route path="/CourseDetails" element={<CourseDetails />} />
-				<Route path="/CreateClass" element={<CreateClass />} />
-				<Route path="/EditClass" element={<EditClass />} />
+				<Route path="/CourseDetails/:courseId" element={<CourseDetails />} />
+				<Route path="/CreateClass/:courseId" element={<CreateClass />} />
+				<Route path="/EditClass/:classesId" element={<EditClass />} />
 				<Route path="/ManageClass" element={<ManageClass />} />
 				<Route path="/EditCourse/:courseId" element={<EditCourse />} />
 				<Route path="/ManageStudents" element={<ManageStudents />} />
@@ -137,9 +138,9 @@ function App() {
 				<Route path="/ManageCourse" element={<ManageCourse />} />
 				<Route path="/StudentsSubmitted/:testId" element={<StudentsSubmitted />} />
 				<Route path="/StudPerfom" element={<StudPerfom />} />
-				<Route path="/viewclass/:courseId" element={<ViewClass />} />
-				<Route path="/ViewStudents" element={<ViewStudents />} />
-				<Route path="/AssignedClasses/:courseId" element={<AssignedClasses />} />
+				<Route path="/viewclass/:classId" element={<ViewClass />} />
+				<Route path="/ViewStudents/:classId" element={<ViewStudents />} />
+				<Route path="/AssignedClasses/:courseIndex" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
 				<Route path="/IndStudentWriteTest" element={<IndStudentWriteTest />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
@@ -148,7 +149,7 @@ function App() {
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 				<Route path="/TestReview" element={<TestReview />} />
 				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
-				<Route path="/AddQuestions" element={<AddQuestions />} />
+				<Route path="/AddQuestions/:courseId" element={<AddQuestions />} />
 				<Route path="/UploadDumps" element={<UploadDumps />} />
 				<Route path="/AddUser" element={<AddUser />} />
 				<Route path="/StudentProfile" element={<StudentProfile />} />
@@ -158,8 +159,9 @@ function App() {
 				<Route path="/TakeTest" element={<TakeTest />} />
 				<Route path="/TestResults" element={<TestResults />} />
 				<Route path="/ScheduledTestReview" element={<ScheduledTestReview />} />
-				<Route path="/ManageClassStudents" element={<ManageClassStudents />} />
+				<Route path="/ManageClassStudents/:classesId" element={<ManageClassStudents />} />
 				<Route path="/FlaggedQuestionView" element={<FlaggedQuestionView />} />
+				<Route path="/EditUser/:userId" element={<EditUser/>} />
 			</Routes>
 		</Router>
 

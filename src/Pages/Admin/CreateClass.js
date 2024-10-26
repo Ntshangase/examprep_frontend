@@ -1,43 +1,99 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./CreateClass.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
-import courses from "../../Data/Courses.json";
+import { useParams } from "react-router-dom";
+import {
+	createClass,
+	getAllLectures,
+	getCourseWithClasses,
+} from "../../Api/Api";
 
 export default function CreateClass() {
+	const links = [
+		{ path: "/AdminLanding", pathName: "Home" },
+		{ path: "/ManageUser", pathName: "Manage Users" },
+		{ path: "/ManageCourse", pathName: "Manage Courses" },
+		{ path: "/ManageClass", pathName: "Manage Classes" },
+	];
+
 	// State for form inputs
 	const [className, setClassName] = useState("");
-	const [lecturerId, setLecturerId] = useState("");
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
 	const [classDescription, setClassDescription] = useState("");
-	const [lecturerSearch, setLecturerSearch] = useState("");
-	const [lecturers, setLecturers] = useState([]);
 	const [file, setFile] = useState(null);
+	const [courseData, setCourseData] = useState();
+	const [loadingState, setLoadingState] = useState(true);
+	const [lectureList, setLectureList] = useState([]);
+	const [lecturer, setLecturer] = useState("");
+	const [lectureId, setLectureId] = useState();
 
-	const navigate = useNavigate(); //for multiple use purposes
+	const navigate = useNavigate();
+	const { courseId } = useParams();
 
-	const handleSubmit = (e) => {
+	useEffect(() => {
+		const fetchCourseDetails = async () => {
+			try {
+				const response = await getCourseWithClasses(courseId);
+				setCourseData(response.data);
+			} catch (error) {
+				console.log(error.message); //everytime you work with API calls you need to try-catch.
+			} finally {
+				setLoadingState(false);
+			}
+		};
+		fetchCourseDetails();
+	}, [courseId]);
+
+	const fetchAllLectures = async () => {
+		try {
+			const response = await getAllLectures();
+			setLectureList(response.data);
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+	useEffect(() => {
+		if (lecturer.length > 1) {
+			const delayApiCallWithEveryKey = setTimeout(() => {
+				fetchAllLectures();
+			}, 500);
+
+			return () => clearTimeout(delayApiCallWithEveryKey);
+		}
+	}, [lecturer]);
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 		if (
 			!className ||
-			!lecturerId ||
 			!startDate ||
 			!endDate ||
-			!classDescription 	//skipped !file check since we want to be able to create a class without any students.
-		)
+			!classDescription //skipped !file check since we want to be able to create a class without any students.
+		);
 
-		// Clear input fields after form submission
-		setClassName("");
-		setLecturerId("");
-		setStartDate("");
-		setEndDate("");
-		setClassDescription("");
-		setLecturerSearch("");
-		setFile(file);
-		document.getElementById("fileUpload").value = "";
+		const payload = {
+			className: className,
+			classDescription: classDescription,
+			startDate: startDate,
+			endDate: endDate,
+			userId: lectureId,
+		};
 
-		//navigate("/Home");
+		const userData = {
+			//courseId:courseId,
+			classDetails: JSON.stringify(payload),
+			file: file,
+		};
+
+		try {
+			await createClass(courseId, userData);
+			alert("class succefully created..");
+			//navigate(`/CourseDetails/${courseId}`);
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const handleFileChange = (e) => {
@@ -46,33 +102,18 @@ export default function CreateClass() {
 		}
 	};
 
-	const handleLecturerSearch = (e) => {
-		setLecturerSearch(e.target.value);
-		// You can implement actual API call or filtering logic here
-		// For now, we will use mock data to demonstrate functionality
-		const allLecturers = [
-			{ name: "John Doe" },
-			{ name: "Jane Smith" },
-			{ name: "Alice Johnson" },
-		];
-		const filteredLecturers = allLecturers.filter((lecturer) =>
-			lecturer.name.toLowerCase().includes(e.target.value.toLowerCase())
-		);
-		setLecturers(filteredLecturers);
-	};
+	const getTodayDate = () => {
+		const today = new Date();
+		const year = today.getFullYear();
+		const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so +1
+		const day = String(today.getDate()).padStart(2, '0');
+		return `${year}-${month}-${day}`;
+	  };
 
-	const handleLecturerSelect = (lecturer) => {
-		setLecturerId(lecturer.id);
-		setLecturerSearch(lecturer.name); // Set the search input to the selected lecturer's name
-		setLecturers([]); // Clear the list after selection
-	};
 
-	const links = [
-		{ path: "/AdminLanding", pathName: "Home" },
-		{ path: "/ManageUser", pathName: "Manage Users" },
-		{ path: "/ManageCourse", pathName: "Manage Courses" },
-		{ path: "/ManageClass", pathName: "Manage Classes" },
-	];
+	if (loadingState) {
+		return <div>...Loading</div>;
+	}
 
 	return (
 		<div className="create-class-container">
@@ -99,19 +140,23 @@ export default function CreateClass() {
 								<input
 									type="text"
 									id="lecturer"
-									value={lecturerSearch}
-									onChange={handleLecturerSearch}
-									placeholder="Search by Lecturer ID or Name"
+									value={lecturer}
+									onChange={(e) => setLecturer(e.target.value)}
+									placeholder="Search by Lecturer Name"
 									required
 								/>
-								{lecturers.length > 0 && (
+								{lectureList.length > 0 && (
 									<ul className="lecturer-suggestions">
-										{lecturers.map((lecturer) => (
+										{lectureList.map((lecture) => (
 											<li
-												key={lecturer.id}
-												onClick={() => handleLecturerSelect(lecturer)}
+												key={lecture.id}
+												onClick={() => {
+													setLecturer(lecture.fullNames);
+													setLectureId(lecture.id);
+													setLectureList([]);
+												}}
 											>
-												{lecturer.name} (ID: {lecturer.id})
+												{lecture.fullNames}
 											</li>
 										))}
 									</ul>
@@ -133,6 +178,7 @@ export default function CreateClass() {
 								<input
 									type="date"
 									id="startDate"
+									min={getTodayDate()}
 									value={startDate}
 									onChange={(e) => setStartDate(e.target.value)}
 									required
@@ -149,8 +195,6 @@ export default function CreateClass() {
 									required
 								/>
 							</div>
-
-							{/* File Upload Input */}
 							<div className="create-class-form-group">
 								<label htmlFor="fileUpload">Upload Student from file:</label>
 								<input
@@ -160,23 +204,28 @@ export default function CreateClass() {
 									required
 								/>
 							</div>
-							{/* Submit Button */}
 							<button type="submit" className="create-class-submit-button">
 								Create Class
 							</button>
 						</form>
 					</div>
-					<div className="content-body2">
+					<div className="create-class-content-body2">
 						<div>
-							{" "}
-							{/**no styling */}
-							<img src={courses[0].image} alt={courses[0].title} />
+							<img
+								src={`data:image/jpeg;base64,${courseData.image}`}
+								alt={courseData.courseName}
+								className="create-class-image"
+							/>
 							<div>
-								<h3>{courses[0].title}</h3>
+								<h3>{courseData.courseName}</h3>
 							</div>
 						</div>
-
-						<button className="create-class-back-buttons" onClick={() => navigate("/CourseDetails")}>Back</button>
+						<button
+							className="create-class-back-buttons"
+							onClick={() => navigate(`/CourseDetails/${courseId}`)}
+						>
+							Back
+						</button>
 					</div>
 				</div>
 			</div>

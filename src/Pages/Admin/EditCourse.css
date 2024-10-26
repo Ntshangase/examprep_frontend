@@ -1,11 +1,10 @@
-/* Container */
+
 .edit-course-container {
 	display: flex;
 	width: 100%;
 	min-height: 100vh;
 }
 
-/* Main content wrapper */
 .edit-course-wrapper {
 	flex-grow: 1;
 	padding: 2rem;
@@ -15,14 +14,12 @@
 	align-items: center;
 }
 
-/* Header */
 .edit-course-header {
 	font-size: 2rem;
 	margin-bottom: 1.5rem;
 	color: #007bff;
 }
 
-/* Form layout */
 .edit-course-form {
 	display: flex;
 	width: 100%;
@@ -33,7 +30,6 @@
 	overflow-y: scroll;
 }
 
-/* Left and right column */
 .edit-course-right {
 	width: 50%;
 	padding: 2rem;
@@ -47,7 +43,6 @@
 	flex-direction: column;
 }
 
-/* Input group styling */
 .edit-course-input-group {
 	margin-bottom: 1.5rem;
 }
@@ -72,68 +67,42 @@
 	background-color: #e9ecef;
 }
 
-/* Domain styling */
 .edit-course-domain-list {
-	display: flex;
-	flex-direction: column;
-	gap: 10px;
+	margin-bottom: 30px;
 }
 
 .edit-course-domain-item {
-	display: flex;
-	flex-direction: row;
-	gap: 1rem;
-	align-items: center;
-	overflow-y: scroll;
-	border-bottom: 0.15rem solid black;
+	background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 .edit-course-make-row {
 	display: flex;
-	flex-direction: row;
+    justify-content: space-between;
+	margin-bottom: 10px;
+}
+.edit-course-domain-input {
+	flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+.edit-course-topic-input {
+	width: 90%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
 }
 .edit-course-topic-list {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
+	margin-top: 15px;
+    padding-left: 15px;
 }
 
-.edit-course-domain {
-	background-color: #e9ecef;
-	padding: 0.5rem 1rem;
-	border-radius: 20px;
-	font-size: 0.9rem;
-	color: #495057;
-}
-
-.edit-course-remove-domain {
-	background: none;
-	border: none;
-	font-size: 1.5rem;
-	color: #dc3545;
-	cursor: pointer;
-	margin-left: 10px;
-}
-
-.edit-course-add-domain {
-	display: flex;
-	gap: 10px;
-	margin-top: 10px;
-}
-
-.edit-course-add-button {
-	background-color: #007bff;
-	color: white;
-	border: none;
-	padding: 0.6rem 1.2rem;
-	border-radius: 5px;
-	cursor: pointer;
-}
-
-.edit-course-add-button:hover {
-	background-color: #0056b3;
-}
-
-/* Image Upload */
 .edit-course-image-upload {
 	display: flex;
 	flex-direction: column;
@@ -141,13 +110,6 @@
 	margin-bottom: 2rem;
 }
 .edit-course-image-preview {
-	width: 150px;
-	height: 150px;
-	object-fit: cover;
-	margin-bottom: 1rem;
-}
-
-.edit-course-image {
 	width: 150px;
 	height: 150px;
 	object-fit: cover;
@@ -184,53 +146,8 @@
 	background-color: #c82333;
 }
 
-/* Actions (Update & Remove) */
-.edit-course-actions {
+.edit-course-buttons-div {
 	display: flex;
 	flex-direction: column;
 	gap: 1rem;
-}
-
-.course-domain-container {
-    margin-bottom: 30px; /* Space between domain containers */
-}
-
-.course-domain-item {
-    background-color: #ffffff; /* White background for each domain */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 8px; /* Rounded corners */
-    padding: 15px; /* Padding for inner spacing */
-    margin-bottom: 20px; /* Space between domains */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-}
-
-.domain-input-row {
-    display: flex; /* Flex for alignment */
-    justify-content: space-between; /* Space between input and any buttons */
-}
-
-.domain-input {
-    flex-grow: 1; /* Expand to fill available space */
-    padding: 10px; /* Padding inside input */
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 14px; /* Font size */
-}
-
-.topic-list-container {
-    margin-top: 15px; /* Space above topic list */
-    padding-left: 15px; /* Indent for topics */
-}
-
-.topic-input-row {
-    display: flex; /* Flex for alignment */
-    margin-bottom: 10px; /* Space between topic inputs */
-}
-
-.topic-input {
-    width: 90%; /* Full width for topic inputs */
-    padding: 10px; /* Padding inside input */
-    border: 1px solid #ccc; /* Border color */
-    border-radius: 4px; /* Rounded corners */
-    font-size: 14px; /* Font size */
 }

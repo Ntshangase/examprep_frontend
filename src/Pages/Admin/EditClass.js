@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './EditClass.css';
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
+import { editClass, getClasses, getAllLectures } from '../../Api/Api';
 
 export default function EditClass() {
 	const links = [
@@ -12,16 +13,70 @@ export default function EditClass() {
 	]
 
 	// State for form inputs
-	const [courseName] = useState("AWS Solutions Architect"); // Read-only course name
-	const [className] = useState("June Intake"); // Read-only class name
-	const [lecturer, setLecturer] = useState(" Dr. J. Jumbo"); // Searchable Instructor
-	const [description, setDescription] = useState(""); // New state for edit description
+	const [courseName, setCourseName] = useState("");
+	const [className, setClassName] = useState("");
+	const [lecturer, setLecturer] = useState("");
+	const [description, setDescription] = useState("");
 	const [startDate, setStartDate] = useState("");
 	const [endDate, setEndDate] = useState("");
+	const [courseId, setCourseId] = useState();
+	const [loadingState, setLoadingState] = useState();
+	const [lectureList, setLectureList] = useState([]);
+	const [lectureId, setLectureId] = useState();
+	const {classesId} = useParams();
+	const navigate = useNavigate();
 
-	const navigate = useNavigate(); // for multiple use purposes
+	useEffect(() => {
+		const fetchClassData = async () => {
 
-	const handleSubmit = (e) => {
+			try{
+				const response = await getClasses(`/api/classes/with-students/${classesId}`);
+
+				//prefill form
+				setCourseName(response.data.course.courseName);
+				setClassName(response.data.className);
+				setLecturer(response.data.lecturer.fullName)
+				setDescription(response.data.classDescription);
+				setStartDate(response.data.startDate);
+				setEndDate(response.data.endDate);
+				setCourseId(response.data.course.courseId)
+			}catch(error){
+				console.log(error.message);
+			}finally{
+				setLoadingState(false);
+			}
+		};
+		fetchClassData();
+	}, [classesId]);
+
+	const payload = {
+		className: className,
+  		classDescription: description,
+  		startDate: startDate,
+  		endDate: endDate,
+		lecturerId: lectureId,
+	}
+
+	const fetchAllLectures = async () => {
+		try {
+			const response = await getAllLectures();
+			setLectureList(response.data);
+		} catch (error) {
+			console.log(error.message);
+		}
+	};
+
+	useEffect(() => {
+		if (lecturer.length < 2) {
+			const delayApiCallWithEveryKey = setTimeout(() => {
+				fetchAllLectures();
+			}, 500);
+
+			return () => clearTimeout(delayApiCallWithEveryKey);
+		}
+	}, [lecturer]);
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
 
 		// Form validation (simple check if fields are not empty)
@@ -30,22 +85,27 @@ export default function EditClass() {
 			return;
 		}
 
-		// Clear input fields after form submission
-		setLecturer("");
-		setDescription(""); // Clear description
-		setStartDate("");
-		setEndDate("");
+		try{
+			await editClass(classesId,payload);
+		}catch(error){
+			console.log(error.message);
+		}
 
-		//alert("Form submitted successfully!");
+		alert("Form submitted successfully!");
+		navigate(`/CourseDetails/${courseId}`);
 	};
 
+	if(loadingState){
+		return <div>...Loading</div>;
+	}
+
 	return (
-		<div className="edit-course-container">
+		<div className="edit-class-container">
 			<Sidebar links={links}/>
-			<div className="edit-course-content">
-				<h2>Edit Class</h2>
-				<div className="edit-course-content-body">
-					<div className="content-body-half1">
+			<div className="edit-class-content">
+				<h2 className='edit-class-content h2'>Edit Class</h2>
+				<div className="edit-class-content-body">
+					<div className="edit-class-content-body-half1">
 						<form className='edit-class-form' onSubmit={handleSubmit}>
 							{/* Course Name (Read-only) */}
 							<div className="edit-class-form-group">
@@ -55,17 +115,17 @@ export default function EditClass() {
 									id="courseName"
 									value={courseName}
 									readOnly
-									className="read-only-input"
+									className="edit-class-read-only-input"
 								/>
 							</div>
 
-							{/* Class Name (Read-only) */}
 							<div className="edit-class-form-group">
 								<label htmlFor="className">Class Name:</label>
 								<input
 									type="text"
 									id="className"
 									value={className}
+									onChange={(e) => setClassName(e.target.value)}
 								/>
 							</div>
 
@@ -77,9 +137,25 @@ export default function EditClass() {
 									id="lecturer"
 									value={lecturer}
 									onChange={(e) => setLecturer(e.target.value)}
+									placeholder="Search by Lecturer Name"
 									required
-									className="search-input"
 								/>
+								{lectureList.length > 0 && (
+									<ul className="edit-class-lecturer-suggestions">
+										{lectureList.map((lecture) => (
+											<li
+												key={lecture.id}
+												onClick={() => {
+													setLecturer(lecture.fullNames);
+													setLectureId(lecture.id);
+													setLectureList([]);
+												}}
+											>
+												{lecture.fullNames}
+											</li>
+										))}
+									</ul>
+								)}
 							</div>
 
 							{/* Edit Description */}
@@ -119,22 +195,21 @@ export default function EditClass() {
 							</div>
 
 							{/* Submit Button */}
-							<button className="edit-class-submit-button" onClick={() => navigate("/EditClass")}>
+							<button className="edit-class-submit-button" type='submit'>
 								Update Class
 							</button>
 						</form>
 					</div>
-					<div className="content-body-half2">
-						<div className="card">
-							<Link to="/ManageClassStudents" className="remove-underline">
-								<h2>25</h2>
+					<div className="edit-class-content-body-half2">
+						<div className="edit-class-card">
+							<Link to={`/ManageClassStudents/${classesId}`} className="remove-underline">
 								<p>Students Enrolled</p>
 							</Link>
 						</div>
-						<div className="cancel-button-div">
+						<div className="edit-class-cancel-button-div">
 							<button
 								className="edit-class-cancel-button"
-								onClick={() => navigate("/CourseDetails")}
+								onClick={() => navigate(`/CourseDetails/${courseId}`)}
 							>
 								Cancel
 							</button>
