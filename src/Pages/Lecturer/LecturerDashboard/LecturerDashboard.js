@@ -27,8 +27,6 @@ const LecturerDashboard = () => {
 		fetchLecture();
 	}, []);
 
-	console.log(lectureData);
-
 	if (loadingState) {
 		return <div>...Loading</div>;
 	}
