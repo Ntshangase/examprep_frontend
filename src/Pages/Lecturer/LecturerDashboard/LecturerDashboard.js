@@ -41,12 +41,12 @@ const LecturerDashboard = () => {
 			<div className="lecture-dashboard-content-area">
 				<h1 className="lecture-dashboard-h1">Courses</h1>
         <div className="lecture-dashboard-courses-grid">
-					{lectureData.map((course) => (
+					{lectureData.courses.map((course,index) => (
 						<CourseCard
-							key={course.classId}
+							key={index}
 							id={course.id}
-							title={course.course.courseName}
-							image={`data:image/jpeg;base64,${course.course.image}`}
+							title={course.courseName}
+							image={`data:image/jpeg;base64,${course.image}`}
 						/>
 					))}
 				</div>
