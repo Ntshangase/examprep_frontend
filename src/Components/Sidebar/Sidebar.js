@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import "./Sidebar.css";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser } from "@fortawesome/free-solid-svg-icons";
 import PropTypes from "prop-types";
+import { useSelector } from "react-redux";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = ({ links }) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
+    const user = useSelector((state) => state.user.userData);
+    console.log(user);
 
     const toggleSidebar = () => {
         setIsCollapsed(!isCollapsed);
@@ -18,7 +21,7 @@ const Sidebar = ({ links }) => {
                 {isCollapsed ? '>' : '<'} {/* Simple toggle button text */}
             </button>
             <Link to="/Home">
-                <img src="/assets/certifiedpro.jpeg" alt="sidebar-logo" />
+                <img src="/assets/certifiedpro.jpeg" className="sidebar-component-header-image" alt="sidebar-logo" />
             </Link>
             <ul className="sidebar-content">
                 {links.map((link, index) => (
@@ -29,11 +32,14 @@ const Sidebar = ({ links }) => {
                     </li>
                 ))}
             </ul>
-            <div className="sidebar-user-details">
-                <FontAwesomeIcon icon={faUser} className="sidebar-user-icon" />
-                <div className="sidebar-user-details-content">
-                    <p className="sidebar-user-details-name">Elain Zulu</p>
-                    <p className="sidebar-user-details-email">elain@gmail.com</p>
+            <div className="sidebar-user-details-div">
+                <img src={`data:image/jpeg;base64,${user.profileImage}`} alt={user.fullNames} className="sidebar-profile-image" />
+                <div className="sidebar-user-details-container">
+                    <div className="sidebar-user-details-content">
+                    <p className="sidebar-user-details-name">{user.fullNames}</p>
+                    <p className="sidebar-user-details-email">{user.email}</p>
+                    </div>
+                    <FontAwesomeIcon icon={faEllipsisV} className="sidebar-ellipsis-icon" />
                 </div>
             </div>
         </aside>
