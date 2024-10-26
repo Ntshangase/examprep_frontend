@@ -35,6 +35,8 @@ const ViewStudents = () => {
 		fetchClassData();
 	},[classId]);
 
+    console.log(classData)
+
     if(loadingState) {
         return <div>...Loading</div>
     }
@@ -50,7 +52,7 @@ const ViewStudents = () => {
                     <ul className={styles.studentList}>
                         {classData.students.map((student, index) => (
                             <li key={index} className={styles.studentItem} onClick={() => handleStudentClick(student.studentId)}>
-                                <img src={`data:image/jpeg;base64,${student.image}`} alt={student.fullName} className={styles.studentImage} />
+                                <img src={`data:image/jpeg;base64,${student.profileImage}`} alt={student.fullName} className={styles.studentImage} />
                                 <div>
                                     <p>{student.fullName} {" "} {student.surname}</p>
                                 </div>
