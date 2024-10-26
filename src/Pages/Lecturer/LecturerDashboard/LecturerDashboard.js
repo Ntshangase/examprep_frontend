@@ -15,24 +15,22 @@ const LecturerDashboard = () => {
 
 	useEffect(() => {
 		const fetchLecture = async () => {
-
 			try {
-				const response = await getLectureClasses(1);	//using one for test data
-				setLectureData(response.data)
+				const response = await getLectureClasses(1); //using one for test data
+				setLectureData(response.data);
 			} catch (error) {
 				console.log(error);
-			}finally {
+			} finally {
 				setLoadingState(false);
 			}
-
-		}
+		};
 		fetchLecture();
-	},[]);
+	}, []);
 
 	console.log(lectureData);
 
-	if(loadingState) {
-		return <div>...Loading</div>
+	if (loadingState) {
+		return <div>...Loading</div>;
 	}
 
 	return (
@@ -40,11 +38,11 @@ const LecturerDashboard = () => {
 			<Sidebar links={links} />
 			<div className="lecture-dashboard-content-area">
 				<h1 className="lecture-dashboard-h1">Courses</h1>
-        <div className="lecture-dashboard-courses-grid">
+				<div className="lecture-dashboard-courses-grid">
 					{lectureData.courses.map((course,index) => (
 						<CourseCard
-							key={index}
-							id={course.id}
+							key={course.courseId}
+							id={index}
 							title={course.courseName}
 							image={`data:image/jpeg;base64,${course.image}`}
 						/>
