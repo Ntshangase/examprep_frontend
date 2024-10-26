@@ -40,7 +40,8 @@
     align-items: center;
 }
 .sidebar-profile-image {
-    width: 50%;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     object-fit: cover;
     transition: transform 0.3s ease;

@@ -18,11 +18,13 @@ function Login() {
 
 		try {
 			const response = await validateLogin(email,password);
+			console.log(response);
 			if (response.status === 200) {
-				console.log("Login successful");
 				dispatch(setUser(response.data));
+				const userData = response.data;
+				localStorage.setItem(`user_${userData.id}`, JSON.stringify(response.data));
+				localStorage.setItem('currentUserId', userData.id);
 				const role  = response.data.role; // Extracting user role from the response
-				console.log(role);
 
 				// Redirect based on role
 				switch (role) {

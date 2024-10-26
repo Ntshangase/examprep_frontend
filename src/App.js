@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Admin from "./Pages/Admin/AdminLanding";
@@ -53,8 +53,19 @@ import ScheduledTestReview from "./Pages/Student/Enrolled/ScheduledTestReview";
 import ManageClassStudents from "./Pages/Admin/ManageClassStudents";
 import FlaggedQuestionView from "./Pages/Moderator/FlaggedQuestionView";
 import EditUser from "./Pages/Admin/EditUser";
+import { useDispatch } from "react-redux";
+import { setUser } from "./App/Slices/UserSlice";
 
 function App() {
+	const dispatch = useDispatch();
+
+	useEffect(() => {
+        const user = JSON.parse(localStorage.getItem(`user_${localStorage.getItem('currentUserId')}`));
+        if (user) {
+            dispatch(setUser(user)); // Restore user from localStorage
+        }
+    }, [dispatch]);
+
 	return (
 		<Router>
 			<Routes>
