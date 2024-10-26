@@ -15,24 +15,12 @@ const AssignedClasses = () => {
 	const [loadingState, setLoadingState] = useState(true);
 	const [lectureData, setLectureData] = useState();
 	const { courseIndex } = useParams();
-    const [lecturerDetails, setLecturerDetails] = useState({
-        lecturerId: null,
-        lecturerName: "",
-        lecturerEmail: "",
-        lecturerContactNumber: null
-    });
 
 	useEffect(() => {
 		const fetchLecture = async () => {
 			try {
 				const response = await getLectureClasses(1); //using one for test data
 				setLectureData(response.data.courses[courseIndex]);
-                setLecturerDetails({
-                    lecturerId: response.data.lecturerId,
-                    lecturerName: response.data.lecturerName,
-                    lecturerEmail: response.data.lecturerEmail,
-                    lecturerContactNumber: response.data.lecturerContactNumber
-                })
 			} catch (error) {
 				console.log(error);
 			} finally {
@@ -41,9 +29,6 @@ const AssignedClasses = () => {
 		};
 		fetchLecture();
 	}, [courseIndex]);
-
-    console.log(lecturerDetails)
-	console.log(lectureData);
 
 	if (loadingState) {
 		return <div>...Loading</div>;
