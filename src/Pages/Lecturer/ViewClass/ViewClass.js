@@ -36,8 +36,8 @@ const ViewClass = () => {
 
 	console.log(classData);
 
-	const handleStudentsClick = () => {
-		navigate("/ViewStudents");
+	const handleStudentsClick = (x) => {
+		navigate(`/ViewStudents/${x}`);
 	};
 	const handleButtonClick = () => {
 		navigate("/SubmittedTests");
@@ -71,7 +71,7 @@ const ViewClass = () => {
 							<p>
 								Enrolled Students:
 								<button
-									onClick={handleStudentsClick}
+									onClick={() => {handleStudentsClick(classId)}}
 									className={styles.studentsButton}
 								>
 									{classData.students.length}
