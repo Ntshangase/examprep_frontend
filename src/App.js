@@ -85,7 +85,7 @@ function App() {
 				<Route path="/ManageCourse" element={<ManageCourse />} />
 				<Route path="/StudentsSubmitted/:testId" element={<StudentsSubmitted />} />
 				<Route path="/StudPerfom" element={<StudPerfom />} />
-				<Route path="/viewclass/:courseId" element={<ViewClass />} />
+				<Route path="/viewclass/:classId" element={<ViewClass />} />
 				<Route path="/ViewStudents" element={<ViewStudents />} />
 				<Route path="/AssignedClasses/:courseIndex" element={<AssignedClasses />} />
 				<Route path="/IndStudentCreateTest" element={<IndStudentCreateTest />} />
