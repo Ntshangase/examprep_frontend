@@ -1,7 +1,7 @@
 import React from "react";
 import Sidebar from "../../../src/Components/Sidebar/Sidebar";
-
 import "./StudentDashboard.css";
+import { useNavigate } from "react-router-dom";
 
 const StudentDashboard = () => {
 	const links = [
@@ -9,6 +9,10 @@ const StudentDashboard = () => {
 		{ path: "/IndStudentCourses", pathName: "Independent Student" },
 		{ path: "/Classes", pathName: "Enrolled Student" },
 	];
+
+	const navigate = useNavigate();
+
+
 
 	return (
 		<div className="student-dashboards-container">
@@ -18,7 +22,7 @@ const StudentDashboard = () => {
 				<div className="card-container">
 					<div
 						className="card"
-						onClick={() => (window.location.href = "/IndStudentCourses")}
+						onClick={() => {navigate("/IndStudentCourses")}}
 					>
 						<img
 							src="/assets/independentStudent.jpg"
@@ -29,7 +33,7 @@ const StudentDashboard = () => {
 					</div>
 					<div
 						className="card"
-						onClick={() => (window.location.href = "/Classes")}
+						onClick={() => {navigate("/Classes")}}
 					>
 						<img src="/assets/enrolledStudent.jpeg" alt="Enrolled Student" />
 						<h2>Enrolled Student</h2>
