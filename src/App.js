@@ -59,10 +59,13 @@ import { setUser } from "./App/Slices/UserSlice";
 function App() {
 	const dispatch = useDispatch();
 
-	useEffect(() => {
-        const user = JSON.parse(localStorage.getItem(`user_${localStorage.getItem('currentUserId')}`));
-        if (user) {
-            dispatch(setUser(user)); // Restore user from localStorage
+    useEffect(() => {
+        const currentUserId = localStorage.getItem('currentUserId');
+        if (currentUserId) {
+            const storedUser = JSON.parse(localStorage.getItem(`user_${currentUserId}`));
+            if (storedUser) {
+                dispatch(setUser(storedUser)); // Populate Redux state with user data
+            }
         }
     }, [dispatch]);
 
