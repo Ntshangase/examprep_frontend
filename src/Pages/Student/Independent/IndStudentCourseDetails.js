@@ -1,6 +1,7 @@
 import React from "react";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import "./IndStudentCourseDetails.css";
+import { useNavigate } from "react-router-dom";
 
 const IndStudentCourseDetails = () => {
 	const links = [
@@ -8,9 +9,11 @@ const IndStudentCourseDetails = () => {
 		{ path: "/IndStudentdash", pathName: "Course Details" },
 	];
 
+	const navigate = useNavigate();
+
 	// Function for button click
 	const handleGenerateTest = () => {
-		window.location.href = "/IndStudentCreateTest";
+		navigate("/IndStudentCreateTest");
 	};
 
 	return (
