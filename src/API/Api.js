@@ -54,3 +54,6 @@ export const addQuestion = (questionData) => apiClient.post("/api/questions/add"
 
 //INDEPENDENT STUDENT ENDPOINTS
 export const getIndependentStudentCourses = (studentId) => apiClient.get(`/api/tests/${studentId}/courses`);
+
+//ENROLLED STUDENT ENDPOINTS
+export const getEnrolledStudentClasses = (studentId) => apiClient.get(`/api/students/${studentId}/details`);
