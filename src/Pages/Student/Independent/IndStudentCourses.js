@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useNavigate } from "react-router-dom";
 import "./IndStudentCourses.css";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import { getIndependentStudentCourses } from "../../../Api/Api";
@@ -18,9 +18,9 @@ const IndStudentCourses = () => {
   const [courseData, setCourseData] = useState();
 
   // Function to handle course selection
-  const handleCourseSelect = (course) => {
+  const handleCourseSelect = (courseId) => {
     // Navigate to course detail page, passing course data as state
-    navigate("/IndStudentCourseDetails", { state: { course } });
+    navigate(`/IndStudentCourseDetails/${courseId}`);
   };
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const IndStudentCourses = () => {
               <div
                 className="badge-card"
                 key={index}
-                onClick={() => handleCourseSelect(course)}
+                onClick={() => handleCourseSelect(course.courseId)}
               >
                 <div className="badge">
                   <img src={`data:image/jpeg;base64,${course.image}`} alt={course.courseName} className="badge-image" />

@@ -36,6 +36,7 @@ export const getCourse = () => apiClient.get("/api/courses");
 export const updateCourse = (endpoint, courseData) => apiClient.put(endpoint, courseData, {headers: {
 	'Content-Type': 'multipart/form-data',
 }})
+export const getSingleCourse = (courseId) => apiClient.get(`/api/courses/classes/${courseId}`);
 
 //CLASS RELATED ENDPOINTS
 export const getClasses = (endpoint) => apiClient.get(endpoint);
