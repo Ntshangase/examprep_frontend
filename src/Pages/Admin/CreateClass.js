@@ -105,11 +105,17 @@ export default function CreateClass() {
 	const getTodayDate = () => {
 		const today = new Date();
 		const year = today.getFullYear();
-		const month = String(today.getMonth() + 1).padStart(2, '0'); // Months are zero-based, so +1
-		const day = String(today.getDate()).padStart(2, '0');
+		const month = String(today.getMonth() + 1).padStart(2, "0"); // Months are zero-based, so +1
+		const day = String(today.getDate()).padStart(2, "0");
 		return `${year}-${month}-${day}`;
-	  };
+	};
 
+	const getMinimumEndDate = () => {
+		if (!startDate) return getTodayDate(); // Fallback to today's date if startDate is not set
+		const minEndDate = new Date(startDate);
+		minEndDate.setDate(minEndDate.getDate() + 7);
+		return minEndDate.toISOString().split("T")[0];
+	};
 
 	if (loadingState) {
 		return <div>...Loading</div>;
@@ -190,9 +196,11 @@ export default function CreateClass() {
 								<input
 									type="date"
 									id="endDate"
+									min={getMinimumEndDate()}
 									value={endDate}
 									onChange={(e) => setEndDate(e.target.value)}
 									required
+									disabled={!startDate}
 								/>
 							</div>
 							<div className="create-class-form-group">
