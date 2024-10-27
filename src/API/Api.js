@@ -50,3 +50,6 @@ export const getLectureClasses = (lecturerId) => apiClient.get(`/api/classes/${l
 
 //DATA CAPTURE RELAATED ENDPOINTS
 export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData);
+
+//INDEPENDENT STUDENT ENDPOINTS
+export const getIndependentStudentCourses = (studentId) => apiClient.get(`/api/tests/${studentId}/courses`);
