@@ -7,7 +7,7 @@ import {
 	createClass,
 	getAllLectures,
 	getCourseWithClasses,
-} from "../../API/Api.js";
+} from "../../Api/Api.js";
 
 export default function CreateClass() {
 	const links = [
