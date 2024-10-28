@@ -20,9 +20,16 @@ function Home() {
 		navigate("/DataCaptureDashboard");
 	};
 
+	React.useEffect(() => {
+		document.body.style.backgroundColor = "red";
+		return () => {
+			document.body.style.backgroundColor = "";
+		};
+	}, []);
+
 	return (
 		<div>
-			<h1>CertifiedPro temporal landing page</h1>
+			<h1>YOU SHOULD NOT BE HERE!!!</h1>
 			<button onClick={handleNavigateModerator}>Moderator</button>
 			<button onClick={handleNavigateLecture}>Lecture</button>
 			<button onClick={handleNavigateAdmin}>Admin</button>

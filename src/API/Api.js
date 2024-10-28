@@ -43,6 +43,10 @@ export const getCourseWithClasses = (courseId) => apiClient.get(`/api/courses/cl
 export const deleteClass = (endpoint) => apiClient.delete(endpoint);
 export const createClass = (courseId, classData) => apiClient.post(`/api/classes/${courseId}/addClassAndStudents`, classData, {headers: { 'Content-Type': 'multipart/form-data', }});
 export const editClass = (classId,classData) => apiClient.put(`/api/classes/with-students/${classId}`, classData);
+export const getClassDetails = (classId) => apiClient.get(`/api/classes/with-students/${classId}`);
+
+//LECTURE RELATED ENDPOINTS
+export const getLectureClasses = (lecturerId) => apiClient.get(`/api/classes/${lecturerId}/details`);
 
 //DATA CAPTURE RELAATED ENDPOINTS
 export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData);
