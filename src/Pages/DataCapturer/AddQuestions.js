@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import "./AddQuestions.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { getData, addQuestion } from "../../Api/Api";
+import { getData, addQuestion } from "../../API/Api.js";
 
 export default function AddQuestions() {
 	const links = [{ path: "/DataCaptureDashboard", pathName: "Home" }];

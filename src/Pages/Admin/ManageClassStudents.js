@@ -4,7 +4,7 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 // import { faTrash } from "@fortawesome/free-solid-svg-icons";
 import "./ManageClassStudents.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { getClasses } from "../../Api/Api";
+import { getClasses } from "../../API/Api.js";
 
 export default function ManageClassStudents() {
 	const links = [
@@ -62,7 +62,7 @@ export default function ManageClassStudents() {
 						className="manage-class-student-approve-button"
 					>
 						View Students to be Approved
-					</button>
+					</button> */}
 				</div>
 				<div className="manage-class-student-list">
 					{" "}
