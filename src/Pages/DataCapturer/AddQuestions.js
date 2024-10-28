@@ -76,13 +76,12 @@ export default function AddQuestions() {
 		setIncorrectAnswers([...incorrectAnswers, ""]);
 	};
 
-	const handleSubmit = async (e) => {
+	const handleSubmitMultipleChoice = async (e) => {
 		e.preventDefault();
 
-		const payload = {
+		const payloadMultipleChoice = {
 			questionText: question,
 			topicId: selectedTopic,
-			instruction: "",
 			questionType: "MULTIPLE_CHOICE",
 			answers: [
 				{
@@ -98,7 +97,7 @@ export default function AddQuestions() {
 		};
 
 		const questionData = {
-			questionDTO: JSON.stringify(payload),
+			questionDTO: JSON.stringify(payloadMultipleChoice),
 			pdfFile: null,
 		}
 
@@ -147,7 +146,7 @@ export default function AddQuestions() {
 					</button>
 				</div>
 				<div className="add-questions-form-scrollable">
-					<form onSubmit={handleSubmit}>
+					<form onSubmit={handleSubmitMultipleChoice}>
 						{/* Domain Selection */}
 						<div className="add-questions-form-group">
 							<label>Select Domain</label>
