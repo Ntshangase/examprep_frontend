@@ -32,8 +32,9 @@ export default function EditUser() {
                 setUserData(response.data);
                 setUserName(response.data.fullNames);
                 setUserEmail(response.data.email);
-                setUserRole(response.data.role.name);
-                setUserTitle(response.data.title);
+                setUserRole(response.data.name || ""); 
+                //setUserRole(response.data.role ? response.data.role.name : "");
+                setUserTitle(response.data.title ||"");
                 setUserSurname(response.data.surname);
                 setUserContactNumber(response.data.contactNumber);
                 setExistingAvatar(response.data.avatar || null);
@@ -121,6 +122,7 @@ export default function EditUser() {
                                 className="edit-user-input"
                                 required
                             >
+                                <option value="" disabled>Select Title</option>
                                 <option value="Prof">Prof</option>
                                 <option value="Dr">Dr</option>
                                 <option value="Mr">Mr</option>
@@ -184,13 +186,11 @@ export default function EditUser() {
                             <select
 							name="role"
                             id="userRole"
-							value={userRole.name}
+							value={userRole}
 							onChange={handleUserRoleChange}
 							required
 						>
-                            <option value={userRole.name} >
-								{userRole}
-							</option>
+                            <option value="" disabled>Select Role</option>
 							<option value="LECTURER">Lecturer</option>
 							<option value="STUDENT">Student</option>
 							<option value="ADMIN">Admin</option>
