@@ -24,7 +24,7 @@ export default function AddQuestions() {
 				const response = await getData(`/api/courses/${courseId}`);
 				setCourseData(response.data);
 			} catch (error) {
-				console.log(error.message);
+				console.log(error);
 			} finally {
 				setLoadingState(false);
 			}
@@ -79,33 +79,37 @@ export default function AddQuestions() {
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 
-		const questionData = {
+		const payload = {
 			questionText: question,
-			courseId: Number(courseId),
-			domainId: selectedDomain,
 			topicId: selectedTopic,
-			answerDescription: correctAnswerDescription,
+			instruction: "",
+			questionType: "MULTIPLE_CHOICE",
 			answers: [
 				{
 					answerText: correctAnswers[0],
 					answerDescription: correctAnswerDescription,
-					correct: true,
+					isCorrect: true,
 				},
 				...incorrectAnswers.map((answer) => ({
 					answerText: answer,
-					answerDescription: "",
-					correct: false,
+					isCorrect: false,
 				})),
 			],
 		};
 
-		try {
-			await addQuestion(questionData);
-		} catch (error) {
-			console.log(error.message);
+		const questionData = {
+			questionDTO: JSON.stringify(payload),
+			pdfFile: null,
 		}
 
-		alert("Question added successfully!");
+		try {
+			await addQuestion(questionData);
+			alert("Question added successfully!");
+		} catch (error) {
+			console.log(error);
+		}
+
+
 		// Reset the form after successful submission
 		setSelectedDomain("");
 		setSelectedTopic("");
