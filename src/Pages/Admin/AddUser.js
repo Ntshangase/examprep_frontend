@@ -3,7 +3,7 @@ import "./AddUser.css";
 import "../../Styles/global.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
-import { createUser } from "../../Api/Api";
+import { createUser } from "../../API/Api.js";
 
 function AddUser() {
 	const links = [
