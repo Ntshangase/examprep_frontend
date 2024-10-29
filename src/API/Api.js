@@ -53,7 +53,8 @@ export const getLectureClasses = (lecturerId) => apiClient.get(`/api/classes/${l
 export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData, {headers: {
 	'Content-Type': 'multipart/form-data',
 }});
-export const getUnmoderatedCourseQuestions = (courseId) => apiClient.get(`/api/questions/unmoderated/${courseId}`);
+export const getUnmoderatedCourseQuestions = ( courseId ) => apiClient.get(`/api/questions/unmoderated/${courseId}`);
+export const getUnmoderatedQuestion = ( questionId ) => apiClient.get(`/api/questions/question/${questionId}`);
 
 //INDEPENDENT STUDENT ENDPOINTS
 export const getIndependentStudentCourses = (studentId) => apiClient.get(`/api/tests/${studentId}/courses`);

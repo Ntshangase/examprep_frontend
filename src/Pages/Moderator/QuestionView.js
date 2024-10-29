@@ -35,8 +35,6 @@ const QuestionView = () => {
 		fetchUnmoderatedCourseQuestions();
 	},[courseId]);
 
-	console.log(courseQuestions);
-
 	return (
 		<div className="question-view-container">
 			<Sidebar links={links} />

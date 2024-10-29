@@ -1,29 +1,57 @@
-import React, {useState} from 'react';
+import React, { useEffect, useState } from "react";
 import "./ModerateQuestion.css";
-import Sidebar from '../../Components/Sidebar/Sidebar';
-import { useNavigate } from 'react-router-dom';
+import Sidebar from "../../Components/Sidebar/Sidebar";
+import { useNavigate, useParams } from "react-router-dom";
+import { getUnmoderatedQuestion } from "../../Api/Api";
 
 export default function ModerateQuestion() {
-
 	const links = [
-		{path: "/ModeratorDashboard", pathName: "Home"},
-		{path: "/QuestionView", pathName: "Questions"},
-		{ path: "/FlaggedQuestionView", pathName: "Flagged" }
-	]
+		{ path: "/ModeratorDashboard", pathName: "Home" },
+		{ path: "/QuestionView", pathName: "Questions" },
+		{ path: "/FlaggedQuestionView", pathName: "Flagged" },
+	];
 
-    const [selectedDomain, setSelectedDomain] = useState("Aws");
-	const [selectedTopic, setSelectedTopic] = useState("Database");
-	const [question, setQuestion] = useState("Which of the following ports is typically used by HTTPS?");
-	const [correctAnswers, setCorrectAnswers] = useState(["80"]);
-	const [incorrectAnswers, setIncorrectAnswers] = useState(["90","80","200"]);
-	const [correctAnswerDescription, setCorrectAnswerDescription] = useState("Port 80 is the fastest and safest port for database connection");
+	const [selectedDomain, setSelectedDomain] = useState("");
+	const [selectedTopic, setSelectedTopic] = useState("");
+	const [question, setQuestion] = useState("");
+	const [correctAnswers, setCorrectAnswers] = useState([]);
+	const [incorrectAnswers, setIncorrectAnswers] = useState([]);
+	const [correctAnswerDescription, setCorrectAnswerDescription] = useState("");
 
-	const domains = ["Copmtia", "Aws", "History"];
-	const topics = {
-		Math: ["Algebra", "Geometry", "Calculus"],
-		Aws: ["Physics", "Database", "Biology"],
-		History: ["World History", "Ancient Civilizations", "Modern History"],
-	};
+	const { questionId } = useParams();
+	const [questionData, setQuestionData] = useState([]);
+	const [loadingState, setLoadingState] = useState(true);
+
+	useEffect(() => {
+		const fetchQuestionDetailsById = async () => {
+			try {
+				const response = await getUnmoderatedQuestion(questionId);
+				setQuestionData(response.data);
+				setQuestion(response.data.questionText);
+				setSelectedDomain(response.data.domainName);
+				setSelectedTopic(response.data.topicName);
+
+				// Extract correct and incorrect answers
+				const correct = response.data.answers.filter(
+					(answer) => answer.isCorrect
+				);
+				const incorrect = response.data.answers.filter(
+					(answer) => !answer.isCorrect
+				);
+
+				setCorrectAnswers(correct);
+				setIncorrectAnswers(incorrect);
+				setCorrectAnswerDescription(correct[0].answerDescription); //Notice the use-case is for having one correct answer description.
+			} catch (error) {
+				console.log(error);
+			} finally {
+				setLoadingState(false);
+			}
+		};
+		fetchQuestionDetailsById();
+	}, [questionId]);
+
+	console.log(questionData);
 
 	// Handle dynamic inputs for correct and incorrect answers
 	const handleCorrectAnswerChange = (index, value) => {
@@ -38,22 +66,25 @@ export default function ModerateQuestion() {
 		setIncorrectAnswers(updatedIncorrectAnswers);
 	};
 
-    const navigate = useNavigate();
-    const QuestionView = () => {
+	const navigate = useNavigate();
+	const QuestionView = () => {
 		navigate("/QuestionView");
 	};
 	const handleSubmit = (e) => {
 		e.preventDefault();
 	};
 
+	if (loadingState) {
+		return <div>...Loading Question Data</div>;
+	}
 
-  return (
-    <div>
-        <div className='moderate-question-container'>
-            <Sidebar links={links}/>
-            <div className='moderate-question-content'>
-                <h2>Moderate Question</h2>
-                <form onSubmit={handleSubmit}>
+	return (
+		<div>
+			<div className="moderate-question-container">
+				<Sidebar links={links} />
+				<div className="moderate-question-content">
+					<h2>Moderate Question</h2>
+					<form onSubmit={handleSubmit}>
 						<div className="moderate-question-form-group">
 							<label>Select Domain</label>
 							<select
@@ -63,14 +94,14 @@ export default function ModerateQuestion() {
 									setSelectedTopic(""); // Reset topic when domain changes
 								}}
 							>
-								<option value="" disabled>
-									Select a domain
+								<option value={selectedDomain} disabled>
+									{selectedDomain}
 								</option>
-								{domains.map((domain, index) => (
+								{/* {domains.map((domain, index) => (
 									<option key={index} value={domain}>
 										{domain}
 									</option>
-								))}
+								))} */}
 							</select>
 						</div>
 
@@ -82,14 +113,14 @@ export default function ModerateQuestion() {
 									value={selectedTopic}
 									onChange={(e) => setSelectedTopic(e.target.value)}
 								>
-									<option value="" disabled>
-										Select a topic
+									<option value={selectedTopic} disabled>
+										{selectedTopic}
 									</option>
-									{topics[selectedDomain].map((topic, index) => (
+									{/* {topics[selectedDomain].map((topic, index) => (
 										<option key={index} value={topic}>
 											{topic}
 										</option>
-									))}
+									))} */}
 								</select>
 							</div>
 						)}
@@ -111,13 +142,12 @@ export default function ModerateQuestion() {
 								<div key={index}>
 									<input
 										type="text"
-										value={answer}
+										value={answer.answerText}
 										onChange={(e) =>
 											handleCorrectAnswerChange(index, e.target.value)
 										}
 										placeholder={`Correct Answer ${index + 1}`}
 									/>
-
 								</div>
 							))}
 						</div>
@@ -129,13 +159,12 @@ export default function ModerateQuestion() {
 								<div key={index}>
 									<input
 										type="text"
-										value={answer}
+										value={answer.answerText}
 										onChange={(e) =>
 											handleIncorrectAnswerChange(index, e.target.value)
 										}
 										placeholder={`Incorrect Answer ${index + 1}`}
 									/>
-
 								</div>
 							))}
 						</div>
@@ -151,10 +180,16 @@ export default function ModerateQuestion() {
 						</div>
 
 						{/* Submit Button */}
-						<button onClick={QuestionView} className="moderate-question-button" type="submit">Approve</button>
+						<button
+							onClick={QuestionView}
+							className="moderate-question-button"
+							type="submit"
+						>
+							Approve
+						</button>
 					</form>
-            </div>
-        </div>
-    </div>
-  )
+				</div>
+			</div>
+		</div>
+	);
 }
