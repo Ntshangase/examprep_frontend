@@ -46,6 +46,8 @@ export default function EditUser() {
         fetchUserData();
     }, [userId]);
 
+    console.log(userData);
+
     // Handlers for user details
     const handleUserNameChange = (e) => setUserName(e.target.value);
     const handleUserEmailChange = (e) => setUserEmail(e.target.value);
@@ -190,7 +192,7 @@ export default function EditUser() {
 							onChange={handleUserRoleChange}
 							required
 						>
-                            <option value="" disabled>Select Role</option>
+                            <option value="" disabled>{userData.role}</option>
 							<option value="LECTURER">Lecturer</option>
 							<option value="STUDENT">Student</option>
 							<option value="ADMIN">Admin</option>
