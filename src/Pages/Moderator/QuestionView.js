@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./QuestionView.css"; // Import the CSS for styling
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faArrowLeftLong } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from "react-router-dom"; // Import hooks for routing
+import { useNavigate, useParams } from "react-router-dom"; // Import hooks for routing
 import Sidebar from "../../Components/Sidebar/Sidebar";
+import { getUnmoderatedCourseQuestions } from "../../Api/Api";
 
 const QuestionView = () => {
 	const links = [
@@ -12,41 +13,29 @@ const QuestionView = () => {
     {path: "/FlaggedQuestionView", pathName: "Flagged "}
 	];
 
-	const ModerateQuestion = () => {
-		navigate("/ModerateQuestion");
+	const navigate = useNavigate(); // Initialize navigate
+	const { courseId } = useParams();
+	const [courseQuestions, setCourseQuestions] = useState([]);
+
+
+	const handleModerateQuestion = (questionId) => {
+		navigate(`/ModerateQuestion/${questionId}`);
 	};
 
-	const navigate = useNavigate(); // Initialize navigate
+	useEffect(() => {
+		const fetchUnmoderatedCourseQuestions = async () => {
 
-	const questions = [
-		{
-			id: 1,
-			question: "Which of the following ports is typically used by HTTPS?",
-			options: ["80", "443", "21", "110"],
-		},
-		{
-			id: 3,
-			question:
-				"Which of the following devices can provide power protection for computer hardware?",
-			options: [
-				"Surge suppressor",
-				"Power strip",
-				"Uninterruptible power supply",
-				"AC adapter",
-			],
-		},
-		{
-			id: 5,
-			question:
-				"Which of the following is the correct IP range for a Class C address?",
-			options: [
-				"192.0.0.0 - 223.255.255.255",
-				"128.0.0.0 - 191.255.255.255",
-				"0.0.0.0 - 127.255.255.255",
-				"224.0.0.0 - 239.255.255.255",
-			],
-		},
-	];
+			try {
+				const response = await getUnmoderatedCourseQuestions(courseId);
+				setCourseQuestions(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchUnmoderatedCourseQuestions();
+	},[courseId]);
+
+	console.log(courseQuestions);
 
 	return (
 		<div className="question-view-container">
@@ -65,18 +54,18 @@ const QuestionView = () => {
 					/>
 				</div>
 				<div className="questions-section">
-					{questions.map((question) => (
-						<div key={question.id} className="question-card">
+					{courseQuestions.map((question, index) => (
+						<div key={index} className="question-card">
 							<div className="question-header">
-								<p>{question.question}</p>
-								<button onClick={ModerateQuestion} className="edit-btn">
+								<p>{question.questionText}</p>
+								<button onClick={() => {handleModerateQuestion(question.questionId)}} className="edit-btn">
 									<FontAwesomeIcon icon={faEdit} />
 								</button>
 							</div>
 							<div className="options-list">
-								{question.options.map((option, index) => (
+								{question.answers.map((answer, index) => (
 									<div key={index} className="option">
-										<label>{option}</label>
+										<label>{answer.answerText}</label>
 									</div>
 								))}
 							</div>

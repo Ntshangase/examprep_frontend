@@ -77,7 +77,7 @@ function App() {
 				<Route path="/AdminLanding" element={<Admin />} />
 				<Route path="/ModerateAws" element={<ModerateAws />} />
 				<Route path="/ModeratorDashboard" element={<ModeratorDashboard />} />
-				<Route path="/QuestionView" element={<QuestionView />} />
+				<Route path="/QuestionView/:courseId" element={<QuestionView />} />
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
 				<Route path="/StudentDashboard" element={<StudentDashboard />} />
 				<Route path="/ManageUser" element={<ManageUser />} />
@@ -116,7 +116,7 @@ function App() {
 				<Route path="/StudentProfile" element={<StudentProfile />} />
 				<Route path="/IndStudentCourses" element={<IndStudentCourses />} />
 				<Route path="/IndStudentCourseDets" element={<IndStudentCourseDets />} />
-				<Route path="/ModerateQuestion" element={<ModerateQuestion />} />
+				<Route path="/ModerateQuestion/:questionId" element={<ModerateQuestion />} />
 				<Route path="/TakeTest" element={<TakeTest />} />
 				<Route path="/TestResults" element={<TestResults />} />
 				<Route path="/ScheduledTestReview" element={<ScheduledTestReview />} />

@@ -49,10 +49,11 @@ export const getClassDetails = (classId) => apiClient.get(`/api/classes/with-stu
 //LECTURE RELATED ENDPOINTS
 export const getLectureClasses = (lecturerId) => apiClient.get(`/api/classes/${lecturerId}/details`);
 
-//DATA CAPTURE RELAATED ENDPOINTS
+//DATA CAPTURE RELATED ENDPOINTS  && DATA CAPTURE
 export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData, {headers: {
 	'Content-Type': 'multipart/form-data',
 }});
+export const getUnmoderatedCourseQuestions = (courseId) => apiClient.get(`/api/questions/unmoderated/${courseId}`);
 
 //INDEPENDENT STUDENT ENDPOINTS
 export const getIndependentStudentCourses = (studentId) => apiClient.get(`/api/tests/${studentId}/courses`);

@@ -13,8 +13,8 @@ const ModeratorDashboard = () => {
 	]
 
 	const navigate = useNavigate(); // Initialize navigate
-	const viewQuestions = () => {
-		navigate("/QuestionView");
+	const viewQuestions = (x) => {
+		navigate(`/QuestionView/${x}`);
 	};
 	const user = useSelector((state) => state.user.userData);
 	const [courseData, setCourseData] = useState([]);
@@ -32,8 +32,6 @@ const ModeratorDashboard = () => {
 		fetchModeratorCourses();
 	},[user.id]);
 
-	console.log(courseData);
-
 	return (
 		<div className="moderator-dashboard-container">
 				<Sidebar links={links}/>
@@ -45,7 +43,7 @@ const ModeratorDashboard = () => {
 							<div
 								className="moderator-badge-card"
 								key={index}
-								onClick={viewQuestions}
+								onClick={() => {viewQuestions(course.courseId)}}
 							>
 								<div className="moderator-badge">
 									<img
