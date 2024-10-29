@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./ModerateQuestion.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getUnmoderatedQuestion } from "../../Api/Api";
+import { getUnmoderatedQuestion, updateQuestion } from "../../Api/Api";
 
 export default function ModerateQuestion() {
 	const links = [
@@ -17,19 +17,24 @@ export default function ModerateQuestion() {
 	const [correctAnswers, setCorrectAnswers] = useState([]);
 	const [incorrectAnswers, setIncorrectAnswers] = useState([]);
 	const [correctAnswerDescription, setCorrectAnswerDescription] = useState("");
+	const [file, setFile] = useState(null);
+	const navigate = useNavigate();
+	const [questionType, setQuestionType] = useState();
+	const [topicId, setTopicId ] = useState(null);
 
 	const { questionId } = useParams();
-	const [questionData, setQuestionData] = useState([]);
 	const [loadingState, setLoadingState] = useState(true);
 
 	useEffect(() => {
 		const fetchQuestionDetailsById = async () => {
 			try {
 				const response = await getUnmoderatedQuestion(questionId);
-				setQuestionData(response.data);
 				setQuestion(response.data.questionText);
 				setSelectedDomain(response.data.domainName);
 				setSelectedTopic(response.data.topicName);
+				setFile(response.data.pdfFile)
+				setQuestionType(response.data.questionType)
+				setTopicId(response.data.topicId)
 
 				// Extract correct and incorrect answers
 				const correct = response.data.answers.filter(
@@ -51,8 +56,6 @@ export default function ModerateQuestion() {
 		fetchQuestionDetailsById();
 	}, [questionId]);
 
-	console.log(questionData);
-
 	// Handle dynamic inputs for correct and incorrect answers
 	const handleCorrectAnswerChange = (index, value) => {
 		const updatedCorrectAnswers = [...correctAnswers];
@@ -66,12 +69,43 @@ export default function ModerateQuestion() {
 		setIncorrectAnswers(updatedIncorrectAnswers);
 	};
 
-	const navigate = useNavigate();
-	const QuestionView = () => {
-		navigate("/QuestionView");
-	};
-	const handleSubmit = (e) => {
+
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		const payload = {
+			questionId: questionId,
+			moderated: true,
+			questionText: question,
+			topicId: topicId,
+			questionType: questionType,
+			answers: [
+				{
+					answerText: correctAnswers[0],
+					answerDescription: correctAnswerDescription,
+					isCorrect: true,
+				},
+				...incorrectAnswers.map((answer) => ({
+					answerText: answer,
+					isCorrect: false,
+				})),
+			],
+		}
+
+		const updatingQuestion = {
+			questionDTO: JSON.stringify(payload),
+			pdfFile: file,
+		}
+
+		try {
+			await updateQuestion(questionId, updatingQuestion);
+			alert("question updated...");
+			navigate("/QuestionView/3");	//i need courseId
+		} catch (error) {
+			console.log(error);
+		}
+
+
 	};
 
 	if (loadingState) {
@@ -89,10 +123,10 @@ export default function ModerateQuestion() {
 							<label>Select Domain</label>
 							<select
 								value={selectedDomain}
-								onChange={(e) => {
-									setSelectedDomain(e.target.value);
-									setSelectedTopic(""); // Reset topic when domain changes
-								}}
+								// onChange={(e) => {
+								// 	setSelectedDomain(e.target.value);
+								// 	setSelectedTopic(""); // Reset topic when domain changes
+								// }}
 							>
 								<option value={selectedDomain} disabled>
 									{selectedDomain}
@@ -111,7 +145,7 @@ export default function ModerateQuestion() {
 								<label>Select Topic</label>
 								<select
 									value={selectedTopic}
-									onChange={(e) => setSelectedTopic(e.target.value)}
+									// onChange={(e) => setSelectedTopic(e.target.value)}
 								>
 									<option value={selectedTopic} disabled>
 										{selectedTopic}
@@ -181,7 +215,6 @@ export default function ModerateQuestion() {
 
 						{/* Submit Button */}
 						<button
-							onClick={QuestionView}
 							className="moderate-question-button"
 							type="submit"
 						>
