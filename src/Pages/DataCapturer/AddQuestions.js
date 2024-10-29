@@ -25,6 +25,8 @@ export default function AddQuestions() {
 		setTrueFalseCorrectAnswerDescription,
 	] = useState("");
 	const [trueFalseQuestion, setTrueFalseQuestion] = useState("");
+	const [instruction, setInstruction] = useState("");
+	const [file, setFile] = useState(null);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -84,12 +86,19 @@ export default function AddQuestions() {
 		setIncorrectAnswers([...incorrectAnswers, ""]);
 	};
 
-	const validateOneCheckboxIsChecked = () => {
+	const validateOneCheckboxIsChecked = () => {		//for true/false question
 		if (!trueCheckboxAnswer && !falseCheckboxAnswer) {
 			alert("Please select either True or False.");
 			return; // Stop form submission
 		}
-	}
+	};
+
+	const handleFileChange = (e) => {		//for file input question
+		const selectedFile = e.target.files[0];
+		if (selectedFile) {
+			setFile(selectedFile);
+		}
+	};
 
 	const handleSubmitMultipleChoice = async (e) => {
 		e.preventDefault();
@@ -133,7 +142,6 @@ export default function AddQuestions() {
 	};
 
 	//trueORfalse question
-
 	const handleSubmitTrueFalse = async (e) => {
 		e.preventDefault();
 
@@ -150,7 +158,7 @@ export default function AddQuestions() {
 				{
 					answerText: document.getElementById("false-answer-text").textContent,
 					isCorrect: falseCheckboxAnswer,
-				}
+				},
 			],
 		};
 
@@ -173,8 +181,59 @@ export default function AddQuestions() {
 		setFalseCheckboxAnswer(false);
 		setTrueCheckboxAnswer(false);
 		setTrueFalseCorrectAnswerDescription("");
-
 	};
+
+
+	//FILE INPUT QUESTION
+	const handleSubmitFileInputQuestion = async (e) => {
+		e.preventDefault();
+
+		if(!file) {
+			alert("Please upload file: ");
+			return;
+		}
+
+		const payloadFileInput = {
+			questionText: question,
+			topicId: selectedTopic,
+			questionType: questionType,
+			instruction: instruction,
+			answers: [
+				{
+					answerText: correctAnswers[0],
+					answerDescription: correctAnswerDescription,
+					isCorrect: true,
+				},
+				...incorrectAnswers.map((answer) => ({
+					answerText: answer,
+					isCorrect: false,
+				})),
+			],
+		};
+
+		const questionData = {
+			questionDTO: JSON.stringify(payloadFileInput),
+			pdfFile: file,
+		};
+
+		try {
+			await addQuestion(questionData);
+			alert("Question added successfully!");
+		} catch (error) {
+			console.log(error);
+		}
+
+		// Reset the form after successful submission
+		setSelectedDomain("");
+		setSelectedTopic("");
+		setQuestion("");
+		setCorrectAnswers([""]);
+		setIncorrectAnswers([""]);
+		setCorrectAnswerDescription("");
+		setFile(null);
+		setInstruction("");
+	};
+
 
 	if (loadingState) {
 		return <div>...Loading</div>;
@@ -399,7 +458,8 @@ export default function AddQuestions() {
 										checked={trueCheckboxAnswer}
 										onChange={(e) => {
 											setTrueCheckboxAnswer(e.target.checked);
-											setFalseCheckboxAnswer(false)}}
+											setFalseCheckboxAnswer(false);
+										}}
 									/>
 									<span id="true-answer-text">True</span>
 								</div>
@@ -409,7 +469,8 @@ export default function AddQuestions() {
 										checked={falseCheckboxAnswer}
 										onChange={(e) => {
 											setFalseCheckboxAnswer(e.target.checked);
-											setTrueCheckboxAnswer(false)}}
+											setTrueCheckboxAnswer(false);
+										}}
 									/>
 									<span id="false-answer-text">False</span>
 								</div>
@@ -428,7 +489,11 @@ export default function AddQuestions() {
 							</div>
 
 							{/* Submit Button */}
-							<button className="add-question-button" onClick={validateOneCheckboxIsChecked} type="submit">
+							<button
+								className="add-question-button"
+								onClick={validateOneCheckboxIsChecked}
+								type="submit"
+							>
 								Add Question
 							</button>
 						</form>
@@ -438,7 +503,7 @@ export default function AddQuestions() {
 				{/**pdf file question */}
 				{questionType === "SCENARIO_WITH_PDF" && (
 					<div className="add-questions-form-scrollable">
-						<form>
+						<form onSubmit={handleSubmitFileInputQuestion}>
 							{/* Domain Selection */}
 							<div className="add-questions-form-group">
 								<label>Select Domain</label>
@@ -480,6 +545,13 @@ export default function AddQuestions() {
 								</div>
 							)}
 
+							{/**File Input */}
+							<input
+								type="file"
+								onChange={handleFileChange}
+								accept=".pdf,.doc,.docx"
+							/>
+
 							{/* Question Input */}
 							<div className="add-questions-form-group">
 								<label>Question</label>
@@ -489,6 +561,75 @@ export default function AddQuestions() {
 									placeholder="Enter the question"
 								/>
 							</div>
+
+							{/* Instruction Input */}
+							<div className="add-questions-form-group">
+								<label>Instruction</label>
+								<textarea
+									value={instruction}
+									onChange={(e) => setInstruction(e.target.value)}
+									placeholder="Enter the Instruction for the question"
+								/>
+							</div>
+
+							{/* Dynamic Correct Answer Inputs */}
+							<div className="add-questions-form-group">
+								<label>Correct Answers</label>
+								{correctAnswers.map((answer, index) => (
+									<div key={index}>
+										<input
+											type="text"
+											value={answer}
+											onChange={(e) =>
+												handleCorrectAnswerChange(index, e.target.value)
+											}
+											placeholder={`Correct Answer ${index + 1}`}
+										/>
+										{index === correctAnswers.length - 1 && (
+											<button type="button" onClick={addCorrectAnswer}>
+												Add Correct Answer
+											</button>
+										)}
+									</div>
+								))}
+							</div>
+
+							{/* Dynamic Incorrect Answer Inputs */}
+							<div className="add-questions-form-group">
+								<label>Incorrect Answers</label>
+								{incorrectAnswers.map((answer, index) => (
+									<div key={index}>
+										<input
+											type="text"
+											value={answer}
+											onChange={(e) =>
+												handleIncorrectAnswerChange(index, e.target.value)
+											}
+											placeholder={`Incorrect Answer ${index + 1}`}
+										/>
+										{index === incorrectAnswers.length - 1 && (
+											<button type="button" onClick={addIncorrectAnswer}>
+												Add Incorrect Answer
+											</button>
+										)}
+									</div>
+								))}
+							</div>
+
+							{/* Correct Answer Description */}
+							<div className="add-questions-form-group">
+								<label>Correct Answer Description</label>
+								<textarea
+									value={correctAnswerDescription}
+									onChange={(e) => setCorrectAnswerDescription(e.target.value)}
+									placeholder="Enter description for the correct answer"
+								/>
+							</div>
+
+							{/* Submit Button */}
+							<button className="add-question-button" type="submit">
+								Add Question
+							</button>
 						</form>
 					</div>
 				)}
