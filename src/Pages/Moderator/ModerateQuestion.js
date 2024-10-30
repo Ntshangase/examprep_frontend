@@ -30,21 +30,22 @@ export default function ModerateQuestion() {
 		setTrueFalseCorrectAnswerDescription,
 	] = useState("");
 	const [trueFalseQuestion, setTrueFalseQuestion] = useState("");
-	//const [instruction, setInstruction] = useState("");
+	const [instruction, setInstruction] = useState("");
+	const [courseId, setCourseId] = useState(null);
 
-	const [myData, setMyData] = useState([]);
 	useEffect(() => {
 		const fetchQuestionDetailsById = async () => {
 			try {
 				const response = await getUnmoderatedQuestion(questionId);
-				setMyData(response.data);
 				setQuestion(response.data.questionText);
 				setSelectedDomain(response.data.domainName);
 				setSelectedTopic(response.data.topicName);
-				setFile(response.data.pdfFile);
+				setFile(response.data.pdfFileUrl);
 				setQuestionType(response.data.questionType);
 				setTopicId(response.data.topicId);
 				setTrueFalseQuestion(response.data.questionText);
+				setInstruction(response.data.instruction);
+				setCourseId(response.data.domainId);
 
 				// Extract correct and incorrect answers
 				const correct = response.data.answers.filter(
@@ -57,12 +58,14 @@ export default function ModerateQuestion() {
 				setCorrectAnswers(correct);
 				setIncorrectAnswers(incorrect);
 				setCorrectAnswerDescription(correct[0].answerDescription); //Notice the use-case is for having one correct answer description.
-				setTrueFalseCorrectAnswerDescription(correct[0].answerDescription)
 
-				if(correct[0].answerText === "True") { 	//setOneCheckboxToChecked
-					setTrueCheckboxAnswer(true)
-				}else{
+				if (correct[0].answerText === "True") {
+					setTrueCheckboxAnswer(true);	//setOneCheckboxToChecked
+					setTrueFalseCorrectAnswerDescription(correct[0].answerDescription);
+				} else {
 					setFalseCheckboxAnswer(true);
+					setTrueFalseCorrectAnswerDescription(incorrect[0].answerDescription);
+
 				}
 			} catch (error) {
 				console.log(error);
@@ -72,8 +75,6 @@ export default function ModerateQuestion() {
 		};
 		fetchQuestionDetailsById();
 	}, [questionId]);
-
-	console.log(myData);
 
 	// Handle dynamic inputs for correct and incorrect answers
 	const handleCorrectAnswerChange = (index, value) => {
@@ -88,23 +89,30 @@ export default function ModerateQuestion() {
 		setIncorrectAnswers(updatedIncorrectAnswers);
 	};
 
+	const handleFileChange = (e) => {
+		//for file input question
+		const selectedFile = e.target.files[0];
+		if (selectedFile) {
+			setFile(selectedFile);
+		}
+	};
+
 	const handleSubmitMultipleChoice = async (e) => {
 		e.preventDefault();
 
 		const payloadMultipleChoice = {
 			questionId: questionId,
-			moderated: true,
 			questionText: question,
 			topicId: topicId,
 			questionType: questionType,
 			answers: [
 				{
-					answerText: correctAnswers[0],
+					answerText: correctAnswers[0].answerText,
 					answerDescription: correctAnswerDescription,
 					isCorrect: true,
 				},
 				...incorrectAnswers.map((answer) => ({
-					answerText: answer,
+					answerText: answer.answerText,
 					isCorrect: false,
 				})),
 			],
@@ -118,7 +126,7 @@ export default function ModerateQuestion() {
 		try {
 			await updateQuestion(questionId, updatingQuestion);
 			alert("question updated...");
-			navigate("/QuestionView/3"); //i need courseId
+			navigate(`/QuestionView/${courseId}`);
 		} catch (error) {
 			console.log(error);
 		}
@@ -134,7 +142,6 @@ export default function ModerateQuestion() {
 
 		const payloadTrueFalse = {
 			questionId: questionId,
-			moderated: true,
 			questionText: trueFalseQuestion,
 			topicId: topicId,
 			questionType: questionType,
@@ -159,6 +166,43 @@ export default function ModerateQuestion() {
 		try {
 			await updateQuestion(questionId, questionDataTrueFalse);
 			alert("question updated...");
+			navigate(`/QuestionView/${courseId}`);
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	const handleSubmitFileInput = async (e) => {
+		e.preventDefault();
+
+		const payloadFileInput = {
+			questionId: questionId,
+			questionText: question,
+			topicId: topicId,
+			questionType: questionType,
+			instruction: instruction,
+			answers: [
+				{
+					answerText: correctAnswers[0].answerText,
+					answerDescription: correctAnswerDescription,
+					isCorrect: true,
+				},
+				...incorrectAnswers.map((answer) => ({
+					answerText: answer.answerText,
+					isCorrect: false,
+				})),
+			],
+		};
+
+		const updatingFileQuestionData = {
+			questionDTO: JSON.stringify(payloadFileInput),
+			pdfFile: file,
+		};
+
+		try {
+			await updateQuestion(questionId, updatingFileQuestionData);
+			alert("question updated...");
+			navigate(`/QuestionView/${courseId}`);
 		} catch (error) {
 			console.log(error);
 		}
@@ -177,6 +221,7 @@ export default function ModerateQuestion() {
 							<label>Select Domain</label>
 							<select
 								value={selectedDomain}
+								readOnly
 								// onChange={(e) => {
 								// 	setSelectedDomain(e.target.value);
 								// 	setSelectedTopic(""); // Reset topic when domain changes
@@ -199,6 +244,7 @@ export default function ModerateQuestion() {
 								<label>Select Topic</label>
 								<select
 									value={selectedTopic}
+									readOnly
 									// onChange={(e) => setSelectedTopic(e.target.value)}
 								>
 									<option value={selectedTopic} disabled>
@@ -282,6 +328,7 @@ export default function ModerateQuestion() {
 								<label>Select Domain</label>
 								<select
 									value={selectedDomain}
+									readOnly
 									// onChange={(e) => {
 									// 	setSelectedDomain(e.target.value);
 									// 	setSelectedTopic(""); // Reset topic when domain changes
@@ -304,6 +351,7 @@ export default function ModerateQuestion() {
 									<label>Select Topic</label>
 									<select
 										value={selectedTopic}
+										readOnly
 										// onChange={(e) => setSelectedTopic(e.target.value)}
 									>
 										<option value={selectedTopic} disabled>
@@ -370,6 +418,131 @@ export default function ModerateQuestion() {
 							{/* Submit Button */}
 							<button className="add-question-button" type="submit">
 								Add Question
+							</button>
+						</form>
+					</div>
+				);
+			case "SCENARIO_WITH_PDF":
+				return (
+					<div className="add-questions-form-scrollable">
+						<form onSubmit={handleSubmitFileInput}>
+							{/* Domain Selection */}
+							<div className="add-questions-form-group">
+								<label>Select Domain</label>
+								<select
+									value={selectedDomain}
+									readOnly
+									// onChange={(e) => {
+									// 	setSelectedDomain(e.target.value);
+									// 	setSelectedTopic(""); // Reset topic when domain changes
+									// }}
+								>
+									<option value={selectedDomain} disabled>
+										{selectedDomain}
+									</option>
+									{/* {domains.map((domain, index) => (
+									<option key={index} value={domain}>
+										{domain}
+									</option>
+								))} */}
+								</select>
+							</div>
+
+							{/* Topic Selection */}
+							{selectedDomain && (
+								<div className="moderate-question-form-group">
+									<label>Select Topic</label>
+									<select
+										value={selectedTopic}
+										readOnly
+										// onChange={(e) => setSelectedTopic(e.target.value)}
+									>
+										<option value={selectedTopic} disabled>
+											{selectedTopic}
+										</option>
+										{/* {topics[selectedDomain].map((topic, index) => (
+										<option key={index} value={topic}>
+											{topic}
+										</option>
+									))} */}
+									</select>
+								</div>
+							)}
+
+							{/**File Input */}
+							<input
+								type="file"
+								onChange={handleFileChange}
+								accept=".pdf,.doc,.docx"
+							/>
+
+							{/* Question Input */}
+							<div className="add-questions-form-group">
+								<label>Question</label>
+								<textarea
+									value={question}
+									onChange={(e) => setQuestion(e.target.value)}
+									placeholder="Enter the question"
+								/>
+							</div>
+
+							{/* Instruction Input */}
+							<div className="add-questions-form-group">
+								<label>Instruction</label>
+								<textarea
+									value={instruction}
+									onChange={(e) => setInstruction(e.target.value)}
+									placeholder="Enter the Instruction for the question"
+								/>
+							</div>
+
+							{/* Dynamic Correct Answer Inputs */}
+							<div className="moderate-question-form-group">
+								<label>Correct Answers</label>
+								{correctAnswers.map((answer, index) => (
+									<div key={index}>
+										<input
+											type="text"
+											value={answer.answerText}
+											onChange={(e) =>
+												handleCorrectAnswerChange(index, e.target.value)
+											}
+											placeholder={`Correct Answer ${index + 1}`}
+										/>
+									</div>
+								))}
+							</div>
+
+							{/* Dynamic Incorrect Answer Inputs */}
+							<div className="moderate-question-form-group">
+								<label>Incorrect Answers</label>
+								{incorrectAnswers.map((answer, index) => (
+									<div key={index}>
+										<input
+											type="text"
+											value={answer.answerText}
+											onChange={(e) =>
+												handleIncorrectAnswerChange(index, e.target.value)
+											}
+											placeholder={`Incorrect Answer ${index + 1}`}
+										/>
+									</div>
+								))}
+							</div>
+
+							{/* Correct Answer Description */}
+							<div className="add-questions-form-group">
+								<label>Correct Answer Description</label>
+								<textarea
+									value={correctAnswerDescription}
+									onChange={(e) => setCorrectAnswerDescription(e.target.value)}
+									placeholder="Enter description for the correct answer"
+								/>
+							</div>
+
+							{/* Submit Button */}
+							<button className="moderate-question-button" type="submit">
+								Approve
 							</button>
 						</form>
 					</div>
