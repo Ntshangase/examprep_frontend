@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AddUser.css";
 import "../../Styles/global.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
-import { createUser } from "../../API/Api.js";
+import { createUser, getCourse } from "../../Api/Api.js";
 
 function AddUser() {
 	const links = [
@@ -23,12 +23,29 @@ function AddUser() {
 		contactNumber: "",
 		role: "",
 		image: null,
+		selectedCourses: [],
+		selectedCourseIds: [],
 	});
 
 	const [selectedOption, setSelectedOption] = useState("");
 	const [courseSearch, setCourseSearch] = useState(""); //to be moved
-	const availableCourses = ["Aws", "Comptia", "Networking+", "Databases"]; // Dummy data for courses
+	//const availableCourses = ["Aws", "Comptia", "Networking+", "Databases"]; // Dummy data for courses
 	const navigate = useNavigate();
+	const [courseList, setCourseList] = useState([]);
+
+	useEffect(() => {
+		const fetchAllCourses = async () => {
+			try {
+				const response = await getCourse();
+				setCourseList(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchAllCourses();
+	}, []);
+
+	console.log(courseList);
 
 	const handleAddUserInputChange = (event) => {
 		const { name, value } = event.target;
@@ -54,7 +71,7 @@ function AddUser() {
 		surname: addUser.surname,
 		contactNumber: addUser.contactNumber,
 		role: addUser.role,
-		courseIds: [],
+		courseIds: addUser.selectedCourseIds,
 	};
 
 	// For testing pursposes let's mize the password.
@@ -72,7 +89,7 @@ function AddUser() {
 	const userData = {
 		userDto: JSON.stringify(payload),
 		image: addUser.image,
-	}
+	};
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
@@ -87,27 +104,30 @@ function AddUser() {
 		navigate("/ManageUser");
 	};
 
-	const handleCourseSearch = (e) => {
-		//to be moved
-		setCourseSearch(e.target.value);
+	const handleCourseSearch = (event) => {
+		setCourseSearch(event.target.value);
 	};
 
 	const handleSelectCourse = (course) => {
-		//to be moved
-		if (!addUser.selectedCourses.includes(course)) {
-			setAddUser({
-				...addUser,
-				selectedCourses: [...addUser.selectedCourses, course],
-			});
+		if (!addUser.selectedCourseIds.includes(course.courseId)) {
+			setAddUser((prevData) => ({
+				...prevData,
+				selectedCourses: [...prevData.selectedCourses, course.courseName],
+				selectedCourseIds: [...prevData.selectedCourseIds, course.courseId],
+			}));
 		}
 	};
 
-	const handleRemoveCourse = (course) => {
-		//to be moved
-		setAddUser({
-			...addUser,
-			selectedCourses: addUser.selectedCourses.filter((c) => c !== course),
-		});
+	const handleRemoveCourse = (courseId) => {
+		setAddUser((prevData) => ({
+			...prevData,
+			selectedCourses: prevData.selectedCourses.filter(
+				(_, index) => prevData.selectedCourseIds[index] !== courseId
+			),
+			selectedCourseIds: prevData.selectedCourseIds.filter(
+				(id) => id !== courseId
+			),
+		}));
 	};
 
 	const handleOptionChange = (event) => {
@@ -211,9 +231,8 @@ function AddUser() {
 					</div>
 
 					{/* Conditionally render the search field for Student, Data Capture, Moderator */}
-					{(addUser.role === "Student" ||
-						addUser.role === "DataCapture" ||
-						addUser.role === "Moderator") && (
+
+					{["STUDENT", "DATA CAPTURE", "MODERATOR"].includes(addUser.role) && (
 						<div className="form-group">
 							<label>Search Courses</label>
 							<input
@@ -223,23 +242,27 @@ function AddUser() {
 								placeholder="Search for courses"
 							/>
 
+							{/* Filter and display courses based on search */}
 							{courseSearch && (
 								<ul className="add-user-course-list">
-									{availableCourses
+									{courseList
 										.filter((course) =>
-											course.toLowerCase().includes(courseSearch.toLowerCase())
+											course.courseName
+												.toLowerCase()
+												.includes(courseSearch.toLowerCase())
 										)
-										.map((course, index) => (
+										.map((course) => (
 											<li
-												key={index}
+												key={course.courseId}
 												onClick={() => handleSelectCourse(course)}
 											>
-												{course}
+												{course.courseName}
 											</li>
 										))}
 								</ul>
 							)}
 
+							{/* Display selected courses */}
 							<div className="add-user-selected-courses">
 								{addUser.selectedCourses.map((course, index) => (
 									<span key={index} className="add-user-selected-course">
@@ -247,7 +270,9 @@ function AddUser() {
 										<button
 											type="button"
 											className="remove-course-btn"
-											onClick={() => handleRemoveCourse(course)}
+											onClick={() =>
+												handleRemoveCourse(addUser.selectedCourseIds[index])
+											}
 										>
 											&times;
 										</button>

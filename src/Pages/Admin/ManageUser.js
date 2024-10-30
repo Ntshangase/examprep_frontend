@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlusCircle, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { Link, useNavigate } from "react-router-dom";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-import { getAllUser, deleteUser } from "../../API/Api.js";
+import { getAllUser, deleteUser } from "../../Api/Api.js";
 
 const ManageUser = () => {
 	const links = [

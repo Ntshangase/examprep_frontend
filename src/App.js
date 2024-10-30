@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
 import Admin from "./Pages/Admin/AdminLanding";
@@ -53,8 +53,22 @@ import ScheduledTestReview from "./Pages/Student/Enrolled/ScheduledTestReview";
 import ManageClassStudents from "./Pages/Admin/ManageClassStudents";
 import FlaggedQuestionView from "./Pages/Moderator/FlaggedQuestionView";
 import EditUser from "./Pages/Admin/EditUser";
+import { useDispatch } from "react-redux";
+import { setUser } from "./App/Slices/UserSlice";
 
 function App() {
+	const dispatch = useDispatch();
+
+    useEffect(() => {
+        const currentUserId = localStorage.getItem('currentUserId');
+        if (currentUserId) {
+            const storedUser = JSON.parse(localStorage.getItem(`user_${currentUserId}`));
+            if (storedUser) {
+                dispatch(setUser(storedUser)); // Populate Redux state with user data
+            }
+        }
+    }, [dispatch]);
+
 	return (
 		<Router>
 			<Routes>
@@ -63,7 +77,7 @@ function App() {
 				<Route path="/AdminLanding" element={<Admin />} />
 				<Route path="/ModerateAws" element={<ModerateAws />} />
 				<Route path="/ModeratorDashboard" element={<ModeratorDashboard />} />
-				<Route path="/QuestionView" element={<QuestionView />} />
+				<Route path="/QuestionView/:courseId" element={<QuestionView />} />
 				<Route path="/LecturerDashboard" element={<LecturerDashboard />} />
 				<Route path="/StudentDashboard" element={<StudentDashboard />} />
 				<Route path="/ManageUser" element={<ManageUser />} />
@@ -71,7 +85,7 @@ function App() {
 				<Route path="/TestPage" element={<TestPage />} />
 				<Route path="/SubmittedTests" element={<SubmittedTests />} />
 				<Route path="/IndStudentDash" element={<IndStudentDash />} />
-				<Route path="/IndStudentCourseDetails" element={<IndStudentCourseDetail />} />
+				<Route path="/IndStudentCourseDetails/:courseId" element={<IndStudentCourseDetail />} />
 				<Route path="/AddCourse" element={<AddCourse />} />
 				<Route path="/CourseDetails/:courseId" element={<CourseDetails />} />
 				<Route path="/CreateClass/:courseId" element={<CreateClass />} />
@@ -102,7 +116,7 @@ function App() {
 				<Route path="/StudentProfile" element={<StudentProfile />} />
 				<Route path="/IndStudentCourses" element={<IndStudentCourses />} />
 				<Route path="/IndStudentCourseDets" element={<IndStudentCourseDets />} />
-				<Route path="/ModerateQuestion" element={<ModerateQuestion />} />
+				<Route path="/ModerateQuestion/:questionId" element={<ModerateQuestion />} />
 				<Route path="/TakeTest" element={<TakeTest />} />
 				<Route path="/TestResults" element={<TestResults />} />
 				<Route path="/ScheduledTestReview" element={<ScheduledTestReview />} />

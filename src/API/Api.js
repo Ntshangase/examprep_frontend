@@ -36,6 +36,7 @@ export const getCourse = () => apiClient.get("/api/courses");
 export const updateCourse = (endpoint, courseData) => apiClient.put(endpoint, courseData, {headers: {
 	'Content-Type': 'multipart/form-data',
 }})
+export const getSingleCourse = (courseId) => apiClient.get(`/api/courses/classes/${courseId}`);
 
 //CLASS RELATED ENDPOINTS
 export const getClasses = (endpoint) => apiClient.get(endpoint);
@@ -48,5 +49,18 @@ export const getClassDetails = (classId) => apiClient.get(`/api/classes/with-stu
 //LECTURE RELATED ENDPOINTS
 export const getLectureClasses = (lecturerId) => apiClient.get(`/api/classes/${lecturerId}/details`);
 
-//DATA CAPTURE RELAATED ENDPOINTS
-export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData);
+//DATA CAPTURE RELATED ENDPOINTS  && MODERATOR
+export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData, {headers: {
+	'Content-Type': 'multipart/form-data',
+}});
+export const getUnmoderatedCourseQuestions = ( courseId ) => apiClient.get(`/api/questions/unmoderated/${courseId}`);
+export const getUnmoderatedQuestion = ( questionId ) => apiClient.get(`/api/questions/question/${questionId}`);
+export const updateQuestion = (questionId, questionUpdateData) => apiClient.put(`/api/questions/update/${questionId}`, questionUpdateData, {headers : {
+	'Content-Type': 'multipart/form-data',
+}});
+
+//INDEPENDENT STUDENT ENDPOINTS
+export const getIndependentStudentCourses = (studentId) => apiClient.get(`/api/tests/${studentId}/courses`);
+
+//ENROLLED STUDENT ENDPOINTS
+export const getEnrolledStudentClasses = (studentId) => apiClient.get(`/api/students/${studentId}/details`);

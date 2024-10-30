@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./EditUser.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
 import { useNavigate, useParams } from "react-router-dom";
-import { getUserById, deleteUser, updateUser } from "../../API/Api.js";
+import { getUserById, deleteUser, updateUser } from "../../Api/Api.js";
 
 export default function EditUser() {
     const links = [
@@ -45,6 +45,8 @@ export default function EditUser() {
 
         fetchUserData();
     }, [userId]);
+
+    console.log(userData);
 
     // Handlers for user details
     const handleUserNameChange = (e) => setUserName(e.target.value);
@@ -190,7 +192,7 @@ export default function EditUser() {
 							onChange={handleUserRoleChange}
 							required
 						>
-                            <option value="" disabled>Select Role</option>
+                            <option value="" disabled>{userData.role}</option>
 							<option value="LECTURER">Lecturer</option>
 							<option value="STUDENT">Student</option>
 							<option value="ADMIN">Admin</option>
