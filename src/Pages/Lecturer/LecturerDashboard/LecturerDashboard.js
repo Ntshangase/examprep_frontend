@@ -3,6 +3,7 @@ import CourseCard from "../../../Components/CourseCard/CourseCard";
 import "./LecturerDashboard.css";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import { getLectureClasses } from "../../../Api/Api";
+import { useSelector } from "react-redux";
 
 const LecturerDashboard = () => {
 	const links = [
@@ -12,11 +13,12 @@ const LecturerDashboard = () => {
 
 	const [loadingState, setLoadingState] = useState(true);
 	const [lectureData, setLectureData] = useState();
+	const user = useSelector((state) => state.user.userData);
 
 	useEffect(() => {
 		const fetchLecture = async () => {
 			try {
-				const response = await getLectureClasses(1); //using one for test data
+				const response = await getLectureClasses(user.id);
 				setLectureData(response.data);
 			} catch (error) {
 				console.log(error);
@@ -25,7 +27,7 @@ const LecturerDashboard = () => {
 			}
 		};
 		fetchLecture();
-	}, []);
+	}, [user.id]);
 
 	if (loadingState) {
 		return <div>...Loading</div>;
