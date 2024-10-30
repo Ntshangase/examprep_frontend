@@ -7,7 +7,6 @@ import { getUnmoderatedQuestion, updateQuestion } from "../../Api/Api";
 export default function ModerateQuestion() {
 	const links = [
 		{ path: "/ModeratorDashboard", pathName: "Home" },
-		{ path: "/QuestionView", pathName: "Questions" },
 		{ path: "/FlaggedQuestionView", pathName: "Flagged" },
 	];
 
