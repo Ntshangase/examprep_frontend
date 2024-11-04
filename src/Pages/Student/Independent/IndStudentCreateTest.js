@@ -68,7 +68,6 @@ useEffect(()=>{
 
 
   const handleGenerateTest = async() => {
-    // setIsModalOpen(true);
     const payload={
       testName: testName,
       topicQuestionCount: {}
@@ -91,22 +90,26 @@ useEffect(()=>{
       alert("Please select number of questions");
       return
     }
+    setIsModalOpen(true);
     try{
-      await postIndStudentGeneratetest(user.id,payload);
-      alert("Test created");
+      const response= await postIndStudentGeneratetest(user.id,payload);
+    
+
+      const testId = response.data.testId;
+      handleStartTest(testId);
+      //alert("Test created");
     }catch(error)
     
     {console.log(error);}
 
       // Populate topicQuestionCount with selected topics and question counts
-  
   };
 
   
 
-  const handleStartTest = () => {
+  const handleStartTest = (testId) => {
     setIsModalOpen(false); 
-    navigate('/IndStudentWriteTest', { state: { selectedTopics } });
+    navigate(`/IndStudentWriteTest/${testId}`);
   };
 
   if(loadingState){
