@@ -61,6 +61,8 @@ export const updateQuestion = (questionId, questionUpdateData) => apiClient.put(
 
 //INDEPENDENT STUDENT ENDPOINTS
 export const getIndependentStudentCourses = (studentId) => apiClient.get(`/api/tests/${studentId}/courses`);
+export const postIndStudentGeneratetest=(studentId,testData)=>apiClient.post(`/api/tests?studentId=${studentId}`,testData);
+export const getCourseById=(courseId)=>apiClient.get(`/api/courses/${courseId}`);
 
 //ENROLLED STUDENT ENDPOINTS
 export const getEnrolledStudentClasses = (studentId) => apiClient.get(`/api/students/${studentId}/details`);
