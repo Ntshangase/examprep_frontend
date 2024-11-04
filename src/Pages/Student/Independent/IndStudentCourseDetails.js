@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import "./IndStudentCourseDetails.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { getCourseById } from "../../../Api/Api";
+import { getCourseById } from "../../../Api/Api.js";
 
 
 const IndStudentCourseDetails = () => {
