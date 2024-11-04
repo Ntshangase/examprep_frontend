@@ -2,7 +2,8 @@ import React, { useEffect, useState } from "react";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import "./IndStudentCourseDetails.css";
 import { useNavigate, useParams } from "react-router-dom";
-import { getSingleCourse } from "../../../Api/Api";
+import { getCourseById } from "../../../Api/Api";
+
 
 const IndStudentCourseDetails = () => {
 	const links = [
@@ -17,9 +18,8 @@ const IndStudentCourseDetails = () => {
 
 	useEffect(() => {
 		const fetchSingleCourse = async () => {
-
 			try {
-				const response = await getSingleCourse(courseId);
+				const response = await getCourseById(courseId);
 				setCourseData(response.data);
 			} catch (error) {
 				console.log(error);
@@ -30,9 +30,10 @@ const IndStudentCourseDetails = () => {
 		fetchSingleCourse();
 	},[courseId]);
 
+
 	// Function for button click
 	const handleGenerateTest = () => {
-		navigate("/IndStudentCreateTest");
+		navigate(`/IndStudentCreateTest/${courseId}`);
 	};
 
 	if(loadingState) {
