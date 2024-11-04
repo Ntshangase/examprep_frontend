@@ -56,14 +56,14 @@ export default function ModerateQuestion() {
 
 				setCorrectAnswers(correct);
 				setIncorrectAnswers(incorrect);
-				setCorrectAnswerDescription(correct[0].answerDescription); //Notice the use-case is for having one correct answer description.
+				setCorrectAnswerDescription(correct[0]?.answerDescription || ""); //Notice the use-case is for having one correct answer description.
 
 				if (correct[0].answerText === "True") {
 					setTrueCheckboxAnswer(true);	//setOneCheckboxToChecked
 					setTrueFalseCorrectAnswerDescription(correct[0].answerDescription);
-				} else {
+				} else if (correct[0]) {
 					setFalseCheckboxAnswer(true);
-					setTrueFalseCorrectAnswerDescription(incorrect[0].answerDescription);
+					setTrueFalseCorrectAnswerDescription(incorrect[0]?.answerDescription || "");
 
 				}
 			} catch (error) {
@@ -78,13 +78,13 @@ export default function ModerateQuestion() {
 	// Handle dynamic inputs for correct and incorrect answers
 	const handleCorrectAnswerChange = (index, value) => {
 		const updatedCorrectAnswers = [...correctAnswers];
-		updatedCorrectAnswers[index] = value;
+		updatedCorrectAnswers[index] = { ...updatedCorrectAnswers[index], answerText: value };
 		setCorrectAnswers(updatedCorrectAnswers);
 	};
 
 	const handleIncorrectAnswerChange = (index, value) => {
 		const updatedIncorrectAnswers = [...incorrectAnswers];
-		updatedIncorrectAnswers[index] = value;
+		updatedIncorrectAnswers[index] = { ...updatedIncorrectAnswers[index], answerText: value };
 		setIncorrectAnswers(updatedIncorrectAnswers);
 	};
 
@@ -106,7 +106,7 @@ export default function ModerateQuestion() {
 			questionType: questionType,
 			answers: [
 				{
-					answerText: correctAnswers[0].answerText,
+					answerText: correctAnswers[0]?.answerText || "",
 					answerDescription: correctAnswerDescription,
 					isCorrect: true,
 				},
@@ -128,6 +128,7 @@ export default function ModerateQuestion() {
 			navigate(`/QuestionView/${courseId}`);
 		} catch (error) {
 			console.log(error);
+			console.log(payloadMultipleChoice);
 		}
 	};
 
@@ -182,7 +183,7 @@ export default function ModerateQuestion() {
 			instruction: instruction,
 			answers: [
 				{
-					answerText: correctAnswers[0].answerText,
+					answerText: correctAnswers[0]?.answerText || "",
 					answerDescription: correctAnswerDescription,
 					isCorrect: true,
 				},
