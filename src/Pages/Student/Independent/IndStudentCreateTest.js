@@ -70,7 +70,6 @@ const IndStudentCreateTest = () => {
 	}, [courseId]);
 
 	const handleGenerateTest = async () => {
-		// setIsModalOpen(true);
 		const payload = {
 			testName: testName,
 			topicQuestionCount: {},
@@ -93,9 +92,13 @@ const IndStudentCreateTest = () => {
 			alert("Please select number of questions");
 			return;
 		}
+		setIsModalOpen(true);
 		try {
-			await postIndStudentGeneratetest(user.id, payload);
-			alert("Test created");
+			const response = await postIndStudentGeneratetest(user.id, payload);
+
+			const testId = response.data.testId;
+			handleStartTest(testId);
+			//alert("Test created");
 		} catch (error) {
 			console.log(error);
 		}
@@ -103,15 +106,14 @@ const IndStudentCreateTest = () => {
 		// Populate topicQuestionCount with selected topics and question counts
 	};
 
-	const handleStartTest = () => {
+	const handleStartTest = (testId) => {
 		setIsModalOpen(false);
-		navigate("/IndStudentWriteTest", { state: { selectedTopics } });
+		navigate(`/IndStudentWriteTest/${testId}`);
 	};
 
 	if (loadingState) {
 		return <div>Loading...........</div>;
 	}
-  
 	return (
 		<div className="indipendent-student-create-test-container">
 			<Sidebar links={links} />
