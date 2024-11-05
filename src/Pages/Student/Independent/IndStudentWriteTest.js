@@ -22,21 +22,23 @@ const IndStudentWriteTest = () => {
   const [reviewResults, setReviewResults] = useState([]); // New state for review results
   const { testId } = useParams();
   const user = useSelector((state) => state.user.userData);
+  console.log("User data:", user);
   const [question, setQuestion] = useState([]);
 
   useEffect(() => {
+    if (!user?.id) return;
     const fetchTest = async () => {
       try {
         const response = await getGeneratedTest(testId, user.id);
+
         setQuestion(response.data.questions);
-		console.log(response.data);
       } catch (error) {
         console.log(error);
       }
     };
     fetchTest();
-  }, [testId, user.id]);
-  console.log(question);
+  }, [testId, user]);
+  console.log(question || "No question data available yet");
 
   //   const handleNext = () => {
   //     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
@@ -48,7 +50,9 @@ const IndStudentWriteTest = () => {
   //       [currentQuestionIndex]: event.target.value,
   //     });
   //   };
-
+  if (!user) {
+    return <div>Loading...</div>; // Show a loading state if user data is not available
+  }
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -58,15 +62,27 @@ const IndStudentWriteTest = () => {
       <Sidebar links={links} />
       <div className="indipendent-student-write-test-content">
         <h2 className="indipendent-student-write-test-h2">Write Your Test</h2>
-		<div >
-		{question.map((questions,index)=>(
-			<div key={index}>
-				<h2>{questions.questionText}</h2>
-			</div>
-
-		))}
-			
-		</div>
+        <div>
+          {question.map((questions, index) => (
+            <div key={index}>
+              <h2>{questions.questionText}</h2>
+              {questions.answers.map((answer, index) => (
+                <div key={index}>
+                  <div>
+                    <input
+                     type="checkbox"
+					 name={`question-${index}`} // Unique name per question to allow single selection
+					 value={answer.answerText}  // or answer.id if you prefer an ID for the answer
+					 checked={answers[currentQuestionIndex] === answer.answerText} // Set checked based on state
+					 onChange={() => setAnswers({ ...answers, [currentQuestionIndex]: answer.answerText })} // Update answer state on change
+                    />
+                    <span id="false-answer-text">{answer.answerText}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
