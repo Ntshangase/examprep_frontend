@@ -21,6 +21,7 @@ const IndStudentCreateTest = () => {
   const[testName,setTestName]=useState("");
   const [courseData,setCourseData]=useState([]);
   const [loadingState, setLoadingState] = useState(true);
+  const [generatedTestId, setGeneratedTestId] = useState(null);
   const{courseId}= useParams();
 
   // Function to handle topic changes and update selectedTopics state
@@ -55,7 +56,7 @@ useEffect(()=>{
     try{
       const response=await getCourseById(courseId);
       setCourseData(response.data.domains);
-      console.log(response.data);
+      //console.log(response.data);
     }catch(error){
       console.log(error);
     }finally{
@@ -93,11 +94,9 @@ useEffect(()=>{
     setIsModalOpen(true);
     try{
       const response= await postIndStudentGeneratetest(user.id,payload);
-    
-
       const testId = response.data.testId;
+      setGeneratedTestId(testId); 
       handleStartTest(testId);
-      //alert("Test created");
     }catch(error)
     
     {console.log(error);}
@@ -110,6 +109,7 @@ useEffect(()=>{
   const handleStartTest = (testId) => {
     setIsModalOpen(false); 
     navigate(`/IndStudentWriteTest/${testId}`);
+    console.log(testId);
   };
 
   if(loadingState){
