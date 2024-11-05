@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import "./Login.css";
 import { useNavigate } from "react-router-dom";
 import { validateLogin } from "../../Api/Api";
+import { setUser } from "../../App/Slices/UserSlice";
+import { useDispatch } from "react-redux";
 
 function Login() {
 	const [email, setEmail] = useState("");
@@ -9,16 +11,20 @@ function Login() {
 	const [error, setError] = useState(""); // State to hold error messages
 	const navigate = useNavigate();
 
-	const handleSubmit = async (e) => {
+	const dispatch = useDispatch();
+
+	const HandleSubmit = async (e) => {
 		e.preventDefault();
 
 		try {
 			const response = await validateLogin(email,password);
-			//console.log(response);
+			console.log(response);
 			if (response.status === 200) {
-				console.log("Login successful");
+				dispatch(setUser(response.data));
+				const userData = response.data;
+				localStorage.setItem(`user_${userData.id}`, JSON.stringify(response.data));
+				localStorage.setItem('currentUserId', userData.id);
 				const role  = response.data.role; // Extracting user role from the response
-				console.log(role);
 
 				// Redirect based on role
 				switch (role) {
@@ -52,7 +58,7 @@ function Login() {
 		<div className="login-container">
 			<div className="login-div">
 				<h2 className="login-h2">Welcome Back</h2>
-				<form className="login-form" onSubmit={handleSubmit}>
+				<form className="login-form" onSubmit={HandleSubmit}>
 					{error && <div className="error-message">{error}</div>}
 					<div className="login-input-group">
 						<label htmlFor="email">Email Address</label>

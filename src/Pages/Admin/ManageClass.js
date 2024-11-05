@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import './ManageClass.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from '../../Components/Sidebar/Sidebar';
-import { getClasses } from '../../Api/Api';
+import { getClasses } from '../../Api/Api.js';
 
 export default function ManageClass() {
   const links = [

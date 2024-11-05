@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Sidebar from "../../../src/Components/Sidebar/Sidebar";
 import "./DataCaptureDashboard.css";
-import { getCourse } from "../../Api/Api";
+import { getCourse } from "../../Api/Api.js";
 
 const DataCaptureDashboard = () => {
 	const links = [{ path: "/DataCaptureDashboard", pathName: "Home" }];

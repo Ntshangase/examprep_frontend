@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./Classes.css";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
+import { getEnrolledStudentClasses } from "../../../Api/Api";
+import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 const Classes = () => {
 
@@ -12,6 +15,30 @@ const Classes = () => {
 		{path: "/StudentProfile", pathName:"Student Profile"},
 	]
 
+	const user = useSelector((state) => state.user.userData);
+	const [loadingState, setLoadindState] = useState(true);
+	const [classesData, setClassesData] = useState();
+
+	useEffect(() => {
+		const fetchEnrolledStudent = async () => {
+
+			try{
+				const response = await getEnrolledStudentClasses(user.id);
+				setClassesData(response.data.courses);
+			}catch(error) {
+				console.log(error);
+			}finally {
+				setLoadindState(false);
+			}
+		};
+		fetchEnrolledStudent();
+	},[user.id]);
+
+	console.log(classesData)
+	if(loadingState) {
+		return <div>...Loading</div>
+	}
+
 	return (
 		<div className="classes-page">
 			<div className="content">
@@ -20,78 +47,26 @@ const Classes = () => {
 					<h1>Active Classes</h1>
 					{/* Line separator */}
 					<hr className="black-separator" />
-					{/* Class 1 */}
-					<div className="class-section">
+					{classesData.map((course,index) => (
+						<div key={index} className="class-section">
 						<p>
 							<strong>
-								<a href="/PanelEnrolled" className="class-link">
-									Intake June 2024
-								</a>
+								<Link to="/PanelEnrolled" className="class-link">
+								{course.classes[index].className}
+								</Link>
 							</strong>
 						</p>
 						<p>
-							<strong>Lecturer:</strong> Dr. J. Smith
+							<strong>Class Description:</strong> {course.classes[index].classDescription}
 						</p>
 						<p>
-							<strong>Course:</strong> CompTIA Security+
+							<strong>Course:</strong> {course.courseName}
 						</p>
 						<p>
-							<strong>Duration:</strong> June 1, 2024 - August 31, 2024
+							<strong>Duration:</strong> {course.classes[index].startDate} {"-"} {course.classes[index].endDate}
 						</p>
 					</div>
-
-					{/* Line separator */}
-					<hr className="black-separator" />
-
-					{/* Class 2 */}
-					<div className="class-section">
-						<p>
-							<strong>
-								<a
-									href="/class-details/intake-march-2024"
-									className="class-link"
-								>
-									Intake March 2024
-								</a>
-							</strong>
-						</p>
-						<p>
-							<strong>Lecturer:</strong> Prof. A. Green
-						</p>
-						<p>
-							<strong>Course:</strong> CompTIA A+
-						</p>
-						<p>
-							<strong>Duration:</strong> March 1, 2024 - May 31, 2024
-						</p>
-					</div>
-
-					{/* Line separator */}
-					<hr className="black-separator" />
-
-					{/* Class 3 */}
-					<div className="class-section">
-						<p>
-							<strong>
-								<a
-									href="/class-details/intake-january-2024"
-									className="class-link"
-								>
-									Intake January 2024
-								</a>
-							</strong>
-						</p>
-						<p>
-							<strong>Lecturer:</strong> Ms. L. Brown
-						</p>
-						<p>
-							<strong>Course:</strong> CompTIA Cloud+
-						</p>
-						<p>
-							<strong>Duration:</strong> January 1, 2024 - March 31, 2024
-						</p>
-					</div>
-
+					))}
 					{/* Line separator */}
 					<hr className="black-separator" />
 				</div>

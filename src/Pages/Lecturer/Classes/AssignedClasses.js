@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom"; // Import useNavigate
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import styles from "./AssignedClasses.module.css";
 import { getLectureClasses } from "../../../Api/Api";
+import { useSelector } from "react-redux";
 
 const AssignedClasses = () => {
 	const links = [
@@ -15,11 +16,12 @@ const AssignedClasses = () => {
 	const [loadingState, setLoadingState] = useState(true);
 	const [lectureData, setLectureData] = useState();
 	const { courseIndex } = useParams();
+	const user = useSelector((state) => state.user.userData);
 
 	useEffect(() => {
 		const fetchLecture = async () => {
 			try {
-				const response = await getLectureClasses(1); //using one for test data
+				const response = await getLectureClasses(user.id); 
 				setLectureData(response.data.courses[courseIndex]);
 			} catch (error) {
 				console.log(error);
@@ -28,7 +30,7 @@ const AssignedClasses = () => {
 			}
 		};
 		fetchLecture();
-	}, [courseIndex]);
+	}, [user.id,courseIndex]);
 
 	if (loadingState) {
 		return <div>...Loading</div>;

@@ -1,21 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import "./ModeratorDashboard.css";
 import Sidebar from "../../Components/Sidebar/Sidebar";
-
-const AWSBadge = `${process.env.PUBLIC_URL}/assets/AWS-Cloud-Practitioner-Badge.jpeg`;
-const CompTIABadge = `${process.env.PUBLIC_URL}/assets/CompTIA-A+-Badge.jpg`;
-const MicrosoftBadge = `${process.env.PUBLIC_URL}/assets/Microsoft-Fundamentals-Badge.png`;
-const AWSArchitectBadge = `${process.env.PUBLIC_URL}/assets/AWS-Solutions-Architect-Badge.png`;
-const HuaweiBadge = `${process.env.PUBLIC_URL}/assets/Huawei-HCNA-Badge.jpg`;
-
-const courses = [
-	{ name: "AWS Cloud Practitioner", image: AWSBadge },
-	{ name: "CompTIA A+ Certified", image: CompTIABadge },
-	{ name: "Microsoft Fundamentals", image: MicrosoftBadge },
-	{ name: "AWS Solutions Architect", image: AWSArchitectBadge },
-	{ name: "Huawei HCNA", image: HuaweiBadge },
-];
+import { getIndependentStudentCourses } from "../../Api/Api";
+import { useSelector } from "react-redux";
 
 const ModeratorDashboard = () => {
 	const links = [
@@ -25,9 +13,24 @@ const ModeratorDashboard = () => {
 	]
 
 	const navigate = useNavigate(); // Initialize navigate
-	const viewQuestions = () => {
-		navigate("/QuestionView");
+	const viewQuestions = (x) => {
+		navigate(`/QuestionView/${x}`);
 	};
+	const user = useSelector((state) => state.user.userData);
+	const [courseData, setCourseData] = useState([]);
+
+	useEffect(() => {
+		const fetchModeratorCourses = async () => {
+
+			try {
+				const response = await getIndependentStudentCourses(user.id);
+				setCourseData(response.data);
+			} catch (error) {
+				console.log(error);
+			}
+		};
+		fetchModeratorCourses();
+	},[user.id]);
 
 	return (
 		<div className="moderator-dashboard-container">
@@ -36,19 +39,19 @@ const ModeratorDashboard = () => {
 					<h2 className="moderator-content-area-h2">Select Course to Moderate</h2>
 					{/* Certification Badges with Labels */}
 					<div className="moderator-badge-section">
-						{courses.map((course) => (
+						{courseData.map((course, index) => (
 							<div
 								className="moderator-badge-card"
-								key={course.name}
-								onClick={viewQuestions}
+								key={index}
+								onClick={() => {viewQuestions(course.courseId)}}
 							>
 								<div className="moderator-badge">
 									<img
-										src={course.image}
-										alt={course.name}
+										src={`data:image/jpeg;base64,${course.image}`}
+										alt={course.courseName}
 										className="moderator-badge-image"
 									/>
-									<p>{course.name}</p>
+									<p>{course.courseName}</p>
 								</div>
 							</div>
 						))}

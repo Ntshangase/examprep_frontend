@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import "./IndStudentCourseDetails.css";
+import { useNavigate, useParams } from "react-router-dom";
+import { getCourseById } from "../../../Api/Api.js";
+
 
 const IndStudentCourseDetails = () => {
 	const links = [
@@ -8,10 +11,36 @@ const IndStudentCourseDetails = () => {
 		{ path: "/IndStudentdash", pathName: "Course Details" },
 	];
 
+	const navigate = useNavigate();
+	const {courseId} = useParams();
+	const [loadingState, setLoadingState] = useState(true);
+	const [courseData, setCourseData] = useState();
+
+	useEffect(() => {
+		const fetchSingleCourse = async () => {
+			try {
+				const response = await getCourseById(courseId);
+				setCourseData(response.data);
+			} catch (error) {
+				console.log(error);
+			}finally{
+				setLoadingState(false);
+			}
+		};
+		fetchSingleCourse();
+	},[courseId]);
+
+
 	// Function for button click
 	const handleGenerateTest = () => {
-		window.location.href = "/IndStudentCreateTest";
+		navigate(`/IndStudentCreateTest/${courseId}`);
 	};
+
+	if(loadingState) {
+		return <div>...Loading</div>
+	}
+
+	console.log(courseData);
 
 	return (
 		<div className="indipendent-student-course-details-container">
@@ -25,26 +54,23 @@ const IndStudentCourseDetails = () => {
 					{/* Left Section: Course Image */}
 					<div className="indipendent-student-course-details-course-image">
 						<img
-							src="/assets/AWS-Cloud-Practitioner-Badge.jpeg"
+							src={`data:image/jpeg;base64,${courseData.image}`}
 							alt="CompTIA Security+"
 						/>
 					</div>
 
 					{/* Right Section: Course Details */}
 					<div className="independent-student-course-info">
-						<h2>AWS-Cloud-Practitioner</h2>
+						<h2>{courseData.courseName}</h2>
 						<p className="independent-student-about-course">
-							The CompTIA Security+ certification is recognized globally as a
-							trusted validation of foundational, vendor-neutral IT security
-							knowledge and skills. It covers essential principles in network
-							security and risk management.
+							{courseData.courseDescription}
 						</p>
 
-						<hr className="separator" />
+						{/* <hr className="separator" />
 
 						<p>
 							<strong>Number of Modules:</strong> 5
-						</p>
+						</p> */}
 
 						{/* Grey Line Separator */}
 						<hr className="separator" />
