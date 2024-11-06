@@ -34,16 +34,18 @@
 .indipendent-student-course-details-information-view {
   display: flex;
   flex: 1;
-  align-items: flex-start; /* Align items at the start */
-  margin-bottom: 20px; /* Space below the top section */
+  flex-direction: row;
+  margin-bottom: 20px;
 }
 
+.indipendent-student-course-details-course-image-div {
+  width: 30%;
+  display: flex;
+}
 .indipendent-student-course-details-course-image {
-  width: 100%; /* Responsive image */
-  max-width: 300px; /* Max width for better sizing */
-  height: auto; /* Maintain aspect ratio */
-  border-radius: 8px; /* Rounded corners */
-  padding-top: 20px;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
 }
 
 .independent-student-course-info {

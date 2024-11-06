@@ -8,7 +8,6 @@ import Sidebar from "../../Components/Sidebar/Sidebar";
 const FlaggedQuestionView = () => {
 	const links = [
 		{ path: "/ModeratorDashboard", pathName: "Home" },
-        {path: "/QuestionView", pathName: "Questions"},
 		{ path: "/FlaggedQuestionView", pathName: "Flagged" }
 	];
 
