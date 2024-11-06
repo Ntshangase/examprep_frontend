@@ -48,6 +48,7 @@ export const getClassDetails = (classId) => apiClient.get(`/api/classes/with-stu
 
 //LECTURE RELATED ENDPOINTS
 export const getLectureClasses = (lecturerId) => apiClient.get(`/api/classes/${lecturerId}/details`);
+export const lectureGenerateTest=(testData)=>apiClient.post(`api/tests/create-by-lecturer`,testData);
 
 //DATA CAPTURE RELATED ENDPOINTS  && MODERATOR
 export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData, {headers: {
@@ -64,6 +65,11 @@ export const getIndependentStudentCourses = (studentId) => apiClient.get(`/api/t
 export const postIndStudentGeneratetest=(studentId,testData)=>apiClient.post(`/api/tests?studentId=${studentId}`,testData);
 export const getCourseById=(courseId)=>apiClient.get(`/api/courses/${courseId}`);
 export const getGeneratedTest=(testId,studentId)=>apiClient.get(`/api/tests/${testId}/start?studentId=${studentId}`);
+// Test submission endpoint
+export const submitAnswers = (testAttemptId, answers) => apiClient.post(`/api/tests/${testAttemptId}/submit`, answers);
+
+
+
  
 //ENROLLED STUDENT ENDPOINTS   /api/tests/32/start?studentId=33
 export const getEnrolledStudentClasses = (studentId) => apiClient.get(`/api/students/${studentId}/details`);
