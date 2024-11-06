@@ -1,57 +1,131 @@
+/* Main container to display the sidebar and content side by side */
 .approve-student-container {
     display: flex;
-    flex-direction: row;
     height: 100vh;
+    background-color: #f4f4f9; /* Light background color */
 }
+
+/* Content area styling */
 .approve-student-content {
     display: flex;
     flex-direction: column;
     flex: 1;
     padding: 20px;
+    background-color: #ffffff; /* White background for content */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    border-radius: 8px;
+    overflow-y: auto; /* Scrolls the content if it overflows */
 }
+
+/* Header styling */
 .approve-student-content h2 {
     color: var(--color-primary);
     font-size: 2rem;
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
+    font-weight: 600;
 }
 
-.approve-student-content-dody {
+/* Styling for the student cards */
+.approve-student-card {
     display: flex;
-    flex-direction: row;
-    border-bottom: black 3px solid;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #e1e1e1; /* Light border for separation */
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: background-color 0.3s ease;
 }
 
-/* Container for the approve and delete icons */
-.manage-class-student-actions {
+.approve-student-card:hover {
+    background-color: #f0f0f0; /* Highlight the card on hover */
+}
+
+/* Profile image styling */
+.approve-student-profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; /* Circular profile image */
+    object-fit: cover;
+}
+
+/* Student information section */
+.approve-student-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.approve-student-info p {
+    font-size: 1rem;
+    color: #333;
+    margin: 0;
+}
+
+/* Styling for the actions container (approve & delete icons) */
+.approve-student-actions {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px; /* Adds space between the icons */
-    padding: 5px;
+    gap: 15px;
     margin-left: auto;
 }
 
 /* Approve icon styling */
-.manage-class-student-approve-icon {
-    color: var(--success-color); /* Green color to represent approval */
+.approve-student-approve-icon {
+    color: var(--success-color);
     cursor: pointer;
     font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
-.manage-class-student-approve-icon:hover {
-    color: green; /* Darker green on hover */
+.approve-student-approve-icon:hover {
+    color: #2d6a4f; /* Darker green on hover */
 }
 
 /* Delete icon styling */
-.manage-class-student-delete-icon {
-    color: var(--danger-color); /* Red color for delete */
+.approve-student-delete-icon {
+    color: var(--danger-color);
     cursor: pointer;
     font-size: 1.5rem;
     transition: color 0.3s ease;
 }
 
-.manage-class-student-delete-icon:hover {
-    color: darkred; /* Darker red on hover */
+.approve-student-delete-icon:hover {
+    color: #9b2226; /* Darker red on hover */
+}
+
+/* Empty state when there are no students */
+.approve-student-content p {
+    text-align: center;
+    color: #333; /* Black color for the text */
+    font-size: 1.2rem;
+    font-style: normal; /* Remove italic style */
+}
+
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .approve-student-container {
+        flex-direction: column; /* Stack the sidebar and content on small screens */
+    }
+
+    .approve-student-content {
+        padding: 10px; /* Less padding on mobile */
+    }
+
+    .approve-student-card {
+        flex-direction: column; /* Stack the student info and actions on small screens */
+        align-items: flex-start;
+    }
+
+    .approve-student-actions {
+        margin-top: 10px;
+    }
+
+    .approve-student-profile-image {
+        margin-bottom: 10px; /* Space between the image and text on small screens */
+    }
 }
