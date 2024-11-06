@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import "./IndStudentWriteTest.css";
-import { getGeneratedTest } from "../../../Api/Api";
+import { getGeneratedTest, postTestResult } from "../../../Api/Api";
 import { useSelector } from "react-redux";
 
 const IndStudentWriteTest = () => {
@@ -31,10 +31,10 @@ const IndStudentWriteTest = () => {
 		fetchTest();
 	}, [testId, user]);
 
-	const handleAnswerChange = (questionId, answerId) => {
+	const handleAnswerChange = (questionId, selectedAnswerId) => {
 		// Update the answers array to store questionId and selected answerId
 		const newAnswers = answers.filter((a) => a.questionId !== questionId); // Remove any existing answer for this question
-		newAnswers.push({ questionId, answerId }); // Add the new answer
+		newAnswers.push({ questionId, selectedAnswerId }); // Add the new answer
 
 		setAnswers(newAnswers);
 	};
@@ -45,6 +45,7 @@ const IndStudentWriteTest = () => {
 		} else {
 			console.log("Test finished. User answers:", answers);
 			setShowModal(false); // Close modal when finished
+			handleSubmit();
 		}
 	};
 
@@ -54,10 +55,15 @@ const IndStudentWriteTest = () => {
 		}
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
+	const handleSubmit = async () => {
 		console.log("Submitted answers:", answers);
 		// Additional submission logic
+
+		try{
+			await postTestResult(testId, answers);
+		}catch(error){
+			console.log(error);
+		}
 	};
   console.log(questions);
   console.log(answers);
@@ -82,7 +88,7 @@ const IndStudentWriteTest = () => {
 											answers.some(
 												(a) =>
 													a.questionId === questions[currentQuestionIndex].questionId &&
-													a.answerId === answer.answerId
+													a.selectedAnswerId === answer.answerId
 											)
 										}
 										onChange={() =>

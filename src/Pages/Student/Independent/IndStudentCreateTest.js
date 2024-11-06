@@ -96,11 +96,12 @@ useEffect(()=>{
     setIsModalOpen(true);
     try{
       const response= await postIndStudentGeneratetest(user.id,payload);
+	  console.log("Asibone: ", response.data)
       const testId = response.data.testId;
-      setGeneratedTestId(testId); 
+      setGeneratedTestId(testId);
       handleStartTest(testId);
     }catch(error)
-    
+
     {console.log(error);}
 
 		// Populate topicQuestionCount with selected topics and question counts
