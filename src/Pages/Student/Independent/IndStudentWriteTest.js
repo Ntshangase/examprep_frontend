@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Sidebar from "../../../Components/Sidebar/Sidebar";
 import "./IndStudentWriteTest.css";
 import { getGeneratedTest } from "../../../Api/Api";
@@ -11,85 +11,98 @@ const IndStudentWriteTest = () => {
 		{ path: "/IndStudentdash", pathName: "Course Details" },
 	];
 
-	const location = useLocation();
-	const navigate = useNavigate();
-	const { selectedTopics } = location.state || {};
-
 	const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
-	const [answers, setAnswers] = useState({});
-	const [showModal, setShowModal] = useState(false);
-	const [examResults, setExamResults] = useState({});
-	const [reviewResults, setReviewResults] = useState([]); // New state for review results
+	const [answers, setAnswers] = useState([]);
+	const [showModal, setShowModal] = useState(true); // Set to true initially to show the first question
 	const { testId } = useParams();
 	const user = useSelector((state) => state.user.userData);
-	console.log("User data:", user);
-	const [question, setQuestion] = useState([]);
+	const [questions, setQuestions] = useState([]);
 
 	useEffect(() => {
 		if (!user?.id) return;
 		const fetchTest = async () => {
 			try {
 				const response = await getGeneratedTest(testId, user.id);
-
-				setQuestion(response.data.questions);
+				setQuestions(response.data.questions);
 			} catch (error) {
 				console.log(error);
 			}
 		};
 		fetchTest();
 	}, [testId, user]);
-	console.log(question || "No question data available yet");
 
-	//   const handleNext = () => {
-	//     setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
-	//   };
+	const handleAnswerChange = (questionId, answerId) => {
+		// Update the answers array to store questionId and selected answerId
+		const newAnswers = answers.filter((a) => a.questionId !== questionId); // Remove any existing answer for this question
+		newAnswers.push({ questionId, answerId }); // Add the new answer
 
-	//   const handleMultipleChoiceChange = (event) => {
-	//     setAnswers({
-	//       ...answers,
-	//       [currentQuestionIndex]: event.target.value,
-	//     });
-	//   };
-	if (!user) {
-		return <div>Loading...</div>; // Show a loading state if user data is not available
-	}
+		setAnswers(newAnswers);
+	};
+
+	const handleNext = () => {
+		if (currentQuestionIndex < questions.length - 1) {
+			setCurrentQuestionIndex((prevIndex) => prevIndex + 1);
+		} else {
+			console.log("Test finished. User answers:", answers);
+			setShowModal(false); // Close modal when finished
+		}
+	};
+
+	const handlePrevious = () => {
+		if (currentQuestionIndex > 0) {
+			setCurrentQuestionIndex((prevIndex) => prevIndex - 1);
+		}
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		console.log("Submitted answers:", answers);
+		// Additional submission logic
 	};
+  console.log(questions);
+  console.log(answers);
 
 	return (
 		<div className="indipendent-student-write-test-container">
 			<Sidebar links={links} />
 			<div className="indipendent-student-write-test-content">
 				<h2 className="indipendent-student-write-test-h2">Write Your Test</h2>
-				<div>
-					{question.map((questions, index) => (
-						<div key={index}>
-							<h2>{questions.questionText}</h2>
-							{questions.answers.map((answer, index) => (
+
+				{showModal && questions.length > 0 && (
+					<div className="modal">
+						<div className="modal-content">
+							<h2>{questions[currentQuestionIndex].questionText}</h2>
+							{questions[currentQuestionIndex].answers.map((answer, index) => (
 								<div key={index}>
-									<div>
-										<input
-											type="checkbox"
-											name={`question-${index}`} // Unique name per question to allow single selection
-											value={answer.answerText} // or answer.id if you prefer an ID for the answer
-											checked={
-												answers[currentQuestionIndex] === answer.answerText
-											} // Set checked based on state
-											onChange={() =>
-												setAnswers({
-													...answers,
-													[currentQuestionIndex]: answer.answerText,
-												})
-											} // Update answer state on change
-										/>
-										<span id="false-answer-text">{answer.answerText}</span>
-									</div>
+									<input
+										type="radio"
+										name={`question-${questions[currentQuestionIndex].questionId}`}
+										value={answer.answerId}
+										checked={
+											answers.some(
+												(a) =>
+													a.questionId === questions[currentQuestionIndex].questionId &&
+													a.answerId === answer.answerId
+											)
+										}
+										onChange={() =>
+											handleAnswerChange(questions[currentQuestionIndex].questionId, answer.answerId)
+										}
+									/>
+									<span>{answer.answerText}</span>
 								</div>
 							))}
+							<div className="modal-navigation">
+								<button onClick={handlePrevious} disabled={currentQuestionIndex === 0}>
+									Previous
+								</button>
+								<button onClick={handleNext}>
+									{currentQuestionIndex === questions.length - 1 ? "Finish" : "Next"}
+								</button>
+							</div>
 						</div>
-					))}
-				</div>
+					</div>
+				)}
 			</div>
 		</div>
 	);
