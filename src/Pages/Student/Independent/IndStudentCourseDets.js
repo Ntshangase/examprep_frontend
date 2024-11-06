@@ -5,7 +5,7 @@ import "./IndStudentCourseDets.css";
 
 const IndStudentCourseDets = () => {
 	const links = [
-		{ path: "/StudentDashboards", pathName: "Home" },
+		{ path: "/IndStudentCourses", pathName: "Home" },
 		{ path: "/IndStudentdash", pathName: "Course Details" },
 	];
 

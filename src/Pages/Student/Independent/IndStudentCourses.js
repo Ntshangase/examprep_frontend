@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const IndStudentCourses = () => {
 
   const links = [
-		{path: "/StudentDashboards", pathName: "Home"},
+		{path: "/IndStudentCourses", pathName: "Home"},
 		{path: "/IndStudentdash", pathName: "Course Details"},
 	]
 
