@@ -109,6 +109,7 @@ const IndStudentCreateTest = () => {
 	const handleStartTest = (testId) => {
 		setIsModalOpen(false);
 		navigate(`/IndStudentWriteTest/${testId}`);
+		console.log(testId);
 	};
 
 	if (loadingState) {
