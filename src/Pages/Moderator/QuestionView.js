@@ -9,14 +9,12 @@ import { getUnmoderatedCourseQuestions } from "../../Api/Api";
 const QuestionView = () => {
 	const links = [
 		{ path: "/ModeratorDashboard", pathName: "Home" },
-		{ path: "/QuestionView", pathName: "Questions" },
-    {path: "/FlaggedQuestionView", pathName: "Flagged "}
+		{ path: "/FlaggedQuestionView", pathName: "Flagged " },
 	];
 
 	const navigate = useNavigate(); // Initialize navigate
 	const { courseId } = useParams();
 	const [courseQuestions, setCourseQuestions] = useState([]);
-
 
 	const handleModerateQuestion = (questionId) => {
 		navigate(`/ModerateQuestion/${questionId}`);
@@ -24,7 +22,6 @@ const QuestionView = () => {
 
 	useEffect(() => {
 		const fetchUnmoderatedCourseQuestions = async () => {
-
 			try {
 				const response = await getUnmoderatedCourseQuestions(courseId);
 				setCourseQuestions(response.data);
@@ -33,7 +30,7 @@ const QuestionView = () => {
 			}
 		};
 		fetchUnmoderatedCourseQuestions();
-	},[courseId]);
+	}, [courseId]);
 
 	return (
 		<div className="question-view-container">
@@ -56,7 +53,12 @@ const QuestionView = () => {
 						<div key={index} className="question-card">
 							<div className="question-header">
 								<p>{question.questionText}</p>
-								<button onClick={() => {handleModerateQuestion(question.questionId)}} className="edit-btn">
+								<button
+									onClick={() => {
+										handleModerateQuestion(question.questionId);
+									}}
+									className="edit-btn"
+								>
 									<FontAwesomeIcon icon={faEdit} />
 								</button>
 							</div>
