@@ -45,9 +45,11 @@ export const deleteClass = (endpoint) => apiClient.delete(endpoint);
 export const createClass = (courseId, classData) => apiClient.post(`/api/classes/${courseId}/addClassAndStudents`, classData, {headers: { 'Content-Type': 'multipart/form-data', }});
 export const editClass = (classId,classData) => apiClient.put(`/api/classes/with-students/${classId}`, classData);
 export const getClassDetails = (classId) => apiClient.get(`/api/classes/with-students/${classId}`);
+export const getAllClasses = () => apiClient.get("/api/classes/all");  // New endpoint to fetch all classes
 
 //LECTURE RELATED ENDPOINTS
 export const getLectureClasses = (lecturerId) => apiClient.get(`/api/classes/${lecturerId}/details`);
+export const AddStudent = (userData) => apiClient.post(`/api/temp-students/register` , userData);
 
 //DATA CAPTURE RELATED ENDPOINTS  && MODERATOR
 export const addQuestion = (questionData) => apiClient.post("/api/questions/add", questionData, {headers: {
@@ -67,3 +69,4 @@ export const getGeneratedTest=(testId,studentId)=>apiClient.get(`/api/tests/${te
  
 //ENROLLED STUDENT ENDPOINTS   /api/tests/32/start?studentId=33
 export const getEnrolledStudentClasses = (studentId) => apiClient.get(`/api/students/${studentId}/details`);
+export const addStudent = (studentData) => apiClient.post(`/api/temp-students/register`, studentData);  // New endpoint to add a student
