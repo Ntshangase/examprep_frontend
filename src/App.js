@@ -16,7 +16,7 @@ import ViewStudents from "./Pages/Lecturer/ViewStudents/ViewStudents";
 import StudPerfom from "./Pages/Lecturer/ViewStudents/StudPerfom";
 import StudentsSubmitted from "./Pages/Lecturer/StudentsSubmitted/StudentsSubmitted";
 import SubmittedTests from "./Pages/Lecturer/SubmittedTests/SubmittedTests";
-import IndStudentDash from "./Pages/Student/Independent/IndStudentDash";
+import IndStudentDash from "./Pages/Student/Indepen:dent/IndStudentDash";
 import IndStudentCourseDetail from "./Pages/Student/Independent/IndStudentCourseDetails";
 import AddCourse from "./Pages/Admin/AddCourse";
 import CourseDetails from "./Pages/Admin/CourseDetails";
