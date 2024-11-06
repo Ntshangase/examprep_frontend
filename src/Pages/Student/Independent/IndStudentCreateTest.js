@@ -11,15 +11,16 @@ const IndStudentCreateTest = () => {
 		{ path: "/IndStudentdash", pathName: "Course Details" },
 	];
 
-	const [selectedTopics, setSelectedTopics] = useState({});
-	const [totalWeight, setTotalWeight] = useState(0);
-	const [isModalOpen, setIsModalOpen] = useState(false);
-	const navigate = useNavigate();
-	const user = useSelector((state) => state.user.userData);
-	const [testName, setTestName] = useState("");
-	const [courseData, setCourseData] = useState([]);
-	const [loadingState, setLoadingState] = useState(true);
-	const { courseId } = useParams();
+  const [selectedTopics, setSelectedTopics] = useState({});
+  const [totalWeight, setTotalWeight] = useState(0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user.userData);
+  const[testName,setTestName]=useState("");
+  const [courseData,setCourseData]=useState([]);
+  const [loadingState, setLoadingState] = useState(true);
+  const [generatedTestId, setGeneratedTestId] = useState(null);
+  const{courseId}= useParams();
 
 	// Function to handle topic changes and update selectedTopics state
 	const handleTopicChange = (domainId, topicId, value) => {
@@ -54,20 +55,20 @@ const IndStudentCreateTest = () => {
 		});
 	};
 
-	useEffect(() => {
-		const fetchCourse = async () => {
-			try {
-				const response = await getCourseById(courseId);
-				setCourseData(response.data.domains);
-				console.log(response.data);
-			} catch (error) {
-				console.log(error);
-			} finally {
-				setLoadingState(false);
-			}
-		};
-		fetchCourse();
-	}, [courseId]);
+useEffect(()=>{
+  const fetchCourse=async()=> {
+    try{
+      const response=await getCourseById(courseId);
+      setCourseData(response.data.domains);
+      //console.log(response.data);
+    }catch(error){
+      console.log(error);
+    }finally{
+      setLoadingState(false);
+    }
+  };
+  fetchCourse();
+  },[courseId]);
 
 	const handleGenerateTest = async () => {
 		const payload = {
@@ -88,29 +89,28 @@ const IndStudentCreateTest = () => {
 			return;
 		}
 
-		if (totalWeight < 1) {
-			alert("Please select number of questions");
-			return;
-		}
-		setIsModalOpen(true);
-		try {
-			const response = await postIndStudentGeneratetest(user.id, payload);
-
-			const testId = response.data.testId;
-			handleStartTest(testId);
-			//alert("Test created");
-		} catch (error) {
-			console.log(error);
-		}
+    if (totalWeight<1){
+      alert("Please select number of questions");
+      return
+    }
+    setIsModalOpen(true);
+    try{
+      const response= await postIndStudentGeneratetest(user.id,payload);
+      const testId = response.data.testId;
+      setGeneratedTestId(testId); 
+      handleStartTest(testId);
+    }catch(error)
+    
+    {console.log(error);}
 
 		// Populate topicQuestionCount with selected topics and question counts
 	};
 
-	const handleStartTest = (testId) => {
-		setIsModalOpen(false);
-		navigate(`/IndStudentWriteTest/${testId}`);
-		console.log(testId);
-	};
+  const handleStartTest = (testId) => {
+    setIsModalOpen(false); 
+    navigate(`/IndStudentWriteTest/${testId}`);
+    console.log(testId);
+  };
 
 	if (loadingState) {
 		return <div>Loading...........</div>;
