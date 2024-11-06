@@ -52,10 +52,11 @@ const IndStudentCourseDetails = () => {
 				{/* Top Section: Course Image and Info */}
 				<div className="indipendent-student-course-details-information-view">
 					{/* Left Section: Course Image */}
-					<div className="indipendent-student-course-details-course-image">
+					<div className="indipendent-student-course-details-course-image-div">
 						<img
 							src={`data:image/jpeg;base64,${courseData.image}`}
 							alt="CompTIA Security+"
+							className="indipendent-student-course-details-course-image"
 						/>
 					</div>
 

@@ -8,7 +8,6 @@ import { useSelector } from "react-redux";
 const ModeratorDashboard = () => {
 	const links = [
 		{path: "/ModeratorDashboard", pathName: "Home"},
-		{path: "/QuestionView", pathName: "Questions"},
 		{path: "/FlaggedQuestionView", pathName: "Flagged"}
 	]
 
