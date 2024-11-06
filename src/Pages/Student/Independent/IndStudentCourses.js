@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const IndStudentCourses = () => {
 
   const links = [
-		{path: "/StudentDashboards", pathName: "Home"},
+		{path: "/IndStudentCourses", pathName: "Home"},
 		{path: "/IndStudentdash", pathName: "Course Details"},
 	]
 
@@ -35,7 +35,7 @@ const IndStudentCourses = () => {
       }
     };
     fetchAllStudentCourses();
-  },[user.id]);
+  },[user]);
 
   if(loadingState){
     return <div>...Loading</div>
