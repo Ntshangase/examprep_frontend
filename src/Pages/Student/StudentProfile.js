@@ -4,7 +4,7 @@ import "./StudentProfile.css";
 
 const StudentProfile = () => {
 	const links = [
-		{ path: "/StudentDashboards", pathName: "Home" },
+		{ path: "/IndStudentCourses", pathName: "Home" },
 		{ path: "/Classes", pathName: "Active Classes" },
 		{ path: "/PanelEnrolled", pathName: "Enrolled Class" },
 		{ path: "/ScheduledTests", pathName: "Scheduled Test" },

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const StudentDashboard = () => {
 	const links = [
-		{ path: "/StudentDashboards", pathName: "Home" },
+		{ path: "/IndStudentCourses", pathName: "Home" },
 		{ path: "/IndStudentCourses", pathName: "Independent Student" },
 		{ path: "/Classes", pathName: "Enrolled Student" },
 	];

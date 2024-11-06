@@ -41,7 +41,10 @@ function Login() {
 						navigate("/ModeratorDashboard");
 						break;
 					case "STUDENT":
-						navigate("/StudentDashboards");
+						navigate("/IndStudentCourses");
+						break;
+					case "ENROLLSTUDENT":
+						navigate("/Classes");
 						break;
 					default:
 						navigate("/Home"); // Default fallback
