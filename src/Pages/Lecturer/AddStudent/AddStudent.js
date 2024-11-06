@@ -73,7 +73,7 @@ const AddStudent = () => {
         try {
             console.log("not uploading", payload)
             await axios.post("http://localhost:8080/api/temp-students/register", payload);
-            console.log("Student added successfully");
+            alert("Student added successfully");
         } catch (error) {
             console.log("Error adding student:", error);
         }
