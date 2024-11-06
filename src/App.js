@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Home from "./Home";
-import React from 'react';
 import Admin from "./Pages/Admin/AdminLanding";
 import ModerateAws from "./Pages/Moderator/ModerateAws";
 import ModeratorDashboard from "./Pages/Moderator/ModeratorDashboard";
