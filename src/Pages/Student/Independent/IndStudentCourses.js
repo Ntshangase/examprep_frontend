@@ -35,7 +35,7 @@ const IndStudentCourses = () => {
       }
     };
     fetchAllStudentCourses();
-  },[user.id]);
+  },[user]);
 
   if(loadingState){
     return <div>...Loading</div>
