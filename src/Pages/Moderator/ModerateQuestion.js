@@ -416,8 +416,8 @@ export default function ModerateQuestion() {
 							</div>
 
 							{/* Submit Button */}
-							<button className="add-question-button" type="submit">
-								Add Question
+							<button className="moderate-question-button" type="submit">
+								Approve
 							</button>
 						</form>
 					</div>
