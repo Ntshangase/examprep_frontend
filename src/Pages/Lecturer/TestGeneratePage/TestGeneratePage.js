@@ -113,7 +113,7 @@ const TestGeneratePage = () => {
 		  try{
 			const response=await getCourseById(courseId);
 			setCourseData(response.data.domains);
-			//console.log(response.data);
+			console.log(response.data);
 		  }catch(error){
 			console.log(error);
 		  }finally{

@@ -9,7 +9,7 @@ const IndStudentCourses = () => {
 
   const links = [
 		{path: "/IndStudentCourses", pathName: "Home"},
-		{path: "/IndStudentdash", pathName: "Course Details"},
+		// {path: "/IndStudentdash", pathName: "Course Details"},
 	]
 
   const navigate = useNavigate();
