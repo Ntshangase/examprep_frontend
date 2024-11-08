@@ -97,7 +97,7 @@ const ViewClass = () => {
 					</div>
 
 					{/* Scheduled Tests Section */}
-					<div className={styles.scheduledTests}>
+					{/* <div className={styles.scheduledTests}>
 						<button
 							className={styles.createTestButton}
 							onClick={() => {handleCreateTest(classData.course.courseId)}}
@@ -106,7 +106,7 @@ const ViewClass = () => {
 						</button>
 						<h2>Scheduled Tests</h2>
 						<div className={styles.testList}>
-							{/* Example test entries */}
+				
 							<div className={styles.newDisplay}>
 								<div className={styles.testItem}>
 									<h3>Database Connection </h3>
@@ -128,7 +128,7 @@ const ViewClass = () => {
 								</div>
 							</div>
 						</div>
-					</div>
+					</div> */}
 				</div>
 			</div>
 		</div>
