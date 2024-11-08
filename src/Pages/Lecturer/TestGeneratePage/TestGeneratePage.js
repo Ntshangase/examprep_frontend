@@ -1,6 +1,8 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useEffect,useState } from "react";
+import { useNavigate,useParams } from "react-router-dom";
 import "./TestGeneratePage.css";
+import { getCourseById,lectureGenerateTest } from "../../../Api/Api";
+import { useSelector } from "react-redux";
 
 const domains = [
 	{
@@ -33,55 +35,157 @@ const domains = [
 
 const TestGeneratePage = () => {
 	const [testName, setTestName] = useState("");
+	const [loadingState, setLoadingState] = useState(true);
 	const [dueDate, setDueDate] = useState("");
-	const [instructions, setInstructions] = useState("");
+	const [instruction, setInstruction] = useState("");
 	const [totalGrade, setTotalGrade] = useState("");
-  const [testDuration, setTestDuration] = useState("");
+    const [duration, setDuration] = useState("");
 	const [selectedTopics, setSelectedTopics] = useState({});
 	const [totalWeight, setTotalWeight] = useState(0);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [errorMessage, setErrorMessage] = useState(""); // For displaying validation errors
+	const [generatedTestId, setGeneratedTestId] = useState(null);
 	const navigate = useNavigate();
+	const [courseData,setCourseData]=useState([]);
+	const{courseId}= useParams();
+	const user = useSelector((state) => state.user.userData);
 
-	const handleTopicChange = (domainTitle, topic, value) => {
-		const newSelectedTopics = {
-			...selectedTopics,
-			[domainTitle]: {
-				...selectedTopics[domainTitle],
-				[topic]: value,
-			},
-		};
+	// const handleTopicChange = (domainTitle, topic, value) => {
+	// 	const newSelectedTopics = {
+	// 		...selectedTopics,
+	// 		[domainTitle]: {
+	// 			...selectedTopics[domainTitle],
+	// 			[topic]: value,
+	// 		},
+	// 	};
 
-		setSelectedTopics(newSelectedTopics);
+	// 	setSelectedTopics(newSelectedTopics);
 
-		let total = 0;
-		Object.values(newSelectedTopics).forEach((domainTopics) => {
-			Object.values(domainTopics).forEach((count) => {
-				total += Number(count || 0);
+	// 	let total = 0;
+	// 	Object.values(newSelectedTopics).forEach((domainTopics) => {
+	// 		Object.values(domainTopics).forEach((count) => {
+	// 			total += Number(count || 0);
+	// 		});
+	// 	});
+	// 	setTotalWeight(total);
+	// };
+
+	// const handleGenerateTest = (e) => {
+	// 	e.preventDefault(); // Prevent default form submission
+	// 	setIsModalOpen(true);
+	// };
+
+		// Function to handle topic changes and update selectedTopics state
+		const handleTopicChange = (domainId, topicId, value) => {
+			const questionCount = parseInt(value, 10) || 0;
+	
+			setSelectedTopics((prevSelectedTopics) => {
+				const updatedTopics = {
+					...prevSelectedTopics,
+					[domainId]: {
+						...prevSelectedTopics[domainId],
+						[topicId]: questionCount,
+					},
+				};
+	
+				// Calculate the total weight immediately
+				const newTotal = Object.values(updatedTopics).reduce(
+					(domainAcc, topics) => {
+						return (
+							domainAcc +
+							Object.values(topics).reduce(
+								(topicAcc, count) => topicAcc + count,
+								0
+							)
+						);
+					},
+					0
+				);
+	
+				setTotalWeight(newTotal);
+	
+				return updatedTopics;
 			});
-		});
-		setTotalWeight(total);
-	};
-
-	const handleGenerateTest = (e) => {
-		e.preventDefault(); // Prevent default form submission
-		setIsModalOpen(true);
-	};
-
-	const handleStartTest = () => {
-		setIsModalOpen(false);
-		const testData = {
-			testName,
-			dueDate,
-			instructions,
-			totalGrade,
-			selectedTopics,
-			totalWeight,
-      testDuration
 		};
-		console.log(testData); // Log all test data for submission
-		navigate("/ViewClass/1", { state: { selectedTopics } }); // Navigate to the next page
-	};
+
+	useEffect(()=>{
+		const fetchCourse=async()=> {
+		  try{
+			const response=await getCourseById(courseId);
+			setCourseData(response.data.domains);
+			console.log(response.data);
+		  }catch(error){
+			console.log(error);
+		  }finally{
+			setLoadingState(false);
+		  }
+		};
+		fetchCourse();
+		},[courseId]);
+
+
+
+	  
+		const handleGenerateTest = async () => {
+			const payload = {
+				testName:testName,
+				instruction:instruction,
+				totalGrade:totalGrade,
+				dueDate:dueDate,
+				duration:duration,
+				topicQuestionCount:{}
+			};
+			for (let domainId in selectedTopics) {
+				for (let topicId in selectedTopics[domainId]) {
+					const questionCount = selectedTopics[domainId][topicId];
+					if (questionCount > 0) {
+						payload.topicQuestionCount[topicId] = questionCount;
+					}
+				}
+			}
+			console.log("Generated Test Request:", payload);
+			if (!testName) {
+				alert("Enter test name");
+				return;
+			}
+	
+		if (totalWeight<1){
+		  alert("Please select number of questions");
+		  return
+		}
+		setIsModalOpen(true);
+		try{
+		  const response= await lectureGenerateTest(user.id,payload);
+		  const testId = response.data.testId;
+		  setGeneratedTestId(testId); 
+		  handleStartTest();
+		}catch(error)
+		
+		{console.log(error);}
+	
+			// Populate topicQuestionCount with selected topics and question counts
+		};
+
+		const handleStartTest = () => {
+			setIsModalOpen(false); 
+			navigate(`/ViewClass`);
+			//console.log(testId);
+		  };
+
+	// const handleStartTest = () => {
+	// 	setIsModalOpen(false);
+	// 	const testData = {
+	// 		testName,
+	// 		dueDate,
+	// 		instructions,
+	// 		totalGrade,
+	// 		selectedTopics,
+	// 		totalWeight,
+    //         testDuration
+	// 	};
+	// 	console.log(testData); // Log all test data for submission
+	// 	navigate("/ViewClass/1", { state: { selectedTopics } }); // Navigate to the next page
+	// };
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -135,8 +239,8 @@ const TestGeneratePage = () => {
 							<label>Test Duration</label>
 							<input
 								type="time"
-								value={testDuration}
-								onChange={(e) => setTestDuration(e.target.value)}
+								value={duration}
+								onChange={(e) => setDuration(e.target.value)}
 								required
 							/>
 						</div>
@@ -144,8 +248,8 @@ const TestGeneratePage = () => {
 						<div className="test-generate-page-form-group">
 							<label>Instructions</label>
 							<textarea
-								value={instructions}
-								onChange={(e) => setInstructions(e.target.value)}
+								value={instruction}
+								onChange={(e) => setInstruction(e.target.value)}
 								placeholder="Enter instructions for the test"
 								required
 							/>
@@ -208,8 +312,8 @@ const TestGeneratePage = () => {
 				{isModalOpen && (
 					<div className="modal-overlay">
 						<div className="modal-box">
-							<p>Click Okay to start the test</p>
-							<button className="modal-button" onClick={handleStartTest}>
+							<p>Click Okay to save test</p>
+							<button className="modal-button">
 								Okay
 							</button>
 						</div>

@@ -6,7 +6,7 @@ import "./IndStudentCourseDets.css";
 const IndStudentCourseDets = () => {
 	const links = [
 		{ path: "/IndStudentCourses", pathName: "Home" },
-		{ path: "/IndStudentdash", pathName: "Course Details" },
+		// { path: "/IndStudentdash", pathName: "Course Details" },
 	];
 
 	const location = useLocation();

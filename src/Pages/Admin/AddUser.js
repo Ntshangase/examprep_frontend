@@ -224,7 +224,7 @@ function AddUser() {
 							</option>
 							<option value="LECTURER">Lecturer</option>
 							<option value="STUDENT">Student</option>
-							<option value="ADMIN">Admin</option>
+							{/* <option value="ADMIN">Admin</option> */}
 							<option value="DATA CAPTURE">Data Capture</option>
 							<option value="MODERATOR">Moderator</option>
 						</select>
