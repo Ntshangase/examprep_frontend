@@ -1,0 +1,73 @@
+/* Styles for Viewing Submitted Test */
+.indipendent-student-view-test-container {
+    display: flex;
+    background-color: #f9f9f9;
+    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+}
+
+.indipendent-student-view-test-content {
+    padding: 2rem;
+    width: 100%;
+    margin-left: 250px; /* Adjust if your sidebar has a different width */
+}
+
+.indipendent-student-view-test-h2 {
+    font-size: 1.8rem;
+    color: #333;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Submission summary */
+.submission-summary {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.submission-summary p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.submission-summary strong {
+    color: #333;
+}
+
+/* Questions and answers */
+.submission-questions {
+    background-color: #fff;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.question-item {
+    margin-bottom: 1.5rem;
+}
+
+.question-item h3 {
+    font-size: 1.4rem;
+    color: #333;
+}
+
+.question-item p {
+    font-size: 1rem;
+    color: #555;
+}
+
+.question-item strong {
+    color: #333;
+}
+
+/* To highlight correct and incorrect answers */
+.question-item .correct {
+    color: green;
+}
+
+.question-item .incorrect {
+    color: red;
+}

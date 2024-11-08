@@ -68,11 +68,11 @@ export const postIndStudentGeneratetest=(studentId,testData)=>apiClient.post(`/a
 export const getCourseById=(courseId)=>apiClient.get(`/api/courses/${courseId}`);
 export const getGeneratedTest=(testId,studentId)=>apiClient.get(`/api/tests/${testId}/start?studentId=${studentId}`);
 // Test submission endpoint
-export const submitAnswers = (testAttemptId, answers) => apiClient.post(`/api/tests/${testAttemptId}/submit`, answers);
+export const submitAnswers = (testId,studentId,answers) => apiClient.post(`/api/tests/${testId}/submit/${studentId}`, answers);
 
 
 
- 
+ ///{testId}/submit/{studentId}
 export const postTestResult = (attempId, testAttempData) => apiClient.post(`/api/tests/${attempId}/submit`, testAttempData);
 
 //ENROLLED STUDENT ENDPOINTS   /api/tests/32/start?studentId=33
