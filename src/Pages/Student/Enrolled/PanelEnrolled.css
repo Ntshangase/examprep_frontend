@@ -13,6 +13,9 @@
   padding: 20px;
   display: flex;
   flex-direction: column;
+  margin: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .course-detail-content {
@@ -29,12 +32,14 @@
 
 .course-image {
   flex: 1; /* Take up one part of the flex container */
+  display: flex;
+  justify-content: center;
 }
 
 .course-image img {
-  width: 100%; /* Responsive image */
+  width: auto; /* Responsive image */
   max-width: 300px; /* Max width for better sizing */
-  height: 300px; /* Maintain aspect ratio */
+  height: 250px; /* Maintain aspect ratio */
   border-radius: 8px; /* Rounded corners */
   padding-top: 20px;
 }

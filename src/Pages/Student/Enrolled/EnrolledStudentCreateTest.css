@@ -1,0 +1,171 @@
+/* General layout for EnrolledStudentCreateTest */
+.enrolled-student-create-test-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; /* Full height view */
+}
+
+/* Page content grid layout */
+.enrolled-student-content-area {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 20px;
+}
+
+/* Test creation section */
+.create-test-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.create-test-container h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.create-test-container label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+.create-test-container input[type="text"],
+.create-test-container input[type="number"] {
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    width: 100%;
+}
+
+.create-test-container input[type="number"] {
+    width: auto;
+    max-width: 100px;
+}
+
+.create-test-container .independent-student-create-test-domain-section {
+    margin-bottom: 20px;
+}
+
+.create-test-container .independent-student-create-test-domain-section-h2 {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.create-test-container .topic-item {
+    margin-bottom: 15px;
+}
+
+/* Total weight section */
+.total-weight-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.total-weight-section p {
+    font-size: 18px;
+    color: #555;
+}
+
+.total-weight-section input {
+    padding: 8px;
+    font-size: 16px;
+    width: 100px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+}
+
+/* Button styling */
+.generate-test-button {
+    padding: 12px 24px;
+    background-color: #2C97DE;
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s;
+    margin-top: 20px;
+    width: 100%;
+}
+
+.generate-test-button:hover {
+    background-color: #1A6C9C;
+}
+
+/* Modal styling */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 300px;
+}
+
+.modal-button {
+    padding: 10px 20px;
+    background-color: #2C97DE;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.modal-button:hover {
+    background-color: #1A6C9C;
+}
+
+/* For mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .create-test-container {
+        padding: 15px;
+    }
+
+    .create-test-container input[type="text"],
+    .create-test-container input[type="number"] {
+        width: 100%;
+    }
+
+    .total-weight-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .generate-test-button {
+        width: 100%;
+    }
+
+    .modal-content {
+        width: 90%;
+    }
+}
