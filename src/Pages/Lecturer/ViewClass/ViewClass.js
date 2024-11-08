@@ -45,8 +45,8 @@ const ViewClass = () => {
 	const handleAddStudent = () => {
 		navigate("/AddStudent");
 	};
-	const handleCreateTest = () => {
-		navigate("/TestGeneratePage");
+	const handleCreateTest = (courseId) => {
+		navigate(`/TestGeneratePage/${courseId}`);
 	};
 
 	if(loadingState){
@@ -100,7 +100,7 @@ const ViewClass = () => {
 					<div className={styles.scheduledTests}>
 						<button
 							className={styles.createTestButton}
-							onClick={handleCreateTest}
+							onClick={() => {handleCreateTest(classData.course.courseId)}}
 						>
 							Create Test
 						</button>
