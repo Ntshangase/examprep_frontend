@@ -4,34 +4,7 @@ import "./TestGeneratePage.css";
 import { getCourseById,lectureGenerateTest } from "../../../Api/Api";
 import { useSelector } from "react-redux";
 
-const domains = [
-	{
-		title: "1.0 Attacks, Threats, and Vulnerabilities",
-		topics: [
-			"Social Engineering Techniques",
-			"Types of Attacks",
-			"Application and Network Attacks",
-			"Vulnerabilities",
-		],
-	},
-	{
-		title: "2.0 Implementation",
-		topics: [
-			"Security Concepts in an Enterprise Environment",
-			"Virtualization and Cloud Computing",
-			"Secure Application Development",
-			"Authentication and Authorization",
-		],
-	},
-	{
-		title: "3.0 Governance, Risk, and Compliance",
-		topics: [
-			"Security Controls",
-			"Regulations and Standards",
-			"Risk Management",
-		],
-	},
-];
+
 
 const TestGeneratePage = () => {
 	const [testName, setTestName] = useState("");
@@ -123,6 +96,8 @@ const TestGeneratePage = () => {
 		fetchCourse();
 		},[courseId]);
 
+		console.log(courseData);
+
 
 
 	  
@@ -157,7 +132,7 @@ const TestGeneratePage = () => {
 		try{
 		  const response= await lectureGenerateTest(user.id,payload);
 		  const testId = response.data.testId;
-		  setGeneratedTestId(testId); 
+		  setGeneratedTestId(testId);
 		  handleStartTest();
 		}catch(error)
 		
@@ -207,6 +182,10 @@ const TestGeneratePage = () => {
 		setErrorMessage(""); // Clear any previous error messages
 		handleGenerateTest(e); // Call the function to generate the test
 	};
+
+	if (loadingState) {
+		return <div>Loading...........</div>;
+	}
 
 	return (
 		<div className="dashboard">
@@ -272,12 +251,12 @@ const TestGeneratePage = () => {
 					<div className="main-content">
 						<h2>Select Domains to Generate Test</h2>
 						<div className="test-container">
-							{domains.map((domain) => (
-								<div key={domain.title} className="domain-section">
-									<h3>{domain.title}</h3>
-									{domain.topics.map((topic) => (
-										<div key={topic} className="topic-row">
-											<label>{topic}</label>
+							{courseData.map((domain,index) => (
+								<div key={index} className="domain-section">
+									<h3>{domain.domainName}</h3>
+									{domain.topics.map((topic,index) => (
+										<div key={index} className="topic-row">
+											<label>{topic.topicName}</label>
 											<input
 												type="number"
 												min="0"

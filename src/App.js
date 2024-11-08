@@ -106,7 +106,7 @@ function App() {
 				<Route path="/IndStudentWriteTest/:testId" element={<IndStudentWriteTest />} />
 				<Route path="/AddStudent" element={<AddStudent />} />
 				<Route path="/Analytics" element={<Analytics />} />
-				<Route path="/TestGeneratePage" element={<TestGeneratePage />} />
+				<Route path="/TestGeneratePage/:courseId" element={<TestGeneratePage />} />
 				<Route path="/ApproveStudent" element={<ApproveStudent />} />
 				<Route path="/TestReview" element={<TestReview />} />
 				<Route path="/DataCaptureDashboard" element={<DataCaptureDashboard />} />
