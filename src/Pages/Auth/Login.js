@@ -93,9 +93,9 @@ function Login() {
 					<button className="login-button" type="submit">
 						Continue
 					</button>
-					<div className="login-signup">
+					{/* <div className="login-signup">
 						Don&apos;t have an account? <a href="/Signup">Sign up</a>
-					</div>
+					</div> */}
 				</form>
 			</div>
 			<div className="login-right-div">

@@ -75,6 +75,6 @@ export const submitAnswers = (testId,studentId,answers) => apiClient.post(`/api/
  ///{testId}/submit/{studentId}
 export const postTestResult = (attempId, testAttempData) => apiClient.post(`/api/tests/${attempId}/submit`, testAttempData);
 
-//ENROLLED STUDENT ENDPOINTS   /api/tests/32/start?studentId=33
+//ENROLLED STUDENT ENDPOINTS  
 export const getEnrolledStudentClasses = (studentId) => apiClient.get(`/api/students/${studentId}/details`);
 export const addStudent = (studentData) => apiClient.post(`/api/temp-students/register`, studentData);  // New endpoint to add a student
