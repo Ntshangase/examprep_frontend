@@ -195,7 +195,7 @@ export default function EditUser() {
                             <option value="" disabled>{userData.role}</option>
 							<option value="LECTURER">Lecturer</option>
 							<option value="STUDENT">Student</option>
-							<option value="ADMIN">Admin</option>
+							{/* <option value="ADMIN">Admin</option> */}
 							<option value="DATA CAPTURE">Data Capture</option>
 							<option value="MODERATOR">Moderator</option>
 						</select>

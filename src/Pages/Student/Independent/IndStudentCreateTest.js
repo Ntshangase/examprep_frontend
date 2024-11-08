@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 const IndStudentCreateTest = () => {
 	const links = [
 		{ path: "/IndStudentCourses", pathName: "Home" },
-		{ path: "/IndStudentdash", pathName: "Course Details" },
+		// { path: "/IndStudentdash", pathName: "Course Details" },
 	];
 
   const [selectedTopics, setSelectedTopics] = useState({});
@@ -71,6 +71,27 @@ useEffect(()=>{
   },[courseId]);
 
 	const handleGenerateTest = async () => {
+		if (!testName) {
+			alert("Enter test name");
+			return;
+		  }
+	  
+		  if (totalWeight < 1) {
+			alert("Please select number of questions");
+			return;
+		  }
+
+		   // Check if there are any valid topic question counts
+		   const validTopicQuestionCount = Object.values(selectedTopics).some(domain =>
+			Object.values(domain).some(topicCount => topicCount > 0)
+		);
+	
+		if (!validTopicQuestionCount) {
+			alert("Please select at least one question.");
+			return;
+		}
+
+
 		const payload = {
 			testName: testName,
 			topicQuestionCount: {},
@@ -83,34 +104,31 @@ useEffect(()=>{
 				}
 			}
 		}
-		console.log("Generated Test Request:", payload);
-		if (!testName) {
-			alert("Enter test name");
+
+		if (Object.keys(payload.topicQuestionCount).length === 0) {
+			alert("Please select at least one question per topic.");
 			return;
 		}
+		console.log("Generated Test Request:", payload);
 
-    if (totalWeight<1){
-      alert("Please select number of questions");
-      return
-    }
-    setIsModalOpen(true);
+		setIsModalOpen(true);
+
     try{
       const response= await postIndStudentGeneratetest(user.id,payload);
 	  console.log("Asibone: ", response.data)
-      const testId = response.data.testId;
-      setGeneratedTestId(testId);
-      handleStartTest(testId);
+      setGeneratedTestId(response.data.testId);
+	  setIsModalOpen(true);
     }catch(error)
 
-    {console.log(error);}
+    { console.log("Error generating test:", error);}
 
 		// Populate topicQuestionCount with selected topics and question counts
 	};
 
-  const handleStartTest = (testId) => {
-    setIsModalOpen(false); 
-    navigate(`/IndStudentWriteTest/${testId}`);
-    console.log(testId);
+  const handleStartTest = () => {
+    if (generatedTestId) {
+      navigate(`/IndStudentWriteTest/${generatedTestId}`);
+    }
   };
 
 	if (loadingState) {
